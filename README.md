@@ -1,6 +1,6 @@
 # Terraform Modules for Guance Cloud Dashboard
 
-![cover](./artwork/cover.png)
+![cover](https://raw.githubusercontent.com/GuanceCloud/terraform-guance-dashboard/5a497e43d5250cd92d1430b25ba9d4f33cea5e2b/artwork/cover.png)
 
 Dashboard is a module that creates a dashboard in Guance Cloud. It contains a set of built-in dashboards that are designed to provide a quick overview of your infrastructure.
 
