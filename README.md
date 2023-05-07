@@ -1,6 +1,6 @@
 # Terraform Modules for Guance Cloud Dashboard
 
-[cover](./artwork/cover.png)
+![cover](./artwork/cover.png)
 
 Dashboard is a module that creates a dashboard in Guance Cloud. It contains a set of built-in dashboards that are designed to provide a quick overview of your infrastructure.
 
@@ -12,7 +12,8 @@ terraform {
 
   required_providers {
     guance = {
-      source = "GuanceCloud/guance"
+      source  = "GuanceCloud/guance"
+      version = "0.0.4"
     }
   }
 }
@@ -21,10 +22,13 @@ provider "guance" {
 }
 
 module "nginx" {
-    path = "GuanceCloud/guance/dashboard"
-    name = "oac-demo"
+  source  = "GuanceCloud/dashboard/guance//modules/nginx"
+  version = "0.0.1"
+  name    = "oac-demo"
 }
 ```
+
+Use the submodules dropdown in [Hashicorp Registry](https://registry.terraform.io/modules/GuanceCloud/dashboard/guance/latest) to view the 156 submodules defined within this module.
 
 ## Feedback
 
@@ -39,3 +43,4 @@ This [Contribution Guidelines](https://guance.io/contribution-guide/) document c
 ## License
 
 This repository is licensed under the [Apache 2.0 License](./LICENSE).
+
