@@ -1,0 +1,3995 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/istio_workload/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/istio_workload/istio_workload.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "result",
+                "name": "result",
+                "unit": "ops/s",
+                "units": [
+                  "custom",
+                  "ops/s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "General"
+        },
+        "name": "Incoming Request Volume",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "result",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "2120b1d0-0d7c-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "2120b1d1-0d7c-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "2120b1d2-0d7c-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "2120b1d3-0d7c-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "response_code"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`) AS `result`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `reporter` = '#{qrep}' } BY `response_code`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "#498BFE",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(istio_requests_total)",
+                "name": "last(istio_requests_total)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "General"
+        },
+        "name": "Incoming Success Rate (non-5xx responses)",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "#{qrep}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload_namespace",
+                      "op": "=",
+                      "value": "#{namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload",
+                      "op": "=",
+                      "value": "#{workload}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "response_code",
+                      "op": "=~",
+                      "value": "50.*"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_service",
+                      "op": "=",
+                      "value": "#{dstsvc}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "destination_service"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "WINDOW(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `response_code` != re('50.*') and `destination_service` = '#{dstsvc}' } BY `destination_service`\", '5m')",
+                  "queryFuncs": [
+                    {
+                      "args": [
+                        "5m"
+                      ],
+                      "name": "window"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "#{qrep}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload_namespace",
+                      "op": "=",
+                      "value": "#{namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload",
+                      "op": "=",
+                      "value": "#{workload}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_service",
+                      "op": "=",
+                      "value": "#{dstsvc}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "destination_service"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "WINDOW(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}'  and `destination_service` = '#{dstsvc}' } BY `destination_service`\", '5m')",
+                  "queryFuncs": [
+                    {
+                      "args": [
+                        "5m"
+                      ],
+                      "name": "window"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "B",
+              "expression": "A/B",
+              "funcList": [
+                "last"
+              ],
+              "q": "eval(A/B, A=\"WINDOW(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `response_code` != re('50.*') and `destination_service` = '#{dstsvc}' } BY `destination_service`\\\", '5m')\", B=\"WINDOW(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}'  and `destination_service` = '#{dstsvc}' } BY `destination_service`\\\", '5m')\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "🔐mTLS",
+                "name": "🔐mTLS",
+                "unit": "ops/s",
+                "units": [
+                  "custom",
+                  "ops/s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "INBOUND WORKLOADS"
+        },
+        "name": "Incoming Requests By Source And Response Code",
+        "pos": {
+          "h": 14,
+          "w": 12,
+          "x": 0,
+          "y": 22
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "🔐mTLS",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "3450a2a0-0cbf-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "3450a2a2-0cbf-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "3450a2a3-0cbf-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "3450a2a4-0cbf-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "id": "3450a2a5-0cbf-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "id": "3450a2a6-0cbf-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload_namespace",
+                "source_workload",
+                "response_code"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`) AS `🔐mTLS`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `reporter` = '#{qrep}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload_namespace`, `source_workload`, `response_code`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "🔐mTLS",
+                "name": "🔐mTLS",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "INBOUND WORKLOADS"
+        },
+        "name": "Incoming Success Rate (non-5xx responses) By Source",
+        "pos": {
+          "h": 14,
+          "w": 12,
+          "x": 12,
+          "y": 22
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "🔐mTLS",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "#{qrep}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload_namespace",
+                      "op": "=",
+                      "value": "#{namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload",
+                      "op": "=",
+                      "value": "#{workload}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "response_code",
+                      "op": "=~",
+                      "value": "50.*"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload",
+                      "op": "=",
+                      "value": "#{srcwl}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload_namespace",
+                      "op": "=",
+                      "value": "#{srcns}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "source_workload"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "WINDOW(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `response_code` != re('50.*') and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`\", '5m')",
+                  "queryFuncs": [
+                    {
+                      "args": [
+                        "5m"
+                      ],
+                      "name": "window"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "#{qrep}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload_namespace",
+                      "op": "=",
+                      "value": "#{namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_workload",
+                      "op": "=",
+                      "value": "#{workload}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload",
+                      "op": "=",
+                      "value": "#{srcwl}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload_namespace",
+                      "op": "=",
+                      "value": "#{srcns}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "source_workload"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "WINDOW(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}'  and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`\", '5m')",
+                  "queryFuncs": [
+                    {
+                      "args": [
+                        "5m"
+                      ],
+                      "name": "window"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "C",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='🔐mTLS', A=\"WINDOW(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `response_code` != re('50.*') and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`\\\", '5m')\", B=\"WINDOW(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}'  and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`\\\", '5m')\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "P50(🔐mTLS)",
+                "name": "P50(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "P75(🔐mTLS)",
+                "name": "P75(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "P90(🔐mTLS)",
+                "name": "P90(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "P99(🔐mTLS)",
+                "name": "P99(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "INBOUND WORKLOADS"
+        },
+        "name": "Incoming Request Duration By Source",
+        "pos": {
+          "h": 12,
+          "w": 8,
+          "x": 0,
+          "y": 36
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50(🔐mTLS)",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p50",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "66284600-0d7a-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "66284601-0d7a-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "id": "66284603-0d7a-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "66284604-0d7a-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "66284605-0d7a-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "id": "66284606-0d7a-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 50) AS `P50(🔐mTLS)`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75(🔐mTLS)",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p75",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "e7a61770-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "e7a61771-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "id": "e7a61772-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "id": "e7a61773-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "e7a61774-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "e7a61775-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "id": "e7a61776-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 75) AS `P75(🔐mTLS)`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `connection_security_policy` = 'mutual_tls' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90(🔐mTLS)",
+              "code": "C",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p90",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "dffc6bf0-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "dffc6bf1-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "id": "dffc6bf2-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "id": "dffc6bf3-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "dffc6bf4-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "dffc6bf5-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "id": "dffc6bf6-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 90) AS `P90(🔐mTLS)`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `connection_security_policy` = 'mutual_tls' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99(🔐mTLS)",
+              "code": "D",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p99",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "cfa168f0-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "cfa168f1-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "id": "cfa168f2-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "id": "cfa168f3-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "cfa168f4-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "cfa168f5-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "id": "cfa168f6-0d75-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 99) AS `P99(🔐mTLS)`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `connection_security_policy` = 'mutual_tls' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "P50(🔐mTLS)",
+                "name": "P50(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P75(🔐mTLS)",
+                "name": "P75(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P90(🔐mTLS)",
+                "name": "P90(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P99(🔐mTLS)",
+                "name": "P99(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "INBOUND WORKLOADS"
+        },
+        "name": "Incoming Request Size By Source",
+        "pos": {
+          "h": 12,
+          "w": 8,
+          "x": 8,
+          "y": 36
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50(🔐mTLS)",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p50",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 50) AS `P50(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75(🔐mTLS)",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p75",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 75) AS `P75(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90(🔐mTLS)",
+              "code": "C",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 90) AS `P90(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}'  and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99(🔐mTLS)",
+              "code": "D",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p99",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 99) AS `P99(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "🔐mTLS",
+                "name": "🔐mTLS",
+                "unit": "ops/s",
+                "units": [
+                  "custom",
+                  "ops/s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "OUTBOUND SERVICES"
+        },
+        "name": "Outgoing Requests By Destination And Response Code",
+        "pos": {
+          "h": 14,
+          "w": 12,
+          "x": 0,
+          "y": 54.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "🔐mTLS",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1aadb8f0-0d79-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "1aadb8f1-0d79-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "1aadb8f2-0d79-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "id": "1aadb8f3-0d79-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "id": "1aadb8f4-0d79-11ed-9005-0b4115714405",
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_service",
+                "response_code"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`) AS `🔐mTLS`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `reporter` = 'source' and `destination_service` = '#{dstsvc}' } BY `destination_service`, `response_code`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "result",
+                "name": "result",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "OUTBOUND SERVICES"
+        },
+        "name": "Outgoing Success Rate (non-5xx responses) By Destination",
+        "pos": {
+          "h": 14,
+          "w": 12,
+          "x": 12,
+          "y": 54.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "result",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "source"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "connection_security_policy",
+                      "op": "!=",
+                      "value": "mutual_tls"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload_namespace",
+                      "op": "=",
+                      "value": "#{namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload",
+                      "op": "=",
+                      "value": "#{workload}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "response_code",
+                      "op": "=~",
+                      "value": "50.*"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_service",
+                      "op": "=",
+                      "value": "#{dstsvc}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "destination_service"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`)) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `response_code` != re('50.*') and `destination_service` = '#{dstsvc}' } BY `destination_service`\").SERIES_SUM()",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "irate"
+                    },
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "source"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "connection_security_policy",
+                      "op": "!=",
+                      "value": "mutual_tls"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload_namespace",
+                      "op": "=",
+                      "value": "#{namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "source_workload",
+                      "op": "=",
+                      "value": "#{workload}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "destination_service",
+                      "op": "=",
+                      "value": "#{dstsvc}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "destination_service"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`) ) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `destination_service`\").SERIES_SUM()",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "irate"
+                    },
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "D",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='result', A=\"IRATE(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `response_code` != re('50.*') and `destination_service` = '#{dstsvc}' } BY `destination_service`\\\").SERIES_SUM()\", B=\"IRATE(\\\"M::`istio_prom`:(AVG(`istio_requests_total`) ) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `destination_service`\\\").SERIES_SUM()\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "P50",
+                "name": "P50",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "P75",
+                "name": "P75",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "P90",
+                "name": "P90",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "P99",
+                "name": "P99",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "OUTBOUND SERVICES"
+        },
+        "name": "Outgoing Request Duration By Destination",
+        "pos": {
+          "h": 12,
+          "w": 8,
+          "x": 0,
+          "y": 68.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50(🔐mTLS)",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p50",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 50) AS `P50(🔐mTLS)`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' and `connection_security_policy` = 'mutual_tls' } BY `le`, `destination_service`\", '1m')",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75(🔐mTLS)",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p75",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 75) AS `P75(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` = 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m')",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90(🔐mTLS)",
+              "code": "C",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 90) AS `P90(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` = 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m')",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99(🔐mTLS)",
+              "code": "D",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p99",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 99) AS `P99(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` = 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m')",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50",
+              "code": "E",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p50",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 50) AS `P50`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75",
+              "code": "F",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p75",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 75) AS `P75`) {  `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90",
+              "code": "G",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 90) AS `P90`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99",
+              "code": "H",
+              "dataSource": "istio_prom",
+              "field": "istio_request_duration_milliseconds_bucket",
+              "fieldFunc": "p99",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_duration_milliseconds_bucket`, 99) AS `P99`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}'  } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "P50",
+                "name": "P50",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P75",
+                "name": "P75",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P90",
+                "name": "P90",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P99",
+                "name": "P99",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "OUTBOUND SERVICES"
+        },
+        "name": "Outgoing Request Size By Destination",
+        "pos": {
+          "h": 12,
+          "w": 8,
+          "x": 8,
+          "y": 68.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p50",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 50) AS `P50`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload` = '#{workload}' and `source_workload_namespace` = '#{namespace}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p75",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 75) AS `P75`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload` = '#{workload}' and `source_workload_namespace` = '#{namespace}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90",
+              "code": "C",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 90) AS `P90`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload` = '#{workload}' and `source_workload_namespace` = '#{namespace}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99",
+              "code": "D",
+              "dataSource": "istio_prom",
+              "field": "istio_request_bytes_bucket",
+              "fieldFunc": "p99",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "le",
+                "destination_service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_request_bytes_bucket`, 99) AS `P99`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload` = '#{workload}' and `source_workload_namespace` = '#{namespace}' and `destination_service` = '#{dstsvc}' } BY `le`, `destination_service`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "P50",
+                "name": "P50",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P75",
+                "name": "P75",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P90",
+                "name": "P90",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P99",
+                "name": "P99",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "OUTBOUND SERVICES"
+        },
+        "name": "Response Size By Destination",
+        "pos": {
+          "h": 12,
+          "w": 8,
+          "x": 16,
+          "y": 68.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p50",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_service",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 50) AS `P50`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `destination_service`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p75",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_service",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 75) AS `P75`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `destination_service`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90",
+              "code": "C",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_service",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 90) AS `P90`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `destination_service`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99",
+              "code": "D",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p99",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "connection_security_policy",
+                  "op": "!=",
+                  "value": "mutual_tls"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_service",
+                  "op": "=",
+                  "value": "#{dstsvc}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_service",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 99) AS `P99`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `connection_security_policy` != 'mutual_tls' and `source_workload_namespace` = '#{namespace}' and `source_workload` = '#{workload}' and `destination_service` = '#{dstsvc}' } BY `destination_service`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "P50(🔐mTLS)",
+                "name": "P50(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P75(🔐mTLS)",
+                "name": "P75(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P90(🔐mTLS)",
+                "name": "P90(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "P99(🔐mTLS)",
+                "name": "P99(🔐mTLS)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "INBOUND WORKLOADS"
+        },
+        "name": "Response Size By Source",
+        "pos": {
+          "h": 12,
+          "w": 8,
+          "x": 16,
+          "y": 36
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50(🔐mTLS)",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p50",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 50) AS `P50(🔐mTLS)`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and   `reporter` = '#{qrep}'  and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}'  } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75(🔐mTLS)",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p75",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 75) AS `P75(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = '#{qrep}'  and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90(🔐mTLS)",
+              "code": "C",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 90) AS `P90(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}' and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99(🔐mTLS)",
+              "code": "D",
+              "dataSource": "istio_prom",
+              "field": "istio_response_bytes_bucket",
+              "fieldFunc": "p99",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "#{qrep}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload_namespace",
+                  "op": "=",
+                  "value": "#{namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "destination_workload",
+                  "op": "=",
+                  "value": "#{workload}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload",
+                  "op": "=",
+                  "value": "#{srcwl}"
+                },
+                {
+                  "logic": "and",
+                  "name": "source_workload_namespace",
+                  "op": "=",
+                  "value": "#{srcns}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "source_workload",
+                "source_workload_namespace",
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "WINDOW(\"M::`istio_prom`:(PERCENTILE(`istio_response_bytes_bucket`, 99) AS `P99(🔐mTLS)`) {`cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = '#{qrep}'  and `destination_workload_namespace` = '#{namespace}' and `destination_workload` = '#{workload}' and `source_workload` = '#{srcwl}' and `source_workload_namespace` = '#{srcns}' } BY `source_workload`, `source_workload_namespace`, `le`\", '1m').IRATE().SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [
+                    "1m"
+                  ],
+                  "name": "window"
+                },
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "INBOUND WORKLOADS"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 18
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span>INBOUND WORKLOADS</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "OUTBOUND SERVICES"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 4,
+          "w": 24,
+          "x": 0,
+          "y": 50.5
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span>OUTBOUND SERVICES</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      }
+    ],
+    "groups": [
+      "General",
+      "INBOUND WORKLOADS",
+      "OUTBOUND SERVICES"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name_k8s",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "k8s-prod",
+            "value": "k8s-prod"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['cluster_name_k8s'])"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "namespace",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['destination_workload_namespace']){'cluster_name_k8s'='#{cluster_name_k8s}'}"
+        },
+        "hide": 0,
+        "name": "命名空间",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "workload",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['destination_workload']){cluster_name_k8s=‘#{cluster_name_k8s}’,namespace='#{namespace}'}"
+        },
+        "hide": 0,
+        "name": "workload",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "qrep",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['reporter']){cluster_name_k8s=‘#{cluster_name_k8s}’,namespace='#{namespace}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Reporter",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "srcns",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['source_workload_namespace']){cluster_name_k8s=‘#{cluster_name_k8s}’,reporter='#{qrep}',destination_workload=\"#{workload}\",destination_workload_namespace='#{namespace}'}[5m]"
+        },
+        "hide": 0,
+        "name": "inbound workload namespace",
+        "seq": 4,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "srcwl",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['source_workload']){cluster_name_k8s=‘#{cluster_name_k8s}’,reporter='#{qrep}',destination_workload=\"#{workload}\",destination_workload_namespace='#{namespace}', source_workload_namespace=\"#{srcns}\"}[5m]"
+        },
+        "hide": 0,
+        "name": "Inbound Workload",
+        "seq": 5,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "dstsvc",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['destination_service']){cluster_name_k8s=‘#{cluster_name_k8s}’,reporter='source',source_workload=\"#{workload}\",source_workload_namespace='#{namespace}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Destination Service",
+        "seq": 6,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Istio Workload 监控视图"
+}

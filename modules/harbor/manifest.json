@@ -1,0 +1,564 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/harbor/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/harbor/harbor.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#04F83B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "7"
+                ]
+              },
+              {
+                "bgColor": "#F4052B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<",
+                "value": [
+                  "7"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "0",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Components health",
+        "pos": {
+          "h": 12,
+          "i": "chrt_e832cc5a7f3541e7ae6895c451f0ada5",
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "core"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'core' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "database"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'database' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "C",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "jobservice"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'jobservice' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "D",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "portal"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'portal' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "E",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "redis"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'redis' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "F",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "registry"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'registry' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "G",
+                  "dataSource": "harbor_harbor",
+                  "field": "health",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "c4b670c0-8981-11ec-ad95-930a8a227be1",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "",
+                      "value": "registryctl"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`harbor_harbor`:(AVG(`health`)) { `name` = 'registryctl' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A+B+C+D+E+F+G",
+              "funcList": [
+                "last"
+              ],
+              "q": "eval(A+B+C+D+E+F+G, A=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'core' }\", B=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'database' }\", C=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'jobservice' }\", D=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'portal' }\", E=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'redis' }\", F=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'registry' }\", G=\"M::`harbor_harbor`:(AVG(`health`)) { `name` = 'registryctl' }\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(exporter_collector_duration_seconds)",
+                "name": "last(exporter_collector_duration_seconds)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "数据采集耗时",
+        "pos": {
+          "h": 21,
+          "i": "chrt_3352a9c192094ca7917ee7a45a168586",
+          "w": 24,
+          "x": 0,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "harbor_harbor",
+              "field": "exporter_collector_duration_seconds",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "collector"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`harbor_harbor`:(AVG(`exporter_collector_duration_seconds`)) BY `collector`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "镜像仓库数",
+        "pos": {
+          "h": 12,
+          "i": "chrt_e4a0e68c57124b3faaa3295982e22ede",
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "harbor_harbor",
+              "field": "repo_count_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`harbor_harbor`:(AVG(`repo_count_total`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "bar",
+            "direction": "horizontal",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "showTopSize": false,
+            "showTopWithMetric": "",
+            "stackContent": "group",
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [],
+            "xAxisShowType": "groupBy"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "服务健康状态",
+        "pos": {
+          "h": 22,
+          "i": "chrt_9b5ac160f5ea449092ebd86dd6789f3a",
+          "w": 24,
+          "x": 0,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "harbor_harbor",
+              "field": "health",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "avg"
+              ],
+              "groupBy": [
+                "name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`harbor_harbor`:(AVG(`health`)) BY `name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "bar",
+            "unit": ""
+          }
+        ],
+        "type": "bar"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "项目数",
+        "pos": {
+          "h": 12,
+          "i": "chrt_1a598fd7b78d441e90126a42a4c0b01e",
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "harbor_harbor",
+              "field": "project_count_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`harbor_harbor`:(AVG(`project_count_total`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": []
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "Harbor 监控视图"
+}

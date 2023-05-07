@@ -1,0 +1,965 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/docker/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/docker/docker.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "last(cpu_usage_percent)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "cpu usage",
+                "name": "cpu usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "cpu usage",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu usage",
+              "code": "A",
+              "dataSource": "docker_containers",
+              "field": "cpu_usage",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "944bf820-a59c-11eb-8fa8-1d46f26a5718",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "0f81b750-c44c-11eb-aae8-41f8120acae7",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                },
+                {
+                  "id": "aa6a9650-b3e8-11ed-b0f6-9f3b89e5c5fc",
+                  "logic": "and",
+                  "name": "container_id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`docker_containers`:(AVG(`cpu_usage`) AS `cpu usage`) { `host` = '#{host}' and `container_name` = '#{container_name}' and `container_id` = '#{container_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "last(mem_usage_percent)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory usage",
+                "name": "memory usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "memory usage",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory usage",
+              "code": "A",
+              "dataSource": "docker_containers",
+              "field": "mem_used_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "944bf820-a59c-11eb-8fa8-1d46f26a5718",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "19b78bf0-c44c-11eb-aae8-41f8120acae7",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                },
+                {
+                  "id": "b2983ee0-b3e8-11ed-b0f6-9f3b89e5c5fc",
+                  "logic": "and",
+                  "name": "container_id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`docker_containers`:(AVG(`mem_used_percent`) AS `memory usage`) { `host` = '#{host}' and `container_name` = '#{container_name}' and `container_id` = '#{container_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "入流量",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "receive",
+                "name": "receive",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "sent",
+                "name": "sent",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "network traffic",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "receive",
+              "code": "C",
+              "dataSource": "docker_containers",
+              "field": "network_bytes_rcvd",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "993f7dc0-13a5-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "9c362880-13a5-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`docker_containers`:(AVG(`network_bytes_rcvd`) AS `receive`) { `host` = '#{host}' and `container_name` = '#{container_name}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "sent",
+              "code": "A",
+              "dataSource": "docker_containers",
+              "field": "network_bytes_sent",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "993f7dc0-13a5-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "9c362880-13a5-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                },
+                {
+                  "id": "c06c48e0-b3e8-11ed-b0f6-9f3b89e5c5fc",
+                  "logic": "and",
+                  "name": "container_id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`docker_containers`:(AVG(`network_bytes_sent`) AS `sent`) { `host` = '#{host}' and `container_name` = '#{container_name}' and `container_id` = '#{container_id}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "last(mem_usage_percent)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory limit",
+                "name": "memory limit",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "memory limit",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory limit",
+              "code": "A",
+              "dataSource": "docker_containers",
+              "field": "mem_limit",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "944bf820-a59c-11eb-8fa8-1d46f26a5718",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "1a138ef0-a59d-11eb-abb7-03e9acb050b2",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                },
+                {
+                  "id": "c92c9480-b3e8-11ed-b0f6-9f3b89e5c5fc",
+                  "logic": "and",
+                  "name": "container_id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`docker_containers`:(AVG(`mem_limit`) AS `memory limit`) { `host` = '#{host}' and `container_name` = '#{container_name}' and `container_id` = '#{container_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "入流量",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "block read byte",
+                "name": "block read byte",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "block write byte",
+                "name": "block write byte",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "block byte/s",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "block read byte",
+              "code": "C",
+              "dataSource": "docker_containers",
+              "field": "block_read_byte",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "951d2ed0-13a6-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "977eec90-13a6-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`docker_containers`:(AVG(`block_read_byte`) AS `block read byte`) { `host` = '#{host}' and `container_name` = '#{container_name}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "block write byte",
+              "code": "A",
+              "dataSource": "docker_containers",
+              "field": "block_write_byte",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "951d2ed0-13a6-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "977eec90-13a6-11ed-a629-75839182ae98",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                },
+                {
+                  "id": "d84d90e0-b3e8-11ed-b0f6-9f3b89e5c5fc",
+                  "logic": "and",
+                  "name": "container_id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`docker_containers`:(AVG(`block_write_byte`) AS `block write byte`) { `host` = '#{host}' and `container_name` = '#{container_name}' and `container_id` = '#{container_id}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "last(mem_usage_percent)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory used",
+                "name": "memory used",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "memory used",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory used",
+              "code": "B",
+              "dataSource": "docker_containers",
+              "field": "mem_usage",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "944bf820-a59c-11eb-8fa8-1d46f26a5718",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "1a138ef0-a59d-11eb-abb7-03e9acb050b2",
+                  "logic": "and",
+                  "name": "container_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_name}"
+                },
+                {
+                  "id": "d0ad8250-b3e8-11ed-b0f6-9f3b89e5c5fc",
+                  "logic": "and",
+                  "name": "container_id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{container_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`docker_containers`:(AVG(`mem_usage`) AS `memory used`) { `host` = '#{host}' and `container_name` = '#{container_name}' and `container_id` = '#{container_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['docker_containers'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "container_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['docker_containers'], keyin=['container_name']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "容器名",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "container_id",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['docker_containers'], keyin=['container_id']){host='#{host}',container_name='#{container_name}'}[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "容器 ID",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Docker 监控视图4444"
+}

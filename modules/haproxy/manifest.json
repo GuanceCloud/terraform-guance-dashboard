@@ -1,0 +1,2517 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Network"
+        },
+        "name": "cur queue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_2fa7ebfda67b4151a6d664417e5e2750",
+          "w": 6,
+          "x": 0,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cur",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "qcur",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`qcur`) AS `cur`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "qmax",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`qmax`) AS `max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "cur sessions",
+        "pos": {
+          "h": 8,
+          "i": "chrt_4090988234f840babeb626334f4cb6d6",
+          "w": 6,
+          "x": 0,
+          "y": 54.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cur",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "scur",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`scur`) AS `cur`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "cur rate",
+        "pos": {
+          "h": 8,
+          "i": "chrt_dd4d47432b2e4fc5bab80c58b7afc0ae",
+          "w": 8,
+          "x": 0,
+          "y": 62.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cur",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "rate",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`rate`) AS `cur`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "conn rate",
+        "pos": {
+          "h": 8,
+          "i": "chrt_7913b30a68254812afac60a73a3f13dc",
+          "w": 6,
+          "x": 6,
+          "y": 70.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "conn rate",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "conn_rate",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`conn_rate`) AS `conn rate`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "conn rate max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "conn_rate_max",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`conn_rate_max`) AS `conn rate max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "request rate",
+        "pos": {
+          "h": 8,
+          "i": "chrt_99e1980ea5c346c497768be97495b8f2",
+          "w": 6,
+          "x": 0,
+          "y": 70.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "req rate",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "req_rate",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`req_rate`) AS `req rate`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "req rate max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "req_rate_max",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`req_rate_max`) AS `req rate max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "downtime",
+                "name": "downtime",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "valColorMappings": [
+              {
+                "field": "status",
+                "fontColor": "#48B518",
+                "operation": "=",
+                "value": [
+                  "UP"
+                ]
+              },
+              {
+                "field": "status",
+                "fontColor": "#E02644",
+                "operation": "=",
+                "value": [
+                  "DOWN"
+                ]
+              }
+            ],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Service Status"
+        },
+        "name": "service",
+        "pos": {
+          "h": 12,
+          "i": "chrt_bc554079cbd6441db42a56128580d711",
+          "w": 24,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "status",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "status",
+              "fieldFunc": "avg",
+              "fieldType": "string",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "db728610-7e72-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "bottom:10"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`status`) AS `status`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "act",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "act",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "db728610-7e72-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`act`) AS `act`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "bck",
+              "code": "C",
+              "dataSource": "haproxy",
+              "field": "bck",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "db728610-7e72-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`bck`) AS `bck`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "last chk",
+              "code": "D",
+              "dataSource": "haproxy",
+              "field": "last_chk",
+              "fieldFunc": "avg",
+              "fieldType": "string",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "db728610-7e72-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`last_chk`) AS `last chk`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "weight",
+              "code": "F",
+              "dataSource": "haproxy",
+              "field": "weight",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "db728610-7e72-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`weight`) AS `weight`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "downtime",
+              "code": "E",
+              "dataSource": "haproxy",
+              "field": "downtime",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "db728610-7e72-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`downtime`) AS `downtime`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Network"
+        },
+        "name": "max queue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_8e0628f40b0f423592c56fb8cde739ac",
+          "w": 6,
+          "x": 6,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "qmax",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`qmax`) AS `max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "limit rate",
+        "pos": {
+          "h": 8,
+          "i": "chrt_f70ca375f0ca41a480aff68c15a8e38e",
+          "w": 8,
+          "x": 8,
+          "y": 62.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "limit",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "rate_lim",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`rate_lim`) AS `limit`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "max rate",
+        "pos": {
+          "h": 8,
+          "i": "chrt_3c68af927c2e4cb5b425217d9f6a0e41",
+          "w": 8,
+          "x": 16,
+          "y": 62.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "C",
+              "dataSource": "haproxy",
+              "field": "rate_max",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`rate_max`) AS `max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "limit sessions",
+        "pos": {
+          "h": 8,
+          "i": "chrt_f93e02a1031a4dbaa85972bbde61d0af",
+          "w": 6,
+          "x": 6,
+          "y": 54.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "limit",
+              "code": "C",
+              "dataSource": "haproxy",
+              "field": "slim",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`slim`) AS `limit`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "max sessions",
+        "pos": {
+          "h": 8,
+          "i": "chrt_bb1b90cdb6fa4ed2b4dd0b7b45d2b1fb",
+          "w": 6,
+          "x": 12,
+          "y": 54.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "smax",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`smax`) AS `max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "total sessions",
+        "pos": {
+          "h": 8,
+          "i": "chrt_4a57033a690443e88f67526d87b8ae61",
+          "w": 6,
+          "x": 18,
+          "y": 54.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "stot",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`stot`) AS `total`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "in",
+                "name": "in",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Network"
+        },
+        "name": "traffic in",
+        "pos": {
+          "h": 8,
+          "i": "chrt_19ef2b4d9c8449ac91842c72e54918c9",
+          "w": 6,
+          "x": 12,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "in",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "bin",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`haproxy`:(AVG(`bin`) AS `in`) { `host` = '#{host}' } BY `svname`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "out",
+                "name": "out",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Network"
+        },
+        "name": "traffic out",
+        "pos": {
+          "h": 8,
+          "i": "chrt_cd3f1f3299c84d10a16a974cd1d0a0e9",
+          "w": 6,
+          "x": 18,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "out",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "bout",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`haproxy`:(AVG(`bout`) AS `out`) { `host` = '#{host}' } BY `svname`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Http Response"
+        },
+        "name": "response code",
+        "pos": {
+          "h": 14,
+          "i": "chrt_1def8366f6004e0ba3444539e60123ac",
+          "w": 15,
+          "x": 0,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1xx",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "hrsp_1xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_1xx`) AS `1xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "2xx",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "hrsp_2xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_2xx`) AS `2xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "3xx",
+              "code": "C",
+              "dataSource": "haproxy",
+              "field": "hrsp_3xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_3xx`) AS `3xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "4xx",
+              "code": "D",
+              "dataSource": "haproxy",
+              "field": "hrsp_4xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_4xx`) AS `4xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5xx",
+              "code": "E",
+              "dataSource": "haproxy",
+              "field": "hrsp_5xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_5xx`) AS `5xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "other",
+              "code": "F",
+              "dataSource": "haproxy",
+              "field": "hrsp_other",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_other`) AS `other`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Http Response"
+        },
+        "name": "2xx & 3xx",
+        "pos": {
+          "h": 7,
+          "i": "chrt_ecf656958359433a9dafc5262f628a28",
+          "w": 9,
+          "x": 15,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "2xx",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "hrsp_2xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_2xx`) AS `2xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "3xx",
+              "code": "C",
+              "dataSource": "haproxy",
+              "field": "hrsp_3xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_3xx`) AS `3xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Http Response"
+        },
+        "name": "others",
+        "pos": {
+          "h": 7,
+          "i": "chrt_c944cea2039e4efb8a5e7232d6121967",
+          "w": 9,
+          "x": 15,
+          "y": 45
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1xx",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "hrsp_1xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_1xx`) AS `1xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "4xx",
+              "code": "C",
+              "dataSource": "haproxy",
+              "field": "hrsp_4xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_4xx`) AS `4xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5xx",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "hrsp_5xx",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_5xx`) AS `5xx`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "other",
+              "code": "D",
+              "dataSource": "haproxy",
+              "field": "hrsp_other",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c063670-7e79-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`hrsp_other`) AS `other`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "cli abrt",
+        "pos": {
+          "h": 8,
+          "i": "chrt_e01fd7216fc445e28e1dc4a7428fe3d1",
+          "w": 6,
+          "x": 12,
+          "y": 70.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cli abrt",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "cli_abrt",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`cli_abrt`) AS `cli abrt`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "conn rate max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "conn_rate_max",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`conn_rate_max`) AS `conn rate max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Sessions"
+        },
+        "name": "srv abrt",
+        "pos": {
+          "h": 8,
+          "i": "chrt_fb42c57aa84d45559e8fd53c5f11c518",
+          "w": 6,
+          "x": 18,
+          "y": 70.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "srv abrt",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "srv_abrt",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`srv_abrt`) AS `srv abrt`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "conn rate max",
+              "code": "B",
+              "dataSource": "haproxy",
+              "field": "conn_rate_max",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "064ad580-7e6f-11ec-a320-0301f984679b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`conn_rate_max`) AS `conn rate max`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Error"
+        },
+        "name": "request error",
+        "pos": {
+          "h": 8,
+          "i": "chrt_96f5f4e545624e77b75ed7a84844f524",
+          "w": 8,
+          "x": 0,
+          "y": 27.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ereq",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "ereq",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe690c90-7e7a-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`ereq`) AS `ereq`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Error"
+        },
+        "name": "connect error",
+        "pos": {
+          "h": 8,
+          "i": "chrt_f4eff6ae00064e44a368a231f491eb24",
+          "w": 8,
+          "x": 8,
+          "y": 27.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "econ",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "econ",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe690c90-7e7a-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`econ`) AS `econ`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Error"
+        },
+        "name": "response error",
+        "pos": {
+          "h": 8,
+          "i": "chrt_b1848901f8834b42b86ee62cbe163ca2",
+          "w": 8,
+          "x": 16,
+          "y": 27.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "eresp",
+              "code": "A",
+              "dataSource": "haproxy",
+              "field": "eresp",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe690c90-7e7a-11ec-a06d-d755d95db607",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "svname"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`haproxy`:(AVG(`eresp`) AS `eresp`) { `host` = '#{host}' } BY `svname`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "Service Status",
+      "Network",
+      "Error",
+      "Http Response",
+      "Sessions"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['haproxy'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7b4859484cf94231a0d1c3bf8a4efceb",
+      "name": "Telegraf"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "HAProxy"
+}

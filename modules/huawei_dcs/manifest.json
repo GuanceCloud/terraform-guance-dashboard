@@ -1,0 +1,3816 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 利用率",
+                "name": "CPU 利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU 利用率",
+        "pos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 利用率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "cpu_usage_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`cpu_usage_average`) AS `CPU 利用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存使用率",
+                "name": "内存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "内存使用率",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "memory_usage_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`memory_usage_average`) AS `内存使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "命令最大时延",
+                "name": "命令最大时延",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "延迟"
+        },
+        "name": "命令最大时延",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 37.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "命令最大时延",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "command_max_delay_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`command_max_delay_average`) AS `命令最大时延`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能"
+        },
+        "name": "新建连接数",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "新建连接数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "total_connections_received_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`total_connections_received_average`) AS `新建连接数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 平均使用率",
+                "name": "CPU 平均使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU 平均使用率",
+        "pos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 平均使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "cpu_avg_usage_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`cpu_avg_usage_average`) AS `CPU 平均使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "键"
+        },
+        "name": "有过期时间的键总数",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "有过期时间的键总数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "expires_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`expires_average`) AS `有过期时间的键总数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "缓存命中率",
+                "name": "缓存命中率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "缓存"
+        },
+        "name": "缓存命中率",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 47
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "缓存命中率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "keyspace_hits_perc_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`keyspace_hits_perc_average`) AS `缓存命中率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "已用内存",
+                "name": "已用内存",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "已用内存",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已用内存",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "used_memory_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`used_memory_average`) AS `已用内存`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "数据集使用内存",
+                "name": "数据集使用内存",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "数据集使用内存",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 18.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "数据集使用内存",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "used_memory_dataset_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`used_memory_dataset_average`) AS `数据集使用内存`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "数据集使用内存百分比",
+                "name": "数据集使用内存百分比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "数据集使用内存百分比",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 18.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "数据集使用内存百分比",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "used_memory_dataset_perc_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`used_memory_dataset_perc_average`) AS `数据集使用内存百分比`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "已用内存 RSS",
+                "name": "已用内存 RSS",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "已用内存 RSS",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已用内存 RSS",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "used_memory_rss_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`used_memory_rss_average`) AS `已用内存 RSS`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能"
+        },
+        "name": "OPS",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "OPS",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "instantaneous_ops_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`instantaneous_ops_average`) AS `OPS`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "键"
+        },
+        "name": "Keyspace 错过次数",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Keyspace 错过次数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "keyspace_misses_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`keyspace_misses_average`) AS `Keyspace 错过次数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "缓存"
+        },
+        "name": "缓存键总数",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 47
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "缓存键总数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "keys_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`keys_average`) AS `缓存键总数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能"
+        },
+        "name": "阻塞的客户端数量",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "阻塞的客户端数量",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "blocked_clients_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`blocked_clients_average`) AS `阻塞的客户端数量`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能"
+        },
+        "name": "活跃的客户端数量",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "活跃的客户端数量",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "connected_clients_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`connected_clients_average`) AS `活跃的客户端数量`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "键"
+        },
+        "name": "已逐出的键数量",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已逐出的键数量",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "evicted_keys_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`evicted_keys_average`) AS `已逐出的键数量`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "键"
+        },
+        "name": "已过期的键数量",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已过期的键数量",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "expired_keys_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`expired_keys_average`) AS `已过期的键数量`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能"
+        },
+        "name": "平均每秒操作数",
+        "pos": {
+          "h": 11,
+          "w": 24,
+          "x": 0,
+          "y": 73
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "del",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "del_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`del_average`) AS `del`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "expire",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "expire_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`expire_average`) AS `expire`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "get",
+              "code": "C",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "get_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`get_average`) AS `get`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "hdel",
+              "code": "D",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "hdel_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`hdel_average`) AS `hdel`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "hget",
+              "code": "E",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "hget_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`hget_average`) AS `hget`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "hmget",
+              "code": "F",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "hmget_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`hmget_average`) AS `hmget`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "hmset",
+              "code": "G",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "hmset_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`hmset_average`) AS `hmset`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "hset",
+              "code": "H",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "hset_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`hset_average`) AS `hset`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "mget",
+              "code": "I",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "mget_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`mget_average`) AS `mget`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "mset",
+              "code": "J",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "mset_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`mset_average`) AS `mset`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "set",
+              "code": "K",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "set_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`set_average`) AS `set`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "sadd",
+              "code": "L",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "sadd_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`sadd_average`) AS `sadd`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "smembers",
+              "code": "M",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "smembers_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`smembers_average`) AS `smembers`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "网络瞬时输入流量",
+                "name": "网络瞬时输入流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "KB/S"
+                ]
+              },
+              {
+                "key": "网络瞬时输出流量",
+                "name": "网络瞬时输出流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "KB/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络"
+        },
+        "name": "网络瞬时流量",
+        "pos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 56.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "网络瞬时输入流量",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "instantaneous_input_kbps_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`instantaneous_input_kbps_average`) AS `网络瞬时输入流量`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "网络瞬时输出流量",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "instantaneous_output_kbps_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`instantaneous_output_kbps_average`) AS `网络瞬时输出流量`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pubsub"
+        },
+        "name": "Pubsub 通道个数",
+        "pos": {
+          "h": 7,
+          "w": 12,
+          "x": 12,
+          "y": 86.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pubsub 通道个数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "pubsub_channels_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`pubsub_channels_average`) AS `Pubsub 通道个数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "内存碎片率",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 18.5
+        },
+        "queries": [
+          {
+            "checked": true,
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存碎片率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "memory_frag_ratio_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`memory_frag_ratio_average`) AS `内存碎片率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pubsub"
+        },
+        "name": "Pubsub 模式个数",
+        "pos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 86.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pubsub 模式个数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "pubsub_patterns_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`pubsub_patterns_average`) AS `Pubsub 模式个数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Lua 已用内存",
+                "name": "Lua 已用内存",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "Lua 已用内存",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 18.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Lua 已用内存",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "used_memory_lua_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`used_memory_lua_average`) AS `Lua 已用内存`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "已用内存峰值",
+                "name": "已用内存峰值",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "内存"
+        },
+        "name": "已用内存峰值",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已用内存峰值",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "used_memory_peak_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`used_memory_peak_average`) AS `已用内存峰值`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "缓存"
+        },
+        "name": "流控次数",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 47
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流控次数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "rx_controlled_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`rx_controlled_average`) AS `流控次数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "带宽使用率",
+                "name": "带宽使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络"
+        },
+        "name": "带宽使用率",
+        "pos": {
+          "h": 7,
+          "w": 12,
+          "x": 0,
+          "y": 56.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "带宽使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "bandwidth_usage_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`bandwidth_usage_average`) AS `带宽使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "最大时延",
+                "name": "最大时延",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "延迟"
+        },
+        "name": "最大时延",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 37.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大时延",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "command_max_rt_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`command_max_rt_average`) AS `最大时延`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均时延",
+                "name": "平均时延",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "延迟"
+        },
+        "name": "平均时延",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 37.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均时延",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.DCS",
+              "field": "command_avg_rt_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dd476030-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e01bdcf0-6b0e-11ed-90db-c77b9e84c3d4",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.DCS`:(AVG(`command_avg_rt_average`) AS `平均时延`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "CPU",
+      "内存",
+      "键",
+      "延迟",
+      "缓存",
+      "网络",
+      "性能",
+      "Pubsub"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['huaweicloud_SYS.DCS'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "instance_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['huaweicloud_SYS.DCS'], keyin=['instance_name']){account_name='#{account_name}',engine='Redis'}[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    },
+    {
+      "id": "tag_2bc493eaae3a4d89b94f2476318daf16",
+      "name": "华为云"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "华为云 DCS"
+}

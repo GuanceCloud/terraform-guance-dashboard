@@ -1,0 +1,173 @@
+{
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardType": "CUSTOM",
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "stackType": "time",
+            "tableSortMetricName": "启动模式",
+            "titleDesc": "0 - boot start 1 - system start 2 - auto start 3 - demand start 4 - disabled",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "启动模式",
+        "pos": {
+          "h": 9,
+          "i": 0,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "启动模式",
+              "code": "A",
+              "dataSource": "win_services",
+              "field": "startup_mode",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "620a3720-a577-11eb-b22d-ff55fa410baa",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "service_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`win_services`:(AVG(`startup_mode`) AS `启动模式`) { `host` = '#{host}' } by `service_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "stackType": "time",
+            "tableSortMetricName": "启动模式",
+            "titleDesc": "1 - stopped   2 - start pending   3 - stop pending   4 - running   5 - continue pending   6 - pause pending   7 - paused",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "服务状态",
+        "pos": {
+          "h": 9,
+          "i": 1,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "服务状态",
+              "code": "A",
+              "dataSource": "win_services",
+              "field": "state",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "60dc0cd0-a576-11eb-aadb-e16561de4935",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "service_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`win_services`:(AVG(`state`) AS `服务状态`) { `host` = '#{host}' } by `service_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['win_services'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "win_services"
+}

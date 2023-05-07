@@ -1,0 +1,1673 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+      "icon": "https://static-res.guance.com/dataflux-template/dashboard/apm/icon.svg",
+      "url": "https://static-res.guance.com/dataflux-template/dashboard/apm/apm.png"
+  },
+  "main": {
+      "charts": [
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\"}"
+                      },
+                      {
+                          "alias": "查看相关日志",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/logIndi/log/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bar": {
+                          "direction": "horizontal",
+                          "xAxisShowType": "groupBy"
+                      },
+                      "chartType": "bar",
+                      "color": "#737AE2",
+                      "colors": [
+                          {
+                              "color": "#737AE2",
+                              "key": "count(trace_id)",
+                              "name": "count(trace_id)"
+                          }
+                      ],
+                      "currentChartType": "toplist",
+                      "fixedTime": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "openCompare": false,
+                      "showFieldMapping": false,
+                      "showTableHead": true,
+                      "showTitle": true,
+                      "showTopSize": true,
+                      "table": {
+                          "queryMode": "toGroupColumn"
+                      },
+                      "tableSortMetricName": "",
+                      "tableSortType": "top",
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "topSize": 10,
+                      "units": [
+                          {
+                              "key": "P90 响应耗时",
+                              "name": "P90 响应耗时",
+                              "unit": "",
+                              "units": [
+                                  "time",
+                                  "μs"
+                              ]
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": "响应耗时"
+              },
+              "name": "P90 服务响应耗时排行（TOP10）",
+              "pos": {
+                  "h": 24,
+                  "i": "chrt_ccad44bfd13a4ee5861178fe76bd6918",
+                  "w": 8,
+                  "x": 0,
+                  "y": 10.5
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "alias": "P90 响应耗时",
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "duration",
+                          "fieldFunc": "p90",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "span_type",
+                                  "op": "=",
+                                  "value": "entry"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last",
+                              "top:10"
+                          ],
+                          "groupBy": [
+                              "service"
+                          ],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(PERCENTILE(`duration`, 90) as `P90 响应耗时`) {span_type = 'entry'  and service = '#{service}' and env = '#{env}' and version = '#{version}'}  by `service`",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "toplist",
+                      "unit": ""
+                  }
+              ],
+              "type": "toplist"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "settings": {
+                      "bgColor": "",
+                      "colors": [],
+                      "compareTitle": "",
+                      "compareType": "",
+                      "currentChartType": "singlestat",
+                      "downsample": "last",
+                      "fixedTime": "",
+                      "fontColor": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "lineColor": "#3AB8FF",
+                      "mappings": [],
+                      "openCompare": false,
+                      "precision": "2",
+                      "showFieldMapping": false,
+                      "showLine": false,
+                      "showLineAxis": false,
+                      "showTitle": true,
+                      "timeInterval": "default",
+                      "titleDesc": "所选时间范围内的所有服务数量。",
+                      "units": []
+                  }
+              },
+              "group": {
+                  "name": null
+              },
+              "name": "在线服务总数",
+              "pos": {
+                  "h": 8,
+                  "i": "chrt_0c2200a5f0d242e5a4313cda8963df04",
+                  "w": 4,
+                  "x": 0,
+                  "y": 0
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "service",
+                          "fieldFunc": "count_distinct",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "span_type",
+                                  "op": "=",
+                                  "value": "entry"
+                              }
+                          ],
+                          "funcList": [
+                              "last"
+                          ],
+                          "groupBy": [],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(COUNT_DISTINCT(`service`)) {span_type = 'entry'}",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "singlestat",
+                      "unit": ""
+                  }
+              ],
+              "type": "singlestat"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\"}"
+                      },
+                      {
+                          "alias": "查看相关日志",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/logIndi/log/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bar": {
+                          "direction": "horizontal",
+                          "xAxisShowType": "groupBy"
+                      },
+                      "chartType": "bar",
+                      "color": "#EA5E74",
+                      "colors": [
+                          {
+                              "color": "#EA5E74",
+                              "key": "count(status)",
+                              "name": "count(status)"
+                          }
+                      ],
+                      "currentChartType": "toplist",
+                      "fixedTime": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "openCompare": false,
+                      "showFieldMapping": false,
+                      "showTableHead": true,
+                      "showTitle": true,
+                      "showTopSize": true,
+                      "table": {
+                          "queryMode": "toGroupColumn"
+                      },
+                      "tableSortMetricName": "",
+                      "tableSortType": "top",
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "topSize": 10,
+                      "units": []
+                  }
+              },
+              "group": {
+                  "name": "错误分布"
+              },
+              "name": "服务错误数排行（TOP10）",
+              "pos": {
+                  "h": 24,
+                  "i": "chrt_ea2240774b9845a385590b249b2dcd82",
+                  "w": 8,
+                  "x": 0,
+                  "y": 37
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "status",
+                          "fieldFunc": "count",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "status",
+                                  "op": "=",
+                                  "value": "error"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "span_type",
+                                  "op": "=",
+                                  "value": "entry"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last",
+                              "top:10"
+                          ],
+                          "groupBy": [
+                              "service"
+                          ],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(COUNT(`status`)) {status = 'error' and span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'} by service",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "toplist",
+                      "unit": ""
+                  }
+              ],
+              "type": "toplist"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{V.service}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bgColor": "",
+                      "colors": [],
+                      "compareTitle": "",
+                      "compareType": "",
+                      "currentChartType": "singlestat",
+                      "downsample": "last",
+                      "fixedTime": "",
+                      "fontColor": "",
+                      "isTimeInterval": false,
+                      "levels": [
+                          {
+                              "bgColor": "",
+                              "fontColor": "#EA5E74",
+                              "lineColor": "",
+                              "operation": ">=",
+                              "value": [
+                                  "1000000"
+                              ]
+                          }
+                      ],
+                      "lineColor": "#3AB8FF",
+                      "mappings": [],
+                      "openCompare": false,
+                      "precision": "2",
+                      "showFieldMapping": false,
+                      "showLine": false,
+                      "showLineAxis": false,
+                      "showTitle": true,
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "units": [
+                          {
+                              "key": "P90 响应耗时",
+                              "name": "P90 响应耗时",
+                              "unit": "",
+                              "units": [
+                                  "time",
+                                  "μs"
+                              ]
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": null
+              },
+              "name": "P90 响应耗时",
+              "pos": {
+                  "h": 8,
+                  "i": "chrt_9cc58dd32db74af59c4a2f67cdcab25a",
+                  "w": 5,
+                  "x": 4,
+                  "y": 0
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "alias": "P90 响应耗时",
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "duration",
+                          "fieldFunc": "p99",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "span_type",
+                                  "op": "=",
+                                  "value": "entry"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last"
+                          ],
+                          "groupBy": [],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(PERCENTILE(`duration`, 99) AS `P90 响应耗时`) {span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "singlestat",
+                      "unit": ""
+                  }
+              ],
+              "type": "singlestat"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"status\":\"error\",\"span_type\":\"entry\",\"service\":\"#{V.service}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bgColor": "",
+                      "colors": [],
+                      "compareTitle": "",
+                      "compareType": "",
+                      "currentChartType": "singlestat",
+                      "downsample": "last",
+                      "fixedTime": "",
+                      "fontColor": "#EA5E74",
+                      "isTimeInterval": false,
+                      "levels": [
+                          {
+                              "bgColor": "",
+                              "fontColor": "#EA5E74",
+                              "lineColor": "",
+                              "operation": ">=",
+                              "value": [
+                                  "1000"
+                              ]
+                          }
+                      ],
+                      "lineColor": "#3AB8FF",
+                      "mappings": [],
+                      "openCompare": false,
+                      "precision": "2",
+                      "showFieldMapping": false,
+                      "showLine": false,
+                      "showLineAxis": false,
+                      "showTitle": true,
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "units": [
+                          {
+                              "key": "错误数",
+                              "name": "错误数",
+                              "unit": "",
+                              "units": []
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": null
+              },
+              "name": "服务错误数",
+              "pos": {
+                  "h": 8,
+                  "i": "chrt_794de172e6a24ff797d4fb2496fad03e",
+                  "w": 5,
+                  "x": 14,
+                  "y": 0
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "status",
+                          "fieldFunc": "count",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "status",
+                                  "op": "=",
+                                  "value": "error"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "span_type",
+                                  "op": "=",
+                                  "value": "entry"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last"
+                          ],
+                          "groupBy": [],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(count(`status`)) {status = 'error' and span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "singlestat",
+                      "unit": ""
+                  }
+              ],
+              "type": "singlestat"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{V.service}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bgColor": "",
+                      "colors": [],
+                      "compareTitle": "",
+                      "compareType": "",
+                      "currentChartType": "singlestat",
+                      "downsample": "last",
+                      "fixedTime": "",
+                      "fontColor": "",
+                      "isTimeInterval": false,
+                      "levels": [
+                          {
+                              "bgColor": "",
+                              "fontColor": "#EA5E74",
+                              "lineColor": "",
+                              "operation": ">=",
+                              "value": [
+                                  "1000000"
+                              ]
+                          }
+                      ],
+                      "lineColor": "#3AB8FF",
+                      "mappings": [],
+                      "openCompare": false,
+                      "precision": "2",
+                      "showFieldMapping": false,
+                      "showLine": false,
+                      "showLineAxis": false,
+                      "showTitle": true,
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "units": [
+                          {
+                              "key": "最大响应耗时",
+                              "name": "最大响应耗时",
+                              "unit": "",
+                              "units": [
+                                  "time",
+                                  "μs"
+                              ]
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": null
+              },
+              "name": "最大响应耗时",
+              "pos": {
+                  "h": 8,
+                  "i": "chrt_47832e5e0e734f379b004ca2b3607e31",
+                  "w": 5,
+                  "x": 9,
+                  "y": 0
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "alias": "最大响应耗时",
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "duration",
+                          "fieldFunc": "max",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "span_type",
+                                  "op": "=",
+                                  "value": "entry"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last"
+                          ],
+                          "groupBy": [],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(max(`duration`) AS `最大响应耗时`) {span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "singlestat",
+                      "unit": ""
+                  }
+              ],
+              "type": "singlestat"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"status\":\"error\",\"span_type\":\"entry\",\"service\":\"#{V.service}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bgColor": "",
+                      "colors": [],
+                      "compareTitle": "",
+                      "compareType": "",
+                      "currentChartType": "singlestat",
+                      "downsample": "last",
+                      "fixedTime": "",
+                      "fontColor": "",
+                      "isTimeInterval": false,
+                      "levels": [
+                          {
+                              "bgColor": "",
+                              "fontColor": "#EA5E74",
+                              "lineColor": "",
+                              "operation": ">",
+                              "value": [
+                                  "0.5"
+                              ]
+                          }
+                      ],
+                      "lineColor": "#3AB8FF",
+                      "mappings": [],
+                      "openCompare": false,
+                      "precision": "3",
+                      "showFieldMapping": false,
+                      "showLine": false,
+                      "showLineAxis": false,
+                      "showTitle": true,
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "units": [
+                          {
+                              "key": "count(status)",
+                              "name": "count(status)",
+                              "unit": "",
+                              "units": [
+                                  "percent",
+                                  "percent_decimal"
+                              ]
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": null
+              },
+              "name": "服务错误率",
+              "pos": {
+                  "h": 8,
+                  "i": "chrt_1f0bd5ca27404280b6ad978030c477f8",
+                  "w": 5,
+                  "x": 19,
+                  "y": 0
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "children": [
+                              {
+                                  "code": "A",
+                                  "dataSource": "*",
+                                  "field": "status",
+                                  "fieldFunc": "count",
+                                  "fill": null,
+                                  "fillNum": null,
+                                  "filters": [
+                                      {
+                                          "logic": "and",
+                                          "name": "status",
+                                          "op": "=",
+                                          "value": "error"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "span_type",
+                                          "op": "=",
+                                          "value": "entry"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "service",
+                                          "op": "=",
+                                          "value": "#{service}"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "env",
+                                          "op": "=",
+                                          "value": "#{env}"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "version",
+                                          "op": "=",
+                                          "value": "#{version}"
+                                      }
+                                  ],
+                                  "groupBy": [],
+                                  "groupByTime": "",
+                                  "namespace": "tracing",
+                                  "q": "T::re(`.*`):(count(`status`)) {status = 'error' and span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}",
+                                  "queryFuncs": [],
+                                  "type": "dql",
+                                  "withLabels": []
+                              },
+                              {
+                                  "code": "B",
+                                  "dataSource": "*",
+                                  "field": "status",
+                                  "fieldFunc": "count",
+                                  "fill": null,
+                                  "fillNum": null,
+                                  "filters": [
+                                      {
+                                          "logic": "and",
+                                          "name": "span_type",
+                                          "op": "=",
+                                          "value": "entry"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "service",
+                                          "op": "=",
+                                          "value": "#{service}"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "env",
+                                          "op": "=",
+                                          "value": "#{env}"
+                                      },
+                                      {
+                                          "logic": "and",
+                                          "name": "version",
+                                          "op": "=",
+                                          "value": "#{version}"
+                                      }
+                                  ],
+                                  "groupBy": [],
+                                  "groupByTime": "",
+                                  "namespace": "tracing",
+                                  "q": "T::re(`.*`):(count(`status`)) {span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}",
+                                  "queryFuncs": [],
+                                  "type": "dql",
+                                  "withLabels": []
+                              }
+                          ],
+                          "code": "A",
+                          "expression": "A/B",
+                          "funcList": [
+                              "last"
+                          ],
+                          "q": "eval(A/B, A=\"T::re(`.*`):(count(`status`)) {status = 'error' and span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}\", B=\"T::re(`.*`):(count(`status`)) {span_type = 'entry' and service = '#{service}' and env = '#{env}' and version = '#{version}'}\")",
+                          "type": "expression"
+                      },
+                      "type": "singlestat",
+                      "unit": ""
+                  }
+              ],
+              "type": "singlestat"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\",\"resource\":\"#{T.resource}\"}"
+                      },
+                      {
+                          "alias": "查看相关日志",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/logIndi/log/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\",\"resource\":\"#{T.resource}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bar": {
+                          "direction": "horizontal",
+                          "xAxisShowType": "groupBy"
+                      },
+                      "chartType": "bar",
+                      "color": "#737AE2",
+                      "colors": [
+                          {
+                              "color": "#737AE2",
+                              "key": "count(trace_id)",
+                              "name": "count(trace_id)"
+                          }
+                      ],
+                      "currentChartType": "toplist",
+                      "fixedTime": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "openCompare": false,
+                      "showFieldMapping": false,
+                      "showTableHead": true,
+                      "showTitle": true,
+                      "showTopSize": true,
+                      "table": {
+                          "queryMode": "toGroupColumn"
+                      },
+                      "tableSortMetricName": "",
+                      "tableSortType": "top",
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "topSize": 10,
+                      "units": [
+                          {
+                              "key": "P90 响应耗时",
+                              "name": "P90 响应耗时",
+                              "unit": "",
+                              "units": [
+                                  "time",
+                                  "μs"
+                              ]
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": "响应耗时"
+              },
+              "name": "P90 资源响应耗时排行（TOP10）",
+              "pos": {
+                  "h": 24,
+                  "i": "chrt_6d81bdd2bd9c4ba0bfb1a3272f0223bc",
+                  "w": 8,
+                  "x": 8,
+                  "y": 10.5
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "alias": "P90 响应耗时",
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "duration",
+                          "fieldFunc": "p90",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last",
+                              "top:10"
+                          ],
+                          "groupBy": [
+                              "service",
+                              "resource"
+                          ],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(PERCENTILE(`duration`, 90) as `P90 响应耗时`) {service = '#{service}' and env = '#{env}' and version = '#{version}'}  by `service`,`resource`",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "toplist",
+                      "unit": ""
+                  }
+              ],
+              "type": "toplist"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\",\"operation\":\"#{T.operation}\"}"
+                      },
+                      {
+                          "alias": "查看相关日志",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/logIndi/log/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{T.service}\",\"operation\":\"#{T.operation}\"}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bar": {
+                          "direction": "horizontal",
+                          "xAxisShowType": "groupBy"
+                      },
+                      "chartType": "bar",
+                      "color": "#737AE2",
+                      "colors": [
+                          {
+                              "color": "#737AE2",
+                              "key": "count(trace_id)",
+                              "name": "count(trace_id)"
+                          }
+                      ],
+                      "currentChartType": "toplist",
+                      "fixedTime": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "openCompare": false,
+                      "showFieldMapping": false,
+                      "showTableHead": true,
+                      "showTitle": true,
+                      "showTopSize": true,
+                      "table": {
+                          "queryMode": "toGroupColumn"
+                      },
+                      "tableSortMetricName": "",
+                      "tableSortType": "top",
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "topSize": 10,
+                      "units": [
+                          {
+                              "key": "P90 响应耗时",
+                              "name": "P90 响应耗时",
+                              "unit": "",
+                              "units": [
+                                  "time",
+                                  "μs"
+                              ]
+                          }
+                      ]
+                  }
+              },
+              "group": {
+                  "name": "响应耗时"
+              },
+              "name": "P90 操作响应耗时排行（TOP10）",
+              "pos": {
+                  "h": 24,
+                  "i": "chrt_d8cca81cd10448d49ce79e259723f988",
+                  "w": 8,
+                  "x": 16,
+                  "y": 10.5
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "alias": "P90 响应耗时",
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "duration",
+                          "fieldFunc": "p90",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last",
+                              "top:10"
+                          ],
+                          "groupBy": [
+                              "service",
+                              "operation"
+                          ],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(PERCENTILE(`duration`, 90) as `P90 响应耗时`) {service = '#{service}' and env = '#{env}' and version = '#{version}'} by `service`,`operation`",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "toplist",
+                      "unit": ""
+                  }
+              ],
+              "type": "toplist"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "跳转到链路查看器",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{V.service}\",\"resource\":\"#{T.resource}\",\"http_status_code\":[\"501\",\"502\",\"503\",\"504\",\"505\"]}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bar": {
+                          "direction": "horizontal",
+                          "xAxisShowType": "groupBy"
+                      },
+                      "chartType": "bar",
+                      "color": "#EA5E74",
+                      "colors": [
+                          {
+                              "color": "#EA5E74",
+                              "key": "count(status)",
+                              "name": "count(status)"
+                          }
+                      ],
+                      "currentChartType": "toplist",
+                      "fixedTime": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "openCompare": false,
+                      "showFieldMapping": false,
+                      "showTableHead": true,
+                      "showTitle": true,
+                      "showTopSize": true,
+                      "table": {
+                          "queryMode": "toGroupColumn"
+                      },
+                      "tableSortMetricName": "",
+                      "tableSortType": "top",
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "topSize": 10,
+                      "units": []
+                  }
+              },
+              "group": {
+                  "name": "错误分布"
+              },
+              "name": "资源 5xx 错误数排行（TOP10）",
+              "pos": {
+                  "h": 24,
+                  "i": "chrt_0b65bf1a445540ca974f901190b9e342",
+                  "w": 8,
+                  "x": 8,
+                  "y": 37
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "status",
+                          "fieldFunc": "count",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "http_status_code",
+                                  "op": ">=",
+                                  "value": "500"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last",
+                              "top:10"
+                          ],
+                          "groupBy": [
+                              "resource"
+                          ],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(COUNT(`status`)) {http_status_code >= '500' and service = '#{service}' and env = '#{env}' and version = '#{version}'} by resource",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "toplist",
+                      "unit": ""
+                  }
+              ],
+              "type": "toplist"
+          },
+          {
+              "extend": {
+                  "fixedTime": "",
+                  "links": [
+                      {
+                          "alias": "查看相关链路",
+                          "open": "newWin",
+                          "show": true,
+                          "type": "custom",
+                          "url": "/tracing/link/all?time=#{TR}&tags={\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"service\":\"#{V.service}\",\"resource\":\"#{T.resource}\",\"http_status_code\":[\"400\",\"401\",\"403\",\"404\",\"412\",\"417\"]}"
+                      },
+                      {
+                          "show": false,
+                          "type": "logging",
+                          "url": "/logIndi/log/all?time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "container",
+                          "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "processes",
+                          "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&time=#{TR}&tags=#{T}"
+                      },
+                      {
+                          "show": false,
+                          "type": "tracing",
+                          "url": "/tracing/link/all?time=#{TR}&tags=#{T}"
+                      }
+                  ],
+                  "settings": {
+                      "bar": {
+                          "direction": "horizontal",
+                          "xAxisShowType": "groupBy"
+                      },
+                      "chartType": "bar",
+                      "color": "#EA5E74",
+                      "colors": [
+                          {
+                              "color": "#EA5E74",
+                              "key": "count(status)",
+                              "name": "count(status)"
+                          }
+                      ],
+                      "currentChartType": "toplist",
+                      "fixedTime": "",
+                      "isTimeInterval": false,
+                      "levels": [],
+                      "openCompare": false,
+                      "showFieldMapping": false,
+                      "showTableHead": true,
+                      "showTitle": true,
+                      "showTopSize": true,
+                      "table": {
+                          "queryMode": "toGroupColumn"
+                      },
+                      "tableSortMetricName": "",
+                      "tableSortType": "top",
+                      "timeInterval": "default",
+                      "titleDesc": "",
+                      "topSize": 10,
+                      "units": []
+                  }
+              },
+              "group": {
+                  "name": "错误分布"
+              },
+              "name": "资源 4xx 错误数排行（TOP10）",
+              "pos": {
+                  "h": 24,
+                  "i": "chrt_0183d31b3fad4fd487ace6e597c6e550",
+                  "w": 8,
+                  "x": 16,
+                  "y": 37
+              },
+              "queries": [
+                  {
+                      "color": "",
+                      "datasource": "dataflux",
+                      "name": "",
+                      "qtype": "dql",
+                      "query": {
+                          "code": "A",
+                          "dataSource": "*",
+                          "field": "status",
+                          "fieldFunc": "count",
+                          "fill": null,
+                          "fillNum": null,
+                          "filters": [
+                              {
+                                  "logic": "and",
+                                  "name": "http_status_code",
+                                  "op": ">=",
+                                  "value": "400"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "http_status_code",
+                                  "op": "<",
+                                  "value": "500"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "service",
+                                  "op": "=",
+                                  "value": "#{service}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "env",
+                                  "op": "=",
+                                  "value": "#{env}"
+                              },
+                              {
+                                  "logic": "and",
+                                  "name": "version",
+                                  "op": "=",
+                                  "value": "#{version}"
+                              }
+                          ],
+                          "funcList": [
+                              "last",
+                              "top:10"
+                          ],
+                          "groupBy": [
+                              "resource"
+                          ],
+                          "groupByTime": "",
+                          "namespace": "tracing",
+                          "q": "T::re(`.*`):(COUNT(`status`)) {http_status_code >= '400' and http_status_code < '500' and service = '#{service}' and env = '#{env}' and version = '#{version}'} by resource",
+                          "queryFuncs": [],
+                          "type": "dql",
+                          "withLabels": []
+                      },
+                      "type": "toplist",
+                      "unit": ""
+                  }
+              ],
+              "type": "toplist"
+          }
+      ],
+      "groups": [
+          "响应耗时",
+          "错误分布"
+      ],
+      "type": "template",
+      "vars": [
+          {
+              "code": "service",
+              "datasource": "dataflux",
+              "definition": {
+                  "defaultVal": {
+                      "label": "*",
+                      "value": "re(`.*`)"
+                  },
+                  "field": "",
+                  "metric": "",
+                  "object": "",
+                  "tag": "",
+                  "value": "T::re(`.*`):(distinct(r_service)) {source = 'service_list_1m'} [6h]"
+              },
+              "hide": 0,
+              "name": "服务",
+              "seq": 0,
+              "type": "QUERY",
+              "valueSort": "default"
+          },
+          {
+              "code": "env",
+              "datasource": "dataflux",
+              "definition": {
+                  "defaultVal": {
+                      "label": "*",
+                      "value": "re(`.*`)"
+                  },
+                  "field": "",
+                  "metric": "",
+                  "object": "",
+                  "tag": "",
+                  "value": "T::re(`.*`):(distinct(r_env)) {source = 'service_list_1m' and r_service = '#{service}'} [6h]"
+              },
+              "hide": 0,
+              "name": "环境",
+              "seq": 1,
+              "type": "QUERY",
+              "valueSort": "default"
+          },
+          {
+              "code": "version",
+              "datasource": "dataflux",
+              "definition": {
+                  "defaultVal": {
+                      "label": "*",
+                      "value": "re(`.*`)"
+                  },
+                  "field": "",
+                  "metric": "",
+                  "object": "",
+                  "tag": "",
+                  "value": "T::re(`.*`):(distinct(r_version)) {source = 'service_list_1m' and r_service = '#{service}'} [6h]"
+              },
+              "hide": 0,
+              "name": "版本",
+              "seq": 2,
+              "type": "QUERY",
+              "valueSort": "default"
+          }
+      ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "应用性能统计概览"
+}

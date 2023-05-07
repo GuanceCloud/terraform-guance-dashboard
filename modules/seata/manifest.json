@@ -1,0 +1,2003 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/seata/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/seata/seata.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "isRefresh": false,
+          "links": [],
+          "settings": {
+            "backgroundStyle": {
+              "background-size": "contain"
+            },
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "type": "contain",
+            "units": [],
+            "url": "https://img.alicdn.com/tfs/TB1gqL1w4D1gK0jSZFyXXciOVXa-1497-401.png"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 9,
+          "i": "chrt_70be819ad6b2483aa3003174764c929b",
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [],
+        "type": "picture"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#22F9EF",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "已提交事务数",
+        "pos": {
+          "h": 3,
+          "i": "chrt_831111c508bb4fb7b00fc5c9239aadc7",
+          "w": 8,
+          "x": 0,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "counter"
+                },
+                {
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "logic": "and",
+                  "name": "status",
+                  "op": "=",
+                  "value": "committed"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'committed' } BY `host`,`group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#F5C075",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "已回滚事务数",
+        "pos": {
+          "h": 3,
+          "i": "chrt_066333411f374c3cb6f2fb2f3cd753da",
+          "w": 8,
+          "x": 0,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "counter"
+                },
+                {
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "logic": "and",
+                  "name": "status",
+                  "op": "=",
+                  "value": "rollbacked"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'rollbacked' } BY `host`,`group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#3CF882",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "活动中事务数",
+        "pos": {
+          "h": 3,
+          "i": "chrt_6ff6a733081a46b9ab1ee9d3e52e3afd",
+          "w": 8,
+          "x": 0,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "counter"
+                },
+                {
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "logic": "and",
+                  "name": "status",
+                  "op": "=",
+                  "value": "active"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'active' } BY `host`,`group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "事务数",
+                "name": "事务数",
+                "unit": "条",
+                "units": [
+                  "custom",
+                  "条"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "事务",
+        "pos": {
+          "h": 21,
+          "i": "chrt_f75990934ff549e0a9096710a40fc79a",
+          "w": 16,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "事务数",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "89a00da0-c448-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "14671540-c4fe-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{group}"
+                },
+                {
+                  "id": "17b81500-c4fe-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "type": "",
+                  "value": "counter"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "status",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`seata_seata`:(AVG(`transaction`) AS `事务数`) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'counter' } BY `status`, `group`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#97FB1D",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "累计发生事务数",
+        "pos": {
+          "h": 3,
+          "i": "chrt_07e2a4c5a40343268b92e003e85e2a69",
+          "w": 8,
+          "x": 0,
+          "y": 18
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "seata_seata",
+                  "field": "transaction",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "value": "#{host}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "group",
+                      "op": "=",
+                      "value": "#{group}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "meter",
+                      "op": "=",
+                      "value": "counter"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "role",
+                      "op": "=",
+                      "value": "tc"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "status",
+                      "op": "=",
+                      "value": "committed"
+                    }
+                  ],
+                  "groupBy": [
+                    "host",
+                    "group"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}'  and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'committed' } BY `host`,`group`\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "seata_seata",
+                  "field": "transaction",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "value": "#{host}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "group",
+                      "op": "=",
+                      "value": "#{group}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "meter",
+                      "op": "=",
+                      "value": "counter"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "role",
+                      "op": "=",
+                      "value": "tc"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "status",
+                      "op": "=",
+                      "value": "active"
+                    }
+                  ],
+                  "groupBy": [
+                    "host",
+                    "group"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}'  and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'active' } BY `host`,`group`\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "C",
+                  "dataSource": "seata_seata",
+                  "field": "transaction",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "value": "#{host}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "group",
+                      "op": "=",
+                      "value": "#{group}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "meter",
+                      "op": "=",
+                      "value": "counter"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "role",
+                      "op": "=",
+                      "value": "tc"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "status",
+                      "op": "=",
+                      "value": "rollbacked"
+                    }
+                  ],
+                  "groupBy": [
+                    "host",
+                    "group"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}'  and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'rollbacked' } BY `host`,`group`\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A+B+C",
+              "funcList": [
+                "last"
+              ],
+              "q": "eval(A+B+C, A=\"SERIES_SUM(\\\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}'  and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'committed' } BY `host`,`group`\\\")\", B=\"SERIES_SUM(\\\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}'  and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'active' } BY `host`,`group`\\\")\", C=\"SERIES_SUM(\\\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}'  and `group` = '#{group}' and `meter` = 'counter' and `role` = 'tc' and `status` = 'rollbacked' } BY `host`,`group`\\\")\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#22F9EF",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期已提交事务数",
+        "pos": {
+          "h": 5,
+          "i": "chrt_4cb9a41a0f9844959181e2d77d2ebf72",
+          "w": 8,
+          "x": 0,
+          "y": 23.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "summary"
+                },
+                {
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "logic": "and",
+                  "name": "status",
+                  "op": "=",
+                  "value": "committed"
+                },
+                {
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "value": "count"
+                },
+                {
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'summary' and `role` = 'tc' and `status` = 'committed' and `statistic` = 'count' and `group` = '#{group}' } BY `host`,`group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务TPS",
+        "pos": {
+          "h": 15,
+          "i": "chrt_2a4362be4d5d443492979b2017008df0",
+          "w": 8,
+          "x": 16,
+          "y": 23.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "495a9560-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "495a9561-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "summary"
+                },
+                {
+                  "id": "495a9562-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "5832f000-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "type": "",
+                  "value": "tps"
+                },
+                {
+                  "id": "5b9bc5d0-c500-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "status",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `meter` = 'summary' and `role` = 'tc' and `statistic` = 'tps' and `group` = '#{group}' } BY `status`, `group`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(transaction)",
+                "name": "last(transaction)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务平均耗时",
+        "pos": {
+          "h": 14,
+          "i": "chrt_bfb1e57a7105453c88e9c0831f311b65",
+          "w": 8,
+          "x": 8,
+          "y": 38.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "495a9560-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "495a9561-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "timer"
+                },
+                {
+                  "id": "495a9562-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "5832f000-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "type": "",
+                  "value": "average"
+                },
+                {
+                  "id": "971e9b00-c500-11ec-8229-150faef62fcf",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "status",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `meter` = 'timer' and `role` = 'tc' and `statistic` = 'average' and `group` = '#{group}' } BY `status`, `group`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(transaction)",
+                "name": "last(transaction)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务最大耗时",
+        "pos": {
+          "h": 14,
+          "i": "chrt_3a2ab67e49fd4db2b635213c57f9ddbf",
+          "w": 8,
+          "x": 16,
+          "y": 38.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "495a9560-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "495a9561-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "timer"
+                },
+                {
+                  "id": "495a9562-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "5832f000-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "type": "",
+                  "value": "max"
+                },
+                {
+                  "id": "a6faaa00-c500-11ec-8229-150faef62fcf",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "status",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `meter` = 'timer' and `role` = 'tc' and `statistic` = 'max' and `group` = '#{group}' } BY `status`, `group`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#F5C075",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期已回滚事务数",
+        "pos": {
+          "h": 5,
+          "i": "chrt_b720465896424ede9c26757231b21ad6",
+          "w": 8,
+          "x": 0,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "c9a82fb0-c4ff-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c9a82fb1-c4ff-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "id": "c9a82fb2-c4ff-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "summary"
+                },
+                {
+                  "id": "c9a82fb3-c4ff-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "c9a82fb4-c4ff-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "status",
+                  "op": "=",
+                  "value": "rollbacked"
+                },
+                {
+                  "id": "d0256920-c4ff-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "type": "",
+                  "value": "count"
+                },
+                {
+                  "id": "530ebf30-c500-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'summary' and `role` = 'tc' and `status` = 'rollbacked' and `statistic` = 'count' and `group` = '#{group}' } BY `host`, `group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务数分布",
+        "pos": {
+          "h": 15,
+          "i": "chrt_be50916e5e9948a0b6c11c28bf152008",
+          "w": 8,
+          "x": 8,
+          "y": 23.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "495a9560-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "495a9561-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "summary"
+                },
+                {
+                  "id": "495a9562-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "5832f000-c44a-11ec-b208-89e0337af24c",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "type": "",
+                  "value": "count"
+                },
+                {
+                  "id": "0e04cbf0-c500-11ec-9291-179691cb1352",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "status",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `meter` = 'summary' and `role` = 'tc' and `statistic` = 'count' and `group` = '#{group}' } BY `status`, `group`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#9EBBEF",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期事务TPS",
+        "pos": {
+          "h": 5,
+          "i": "chrt_d073565d9f7e418097ad605dc820c019",
+          "w": 8,
+          "x": 0,
+          "y": 33.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "3f4d1c20-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3f4d1c21-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "id": "3f4d1c22-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "summary"
+                },
+                {
+                  "id": "3f4d1c23-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "3f4d1c25-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "value": "tps"
+                },
+                {
+                  "id": "3f4d1c26-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'summary' and `role` = 'tc' and `statistic` = 'tps' and `group` = '#{group}' } BY `host`, `group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#EF915F",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(transaction)",
+                "name": "last(transaction)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务耗时总和",
+        "pos": {
+          "h": 5,
+          "i": "chrt_6da0dcab0f134934935949f40e5fa691",
+          "w": 8,
+          "x": 0,
+          "y": 38.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "3f4d1c20-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3f4d1c21-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "id": "3f4d1c22-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "timer"
+                },
+                {
+                  "id": "3f4d1c23-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "3f4d1c25-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "value": "total"
+                },
+                {
+                  "id": "3f4d1c26-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'timer' and `role` = 'tc' and `statistic` = 'total' and `group` = '#{group}' } BY `host`, `group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#6AF9CE",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(transaction)",
+                "name": "last(transaction)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务平均耗时",
+        "pos": {
+          "h": 4,
+          "i": "chrt_a0d1291d8f4a4bca9c255790177b9a2e",
+          "w": 8,
+          "x": 0,
+          "y": 43.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "3f4d1c20-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3f4d1c21-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "id": "3f4d1c22-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "timer"
+                },
+                {
+                  "id": "3f4d1c23-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "3f4d1c25-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "value": "average"
+                },
+                {
+                  "id": "3f4d1c26-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'timer' and `role` = 'tc' and `statistic` = 'average' and `group` = '#{group}' } BY `host`, `group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "#F89494",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#FE3C21",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": ">",
+                "value": [
+                  "1"
+                ]
+              },
+              {
+                "bgColor": "#4CF51B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<=",
+                "value": [
+                  "1"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(transaction)",
+                "name": "last(transaction)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "当前周期内事务"
+        },
+        "name": "当前周期内提交/回滚的事务最大耗时",
+        "pos": {
+          "h": 5,
+          "i": "chrt_8aecee3ed5b946a183dd526df7f66a51",
+          "w": 8,
+          "x": 0,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "seata_seata",
+              "field": "transaction",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "3f4d1c20-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3f4d1c21-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                },
+                {
+                  "id": "3f4d1c22-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "meter",
+                  "op": "=",
+                  "value": "timer"
+                },
+                {
+                  "id": "3f4d1c23-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "role",
+                  "op": "=",
+                  "value": "tc"
+                },
+                {
+                  "id": "3f4d1c25-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "statistic",
+                  "op": "=",
+                  "value": "max"
+                },
+                {
+                  "id": "3f4d1c26-c501-11ec-810b-d3dfd2ddba9a",
+                  "logic": "and",
+                  "name": "group",
+                  "op": "=",
+                  "value": "#{group}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host",
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`seata_seata`:(AVG(`transaction`)) { `host` = '#{host}' and `group` = '#{group}' and `meter` = 'timer' and `role` = 'tc' and `statistic` = 'max' and `group` = '#{group}' } BY `host`, `group`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [
+      "当前周期内事务"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['seata_seata'],keyin=['host'])"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "group",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['seata_seata'], keyin=['group']){host='#{host}'}"
+        },
+        "hide": 0,
+        "name": "事务分组",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "Seata 监控视图"
+}

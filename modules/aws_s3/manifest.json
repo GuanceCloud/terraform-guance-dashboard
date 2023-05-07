@@ -1,0 +1,1181 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "4xx",
+                "name": "4xx"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Upload & Download"
+        },
+        "name": "4xx errors",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "4xx",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "4xxErrors_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`4xxErrors_Average`) AS `4xx`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "5xx",
+                "name": "5xx"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Upload & Download"
+        },
+        "name": "5xx errors",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5xx",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "5xxErrors_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`5xxErrors_Average`) AS `5xx`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Request"
+        },
+        "name": "all requests",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "all requests",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "AllRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`AllRequests_Average`) AS `all requests`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "download bytes",
+                "name": "download bytes"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "download bytes",
+                "name": "download bytes",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Upload & Download"
+        },
+        "name": "download bytes",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "download bytes",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "BytesDownloaded_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`BytesDownloaded_Average`) AS `download bytes`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "upload bytes",
+                "name": "upload bytes"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "upload bytes",
+                "name": "upload bytes",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Upload & Download"
+        },
+        "name": "upload bytes",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "upload bytes",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "BytesUploaded_Average",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`BytesUploaded_Average`) AS `upload bytes`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Request"
+        },
+        "name": "delete requests",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "delete requests",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "DeleteRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": "number",
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(fill(AVG(`DeleteRequests_Average`), 0) AS `delete requests`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Request"
+        },
+        "name": "get requests",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "get requests",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "GetRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`GetRequests_Average`) AS `get requests`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Request"
+        },
+        "name": "head requests",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "head requests",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "HeadRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`HeadRequests_Average`) AS `head requests`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Request"
+        },
+        "name": "list requests",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "list requests",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "ListRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`ListRequests_Average`) AS `list requests`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Request"
+        },
+        "name": "put requests",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "put requests",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "PutRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`PutRequests_Average`) AS `put requests`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "total request latency",
+                "name": "total request latency"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "total request latency",
+                "name": "total request latency",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Upload & Download"
+        },
+        "name": "total request latency",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total request latency",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "TotalRequestLatency_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`TotalRequestLatency_Average`) AS `total request latency`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "first byte latency",
+                "name": "first byte latency"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "first byte latency",
+                "name": "first byte latency",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Upload & Download"
+        },
+        "name": "first byte latency",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "first byte latency",
+              "code": "A",
+              "dataSource": "aws_AWS/S3",
+              "field": "FirstByteLatency_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a646aec0-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d6f690-186f-11ed-bded-bb4e98465068",
+                  "logic": "and",
+                  "name": "BucketName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BucketName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/S3`:(AVG(`FirstByteLatency_Average`) AS `first byte latency`) { `account_name` = '#{account_name}' and `BucketName` = '#{BucketName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "Request",
+      "Upload & Download"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/S3'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "BucketName",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/S3'], keyin=['BucketName']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Bucket 名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7ed05d4eeca248eda8504d40a1412f84",
+      "name": "CloudWatch"
+    },
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "AWS S3"
+}

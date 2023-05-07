@@ -1,0 +1,2681 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "System"
+        },
+        "name": "cpu load",
+        "pos": {
+          "h": 9,
+          "i": "chrt_0d83da70569443d3b869c0358e1c425b",
+          "w": 8,
+          "x": 0,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "load 1",
+              "code": "A",
+              "dataSource": "beat_system",
+              "field": "load_1",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_system`:(AVG(`load_1`) AS `load 1`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "load 15",
+              "code": "B",
+              "dataSource": "beat_system",
+              "field": "load_15",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_system`:(AVG(`load_15`) AS `load 15`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "load 5",
+              "code": "C",
+              "dataSource": "beat_system",
+              "field": "load_5",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_system`:(AVG(`load_5`) AS `load 5`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "cpu system time",
+                "name": "cpu system time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "cpu total time",
+                "name": "cpu total time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "cpu user time",
+                "name": "cpu user time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "System"
+        },
+        "name": "cpu times",
+        "pos": {
+          "h": 9,
+          "i": "chrt_e48e9131a7aa463c978a49668bd92269",
+          "w": 8,
+          "x": 8,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu system time",
+              "code": "A",
+              "dataSource": "beat",
+              "field": "cpu_system_time_ms",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`cpu_system_time_ms`) AS `cpu system time`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu total time",
+              "code": "B",
+              "dataSource": "beat",
+              "field": "cpu_total_time_ms",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`cpu_total_time_ms`) AS `cpu total time`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu user time",
+              "code": "C",
+              "dataSource": "beat",
+              "field": "cpu_user_time_ms",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`cpu_user_time_ms`) AS `cpu user time`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory alloc",
+                "name": "memory alloc",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "memory sys",
+                "name": "memory sys",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "memory total",
+                "name": "memory total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "System"
+        },
+        "name": "memory stats",
+        "pos": {
+          "h": 9,
+          "i": "chrt_eb1cb658a0bf4c56864370323e7a8577",
+          "w": 8,
+          "x": 16,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory alloc",
+              "code": "A",
+              "dataSource": "beat",
+              "field": "memstats_memory_alloc",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`memstats_memory_alloc`) AS `memory alloc`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory sys",
+              "code": "B",
+              "dataSource": "beat",
+              "field": "memstats_memory_sys",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`memstats_memory_sys`) AS `memory sys`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory total",
+              "code": "C",
+              "dataSource": "beat",
+              "field": "memstats_memory_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`memstats_memory_total`) AS `memory total`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "handles limit hard",
+                "name": "handles limit hard",
+                "unit": "",
+                "units": [
+                  "custom",
+                  ""
+                ]
+              },
+              {
+                "key": "handles limit soft",
+                "name": "handles limit soft",
+                "unit": "",
+                "units": [
+                  "custom",
+                  ""
+                ]
+              },
+              {
+                "key": "handles open",
+                "name": "handles open",
+                "unit": "",
+                "units": [
+                  "custom",
+                  ""
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "System"
+        },
+        "name": "handles",
+        "pos": {
+          "h": 9,
+          "i": "chrt_421a2e662aa24a06aa1bd793f4d42434",
+          "w": 8,
+          "x": 8,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "handles limit hard",
+              "code": "A",
+              "dataSource": "beat",
+              "field": "handles_limit_hard",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`handles_limit_hard`) AS `handles limit hard`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "handles limit soft",
+              "code": "B",
+              "dataSource": "beat",
+              "field": "handles_limit_soft",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`handles_limit_soft`) AS `handles limit soft`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "handles open",
+              "code": "C",
+              "dataSource": "beat",
+              "field": "handles_open",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`handles_open`) AS `handles open`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "cgroup memory mem limit",
+                "name": "cgroup memory mem limit",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "cgroup memory mem usage",
+                "name": "cgroup memory mem usage",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "System"
+        },
+        "name": "cgroup memory",
+        "pos": {
+          "h": 9,
+          "i": "chrt_c152f40d2dad4e4d8c4a36c9e06be0c5",
+          "w": 8,
+          "x": 16,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cgroup memory mem limit",
+              "code": "A",
+              "dataSource": "beat",
+              "field": "cgroup_memory_mem_limit_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`cgroup_memory_mem_limit_bytes`) AS `cgroup memory mem limit`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cgroup memory mem usage",
+              "code": "B",
+              "dataSource": "beat",
+              "field": "cgroup_memory_mem_usage_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`cgroup_memory_mem_usage_bytes`) AS `cgroup memory mem usage`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "System"
+        },
+        "name": "memory rss",
+        "pos": {
+          "h": 9,
+          "i": "chrt_8862ce2f268a4f3aab3a7e235e87b4fd",
+          "w": 8,
+          "x": 0,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory rss",
+              "code": "D",
+              "dataSource": "beat",
+              "field": "memstats_rss",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat`:(AVG(`memstats_rss`) AS `memory rss`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "events",
+        "pos": {
+          "h": 9,
+          "i": "chrt_34e1f5971d804ba3b4ef4799ec725bb4",
+          "w": 8,
+          "x": 0,
+          "y": 22.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "events active",
+              "code": "D",
+              "dataSource": "beat_filebeat",
+              "field": "events_active",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`events_active`) AS `events active`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "events done",
+              "code": "A",
+              "dataSource": "beat_filebeat",
+              "field": "events_done",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`events_done`) AS `events done`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "events add",
+              "code": "B",
+              "dataSource": "beat_filebeat",
+              "field": "events_added",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`events_added`) AS `events add`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "harvester",
+        "pos": {
+          "h": 9,
+          "i": "chrt_37b86f5b416f4df6ac453b75c5824753",
+          "w": 8,
+          "x": 8,
+          "y": 22.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "harvester closed",
+              "code": "D",
+              "dataSource": "beat_filebeat",
+              "field": "harvester_closed",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`harvester_closed`) AS `harvester closed`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "harvester open files",
+              "code": "A",
+              "dataSource": "beat_filebeat",
+              "field": "harvester_open_files",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`harvester_open_files`) AS `harvester open files`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "harvester running",
+              "code": "B",
+              "dataSource": "beat_filebeat",
+              "field": "harvester_running",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`harvester_running`) AS `harvester running`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "harvester started",
+              "code": "C",
+              "dataSource": "beat_filebeat",
+              "field": "harvester_started",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`harvester_started`) AS `harvester started`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "harvester skipped",
+              "code": "E",
+              "dataSource": "beat_filebeat",
+              "field": "harvester_skipped",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`harvester_skipped`) AS `harvester skipped`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "input log files",
+        "pos": {
+          "h": 9,
+          "i": "chrt_a92539ff10234ba6bfb67b7f7756e85e",
+          "w": 8,
+          "x": 16,
+          "y": 22.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "renamed",
+              "code": "D",
+              "dataSource": "beat_filebeat",
+              "field": "input_log_files_renamed",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`input_log_files_renamed`) AS `renamed`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "truncated",
+              "code": "A",
+              "dataSource": "beat_filebeat",
+              "field": "input_log_files_truncated",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`input_log_files_truncated`) AS `truncated`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "input netflow flows",
+        "pos": {
+          "h": 9,
+          "i": "chrt_fc0c9ce2904642aea466df56da3632c5",
+          "w": 8,
+          "x": 0,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "input netflow flows",
+              "code": "D",
+              "dataSource": "beat_filebeat",
+              "field": "input_netflow_flows",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`input_netflow_flows`) AS `input netflow flows`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "input netflow packets",
+        "pos": {
+          "h": 9,
+          "i": "chrt_28decfa6d939445fa86e0d4b70483da3",
+          "w": 8,
+          "x": 8,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "dropped",
+              "code": "D",
+              "dataSource": "beat_filebeat",
+              "field": "input_netflow_packets_dropped",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`input_netflow_packets_dropped`) AS `dropped`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "received",
+              "code": "A",
+              "dataSource": "beat_filebeat",
+              "field": "input_netflow_packets_received",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_filebeat`:(AVG(`input_netflow_packets_received`) AS `received`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "config",
+        "pos": {
+          "h": 9,
+          "i": "chrt_629ca643019e4523810815729cf29881",
+          "w": 8,
+          "x": 16,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "reloads",
+              "code": "D",
+              "dataSource": "beat_libbeat",
+              "field": "config_reloads",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_libbeat`:(AVG(`config_reloads`) AS `reloads`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "scans",
+              "code": "A",
+              "dataSource": "beat_libbeat",
+              "field": "config_scans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`beat_libbeat`:(AVG(`config_scans`) AS `scans`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "output read bytes",
+                "name": "output read bytes",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "output write bytes",
+                "name": "output write bytes",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "output (bytes)",
+        "pos": {
+          "h": 9,
+          "i": "chrt_1aeb765b29d54638ad75794d71a18640",
+          "w": 8,
+          "x": 0,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "output read bytes",
+              "code": "D",
+              "dataSource": "beat_libbeat",
+              "field": "output_read_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`output_read_bytes`) AS `output read bytes`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "output write bytes",
+              "code": "A",
+              "dataSource": "beat_libbeat",
+              "field": "output_write_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`output_write_bytes`) AS `output write bytes`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "output events",
+        "pos": {
+          "h": 9,
+          "i": "chrt_c4697f2113e048bcac14f4a9d5f079b2",
+          "w": 8,
+          "x": 16,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "output events acked",
+              "code": "D",
+              "dataSource": "beat_libbeat",
+              "field": "output_events_acked",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`output_events_acked`) AS `output events acked`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "output events total",
+              "code": "A",
+              "dataSource": "beat_libbeat",
+              "field": "output_events_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`output_events_total`) AS `output events total`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "output events failed",
+              "code": "B",
+              "dataSource": "beat_libbeat",
+              "field": "output_events_failed",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`output_events_failed`) AS `output events failed`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "output events batches",
+              "code": "C",
+              "dataSource": "beat_libbeat",
+              "field": "output_events_batches",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`output_events_batches`) AS `output events batches`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory rss",
+                "name": "memory rss",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Metircs"
+        },
+        "name": "pipeline events",
+        "pos": {
+          "h": 9,
+          "i": "chrt_8eaa7f5743ad49ed822f6f6e52360cf7",
+          "w": 8,
+          "x": 8,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pipeline events active",
+              "code": "D",
+              "dataSource": "beat_libbeat",
+              "field": "pipeline_events_active",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`pipeline_events_active`) AS `pipeline events active`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pipeline events total",
+              "code": "A",
+              "dataSource": "beat_libbeat",
+              "field": "pipeline_events_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`pipeline_events_total`) AS `pipeline events total`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pipeline events failed",
+              "code": "B",
+              "dataSource": "beat_libbeat",
+              "field": "pipeline_events_failed",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`pipeline_events_failed`) AS `pipeline events failed`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pipeline events retry",
+              "code": "C",
+              "dataSource": "beat_libbeat",
+              "field": "pipeline_events_retry",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`pipeline_events_retry`) AS `pipeline events retry`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pipeline events max events",
+              "code": "E",
+              "dataSource": "beat_libbeat",
+              "field": "pipeline_queue_max_events",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dadf3dc0-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de3e4740-cf66-11ec-8ee0-cd0e75a87965",
+                  "logic": "and",
+                  "name": "beat_beat",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{beat}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`beat_libbeat`:(AVG(`pipeline_queue_max_events`) AS `pipeline events max events`) { `host` = '#{host}' and `beat_beat` = '#{beat}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "System",
+      "Metircs"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['beat'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "beat",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['beat'], keyin=['beat_beat']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Beat",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_2c64d4105bd146e9bd99c96c0ef2d120",
+      "name": "elastic"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Beats"
+}

@@ -1,0 +1,657 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/security_check/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/security_check/security_check.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fontColor": "rgba(73,139,254,1)",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "lockTime": "",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Info数量",
+        "pos": {
+          "h": 8,
+          "i": "chrt_d302794071524d1c82bf5d3e94521b94",
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": ".*",
+              "dataSourceFunc": "re",
+              "field": "level",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "#{level}"
+                },
+                {
+                  "logic": "and",
+                  "name": "category",
+                  "op": "=",
+                  "value": "#{category}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "info"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "security",
+              "q": "S::re(`.*`):(count(level)) {host = '#{host}' and level = '#{level}' and category = '#{category}' and level = 'info'}",
+              "queryFuncs": [],
+              "type": "dql"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fontColor": "rgba(255,218,67,1)",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "lockTime": "",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Warning数量",
+        "pos": {
+          "h": 8,
+          "i": "chrt_ad74d3c892584a34affeb277ac297558",
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": ".*",
+              "dataSourceFunc": "re",
+              "field": "level",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "#{level}"
+                },
+                {
+                  "logic": "and",
+                  "name": "category",
+                  "op": "=",
+                  "value": "#{category}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "warn"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "security",
+              "q": "S::re(`.*`):(count(level)) {host = '#{host}' and level = '#{level}' and category = '#{category}' and level = 'warn'}",
+              "queryFuncs": [],
+              "type": "dql"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fontColor": "rgba(234,94,116,1)",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "lockTime": "",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Critical数量",
+        "pos": {
+          "h": 8,
+          "i": "chrt_72a6a2c89af849fbbcb31d939a6c7203",
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": ".*",
+              "dataSourceFunc": "re",
+              "field": "level",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "#{level}"
+                },
+                {
+                  "logic": "and",
+                  "name": "category",
+                  "op": "=",
+                  "value": "#{category}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "critical"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "security",
+              "q": "S::re(`.*`):(count(level)) {host = '#{host}' and level = '#{level}' and category = '#{category}' and level = 'critical'}",
+              "queryFuncs": [],
+              "type": "dql"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "rgba(115,122,226,1)",
+                "key": "",
+                "name": ""
+              }
+            ],
+            "currentChartType": "toplist",
+            "isTimeInterval": false,
+            "levels": [],
+            "lockTime": "",
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "类别排行榜(TOP 5)",
+        "pos": {
+          "h": 23,
+          "i": "chrt_8dde260a2c3241f9a31389054148fe2f",
+          "w": 6,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": ".*",
+              "dataSourceFunc": "re",
+              "field": "category",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "#{level}"
+                },
+                {
+                  "logic": "and",
+                  "name": "category",
+                  "op": "=",
+                  "value": "#{category}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "category"
+              ],
+              "groupByTime": "",
+              "namespace": "security",
+              "q": "S::re(`.*`):(count(category)) {host = '#{host}' and level = '#{level}' and category = '#{category}'} by category\n",
+              "queryFuncs": [],
+              "type": "dql"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "rgba(197,126,205,1)",
+                "key": "",
+                "name": ""
+              }
+            ],
+            "currentChartType": "toplist",
+            "isTimeInterval": false,
+            "levels": [],
+            "lockTime": "",
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "规则排行榜(TOP 5)",
+        "pos": {
+          "h": 23,
+          "i": "chrt_9ae202b1e0ab44ed9bb0e65a5ccf363f",
+          "w": 6,
+          "x": 18,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": ".*",
+              "dataSourceFunc": "re",
+              "field": "rule",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "#{level}"
+                },
+                {
+                  "logic": "and",
+                  "name": "category",
+                  "op": "=",
+                  "value": "#{category}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "rule"
+              ],
+              "groupByTime": "",
+              "namespace": "security",
+              "q": "S::re(`.*`):(count(rule)) {host = '#{host}' and level = '#{level}' and category = '#{category}'} by rule",
+              "queryFuncs": [],
+              "type": "dql"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "count(level){\"level\": \"info\"}",
+                "name": "count(level){\"level\": \"info\"}"
+              },
+              {
+                "color": "#FFBD5F",
+                "key": "count(level){\"level\": \"warn\"}",
+                "name": "count(level){\"level\": \"warn\"}"
+              },
+              {
+                "color": "#F97575",
+                "key": "count(level){\"level\": \"critical\"}",
+                "name": "count(level){\"level\": \"critical\"}"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": true,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "等级数量统计",
+        "pos": {
+          "h": 15,
+          "i": "chrt_3a31f86edb4c43758ae72b756fa1f1d8",
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": ".*",
+              "dataSourceFunc": "re",
+              "field": "level",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "level",
+                  "op": "=",
+                  "value": "#{level}"
+                },
+                {
+                  "logic": "and",
+                  "name": "category",
+                  "op": "=",
+                  "value": "#{category}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "level"
+              ],
+              "groupByTime": "",
+              "namespace": "security",
+              "q": "S::re(`.*`):(count(level)) {host = '#{host}' and level = '#{level}' and category = '#{category}'} by level",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "S::re(`.*`):(distinct(host))"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "level",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "S::re(`.*`):(distinct(level)) {host = '#{host}'}"
+        },
+        "hide": 0,
+        "name": "等级",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "category",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "S::re(`.*`):(distinct(category)) {host = '#{host}'}"
+        },
+        "hide": 0,
+        "name": "类别",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "安全巡检概览"
+}

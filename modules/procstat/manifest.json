@@ -1,0 +1,296 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/net_response/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/net_response/net_response.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "response time",
+                "name": "response time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "running",
+        "pos": {
+          "h": 12,
+          "i": "chrt_aed3a13242ec419fbf2cdcd6fc7b4950",
+          "w": 9,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "running",
+              "code": "A",
+              "dataSource": "procstat_lookup",
+              "field": "running",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "b96a4d80-5665-11ec-ac2f-d76749143d75",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "pattern"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`procstat_lookup`:(AVG(`running`) AS `running`) { `host` = '#{host}' } BY `pattern`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "0=success,1=error",
+            "units": [],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "result code",
+        "pos": {
+          "h": 12,
+          "i": "chrt_aab38e02a8654387823572501658923d",
+          "w": 15,
+          "x": 9,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "result code",
+              "code": "A",
+              "dataSource": "procstat_lookup",
+              "field": "result_code",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1271b390-d4c5-11ec-b6b7-eff6647ce7a5",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "pattern",
+                "result"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`procstat_lookup`:(AVG(`result_code`) AS `result code`) { `host` = '#{host}' } BY `pattern`, `result`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "running",
+              "code": "B",
+              "dataSource": "procstat_lookup",
+              "field": "running",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1271b390-d4c5-11ec-b6b7-eff6647ce7a5",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "pattern",
+                "result"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`procstat_lookup`:(AVG(`running`) AS `running`) { `host` = '#{host}' } BY `pattern`, `result`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pid count",
+              "code": "C",
+              "dataSource": "procstat_lookup",
+              "field": "pid_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1271b390-d4c5-11ec-b6b7-eff6647ce7a5",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "pattern",
+                "result"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`procstat_lookup`:(AVG(`pid_count`) AS `pid count`) { `host` = '#{host}' } BY `pattern`, `result`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['procstat'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_794ad04d7a8845f9836d21c4856684a2",
+      "name": "主机"
+    },
+    {
+      "id": "tag_7b4859484cf94231a0d1c3bf8a4efceb",
+      "name": "Telegraf"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Procstat"
+}

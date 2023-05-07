@@ -1,0 +1,1408 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU Utilization",
+                "name": "CPU Utilization",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU Utilization",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU Utilization",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "CPUUtilization_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`CPUUtilization_Average`) AS `CPU Utilization`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU CreditBalance",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU CreditBalance",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "CPUCreditBalance_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`CPUCreditBalance_Average`) AS `CPU CreditBalance`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU CreditUsage",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU CreditUsage",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "CPUCreditUsage_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`CPUCreditUsage_Average`) AS `CPU CreditUsage`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU Surplus Credit Balance",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU Surplus Credit Balance",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "CPUSurplusCreditBalance_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`CPUSurplusCreditBalance_Average`) AS `CPU Surplus Credit Balance`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU"
+        },
+        "name": "CPU Surplus Credits Charged",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU Surplus Credits Charged",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "CPUSurplusCreditsCharged_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`CPUSurplusCreditsCharged_Average`) AS `CPU Surplus Credits Charged`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Disk Read Bytes",
+                "name": "Disk Read Bytes",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "Disk Write Bytes",
+                "name": "Disk Write Bytes",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk/Network"
+        },
+        "name": "Disk Read/Write Bytes",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Disk Read Bytes",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "DiskReadBytes_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`DiskReadBytes_Average`) AS `Disk Read Bytes`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Disk Write Bytes",
+              "code": "B",
+              "dataSource": "aws_AWS/EC2",
+              "field": "DiskWriteBytes_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`DiskWriteBytes_Average`) AS `Disk Write Bytes`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk/Network"
+        },
+        "name": "Disk Read/Write Ops",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Disk Read Ops",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "DiskReadOps_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`DiskReadOps_Average`) AS `Disk Read Ops`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Disk Write Ops",
+              "code": "C",
+              "dataSource": "aws_AWS/EC2",
+              "field": "DiskWriteOps_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`DiskWriteOps_Average`) AS `Disk Write Ops`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk/Network"
+        },
+        "name": "MetadataNoToken",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "MetadataNoToken",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "MetadataNoToken_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`MetadataNoToken_Average`) AS `MetadataNoToken`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Network In",
+                "name": "Network In",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "Network Out",
+                "name": "Network Out",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk/Network"
+        },
+        "name": "Network In/Out",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Network In",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "NetworkIn_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`NetworkIn_Average`) AS `Network In`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Network Out",
+              "code": "B",
+              "dataSource": "aws_AWS/EC2",
+              "field": "NetworkOut_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`NetworkOut_Average`) AS `Network Out`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk/Network"
+        },
+        "name": "Network Packets In/Out",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Network Packets In",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "NetworkPacketsIn_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`NetworkPacketsIn_Average`) AS `Network Packets In`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Network Packets Out",
+              "code": "B",
+              "dataSource": "aws_AWS/EC2",
+              "field": "NetworkPacketsOut_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`NetworkPacketsOut_Average`) AS `Network Packets Out`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Status"
+        },
+        "name": "Status Check Failed",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Status Check Failed",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "StatusCheckFailed_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`StatusCheckFailed_Average`) AS `Status Check Failed`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Status"
+        },
+        "name": "Status Check Failed Instance",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Status Check Failed Instance",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "StatusCheckFailed_Instance_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`StatusCheckFailed_Instance_Average`) AS `Status Check Failed Instance`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Status"
+        },
+        "name": "Status Check Failed System",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Status Check Failed System",
+              "code": "A",
+              "dataSource": "aws_AWS/EC2",
+              "field": "StatusCheckFailed_System_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f2b4930-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "92250130-33d6-11ed-83ef-73980506f7dd",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/EC2`:(AVG(`StatusCheckFailed_System_Average`) AS `Status Check Failed System`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "CPU",
+      "Disk/Network",
+      "Status"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/EC2'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "InstanceName",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/EC2'], keyin=['InstanceName']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7ed05d4eeca248eda8504d40a1412f84",
+      "name": "CloudWatch"
+    },
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "AWS EC2"
+}

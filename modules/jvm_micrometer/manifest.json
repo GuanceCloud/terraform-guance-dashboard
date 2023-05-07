@@ -1,0 +1,2337 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#F0C42D",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(uptime_seconds)",
+                "name": "last(uptime_seconds)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Up Time",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "jvm_process",
+              "field": "uptime_seconds",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "8513c290-cec4-11ed-b07e-152bc8ec0ed4",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "8513c291-cec4-11ed-b07e-152bc8ec0ed4",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "8513c292-cec4-11ed-b07e-152bc8ec0ed4",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_process`:(LAST(`uptime_seconds`)) { `application` = '#{application}' and `env` = '#{env}' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#F0B52D",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(start_time_seconds)",
+                "name": "last(start_time_seconds)",
+                "unit": "",
+                "units": [
+                  "timeStamp",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "启动时间",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "jvm_process",
+              "field": "start_time_seconds",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "8513c290-cec4-11ed-b07e-152bc8ec0ed4",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "8513c291-cec4-11ed-b07e-152bc8ec0ed4",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "8513c292-cec4-11ed-b07e-152bc8ec0ed4",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_process`:(LAST(`start_time_seconds`)) { `application` = '#{application}' and `env` = '#{env}' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#24B01D",
+                "lineColor": "",
+                "operation": "<=",
+                "value": [
+                  "0.5"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0EB2D",
+                "lineColor": "",
+                "operation": "between",
+                "value": [
+                  0.5,
+                  0.75
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0402D",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "0.75"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(memory_used_bytes)",
+                "name": "last(memory_used_bytes)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Heap Used",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_used_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "ffdca490-cec6-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "application",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{application}"
+                    },
+                    {
+                      "id": "0302c3c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{host}"
+                    },
+                    {
+                      "id": "08eb3740-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "env",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{env}"
+                    },
+                    {
+                      "id": "0d4828c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "heap"
+                    }
+                  ],
+                  "groupBy": [
+                    "application"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_used_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'heap' } BY `application`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_max_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "ffdca490-cec6-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "application",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{application}"
+                    },
+                    {
+                      "id": "0302c3c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{host}"
+                    },
+                    {
+                      "id": "08eb3740-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "env",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{env}"
+                    },
+                    {
+                      "id": "0d4828c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "heap"
+                    }
+                  ],
+                  "groupBy": [
+                    "application"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_max_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'heap' } BY `application`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"M::`jvm_jvm`:(LAST(`memory_used_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'heap' } BY `application`\", B=\"M::`jvm_jvm`:(LAST(`memory_max_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'heap' } BY `application`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#24B01D",
+                "lineColor": "",
+                "operation": "<=",
+                "value": [
+                  "0.5"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0EB2D",
+                "lineColor": "",
+                "operation": "between",
+                "value": [
+                  0.5,
+                  0.75
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0402D",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "0.75"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(memory_used_bytes)",
+                "name": "last(memory_used_bytes)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "nonHeap Used",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_used_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "ffdca490-cec6-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "application",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{application}"
+                    },
+                    {
+                      "id": "0302c3c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{host}"
+                    },
+                    {
+                      "id": "08eb3740-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "env",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{env}"
+                    },
+                    {
+                      "id": "0d4828c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "nonheap"
+                    }
+                  ],
+                  "groupBy": [
+                    "application"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_used_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'nonheap' } BY `application`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_max_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "ffdca490-cec6-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "application",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{application}"
+                    },
+                    {
+                      "id": "0302c3c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{host}"
+                    },
+                    {
+                      "id": "08eb3740-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "env",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{env}"
+                    },
+                    {
+                      "id": "0d4828c0-cec7-11ed-92bd-21a395ebbe06",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "nonheap"
+                    }
+                  ],
+                  "groupBy": [
+                    "application"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_max_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'nonheap' } BY `application`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"M::`jvm_jvm`:(LAST(`memory_used_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'nonheap' } BY `application`\", B=\"M::`jvm_jvm`:(LAST(`memory_max_bytes`)) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `area` = 'nonheap' } BY `application`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareChartType": "",
+            "compareTitle": "",
+            "compareType": "",
+            "compares": [],
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "GC 次数",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "GC 次数",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "gc_pause_seconds_count",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "application"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`gc_pause_seconds_count`) AS `GC 次数`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": [],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Classes loaded",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 6,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Classes loaded",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "classes_loaded_classes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`classes_loaded_classes`) AS `Classes loaded`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": [],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Classes unloaded",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 12,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Classes unloaded",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "classes_unloaded_classes_total",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`classes_unloaded_classes_total`) AS `Classes unloaded`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last"
+            ],
+            "levels": [],
+            "onlyShowGroupName": true,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "used",
+                "name": "used",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "commited",
+                "name": "commited",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "max",
+                "name": "max",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "JVM Heap",
+        "pos": {
+          "h": 17,
+          "w": 12,
+          "x": 0,
+          "y": 18
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "used",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "memory_used_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "91373ff0-ced0-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{jvm_memory_pool_heap}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "id"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_used_bytes`) AS `used`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `id` = '#{jvm_memory_pool_heap}' } BY `application`, `env`, `id`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "commited",
+              "code": "B",
+              "dataSource": "jvm_jvm",
+              "field": "memory_committed_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "975bab00-ced0-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{jvm_memory_pool_heap}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "id"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_committed_bytes`) AS `commited`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `id` = '#{jvm_memory_pool_heap}' } BY `application`, `env`, `id`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "C",
+              "dataSource": "jvm_jvm",
+              "field": "memory_max_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "9c2e68c0-ced0-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{jvm_memory_pool_heap}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "id"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_max_bytes`) AS `max`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `id` = '#{jvm_memory_pool_heap}' } BY `application`, `env`, `id`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last"
+            ],
+            "levels": [],
+            "onlyShowGroupName": true,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "used",
+                "name": "used",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "commited",
+                "name": "commited",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "max",
+                "name": "max",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "JVM nonHeap",
+        "pos": {
+          "h": 17,
+          "w": 12,
+          "x": 12,
+          "y": 18
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "used",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "memory_used_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "91373ff0-ced0-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{jvm_memory_pool_nonheap}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "id"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_used_bytes`) AS `used`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `id` = '#{jvm_memory_pool_nonheap}' } BY `application`, `env`, `id`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "commited",
+              "code": "B",
+              "dataSource": "jvm_jvm",
+              "field": "memory_committed_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "975bab00-ced0-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{jvm_memory_pool_nonheap}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "id"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_committed_bytes`) AS `commited`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `id` = '#{jvm_memory_pool_nonheap}' } BY `application`, `env`, `id`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "C",
+              "dataSource": "jvm_jvm",
+              "field": "memory_max_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "id": "9c2e68c0-ced0-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "id",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{jvm_memory_pool_nonheap}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "id"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_max_bytes`) AS `max`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' and `id` = '#{jvm_memory_pool_nonheap}' } BY `application`, `env`, `id`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last"
+            ],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "JVM Thread",
+        "pos": {
+          "h": 17,
+          "w": 12,
+          "x": 0,
+          "y": 35
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "daemon",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "threads_daemon_threads",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_daemon_threads`) AS `daemon`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`, `env`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "live",
+              "code": "B",
+              "dataSource": "jvm_jvm",
+              "field": "threads_live_threads",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_live_threads`) AS `live`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`, `env`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "peak",
+              "code": "C",
+              "dataSource": "jvm_jvm",
+              "field": "threads_peak_threads",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_peak_threads`) AS `peak`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`, `env`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last"
+            ],
+            "levels": [],
+            "onlyShowGroupName": true,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "JVM Thread states",
+        "pos": {
+          "h": 17,
+          "w": 12,
+          "x": 12,
+          "y": 35
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "daemon",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "threads_states_threads",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "state"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_states_threads`) AS `daemon`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`, `env`, `state`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": [],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "cpu",
+                "name": "cpu",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU 使用率",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 18,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu",
+              "code": "A",
+              "dataSource": "jvm_system",
+              "field": "cpu_usage",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7c561560-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "application",
+                  "op": "=",
+                  "value": "#{application}"
+                },
+                {
+                  "id": "7c561561-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7c561562-cecc-11ed-a7e7-5ff2b0a4dbe9",
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "host"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_system`:(LAST(`cpu_usage`) AS `cpu`) { `application` = '#{application}' and `host` = '#{host}' and `env` = '#{env}' } BY `application`, `env`, `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "空闲",
+                "name": "空闲",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "磁盘剩余空间",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "空闲",
+              "code": "A",
+              "dataSource": "jvm_disk",
+              "field": "free_bytes",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "application",
+                "env",
+                "host"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_disk`:(LAST(`free_bytes`) AS `空闲`) BY `application`, `env`, `host`",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#24B01D",
+                "lineColor": "",
+                "operation": "<=",
+                "value": [
+                  "0.5"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0EB2D",
+                "lineColor": "",
+                "operation": "between",
+                "value": [
+                  0.5,
+                  0.75
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0402D",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "0.75"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "已使用",
+                "name": "已使用",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "磁盘已使用",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "已使用",
+                  "code": "A",
+                  "dataSource": "jvm_disk",
+                  "field": "total_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [],
+                  "groupBy": [
+                    "application",
+                    "env",
+                    "host"
+                  ],
+                  "groupByTime": "",
+                  "labelOp": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_disk`:(LAST(`total_bytes`) AS `已使用`) BY `application`, `env`, `host`",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                },
+                {
+                  "alias": "已使用",
+                  "code": "B",
+                  "dataSource": "jvm_disk",
+                  "field": "free_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [],
+                  "groupBy": [
+                    "application",
+                    "env",
+                    "host"
+                  ],
+                  "groupByTime": "",
+                  "labelOp": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_disk`:(LAST(`free_bytes`) AS `已使用`) BY `application`, `env`, `host`",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "(A-B)/A",
+              "funcList": [],
+              "q": "eval((A-B)/A, A=\"M::`jvm_disk`:(LAST(`total_bytes`) AS `已使用`) BY `application`, `env`, `host`\", B=\"M::`jvm_disk`:(LAST(`free_bytes`) AS `已使用`) BY `application`, `env`, `host`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "application",
+        "datasource": "ftinfluxdb",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "jvm_jvm",
+          "object": "",
+          "tag": "application",
+          "value": ""
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "应用",
+        "seq": 0,
+        "type": "TAG",
+        "valueSort": "asc"
+      },
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['jvm_jvm'],keyin=['host']){application='#{application}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "主机",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "env",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['jvm_jvm'],keyin=['env']){application='#{application}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "环境",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "jvm_memory_pool_heap",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['jvm_jvm'],keyin=['id']){application='#{application}',env='#{env}',host='#{host}',area='heap'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "JVM Memory Pools Heap",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "jvm_memory_pool_nonheap",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['jvm_jvm'],keyin=['id']){application='#{application}',env='#{env}',host='#{host}',area='nonheap'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "JVM Memory Pools Non-Heap",
+        "seq": 4,
+        "type": "QUERY",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "JVM 监控视图 by Micrometer"
+}

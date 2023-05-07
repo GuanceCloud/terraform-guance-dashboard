@@ -1,0 +1,890 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/kubernetes_scheduler/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/kubernetes_scheduler/kubernetes_scheduler.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "调度队列 pending pod 数",
+        "pos": {
+          "h": 14,
+          "i": "chrt_9d010b34f683429bb33347a68a569630",
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "scheduler_pending_pods",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "348686c0-cc34-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "391ab4e0-cc34-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`scheduler_pending_pods`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Kube API (2xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_ba01b78493a848aaab0f1a100684a21c",
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b5197110-cc31-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "b5197111-cc31-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "b5197112-cc31-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "20.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` = re('20.*') }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Kube API (3xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_c71c3ea484ed4a45a768880cbe3957d0",
+          "w": 8,
+          "x": 0,
+          "y": 14
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "30.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` =  re('30.*') }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Kube API (4xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_c85db26911f948d2b8f986a07995d941",
+          "w": 8,
+          "x": 8,
+          "y": 14
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "40.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` =  re('40.*') }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Kube API (5xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_8a804415cb2d4cd080b6b397d064afca",
+          "w": 8,
+          "x": 16,
+          "y": 14
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "50.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` =  re('50.*') }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "进入调度队列 pod 速率",
+        "pos": {
+          "h": 14,
+          "i": "chrt_de53325c90a14211a03b3b4da1105190",
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "scheduler_queue_incoming_pods_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "348686c0-cc34-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "391ab4e0-cc34-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_scheduler`:(AVG(`scheduler_queue_incoming_pods_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_resident_memory_bytes)",
+                "name": "last(process_resident_memory_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Memory",
+        "pos": {
+          "h": 14,
+          "i": "chrt_c33e0bd12558452d9c33e351bf611df2",
+          "w": 8,
+          "x": 0,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "process_resident_memory_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f1d0720-cc35-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "91e2dde0-cc35-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`process_resident_memory_bytes`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_resident_memory_bytes)",
+                "name": "last(process_resident_memory_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU usage",
+        "pos": {
+          "h": 14,
+          "i": "chrt_b61af64b4f4c4bb3859269b7c7ecad08",
+          "w": 8,
+          "x": 8,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "process_cpu_seconds_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f1d0720-cc35-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "91e2dde0-cc35-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_scheduler`:(AVG(`process_cpu_seconds_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Goroutines",
+        "pos": {
+          "h": 14,
+          "i": "chrt_b068a9b4d03b4a8e8e1bebaa9da66a73",
+          "w": 8,
+          "x": 16,
+          "y": 28
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_scheduler",
+              "field": "go_goroutines",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8f1d0720-cc35-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "91e2dde0-cc35-11ec-8ac0-fd20eee13f5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_scheduler`:(AVG(`go_goroutines`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name_k8s",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_scheduler'], keyin=['cluster_name_k8s'])"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "instance",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_scheduler'], keyin=['instance']){`cluster_name_k8s`='#{cluster_name_k8s}'}"
+        },
+        "hide": 0,
+        "name": "instance",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Kubernetes Scheduler 监控视图"
+}

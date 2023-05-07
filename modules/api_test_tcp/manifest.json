@@ -1,0 +1,1134 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/api_test_tcp/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/api_test_tcp/api_test_tcp.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": null,
+          "settings": {
+            "colorLevel": 5,
+            "colors": [],
+            "currentChartType": "chinamap",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "isVariable": false,
+            "levelArr": [
+              {
+                "color": "#B8EA8F",
+                "max": 199,
+                "min": 0
+              },
+              {
+                "color": "#52C519",
+                "max": 499,
+                "min": 200
+              },
+              {
+                "color": "rgba(40,139,10,1)",
+                "min": 500
+              }
+            ],
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "provinceKey": "province",
+            "rangeColorKey": "dark-green",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "响应时间",
+                "name": "响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "variableCode": ""
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "响应时间",
+        "pos": {
+          "h": 23,
+          "i": "chrt_2e86cbb99f6744c8b54240f082edcd73",
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "chartGroupUUID": "default",
+            "createAt": 1629353647,
+            "creator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "dashboardUUID": "dsbd_bc9911d9ed224b19a8d3cae16c40c200",
+            "deleteAt": -1,
+            "extend": {
+              "fixedTime": "",
+              "isCombineChart": true,
+              "isRefresh": false,
+              "settings": {
+                "alias": [],
+                "colorLevel": 5,
+                "colors": [],
+                "currentChartType": "chinamap",
+                "fixedTime": "",
+                "isTimeInterval": false,
+                "isVariable": false,
+                "levelArr": [
+                  {
+                    "color": "#B8EA8F",
+                    "max": 49999,
+                    "min": 0
+                  },
+                  {
+                    "color": "#FFDA43",
+                    "max": 199999,
+                    "min": 49999
+                  },
+                  {
+                    "color": "#FEAC4E",
+                    "min": 199999
+                  }
+                ],
+                "levels": [],
+                "mainMeasurementQueryCode": "A",
+                "provinceKey": "province",
+                "rangeColorKey": "dark-green",
+                "showFieldMapping": false,
+                "showTitle": true,
+                "showTopList": true,
+                "timeInterval": "default",
+                "titleDesc": "",
+                "units": [
+                  {
+                    "key": "响应时间",
+                    "name": "响应时间",
+                    "unit": "",
+                    "units": [
+                      "time",
+                      "μs"
+                    ]
+                  }
+                ],
+                "variableCode": ""
+              }
+            },
+            "id": 53554,
+            "name": "中国",
+            "queries": [
+              {
+                "checked": true,
+                "color": "",
+                "datasource": "dataflux",
+                "name": "",
+                "qtype": "dql",
+                "query": {
+                  "alias": "响应时间",
+                  "code": "A",
+                  "dataSource": "tcp_dial_testing",
+                  "field": "response_time",
+                  "fieldFunc": "avg",
+                  "fieldType": "long",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "1613d890-00b6-11ec-af90-59350be743c4",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{job_name}"
+                    }
+                  ],
+                  "funcList": [
+                    "last"
+                  ],
+                  "groupBy": [
+                    "province"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`tcp_dial_testing`:(AVG(`response_time`) AS `响应时间`) { `name` = '#{job_name}' } BY `province`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                "type": "chinamap",
+                "unit": "",
+                "uuid": "edad69f0-3e0f-11ed-a30b-0dfba5701f6f"
+              }
+            ],
+            "status": 0,
+            "type": "chinamap",
+            "updateAt": 1629354277,
+            "updator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "uuid": "main",
+            "workspaceUUID": "wksp_7ccf1b18e82e11eaa8bc9a48486c0e26"
+          },
+          {
+            "chartGroupUUID": "default",
+            "createAt": 1629354577,
+            "creator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "dashboardUUID": "dsbd_bc9911d9ed224b19a8d3cae16c40c200",
+            "deleteAt": -1,
+            "extend": {
+              "fixedTime": "",
+              "isCombineChart": true,
+              "isRefresh": false,
+              "settings": {
+                "alias": [],
+                "colorLevel": 5,
+                "colors": [],
+                "currentChartType": "worldmap",
+                "fixedTime": "",
+                "isTimeInterval": false,
+                "isVariable": false,
+                "levelArr": [
+                  {
+                    "color": "#B8EA8F",
+                    "max": 49999,
+                    "min": 0
+                  },
+                  {
+                    "color": "#FFF187",
+                    "max": 199999,
+                    "min": 49999
+                  },
+                  {
+                    "color": "#FE994E",
+                    "min": 199999
+                  }
+                ],
+                "levels": [],
+                "mainMeasurementQueryCode": "A",
+                "provinceKey": "country",
+                "rangeColorKey": "dark-green",
+                "showFieldMapping": false,
+                "showTitle": true,
+                "showTopList": true,
+                "timeInterval": "default",
+                "titleDesc": "",
+                "units": [
+                  {
+                    "key": "响应时间",
+                    "name": "响应时间",
+                    "unit": "",
+                    "units": [
+                      "time",
+                      "μs"
+                    ]
+                  }
+                ],
+                "variableCode": ""
+              }
+            },
+            "id": 53597,
+            "name": "世界",
+            "pos": {
+              "h": 20,
+              "i": 2,
+              "w": 12,
+              "x": 0,
+              "y": 24
+            },
+            "queries": [
+              {
+                "color": "",
+                "datasource": "dataflux",
+                "name": "",
+                "qtype": "dql",
+                "query": {
+                  "alias": "响应时间",
+                  "code": "A",
+                  "dataSource": "tcp_dial_testing",
+                  "field": "response_time",
+                  "fieldFunc": "avg",
+                  "fieldType": "long",
+                  "fill": "",
+                  "filters": [],
+                  "funcList": [
+                    "last"
+                  ],
+                  "groupBy": [
+                    "country"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`tcp_dial_testing`:(AVG(`response_time`) AS `响应时间`) BY `country`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                "type": "worldmap",
+                "unit": ""
+              }
+            ],
+            "status": 0,
+            "type": "worldmap",
+            "updateAt": 1629354577,
+            "updator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+            "workspaceUUID": "wksp_7ccf1b18e82e11eaa8bc9a48486c0e26"
+          }
+        ],
+        "type": "combine"
+      },
+      {
+        "extend": {
+          "fixedTime": null,
+          "settings": {
+            "colorLevel": 5,
+            "colors": [],
+            "currentChartType": "chinamap",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "isVariable": false,
+            "levelArr": [
+              {
+                "color": "#B8EA8F",
+                "max": 199,
+                "min": 0
+              },
+              {
+                "color": "#52C519",
+                "max": 499,
+                "min": 200
+              },
+              {
+                "color": "rgba(40,139,10,1)",
+                "min": 500
+              }
+            ],
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "provinceKey": "province",
+            "rangeColorKey": "dark-green",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "响应时间",
+                "name": "响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "variableCode": ""
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "可用率",
+        "pos": {
+          "h": 23,
+          "i": "chrt_ba3cf21eaf2c4aa2af786071671c6483",
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "actions": [
+              {
+                "disabled": false,
+                "label": "修改",
+                "type": "chart",
+                "uuid": "main",
+                "value": "modify"
+              },
+              {
+                "label": "复制",
+                "type": "chart",
+                "uuid": "main",
+                "value": "copy"
+              },
+              {
+                "label": "分享",
+                "type": "chart",
+                "uuid": "main",
+                "value": "share"
+              },
+              {
+                "groupUUID": "default",
+                "label": "克隆",
+                "type": "chart",
+                "uuid": "main",
+                "value": "clone"
+              },
+              {
+                "disabled": false,
+                "label": "组合图表",
+                "type": "chinamap",
+                "uuid": "main",
+                "value": "combine"
+              },
+              {
+                "groupUUID": "default",
+                "label": "删除",
+                "type": "chart",
+                "uuid": "main",
+                "value": "delete"
+              }
+            ],
+            "chartGroupUUID": "default",
+            "createAt": 1629353647,
+            "creator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "dashboardUUID": "dsbd_bc9911d9ed224b19a8d3cae16c40c200",
+            "deleteAt": -1,
+            "extend": {
+              "fixedTime": "",
+              "isCombineChart": true,
+              "isRefresh": false,
+              "settings": {
+                "alias": [],
+                "colorLevel": 5,
+                "colors": [],
+                "currentChartType": "chinamap",
+                "fixedTime": "",
+                "isTimeInterval": false,
+                "isVariable": false,
+                "levelArr": [
+                  {
+                    "color": "rgba(255,0,0,1)",
+                    "max": 39,
+                    "min": 0
+                  },
+                  {
+                    "color": "rgba(255,205,0,1)",
+                    "max": 79,
+                    "min": 40
+                  },
+                  {
+                    "color": "rgba(40,139,10,1)",
+                    "min": 80
+                  }
+                ],
+                "levels": [],
+                "mainMeasurementQueryCode": "B",
+                "provinceKey": "province",
+                "rangeColorKey": "light-red",
+                "showFieldMapping": false,
+                "showTitle": true,
+                "showTopList": true,
+                "timeInterval": "default",
+                "titleDesc": "",
+                "units": [
+                  {
+                    "key": "可用率",
+                    "name": "可用率",
+                    "unit": "",
+                    "units": [
+                      "percent",
+                      "percent"
+                    ]
+                  }
+                ],
+                "variableCode": ""
+              }
+            },
+            "fixedOptions": {
+              "groupKey": "chart",
+              "options": {
+                "extend": {
+                  "fixedTime": null,
+                  "settings": {
+                    "colorLevel": 5,
+                    "colors": [],
+                    "currentChartType": "chinamap",
+                    "fixedTime": "",
+                    "isTimeInterval": false,
+                    "isVariable": false,
+                    "levelArr": [
+                      {
+                        "color": "#B8EA8F",
+                        "max": 199,
+                        "min": 0
+                      },
+                      {
+                        "color": "#52C519",
+                        "max": 499,
+                        "min": 200
+                      },
+                      {
+                        "color": "rgba(40,139,10,1)",
+                        "min": 500
+                      }
+                    ],
+                    "levels": [],
+                    "mainMeasurementQueryCode": "A",
+                    "provinceKey": "province",
+                    "rangeColorKey": "dark-green",
+                    "showFieldMapping": false,
+                    "showTitle": true,
+                    "timeInterval": "default",
+                    "titleDesc": "",
+                    "units": [
+                      {
+                        "key": "响应时间",
+                        "name": "响应时间",
+                        "unit": "",
+                        "units": [
+                          "time",
+                          "ns"
+                        ]
+                      }
+                    ],
+                    "variableCode": ""
+                  }
+                },
+                "name": "中国",
+                "queryList": [
+                  {
+                    "color": "",
+                    "datasource": "dataflux",
+                    "name": "",
+                    "qtype": "dql",
+                    "unit": ""
+                  }
+                ],
+                "type": "chinamap"
+              }
+            },
+            "headerOptions": null,
+            "id": 53554,
+            "isInnerHeader": false,
+            "isShowFixed": true,
+            "name": "中国",
+            "queries": [
+              {
+                "checked": true,
+                "color": "",
+                "datasource": "dataflux",
+                "name": "",
+                "qtype": "dql",
+                "query": {
+                  "alias": "可用率",
+                  "children": [
+                    {
+                      "alias": "",
+                      "code": "A",
+                      "dataSource": "tcp_dial_testing",
+                      "field": "status",
+                      "fieldFunc": "count",
+                      "fieldType": "keyword",
+                      "fill": "",
+                      "filters": [
+                        {
+                          "id": "41b3de00-0ae8-11ec-bf43-c1e1fa2dee53",
+                          "logic": "and",
+                          "name": "status",
+                          "op": "=",
+                          "type": "keyword",
+                          "value": "OK"
+                        },
+                        {
+                          "id": "46147900-0ae8-11ec-bf43-c1e1fa2dee53",
+                          "logic": "and",
+                          "name": "name",
+                          "op": "=",
+                          "type": "keyword",
+                          "value": "#{job_name}"
+                        }
+                      ],
+                      "funcList": [],
+                      "groupBy": [
+                        "province"
+                      ],
+                      "groupByTime": "",
+                      "namespace": "logging",
+                      "q": "L::`tcp_dial_testing`:(COUNT(`status`)) { `status` = 'OK' and `name` = '#{job_name}' } BY `province`",
+                      "queryFuncs": [],
+                      "type": "simple"
+                    },
+                    {
+                      "alias": "",
+                      "code": "B",
+                      "dataSource": "tcp_dial_testing",
+                      "field": "status",
+                      "fieldFunc": "count",
+                      "fieldType": "keyword",
+                      "fill": "",
+                      "filters": [
+                        {
+                          "id": "46147900-0ae8-11ec-bf43-c1e1fa2dee53",
+                          "logic": "and",
+                          "name": "name",
+                          "op": "=",
+                          "type": "keyword",
+                          "value": "#{job_name}"
+                        }
+                      ],
+                      "funcList": [],
+                      "groupBy": [
+                        "province"
+                      ],
+                      "groupByTime": "",
+                      "namespace": "logging",
+                      "q": "L::`tcp_dial_testing`:(COUNT(`status`)) { `name` = '#{job_name}' } BY `province`",
+                      "queryFuncs": [],
+                      "type": "simple"
+                    }
+                  ],
+                  "code": "B",
+                  "expression": "A/B*100",
+                  "funcList": [
+                    "last"
+                  ],
+                  "q": "eval(A/B*100, alias='可用率', A=\"L::`tcp_dial_testing`:(COUNT(`status`)) { `status` = 'OK' and `name` = '#{job_name}' } BY `province`\", B=\"L::`tcp_dial_testing`:(COUNT(`status`)) { `name` = '#{job_name}' } BY `province`\")",
+                  "type": "expression"
+                },
+                "type": "chinamap",
+                "unit": "",
+                "uuid": "f6ea86b0-3e0f-11ed-a30b-0dfba5701f6f"
+              }
+            ],
+            "status": 0,
+            "type": "chinamap",
+            "updateAt": 1629354277,
+            "updator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "uuid": "main",
+            "workspaceUUID": "wksp_7ccf1b18e82e11eaa8bc9a48486c0e26"
+          },
+          {
+            "actions": [
+              {
+                "disabled": false,
+                "label": "修改",
+                "type": "chart",
+                "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+                "value": "modify"
+              },
+              {
+                "label": "复制",
+                "type": "chart",
+                "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+                "value": "copy"
+              },
+              {
+                "label": "分享",
+                "type": "chart",
+                "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+                "value": "share"
+              },
+              {
+                "groupUUID": "default",
+                "label": "克隆",
+                "type": "chart",
+                "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+                "value": "clone"
+              },
+              {
+                "disabled": false,
+                "label": "组合图表",
+                "type": "worldmap",
+                "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+                "value": "combine"
+              },
+              {
+                "groupUUID": "default",
+                "label": "删除",
+                "type": "chart",
+                "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+                "value": "delete"
+              }
+            ],
+            "chartGroupUUID": "default",
+            "createAt": 1629354577,
+            "creator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "dashboardUUID": "dsbd_bc9911d9ed224b19a8d3cae16c40c200",
+            "deleteAt": -1,
+            "extend": {
+              "fixedTime": "",
+              "isRefresh": false,
+              "settings": {
+                "alias": [],
+                "colorLevel": 5,
+                "colors": [],
+                "currentChartType": "worldmap",
+                "fixedTime": "",
+                "isTimeInterval": false,
+                "isVariable": false,
+                "levelArr": [
+                  {
+                    "color": "rgba(255,0,0,1)",
+                    "max": 39,
+                    "min": 0
+                  },
+                  {
+                    "color": "rgba(255,205,0,1)",
+                    "max": 79,
+                    "min": 40
+                  },
+                  {
+                    "color": "rgba(38,130,10,1)",
+                    "min": 80
+                  }
+                ],
+                "levels": [],
+                "mainMeasurementQueryCode": "A",
+                "provinceKey": "country",
+                "rangeColorKey": "dark-green",
+                "showFieldMapping": false,
+                "showTitle": true,
+                "showTopList": true,
+                "timeInterval": "default",
+                "titleDesc": "",
+                "units": [
+                  {
+                    "key": "可用率",
+                    "name": "可用率",
+                    "unit": "",
+                    "units": [
+                      "percent",
+                      "percent"
+                    ]
+                  }
+                ],
+                "variableCode": ""
+              }
+            },
+            "fixedOptions": {
+              "groupKey": "chart",
+              "options": {
+                "extend": {
+                  "fixedTime": null,
+                  "settings": {
+                    "colorLevel": 5,
+                    "colors": [],
+                    "fixedTime": "",
+                    "isTimeInterval": false,
+                    "isVariable": false,
+                    "levelArr": [
+                      {
+                        "color": "#B8EA8F",
+                        "max": 199,
+                        "min": 0
+                      },
+                      {
+                        "color": "#52C519",
+                        "max": 499,
+                        "min": 200
+                      },
+                      {
+                        "color": "rgba(38,130,10,1)",
+                        "min": 500
+                      }
+                    ],
+                    "levels": [],
+                    "mainMeasurementQueryCode": "A",
+                    "provinceKey": "country",
+                    "rangeColorKey": "dark-green",
+                    "showFieldMapping": false,
+                    "showTitle": true,
+                    "timeInterval": "default",
+                    "titleDesc": "",
+                    "units": [
+                      {
+                        "key": "响应时间",
+                        "name": "响应时间",
+                        "unit": "",
+                        "units": [
+                          "time",
+                          "ns"
+                        ]
+                      }
+                    ],
+                    "variableCode": ""
+                  }
+                },
+                "name": "世界",
+                "queryList": [
+                  {
+                    "color": "",
+                    "datasource": "dataflux",
+                    "name": "",
+                    "qtype": "dql",
+                    "unit": ""
+                  }
+                ],
+                "type": "worldmap"
+              }
+            },
+            "headerOptions": null,
+            "id": 53597,
+            "isInnerHeader": false,
+            "isShowFixed": true,
+            "name": "世界",
+            "pos": {
+              "h": 20,
+              "i": 2,
+              "w": 12,
+              "x": 0,
+              "y": 24
+            },
+            "queries": [
+              {
+                "color": "",
+                "datasource": "dataflux",
+                "name": "",
+                "qtype": "dql",
+                "query": {
+                  "alias": "可用率",
+                  "children": [
+                    {
+                      "alias": "",
+                      "code": "A",
+                      "dataSource": "tcp_dial_testing",
+                      "field": "status",
+                      "fieldFunc": "count",
+                      "fieldType": "keyword",
+                      "fill": "",
+                      "filters": [
+                        {
+                          "id": "7dd74e10-0aea-11ec-929a-39aadeed9f0b",
+                          "logic": "and",
+                          "name": "status",
+                          "op": "=",
+                          "type": "keyword",
+                          "value": "OK"
+                        },
+                        {
+                          "id": "851602c0-0aea-11ec-929a-39aadeed9f0b",
+                          "logic": "and",
+                          "name": "name",
+                          "op": "=",
+                          "type": "keyword",
+                          "value": "#{job_name}"
+                        }
+                      ],
+                      "funcList": [],
+                      "groupBy": [
+                        "country"
+                      ],
+                      "groupByTime": "",
+                      "namespace": "logging",
+                      "q": "L::`tcp_dial_testing`:(COUNT(`status`)) { `status` = 'OK' and `name` = '#{job_name}' } BY `country`",
+                      "queryFuncs": [],
+                      "type": "simple"
+                    },
+                    {
+                      "alias": "",
+                      "code": "B",
+                      "dataSource": "tcp_dial_testing",
+                      "field": "status",
+                      "fieldFunc": "count",
+                      "fieldType": "keyword",
+                      "fill": "",
+                      "filters": [
+                        {
+                          "id": "851602c0-0aea-11ec-929a-39aadeed9f0b",
+                          "logic": "and",
+                          "name": "name",
+                          "op": "=",
+                          "type": "keyword",
+                          "value": "#{job_name}"
+                        }
+                      ],
+                      "funcList": [],
+                      "groupBy": [
+                        "country"
+                      ],
+                      "groupByTime": "",
+                      "namespace": "logging",
+                      "q": "L::`tcp_dial_testing`:(COUNT(`status`)) { `name` = '#{job_name}' } BY `country`",
+                      "queryFuncs": [],
+                      "type": "simple"
+                    }
+                  ],
+                  "code": "A",
+                  "expression": "A/B*100",
+                  "funcList": [
+                    "last"
+                  ],
+                  "q": "eval(A/B*100, alias='可用率', A=\"L::`tcp_dial_testing`:(COUNT(`status`)) { `status` = 'OK' and `name` = '#{job_name}' } BY `country`\", B=\"L::`tcp_dial_testing`:(COUNT(`status`)) { `name` = '#{job_name}' } BY `country`\")",
+                  "type": "expression"
+                },
+                "type": "worldmap",
+                "unit": ""
+              }
+            ],
+            "status": 0,
+            "type": "worldmap",
+            "updateAt": 1629354577,
+            "updator": "acnt_d9fbb7300cfd11eba43ff257ef8142e9",
+            "uuid": "1b0d39212fed4b9ab427b319f0f4a6b7",
+            "workspaceUUID": "wksp_7ccf1b18e82e11eaa8bc9a48486c0e26"
+          }
+        ],
+        "type": "combine"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(响应时间)",
+                "name": "avg(响应时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "趋势"
+        },
+        "name": "平均响应时间",
+        "pos": {
+          "h": 11,
+          "i": "chrt_6831790a1ec2403bae93ae62c347e14c",
+          "w": 12,
+          "x": 0,
+          "y": 25.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "avg(响应时间)",
+              "code": "A",
+              "dataSource": "tcp_dial_testing",
+              "field": "response_time",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "54d94110-0ae7-11ec-bf43-c1e1fa2dee53",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{job_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`tcp_dial_testing`:(AVG(`response_time`) AS `avg(响应时间)`) { `name` = '#{job_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "rgba(99,219,173,1)",
+                "key": "可用率",
+                "name": "可用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "可用率",
+                "name": "可用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "趋势"
+        },
+        "name": "可用率",
+        "pos": {
+          "h": 11,
+          "i": "chrt_e2de676f22094f94a8babf9f895dcad9",
+          "w": 12,
+          "x": 12,
+          "y": 25.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "可用率",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "tcp_dial_testing",
+                  "field": "status",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "96b32a10-0ae7-11ec-bf43-c1e1fa2dee53",
+                      "logic": "and",
+                      "name": "status",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "OK"
+                    },
+                    {
+                      "id": "9af76370-0ae7-11ec-bf43-c1e1fa2dee53",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{job_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`tcp_dial_testing`:(COUNT(`status`)) { `status` = 'OK' and `name` = '#{job_name}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "tcp_dial_testing",
+                  "field": "status",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "9af76370-0ae7-11ec-bf43-c1e1fa2dee53",
+                      "logic": "and",
+                      "name": "name",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{job_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`tcp_dial_testing`:(COUNT(`status`)) { `name` = '#{job_name}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "B",
+              "expression": "A/B*100",
+              "funcList": [],
+              "q": "eval(A/B*100, alias='可用率', A=\"L::`tcp_dial_testing`:(COUNT(`status`)) { `status` = 'OK' and `name` = '#{job_name}' }\", B=\"L::`tcp_dial_testing`:(COUNT(`status`)) { `name` = '#{job_name}' }\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "趋势"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "job_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::tcp_dial_testing:(distinct(name))"
+        },
+        "hide": 0,
+        "name": "任务名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "TCP 拨测 0927"
+}

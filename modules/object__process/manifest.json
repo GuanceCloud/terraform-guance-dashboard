@@ -1,0 +1,572 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/object__process/icon.svg",
+    "url": null
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 使用率",
+                "name": "CPU 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU 使用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 使用率",
+              "code": "A",
+              "dataSource": "host_processes",
+              "field": "cpu_usage_top",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4f9063f0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "52393cd0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "process_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{process_name}"
+                },
+                {
+                  "id": "553ba760-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "pid",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pid}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`host_processes`:(AVG(`cpu_usage_top`) AS `CPU 使用率`) { `host` = '#{host}' and `process_name` = '#{process_name}' and `pid` = '#{pid}' }",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "常驻内存",
+                "name": "常驻内存",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "常驻内存",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "常驻内存",
+              "code": "A",
+              "dataSource": "host_processes",
+              "field": "rss",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4f9063f0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "52393cd0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "process_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{process_name}"
+                },
+                {
+                  "id": "553ba760-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "pid",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pid}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`host_processes`:(AVG(`rss`) AS `常驻内存`) { `host` = '#{host}' and `process_name` = '#{process_name}' and `pid` = '#{pid}' }",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存使用率",
+                "name": "内存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "内存使用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存使用率",
+              "code": "A",
+              "dataSource": "host_processes",
+              "field": "mem_used_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4f9063f0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "52393cd0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "process_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{process_name}"
+                },
+                {
+                  "id": "553ba760-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "pid",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pid}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`host_processes`:(AVG(`mem_used_percent`) AS `内存使用率`) { `host` = '#{host}' and `process_name` = '#{process_name}' and `pid` = '#{pid}' }",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存使用率",
+                "name": "内存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "打开的文件数",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "打开的文件数",
+              "code": "A",
+              "dataSource": "host_processes",
+              "field": "open_files",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4f9063f0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "52393cd0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "process_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{process_name}"
+                },
+                {
+                  "id": "553ba760-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "pid",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pid}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`host_processes`:(AVG(`open_files`) AS `打开的文件数`) { `host` = '#{host}' and `process_name` = '#{process_name}' and `pid` = '#{pid}' }",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "线程数",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "线程数",
+              "code": "A",
+              "dataSource": "host_processes",
+              "field": "threads",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4f9063f0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "52393cd0-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "process_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{process_name}"
+                },
+                {
+                  "id": "553ba760-fcd1-11ec-b3f3-b763c729e7c3",
+                  "logic": "and",
+                  "name": "pid",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pid}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`host_processes`:(AVG(`threads`) AS `线程数`) { `host` = '#{host}' and `process_name` = '#{process_name}' and `pid` = '#{pid}' }",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['host_processes'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "process_name",
+        "datasource": "dataflux",
+        "definition": {
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['host_processes'], keyin=['process_name']){host='#{host}'}"
+        },
+        "hide": 0,
+        "name": "进程名",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "pid",
+        "datasource": "dataflux",
+        "definition": {
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['host_processes'], keyin=['pid']){process_name='#{process_name}', host='#{host}'}"
+        },
+        "hide": 0,
+        "name": "进程ID",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "基础设施Process监控视图444"
+}

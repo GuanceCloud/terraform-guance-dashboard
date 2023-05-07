@@ -1,0 +1,2389 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/gitlab_ci/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/gitlab_ci/gitlab_ci.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": true,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "project others"
+        },
+        "name": "Total Executions",
+        "pos": {
+          "h": 17,
+          "i": "chrt_85025287048946e386beb412a2ba1e1d",
+          "w": 12,
+          "x": 0,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_id",
+              "fieldFunc": "count_distinct",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "21c3d780-79bf-11ec-872e-0f320f6c4eef",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "8a252d90-79d5-11ec-9230-b749b0ce9161",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "pending"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "pipeline_status"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(COUNT_DISTINCT(`pipeline_id`)) { `project_name` = '#{project}' and `pipeline_status` != 'pending' } BY `pipeline_status`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "#F61806",
+                "key": "count(pipeline_id){\"pipeline_status\": \"failed\"}",
+                "name": "count(pipeline_id){\"pipeline_status\": \"failed\"}"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": true,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "project others"
+        },
+        "name": "执行失败",
+        "pos": {
+          "h": 17,
+          "i": "chrt_5fe3419028c54e008806a01392e7231e",
+          "w": 12,
+          "x": 12,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_id",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "21c3d780-79bf-11ec-872e-0f320f6c4eef",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "53b86d40-79c0-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "error"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "pipeline_status"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(COUNT(`pipeline_id`)) { `project_name` = '#{project}' and `status` = 'error' } BY `pipeline_status`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "project info"
+        },
+        "name": "ssh",
+        "pos": {
+          "h": 5,
+          "i": "chrt_7a1ba73c6ffa4d0baecedccd2c00c8a5",
+          "w": 7,
+          "x": 14,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "project_ssh_url",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`project_ssh_url`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "project info"
+        },
+        "name": "http",
+        "pos": {
+          "h": 5,
+          "i": "chrt_6e2a40dae492431b85a40236981d7428",
+          "w": 7,
+          "x": 7,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "project_http_url",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`project_http_url`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "branch",
+        "pos": {
+          "h": 5,
+          "i": "chrt_d2a3d8200e9f4367b651f9e66190d80f",
+          "w": 4,
+          "x": 12,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "branch",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`branch`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "#2D8CF0",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "最后一次构建时间",
+        "pos": {
+          "h": 5,
+          "i": "chrt_3ec5b81e51464d638e28d9009e2bd063",
+          "w": 3,
+          "x": 0,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "created_at",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`created_at`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "#2D8CF0",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "pipeline_id",
+        "pos": {
+          "h": 5,
+          "i": "chrt_30de2a1654344614919272f51bc86d40",
+          "w": 3,
+          "x": 9,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_id",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`pipeline_id`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "project info"
+        },
+        "name": "project_name",
+        "pos": {
+          "h": 5,
+          "i": "chrt_f27e84dafa3e41a7a17dd81c3711c375",
+          "w": 7,
+          "x": 0,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "project_repository",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`project_repository`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "commit-msg",
+        "pos": {
+          "h": 5,
+          "i": "chrt_7f643c6c9c1a4bd484356c785091b6a4",
+          "w": 4,
+          "x": 16,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "commit_title",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`commit_title`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "pie",
+            "colors": [],
+            "currentChartType": "pie",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showLegend": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "project others"
+        },
+        "name": "stage分布",
+        "pos": {
+          "h": 17,
+          "i": "chrt_1a2c5b62fda8442094765a2434537a19",
+          "w": 12,
+          "x": 0,
+          "y": 24.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_job",
+              "field": "project_name",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e1771900-79d0-11ec-a2c8-f7d10fd529c1",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "stage"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_job`:(COUNT(`project_name`)) { `project_name` = '#{project}' } BY `stage`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "pie",
+            "colors": [],
+            "currentChartType": "pie",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showLegend": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "project others"
+        },
+        "name": "job分布",
+        "pos": {
+          "h": 17,
+          "i": "chrt_4873605e6f5246c1aceace0b160e0b51",
+          "w": 12,
+          "x": 12,
+          "y": 24.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_job",
+              "field": "project_name",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e1771900-79d0-11ec-a2c8-f7d10fd529c1",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "job_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_job`:(COUNT(`project_name`)) { `project_name` = '#{project}' } BY `job_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "commit-id",
+        "pos": {
+          "h": 5,
+          "i": "chrt_1765e75128a1415a985d14354a508f57",
+          "w": 4,
+          "x": 20,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "commit_id",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`commit_id`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "持续时间(s)",
+                "name": "持续时间(s)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "project others"
+        },
+        "name": "pipeline excutions",
+        "pos": {
+          "h": 30,
+          "i": "chrt_1b13aa6d3b52420eb5b48b5e098b5616",
+          "w": 24,
+          "x": 0,
+          "y": 58.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "时间",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "created_at",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "19d96e20-79ee-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:100"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`created_at`) AS `时间`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "状态",
+              "code": "B",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_status",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ee0fb20-79ed-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`pipeline_status`) AS `状态`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "持续时间(s)",
+              "code": "C",
+              "dataSource": "cicd_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ee0fb20-79ed-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`duration`) AS `持续时间(s)`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "完成时间",
+              "code": "D",
+              "dataSource": "cicd_pipeline",
+              "field": "finished_at",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ee0fb20-79ed-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`finished_at`) AS `完成时间`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "commit_id",
+              "code": "E",
+              "dataSource": "cicd_pipeline",
+              "field": "commit_id",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ee0fb20-79ed-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`commit_id`) AS `commit_id`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "commit_title",
+              "code": "F",
+              "dataSource": "cicd_pipeline",
+              "field": "commit_title",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ee0fb20-79ed-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`commit_title`) AS `commit_title`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "分支",
+              "code": "G",
+              "dataSource": "cicd_pipeline",
+              "field": "branch",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ee0fb20-79ed-11ec-82f5-cbb58d9ed768",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_id",
+                "project_repository"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`branch`) AS `分支`) { `project_name` = '#{project}' } BY `pipeline_id`, `project_repository`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#F5052B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "100"
+                ]
+              },
+              {
+                "bgColor": "#04FB9D",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<",
+                "value": [
+                  "100"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(duration)",
+                "name": "last(duration)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "duration",
+        "pos": {
+          "h": 5,
+          "i": "chrt_0ab9fb016337427c81754383c7e5adde",
+          "w": 3,
+          "x": 6,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`duration`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#F5052B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "failed"
+                ]
+              },
+              {
+                "bgColor": "#08F99D",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "success"
+                ]
+              },
+              {
+                "bgColor": "#0777EE",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "canceled"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last excutions"
+        },
+        "name": "status",
+        "pos": {
+          "h": 5,
+          "i": "chrt_8569a649f276493c9e8a96a72b6a7617",
+          "w": 3,
+          "x": 3,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_status",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`pipeline_status`)) { `project_name` = '#{project}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "#2D8CF0",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "最后一次成功构建时间",
+        "pos": {
+          "h": 5,
+          "i": "chrt_69287e0d827a46b7a5e9a6f860125c58",
+          "w": 3,
+          "x": 0,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "created_at",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "88977120-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`created_at`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#F5052B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "failed"
+                ]
+              },
+              {
+                "bgColor": "#08F99D",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "success"
+                ]
+              },
+              {
+                "bgColor": "#0777EE",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "running"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "status",
+        "pos": {
+          "h": 5,
+          "i": "chrt_2839cac9e9d8463c9149bfcc9701ddf9",
+          "w": 3,
+          "x": 3,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_status",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "960b32b0-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`pipeline_status`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#F5052B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "100"
+                ]
+              },
+              {
+                "bgColor": "#04FB9D",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<",
+                "value": [
+                  "100"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(duration)",
+                "name": "last(duration)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "duration",
+        "pos": {
+          "h": 5,
+          "i": "chrt_5a16f472254e4ef9bb29b5d3888c0961",
+          "w": 3,
+          "x": 6,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "a35a7c50-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`duration`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "#2D8CF0",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "pipeline_id",
+        "pos": {
+          "h": 5,
+          "i": "chrt_bddb3ccd7dd545ed9a6f67faeec8eadc",
+          "w": 3,
+          "x": 9,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "pipeline_id",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "af48d660-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`pipeline_id`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "branch",
+        "pos": {
+          "h": 5,
+          "i": "chrt_6130750004614376b2b790a7145ccfed",
+          "w": 4,
+          "x": 12,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "branch",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "c7746dd0-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`branch`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "commit-msg",
+        "pos": {
+          "h": 5,
+          "i": "chrt_9c666cb1630c4d32a5e4c23ab0934075",
+          "w": 4,
+          "x": 16,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "commit_title",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "d1e17f10-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`commit_title`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "30d",
+            "text": "最近30天"
+          },
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "30d",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "last success excutions"
+        },
+        "name": "commit-id",
+        "pos": {
+          "h": 5,
+          "i": "chrt_116a2ef3b1a14aea8ba9c01428fbed27",
+          "w": 4,
+          "x": 20,
+          "y": 17
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cicd_pipeline",
+              "field": "commit_id",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "86348280-79c1-11ec-9ecf-43e085e33458",
+                  "logic": "and",
+                  "name": "project_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{project}"
+                },
+                {
+                  "id": "da3b8ed0-7a63-11ec-925c-bbc8896e4d0f",
+                  "logic": "and",
+                  "name": "pipeline_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`cicd_pipeline`:(AVG(`commit_id`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#0DF435",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "80"
+                ]
+              },
+              {
+                "bgColor": "#0A7FF9",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<",
+                "value": [
+                  "80"
+                ]
+              },
+              {
+                "bgColor": "#F52905",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<",
+                "value": [
+                  "60"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "result",
+                "name": "result",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "project info"
+        },
+        "name": "执行成功率",
+        "pos": {
+          "h": 5,
+          "i": "chrt_702b18d70c424669b9f50436555a0bc2",
+          "w": 3,
+          "x": 21,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "cicd_pipeline",
+                  "field": "pipeline_status",
+                  "fieldFunc": "count",
+                  "fieldType": "",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "462f6190-7d87-11ec-a021-d3bdb252a626",
+                      "logic": "and",
+                      "name": "project_name",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{project}"
+                    },
+                    {
+                      "id": "4f41ebe0-7d87-11ec-a021-d3bdb252a626",
+                      "logic": "and",
+                      "name": "pipeline_status",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "success"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "project_name"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`cicd_pipeline`:(COUNT(`pipeline_status`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' } BY `project_name`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "cicd_pipeline",
+                  "field": "pipeline_status",
+                  "fieldFunc": "count",
+                  "fieldType": "",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "462f6190-7d87-11ec-a021-d3bdb252a626",
+                      "logic": "and",
+                      "name": "project_name",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{project}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "project_name"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`cicd_pipeline`:(COUNT(`pipeline_status`)) { `project_name` = '#{project}' } BY `project_name`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "B",
+              "expression": "A/B*100",
+              "funcList": [
+                "last"
+              ],
+              "q": "eval(A/B*100, A=\"L::`cicd_pipeline`:(COUNT(`pipeline_status`)) { `project_name` = '#{project}' and `pipeline_status` = 'success' } BY `project_name`\", B=\"L::`cicd_pipeline`:(COUNT(`pipeline_status`)) { `project_name` = '#{project}' } BY `project_name`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [
+      "project info",
+      "last excutions",
+      "last success excutions",
+      "project others"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "project",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "first-demo",
+            "value": "first-demo"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::`cicd_pipeline`:(AVG(`project_name`))  BY `project_id`"
+        },
+        "hide": 0,
+        "name": "projectName",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "Gitlab CI 监控视图"
+}

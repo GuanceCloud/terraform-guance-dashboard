@@ -1,0 +1,773 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Node list",
+        "pos": {
+          "h": 11,
+          "i": "chrt_811605b4f7f44170a55944d30f67e75f",
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aerospike",
+              "field": "node_up",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3adc3ed0-bfae-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "cluster_name",
+                "build",
+                "service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`node_up`)) { `cluster_name` = '#{cluster_name}' } BY `cluster_name`, `build`, `service`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "B",
+              "dataSource": "aerospike",
+              "field": "node_up",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3adc3ed0-bfae-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "cluster_name",
+                "build",
+                "service"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`node_up`)) { `cluster_name` = '#{cluster_name}' } BY `cluster_name`, `build`, `service`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#4EED0B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "1"
+                ]
+              },
+              {
+                "bgColor": "#FB0C0C",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "!=",
+                "value": [
+                  "1"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "UP",
+                "operation": "=",
+                "originalVal": [
+                  "1"
+                ]
+              },
+              {
+                "mappingVal": "DOWN",
+                "operation": "!=",
+                "originalVal": [
+                  "1"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Status",
+        "pos": {
+          "h": 12,
+          "i": "chrt_476746edb63c4740a1a9c6569ec4578e",
+          "w": 3,
+          "x": 0,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aerospike",
+              "field": "node_up",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3f2d7b10-bfaf-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "5fa9fa80-bfaf-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`node_up`)) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Records",
+        "pos": {
+          "h": 12,
+          "i": "chrt_3e2f3f9fd681464bb7efa7ff15ae0dc8",
+          "w": 4,
+          "x": 3,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aerospike",
+              "field": "namespace_objects",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bbf28d20-bfaf-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "be4bbf60-bfaf-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(SUM(`namespace_objects`)) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Tomstones",
+        "pos": {
+          "h": 12,
+          "i": "chrt_bc027088bd8c40a58a43c0cb48d987f2",
+          "w": 5,
+          "x": 7,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aerospike",
+              "field": "namespace_tombstones",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": 1,
+              "filters": [
+                {
+                  "id": "46099f90-bfbe-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "46099f91-bfbe-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`namespace_tombstones`)) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "pie",
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showLegend": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Total Memory",
+                "name": "Total Memory",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "Used Memory",
+                "name": "Used Memory",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Memory",
+        "pos": {
+          "h": 12,
+          "i": "chrt_de3e3bf7c4c84882b6ef16fcaf46fbba",
+          "w": 6,
+          "x": 12,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Total Memory",
+              "code": "A",
+              "dataSource": "aerospike",
+              "field": "namespace_memory_size",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d8cf0d00-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "db2b2570-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`namespace_memory_size`) AS `Total Memory`) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Used Memory",
+              "code": "B",
+              "dataSource": "aerospike",
+              "field": "namespace_memory_used_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d8cf0d00-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "db2b2570-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`namespace_memory_used_bytes`) AS `Used Memory`) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "pie",
+            "colors": [],
+            "currentChartType": "pie",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showLegend": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Total Device",
+                "name": "Total Device",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "Used Device",
+                "name": "Used Device",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Device",
+        "pos": {
+          "h": 12,
+          "i": "chrt_323bb699f60a47a0b6a6b1fa0cb64509",
+          "w": 6,
+          "x": 18,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Total Device",
+              "code": "A",
+              "dataSource": "aerospike",
+              "field": "namespace_device_total_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d8cf0d00-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "db2b2570-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`namespace_device_total_bytes`) AS `Total Device`) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Used Device",
+              "code": "B",
+              "dataSource": "aerospike",
+              "field": "namespace_device_used_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d8cf0d00-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "db2b2570-bfb0-11ec-b942-d39473682c9d",
+                  "logic": "and",
+                  "name": "service",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{service}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aerospike`:(AVG(`namespace_device_used_bytes`) AS `Used Device`) { `cluster_name` = '#{cluster_name}' and `service` = '#{service}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aerospike'], keyin=['cluster_name'])[1d]"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "namespace",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aerospike'], keyin=['ns']){cluster_name='#{cluster_name}'}[1d]"
+        },
+        "hide": 0,
+        "name": "空间",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "service",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aerospike'], keyin=['service']){cluster_name='#{cluster_name}'}[1d]"
+        },
+        "hide": 0,
+        "name": "node",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_4760b8dd644944b2858ca4b85ab4f7aa",
+      "name": "Aerospike"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Aerospike Monitoring Stack - Node View"
+}

@@ -1,0 +1,1682 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/istio_mesh/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/istio_mesh/istio_mesh.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "request",
+                "name": "request",
+                "unit": "",
+                "units": [
+                  "throughput",
+                  "ops"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "HTTP/GRPC Workloads",
+        "pos": {
+          "h": 18,
+          "w": 24,
+          "x": 0,
+          "y": 30
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "request",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "response_code",
+                  "op": "=",
+                  "value": "200"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "destination_service",
+                "destination_workload"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`) AS `request`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `response_code` = '200' } BY `destination_service`, `destination_workload`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "request",
+              "code": "B",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "reporter",
+                  "op": "=",
+                  "value": "source"
+                },
+                {
+                  "logic": "and",
+                  "name": "response_code",
+                  "op": "=",
+                  "value": "200"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "destination_service",
+                "destination_workload"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`istio_prom`:(AVG(`istio_requests_total`) AS `request`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `reporter` = 'source' and `response_code` = '200' } BY `destination_service`, `destination_workload`",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "result",
+                "name": "result",
+                "unit": "ops/S",
+                "units": [
+                  "custom",
+                  "ops/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Global Request Volume",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "result",
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": "linear",
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "c99d53d0-0c88-11ed-94ff-230fee90ea1a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "cluster_name_k8s",
+                "source_workload"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`istio_prom`:(fill(AVG(`istio_requests_total`), linear) AS `result`) { `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`, `source_workload`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "response",
+                "name": "response",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Global Success Rate (non-5xx responses)",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "response",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "source"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "response_code",
+                      "op": "=~",
+                      "value": "5.*"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "RATE(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `response_code` != re('5.*') } BY `cluster_name_k8s`\").series_sum() ",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "rate"
+                    },
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "istio_requests_total",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "reporter",
+                      "op": "=",
+                      "value": "source"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "RATE(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' } BY `cluster_name_k8s`\").series_sum() ",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "rate"
+                    },
+                    {
+                      "args": [],
+                      "name": "series_sum"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "C",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='response', A=\"RATE(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' and `response_code` != re('5.*') } BY `cluster_name_k8s`\\\").series_sum() \", B=\"RATE(\\\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and  `reporter` = 'source' } BY `cluster_name_k8s`\\\").series_sum() \")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "4xxs",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "istio_prom",
+              "field": "istio_requests_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "response_code",
+                  "op": "=~",
+                  "value": "4.*"
+                },
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "cluster_name_k8s"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `response_code` = re('4.*') and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "5xxs",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 18,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "funcList": [],
+              "q": "IRATE(\"M::`istio_prom`:(AVG(`istio_requests_total`)) { `response_code` = re('5.*') and `cluster_name_k8s` = '#{cluster_name_k8s}'  and `reporter` = 'source'  } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Virtual Services",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 0,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "VirtualService"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'VirtualService' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fieldType": "float",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "id": "eb1af5f0-0c90-11ed-94ff-230fee90ea1a",
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "id": "eb1af5f1-0c90-11ed-94ff-230fee90ea1a",
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "VirtualService"
+                    },
+                    {
+                      "id": "eb1af5f2-0c90-11ed-94ff-230fee90ea1a",
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`), 0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'VirtualService' and `event` = 'delete' } BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "B",
+              "expression": "A-0",
+              "funcList": [],
+              "q": "eval(A-0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'VirtualService' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`), 0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'VirtualService' and `event` = 'delete' } BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Destination Rules",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 6,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "DestinationRule"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'DestinationRule' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "DestinationRule"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'DestinationRule' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "B",
+              "expression": "A -0",
+              "funcList": [],
+              "q": "eval(A -0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'DestinationRule' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'DestinationRule' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Gateways",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 12,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "Gateway"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'Gateway' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "Gateway"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'Gateway' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A-0",
+              "funcList": [],
+              "q": "eval(A-0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'Gateway' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'Gateway' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Workload Entries",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 18,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "WorkloadEntry"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'WorkloadEntry' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "WorkloadEntry"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'WorkloadEntry' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A-0",
+              "funcList": [],
+              "q": "eval(A-0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'WorkloadEntry' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'WorkloadEntry' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Service Entries",
+        "pos": {
+          "h": 9,
+          "w": 6,
+          "x": 0,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "ServiceEntry"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'ServiceEntry' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "ServiceEntry"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'ServiceEntry' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A- 0",
+              "funcList": [],
+              "q": "eval(A- 0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'ServiceEntry' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'ServiceEntry' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Authorization Policies",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 18,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "AuthorizationPolicy"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'AuthorizationPolicy' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "AuthorizationPolicy"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'AuthorizationPolicy' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A-0",
+              "funcList": [],
+              "q": "eval(A-0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'AuthorizationPolicy' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'AuthorizationPolicy' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "PeerAuthentication Policies",
+        "pos": {
+          "h": 9,
+          "w": 6,
+          "x": 6,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "PeerAuthentication"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'PeerAuthentication' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "PeerAuthentication"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'PeerAuthentication' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A-0",
+              "funcList": [],
+              "q": "eval(A-0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'PeerAuthentication' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'PeerAuthentication' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "RequestAuthentication Policies",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 12,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "RequestAuthentication"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "add"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'RequestAuthentication' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "istio_prom",
+                  "field": "pilot_k8s_cfg_events",
+                  "fieldFunc": "max",
+                  "fill": "number",
+                  "fillNum": 0,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name_k8s}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "value": "RequestAuthentication"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "event",
+                      "op": "=",
+                      "value": "delete"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster_name_k8s"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'RequestAuthentication' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A-0",
+              "funcList": [],
+              "q": "eval(A-0, A=\"M::`istio_prom`:(MAX(`pilot_k8s_cfg_events`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'RequestAuthentication' and `event` = 'add' }[1h:5m:10s] BY `cluster_name_k8s`\", B=\"M::`istio_prom`:(fill(MAX(`pilot_k8s_cfg_events`),0)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `type` = 'RequestAuthentication' and `event` = 'delete'  }[1h:5m:10s] BY `cluster_name_k8s`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name_k8s",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['istio_prom'], keyin=['cluster_name_k8s'])[1m]"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Istio Mesh 监控视图"
+}

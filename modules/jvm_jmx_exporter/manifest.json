@@ -1,0 +1,1789 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#F0C42D",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(lang_Runtime_Uptime)",
+                "name": "last(lang_Runtime_Uptime)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Up time",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "jvm_java",
+              "field": "lang_Runtime_Uptime",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "cc7afef0-d423-11ed-a4fb-15ff22b888c3",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "name",
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_Runtime_Uptime`)) { `server` = '#{server}' } BY `host`, `name`, `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#F0C42D",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(lang_Runtime_StartTime)",
+                "name": "last(lang_Runtime_StartTime)",
+                "unit": "",
+                "units": [
+                  "timeStamp",
+                  "ms"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Start Time",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "jvm_java",
+              "field": "lang_Runtime_StartTime",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c3955100-d423-11ed-a4fb-15ff22b888c3",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "name",
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_Runtime_StartTime`)) { `server` = '#{server}' } BY `host`, `name`, `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "System",
+                "name": "System",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              },
+              {
+                "key": "process",
+                "name": "process",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              },
+              {
+                "key": "ALL",
+                "name": "ALL",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "cpu load",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ALL",
+              "code": "A",
+              "dataSource": "jvm_java",
+              "field": "lang_OperatingSystem_CpuLoad",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "b01e40f0-d423-11ed-a4fb-15ff22b888c3",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_OperatingSystem_CpuLoad`) AS `ALL`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "process",
+              "code": "B",
+              "dataSource": "jvm_java",
+              "field": "lang_OperatingSystem_ProcessCpuLoad",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "9b56f0e0-d428-11ed-afd4-bd3b2690db34",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_OperatingSystem_ProcessCpuLoad`) AS `process`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "System",
+              "code": "C",
+              "dataSource": "jvm_java",
+              "field": "lang_OperatingSystem_SystemCpuLoad",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b2d2c050-d428-11ed-afd4-bd3b2690db34",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_OperatingSystem_SystemCpuLoad`) AS `System`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(memory_bytes_used)",
+                "name": "last(memory_bytes_used)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "nonHeap",
+        "pos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 4
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "memory_bytes_used",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96e178e0-d429-11ed-afd4-bd3b2690db34",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                },
+                {
+                  "id": "accce450-d429-11ed-afd4-bd3b2690db34",
+                  "logic": "and",
+                  "name": "area",
+                  "op": "=",
+                  "type": "",
+                  "value": "nonheap"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_bytes_used`)) { `server` = '#{server}' and `area` = 'nonheap' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(memory_bytes_used)",
+                "name": "last(memory_bytes_used)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Heap(%)",
+        "pos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_bytes_used",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "96e178e0-d429-11ed-afd4-bd3b2690db34",
+                      "logic": "and",
+                      "name": "server",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{server}"
+                    },
+                    {
+                      "id": "accce450-d429-11ed-afd4-bd3b2690db34",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "heap"
+                    }
+                  ],
+                  "groupBy": [
+                    "server"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_bytes_used`)) { `server` = '#{server}' and `area` = 'heap' } BY `server`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_bytes_max",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "96e178e0-d429-11ed-afd4-bd3b2690db34",
+                      "logic": "and",
+                      "name": "server",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{server}"
+                    },
+                    {
+                      "id": "9ffcae60-d42c-11ed-8cfe-41c7c26214d5",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "heap"
+                    }
+                  ],
+                  "groupBy": [
+                    "server"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_bytes_max`)) { `server` = '#{server}' and `area` = 'heap' } BY `server`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"M::`jvm_jvm`:(LAST(`memory_bytes_used`)) { `server` = '#{server}' and `area` = 'heap' } BY `server`\", B=\"M::`jvm_jvm`:(LAST(`memory_bytes_max`)) { `server` = '#{server}' and `area` = 'heap' } BY `server`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#2DF0B5",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "<=",
+                "value": [
+                  "-1"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "Unlimitd",
+                "operation": "<=",
+                "originalVal": [
+                  "-1"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(memory_bytes_used)",
+                "name": "last(memory_bytes_used)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "nonHeap(%)",
+        "pos": {
+          "h": 4,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_bytes_used",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "96e178e0-d429-11ed-afd4-bd3b2690db34",
+                      "logic": "and",
+                      "name": "server",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{server}"
+                    },
+                    {
+                      "id": "accce450-d429-11ed-afd4-bd3b2690db34",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "nonheap"
+                    }
+                  ],
+                  "groupBy": [
+                    "server"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_bytes_used`)) { `server` = '#{server}' and `area` = 'nonheap' } BY `server`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "jvm_jvm",
+                  "field": "memory_bytes_max",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "96e178e0-d429-11ed-afd4-bd3b2690db34",
+                      "logic": "and",
+                      "name": "server",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{server}"
+                    },
+                    {
+                      "id": "a70278c0-d42c-11ed-8cfe-41c7c26214d5",
+                      "logic": "and",
+                      "name": "area",
+                      "op": "=",
+                      "type": "",
+                      "value": "nonheap"
+                    }
+                  ],
+                  "groupBy": [
+                    "server"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`jvm_jvm`:(LAST(`memory_bytes_max`)) { `server` = '#{server}' and `area` = 'nonheap' } BY `server`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"M::`jvm_jvm`:(LAST(`memory_bytes_used`)) { `server` = '#{server}' and `area` = 'nonheap' } BY `server`\", B=\"M::`jvm_jvm`:(LAST(`memory_bytes_max`)) { `server` = '#{server}' and `area` = 'nonheap' } BY `server`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "heap",
+                "name": "heap",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "nonheap",
+                "name": "nonheap",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "max",
+                "name": "max",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "JVM memory",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 8,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "heap",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "memory_bytes_used",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ac12c6a0-d42a-11ed-8b73-2757bdbf83b8",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "value": "#{server}"
+                },
+                {
+                  "id": "ac12c6a1-d42a-11ed-8b73-2757bdbf83b8",
+                  "logic": "and",
+                  "name": "area",
+                  "op": "=",
+                  "value": "heap"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_bytes_used`) AS `heap`) { `server` = '#{server}' and `area` = 'heap' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "nonheap",
+              "code": "B",
+              "dataSource": "jvm_jvm",
+              "field": "memory_bytes_used",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ac12c6a0-d42a-11ed-8b73-2757bdbf83b8",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "value": "#{server}"
+                },
+                {
+                  "id": "ac12c6a1-d42a-11ed-8b73-2757bdbf83b8",
+                  "logic": "and",
+                  "name": "area",
+                  "op": "=",
+                  "value": "nonheap"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_bytes_used`) AS `nonheap`) { `server` = '#{server}' and `area` = 'nonheap' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max",
+              "code": "C",
+              "dataSource": "jvm_jvm",
+              "field": "memory_bytes_max",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ac12c6a0-d42a-11ed-8b73-2757bdbf83b8",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_bytes_max`) AS `max`) { `server` = '#{server}' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(memory_bytes_used)",
+                "name": "last(memory_bytes_used)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Heap",
+        "pos": {
+          "h": 4,
+          "w": 4,
+          "x": 8,
+          "y": 4
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "memory_bytes_used",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96e178e0-d429-11ed-afd4-bd3b2690db34",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                },
+                {
+                  "id": "29bf5280-d42b-11ed-8b73-2757bdbf83b8",
+                  "logic": "and",
+                  "name": "area",
+                  "op": "=",
+                  "type": "",
+                  "value": "heap"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`memory_bytes_used`)) { `server` = '#{server}' and `area` = 'heap' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Total",
+                "name": "Total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "Committed VM",
+                "name": "Committed VM",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "free",
+                "name": "free",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Physical memory",
+        "pos": {
+          "h": 23,
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Total",
+              "code": "A",
+              "dataSource": "jvm_java",
+              "field": "lang_OperatingSystem_TotalPhysicalMemorySize",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "170bb220-d42e-11ed-ab8f-47b4d8270860",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_OperatingSystem_TotalPhysicalMemorySize`) AS `Total`) { `server` = '#{server}' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Committed VM",
+              "code": "B",
+              "dataSource": "jvm_java",
+              "field": "lang_OperatingSystem_CommittedVirtualMemorySize",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "19b8f7d0-d42e-11ed-ab8f-47b4d8270860",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_OperatingSystem_CommittedVirtualMemorySize`) AS `Committed VM`) { `server` = '#{server}' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "free",
+              "code": "C",
+              "dataSource": "jvm_java",
+              "field": "lang_OperatingSystem_FreePhysicalMemorySize",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1c6d1b50-d42e-11ed-ab8f-47b4d8270860",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "server"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_java`:(LAST(`lang_OperatingSystem_FreePhysicalMemorySize`) AS `free`) { `server` = '#{server}' } BY `server`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "JVM Threads current",
+        "pos": {
+          "h": 19,
+          "w": 12,
+          "x": 0,
+          "y": 23
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "current",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "threads_current",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "80caa2c0-d44c-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_current`) AS `current`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Started Total",
+              "code": "C",
+              "dataSource": "jvm_jvm",
+              "field": "threads_started_total",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "80caa2c0-d44c-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_started_total`) AS `Started Total`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "peak",
+              "code": "D",
+              "dataSource": "jvm_jvm",
+              "field": "threads_peak",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "80caa2c0-d44c-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_peak`) AS `peak`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "deadlocked monitor",
+              "code": "E",
+              "dataSource": "jvm_jvm",
+              "field": "threads_deadlocked_monitor",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "80caa2c0-d44c-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_deadlocked_monitor`) AS `deadlocked monitor`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "deadlocked",
+              "code": "F",
+              "dataSource": "jvm_jvm",
+              "field": "threads_deadlocked",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "80caa2c0-d44c-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_deadlocked`) AS `deadlocked`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "daemon",
+              "code": "G",
+              "dataSource": "jvm_jvm",
+              "field": "threads_daemon",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "80caa2c0-d44c-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`threads_daemon`) AS `daemon`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Classes Loaded",
+        "pos": {
+          "h": 19,
+          "w": 12,
+          "x": 12,
+          "y": 23
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "currently",
+              "code": "A",
+              "dataSource": "jvm_jvm",
+              "field": "classes_currently_loaded",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3214a780-d450-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`classes_currently_loaded`) AS `currently`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total",
+              "code": "B",
+              "dataSource": "jvm_jvm",
+              "field": "classes_loaded_total",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3214a780-d450-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`classes_loaded_total`) AS `total`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "unloaded",
+              "code": "C",
+              "dataSource": "jvm_jvm",
+              "field": "classes_unloaded_total",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3214a780-d450-11ed-ba8b-4d05ae8c8336",
+                  "logic": "and",
+                  "name": "server",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{server}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`jvm_jvm`:(LAST(`classes_unloaded_total`) AS `unloaded`) { `server` = '#{server}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "server",
+        "datasource": "ftinfluxdb",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "jvm_java",
+          "object": "",
+          "tag": "server",
+          "value": ""
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "server",
+        "seq": 0,
+        "type": "TAG",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "JVM 监控视图 by JMX Exporter"
+}

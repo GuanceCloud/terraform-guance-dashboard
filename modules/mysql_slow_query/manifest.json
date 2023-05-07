@@ -1,0 +1,490 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "MySQL 慢查询配置",
+        "pos": {
+          "h": 22,
+          "w": 11,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "当前慢查询指标来源于 mysql 慢查询日志\n慢查询日志开启\n#### slow log  慢查询日志(5.7) ####\n[mysqld]\nslow_query_log = 1 ## 开启慢查询日志\nslow_query_log_file = /var/log/mysql/slow.log ## 慢查询日志文件名称\nlong_query_time = 2 ##sql 语句超过2s就记录\nmin_examined_row_limit = 100 ## sql执行中examined_row 取出数据必须大于100行才会记录\nlog-queries-not-using-indexes ## 没有使用索引SQL的sql记录到慢查询\nlog_throttle_queries_not_using_indexes = 5 ## 限制每分钟记录没有使用索引Sql的次数 意思就是：一条sql语句一直在记录 记录太多了 占存储 一分钟只记录5次\nlog-slow-admin-statements = table ##记录管理的操作，例如alter | analyze talbe 命令\nlog_output = file ## 记录慢查询日志的格式 FILE|TABLE|NONE 默认是文件格式 TABLE 是以表的格式 不建议用table\nlog_timestamps = 'system' ## 慢日志记录的时间格式 采用系统的时间\n\n\n\n\n\n"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "MySQL慢查询优化",
+        "pos": {
+          "h": 10,
+          "w": 13,
+          "x": 11,
+          "y": 0
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "### 慢查询优化\n\n目前有两种方式可以进行优化慢查询操作\n\n1、自行对慢查询 SQL 执行 explain\n\n2、利用观测云 `dbm` 开启数据库性能指标采集，同时会开启自动化 explain。"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "慢查询记录数",
+        "pos": {
+          "h": 12,
+          "w": 13,
+          "x": 11,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "mysql",
+              "field": "db_slow_statement",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "beaa0d00-018f-11ed-b176-8341c77167c1",
+                  "logic": "and",
+                  "name": "filename",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "slow.log"
+                },
+                {
+                  "id": "eee80e90-018f-11ed-b176-8341c77167c1",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "service"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`mysql`:(COUNT(`db_slow_statement`)) { `filename` = 'slow.log' and `host` = '#{host}' } BY `service`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "创建时间",
+                "name": "创建时间",
+                "unit": "",
+                "units": [
+                  "timeStamp",
+                  "s"
+                ]
+              },
+              {
+                "key": "执行时间",
+                "name": "执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Top 100",
+        "pos": {
+          "h": 40,
+          "w": 24,
+          "x": 0,
+          "y": 62
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "创建时间",
+              "code": "D",
+              "dataSource": "mysql",
+              "field": "log_read_time",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1db717d0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c89cf0c0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "filename",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "slow.log"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:100"
+              ],
+              "groupBy": [
+                "db_slow_statement"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`mysql`:(AVG(`log_read_time`) AS `创建时间`) { `host` = '#{host}' and `filename` = 'slow.log' } BY `db_slow_statement`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "用户",
+              "code": "C",
+              "dataSource": "mysql",
+              "field": "db_user",
+              "fieldFunc": "avg",
+              "fieldType": "keyword",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1db717d0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c89cf0c0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "filename",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "slow.log"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "db_slow_statement"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`mysql`:(AVG(`db_user`) AS `用户`) { `host` = '#{host}' and `filename` = 'slow.log' } BY `db_slow_statement`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "执行时间",
+              "code": "B",
+              "dataSource": "mysql",
+              "field": "query_time",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1db717d0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c89cf0c0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "filename",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "slow.log"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "db_slow_statement"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`mysql`:(AVG(`query_time`) AS `执行时间`) { `host` = '#{host}' and `filename` = 'slow.log' } BY `db_slow_statement`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "锁时间",
+              "code": "E",
+              "dataSource": "mysql",
+              "field": "lock_time",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1db717d0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c89cf0c0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "filename",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "slow.log"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "db_slow_statement"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`mysql`:(AVG(`lock_time`) AS `锁时间`) { `host` = '#{host}' and `filename` = 'slow.log' } BY `db_slow_statement`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "查询返回行",
+              "code": "F",
+              "dataSource": "mysql",
+              "field": "rows_sent",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1db717d0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c89cf0c0-0185-11ed-8192-71670068ee88",
+                  "logic": "and",
+                  "name": "filename",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "slow.log"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "db_slow_statement"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`mysql`:(AVG(`rows_sent`) AS `查询返回行`) { `host` = '#{host}' and `filename` = 'slow.log' } BY `db_slow_statement`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['mysql'],keyin=['host'])"
+        },
+        "hide": 0,
+        "name": "host",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Mysql 慢查询"
+}

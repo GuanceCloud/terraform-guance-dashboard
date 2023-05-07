@@ -1,0 +1,1473 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/rocketmq/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/rocketmq/rocketmq.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FE9155",
+                "key": "broker qps",
+                "name": "broker qps"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Broker"
+        },
+        "name": "broker qps",
+        "pos": {
+          "h": 8,
+          "i": "chrt_273787e36be84c9985c06c2be5ba4df1",
+          "w": 8,
+          "x": 0,
+          "y": 37
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "broker qps",
+              "code": "A",
+              "dataSource": "rocketmq",
+              "field": "broker_qps",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "2d339950-c219-11ec-9dd3-dfc28678beb4",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`broker_qps`) AS `broker qps`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#8AE2DF",
+                "key": "broker tps",
+                "name": "broker tps"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Broker"
+        },
+        "name": "broker tps",
+        "pos": {
+          "h": 8,
+          "i": "chrt_31d4e7e1d0d349569a1d2c54ec8cc1c4",
+          "w": 8,
+          "x": 8,
+          "y": 37
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "broker tps",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "broker_tps",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "3e2732d0-c219-11ec-9dd3-dfc28678beb4",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`broker_tps`) AS `broker tps`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Consumer"
+        },
+        "name": "consumer offset",
+        "pos": {
+          "h": 8,
+          "i": "chrt_0b172173fd1a412d939a6f8090c7829e",
+          "w": 8,
+          "x": 0,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "consumer offset",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "consumer_offset",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "dc4931a0-c04a-11ec-a90f-db1f0bf0f073",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`consumer_offset`) AS `consumer offset`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' } BY `group`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "consumer message size",
+                "name": "consumer message size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Consumer"
+        },
+        "name": "consumer message size",
+        "pos": {
+          "h": 8,
+          "i": "chrt_eca8b61b1f904f6087843debcb032c21",
+          "w": 8,
+          "x": 8,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "consumer message size",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "consumer_message_size",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "dc4931a0-c04a-11ec-a90f-db1f0bf0f073",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`consumer_message_size`) AS `consumer message size`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' } BY `group`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "producer offset",
+                "name": "producer offset"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Producer"
+        },
+        "name": "producer offset",
+        "pos": {
+          "h": 8,
+          "i": "chrt_c2851df2763547df98f8ac27b05a8e77",
+          "w": 8,
+          "x": 0,
+          "y": 55.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "producer offset",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "producer_offset",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "dc4931a0-c04a-11ec-a90f-db1f0bf0f073",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`producer_offset`) AS `producer offset`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "producer message size",
+                "name": "producer message size"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "consumer message size",
+                "name": "consumer message size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Producer"
+        },
+        "name": "producer message size",
+        "pos": {
+          "h": 8,
+          "i": "chrt_9302fdb9f1f14ccd8550da7de59c1889",
+          "w": 8,
+          "x": 8,
+          "y": 55.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "producer message size",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "producer_message_size",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "dc4931a0-c04a-11ec-a90f-db1f0bf0f073",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`producer_message_size`) AS `producer message size`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "consumer message size",
+                "name": "consumer message size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Consumer"
+        },
+        "name": "consumer tps",
+        "pos": {
+          "h": 8,
+          "i": "chrt_a9f8375a66c94114a44180826a14a712",
+          "w": 8,
+          "x": 16,
+          "y": 66
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "consumer tps",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "consumer_tps",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "dc4931a0-c04a-11ec-a90f-db1f0bf0f073",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "group"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`consumer_tps`) AS `consumer tps`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' } BY `group`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "producer tps",
+                "name": "producer tps"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "consumer message size",
+                "name": "consumer message size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Producer"
+        },
+        "name": "producer tps",
+        "pos": {
+          "h": 8,
+          "i": "chrt_fb238c80c5c44434ad8833ab9317a644",
+          "w": 8,
+          "x": 16,
+          "y": 55.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "producer tps",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "producer_tps",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "dc4931a0-c04a-11ec-a90f-db1f0bf0f073",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`producer_tps`) AS `producer tps`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": {
+            "key": "1d",
+            "text": "最近1天"
+          },
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "1d",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "put message size total",
+                "name": "put message size total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Broker"
+        },
+        "name": "broker put message size total",
+        "pos": {
+          "h": 8,
+          "i": "chrt_cd9dfc96221e44cc95d27065672cfd2b",
+          "w": 8,
+          "x": 8,
+          "y": 45
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "broker put message size total",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "brokeruntime_put_message_size_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "69153050-c219-11ec-9dd3-dfc28678beb4",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "brokerIP"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`brokeruntime_put_message_size_total`) AS `broker put message size total`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' } BY `brokerIP`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "broker put message average size",
+                "name": "broker put message average size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Broker"
+        },
+        "name": "broker put message average size",
+        "pos": {
+          "h": 8,
+          "i": "chrt_7713c646b2e54e2583b09000199542c2",
+          "w": 8,
+          "x": 0,
+          "y": 45
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "broker put message average size",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "brokeruntime_put_message_average_size",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "5c0eaf80-c219-11ec-9dd3-dfc28678beb4",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "brokerIP"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`brokeruntime_put_message_average_size`) AS `broker put message average size`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' } BY `brokerIP`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "message accumulation{\"cluster\": \"DefaultCluster\"}",
+                "name": "message accumulation{\"cluster\": \"DefaultCluster\"}"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "message accumulation top 5 by cluster",
+        "pos": {
+          "h": 16,
+          "i": "chrt_8c00ee4dcafa45e1b0d64c7cf6071674",
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "message accumulation",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "rocketmq",
+                  "field": "producer_offset",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`rocketmq`:(AVG(`producer_offset`)) BY `cluster`",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "rocketmq",
+                  "field": "consumer_offset",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [],
+                  "funcList": [],
+                  "groupBy": [
+                    "cluster"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`rocketmq`:(AVG(`consumer_offset`)) BY `cluster`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A-B",
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "q": "eval(A-B, alias='message accumulation', A=\"M::`rocketmq`:(AVG(`producer_offset`)) BY `cluster`\", B=\"M::`rocketmq`:(AVG(`consumer_offset`)) BY `cluster`\")",
+              "type": "expression"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "group get latency by storetime",
+                "name": "group get latency by storetime"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "group get latency by storetime",
+                "name": "group get latency by storetime",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Broker"
+        },
+        "name": "group get latency by storetime",
+        "pos": {
+          "h": 8,
+          "i": "chrt_20cb551d725d40478d4c48a0bc76afc2",
+          "w": 8,
+          "x": 16,
+          "y": 37
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "group get latency by storetime",
+              "code": "B",
+              "dataSource": "rocketmq",
+              "field": "group_get_latency_by_storetime",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9e6c0740-bfd2-11ec-ae9e-214869943277",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                },
+                {
+                  "id": "4bacceb0-c219-11ec-9dd3-dfc28678beb4",
+                  "logic": "and",
+                  "name": "topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`group_get_latency_by_storetime`) AS `group get latency by storetime`) { `cluster` = '#{cluster}' and `topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "last(consumer_offset){\"topic\": \"TopicTest\"}",
+                "name": "last(consumer_offset){\"topic\": \"TopicTest\"}"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "consumer offset top 5 by cluster,topic",
+        "pos": {
+          "h": 16,
+          "i": "chrt_6d2c75189b5f44fc9a5f1900e93f13c1",
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "rocketmq",
+              "field": "consumer_offset",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "topic",
+                "cluster"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`consumer_offset`)) BY `topic`, `cluster`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "topic retry offset{\"topic\": \"%RETRY%TOOLS_CONSUMER\"}",
+                "name": "topic retry offset{\"topic\": \"%RETRY%TOOLS_CONSUMER\"}"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Broker"
+        },
+        "name": "topic retry offset",
+        "pos": {
+          "h": 8,
+          "i": "chrt_03903a7d096d4059a2a8c7658f9091da",
+          "w": 8,
+          "x": 16,
+          "y": 45
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "topic retry offset",
+              "code": "A",
+              "dataSource": "rocketmq",
+              "field": "topic_retry_offset",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2ee39fc0-c057-11ec-95c5-e3f45bb3ca7b",
+                  "logic": "and",
+                  "name": "cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "topic"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`topic_retry_offset`) AS `topic retry offset`) { `cluster` = '#{cluster}' } BY `topic`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "last(producer_offset){\"cluster\": \"DefaultCluster\"}",
+                "name": "last(producer_offset){\"cluster\": \"DefaultCluster\"}"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "producer offset top 5 by cluster,topic",
+        "pos": {
+          "h": 16,
+          "i": "chrt_0d4ba0ad729a448f94f89c0354b03302",
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "rocketmq",
+              "field": "producer_offset",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "cluster",
+                "topic"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`rocketmq`:(AVG(`producer_offset`)) BY `cluster`, `topic`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      }
+    ],
+    "groups": [
+      "Overview",
+      "Broker",
+      "Producer",
+      "Consumer"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['rocketmq'], keyin=['cluster'])[5m]"
+        },
+        "hide": 0,
+        "name": "Cluster",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "topic",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['rocketmq'], keyin=['topic']){cluster='#{cluster}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Topic",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "RocketMQ 监控视图"
+}

@@ -1,0 +1,1103 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Up time",
+        "pos": {
+          "h": 9,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "java_runtime",
+              "field": "Uptime",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "jolokia_agent_url",
+                "host"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_runtime`:(LAST(`Uptime`)) BY `jolokia_agent_url`, `host`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last",
+              "max"
+            ],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "线程分配",
+        "pos": {
+          "h": 22,
+          "w": 12,
+          "x": 12,
+          "y": 22
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "daemon",
+              "code": "A",
+              "dataSource": "java_threading",
+              "field": "DaemonThreadCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_threading`:(LAST(`DaemonThreadCount`) AS `daemon`) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "peak",
+              "code": "B",
+              "dataSource": "java_threading",
+              "field": "PeakThreadCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_threading`:(LAST(`PeakThreadCount`) AS `peak`) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "count",
+              "code": "C",
+              "dataSource": "java_threading",
+              "field": "ThreadCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_threading`:(LAST(`ThreadCount`) AS `count`) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "start",
+              "code": "D",
+              "dataSource": "java_threading",
+              "field": "TotalStartedThreadCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_threading`:(LAST(`TotalStartedThreadCount`) AS `start`) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "类加载",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "loaded",
+              "code": "A",
+              "dataSource": "java_class_loading",
+              "field": "LoadedClassCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "jolokia_agent_url",
+                "host"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`java_class_loading`:(LAST(`LoadedClassCount`) AS `loaded`) BY `jolokia_agent_url`, `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "totalLoaded",
+              "code": "B",
+              "dataSource": "java_class_loading",
+              "field": "TotalLoadedClassCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "jolokia_agent_url",
+                "host"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`java_class_loading`:(LAST(`TotalLoadedClassCount`) AS `totalLoaded`) BY `jolokia_agent_url`, `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "unLoaded",
+              "code": "C",
+              "dataSource": "java_class_loading",
+              "field": "UnloadedClassCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "jolokia_agent_url",
+                "host"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`java_class_loading`:(LAST(`UnloadedClassCount`) AS `unLoaded`) BY `jolokia_agent_url`, `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "GC 次数分布",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "loaded",
+              "code": "A",
+              "dataSource": "java_garbage_collector",
+              "field": "CollectionCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "name",
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`java_garbage_collector`:(LAST(`CollectionCount`) AS `loaded`) BY `name`, `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareChartType": "",
+            "compareTitle": "",
+            "compareType": "",
+            "compares": [],
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "当前GC次数",
+        "pos": {
+          "h": 9,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "java_garbage_collector",
+              "field": "CollectionCount",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "name",
+                "jolokia_agent_url",
+                "host"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`java_garbage_collector`:(LAST(`CollectionCount`)) BY `name`, `jolokia_agent_url`, `host`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "max",
+              "last"
+            ],
+            "levels": [],
+            "onlyShowGroupName": true,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "已使用内存",
+        "pos": {
+          "h": 22,
+          "w": 12,
+          "x": 0,
+          "y": 22
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "java_memory_pool",
+              "field": "Usageused",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_memory_pool`:(LAST(`Usageused`)) BY `name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#24B01D",
+                "lineColor": "",
+                "operation": "<=",
+                "value": [
+                  "0.5"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0EB2D",
+                "lineColor": "",
+                "operation": "between",
+                "value": [
+                  0.5,
+                  0.75
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#F0402D",
+                "lineColor": "",
+                "operation": ">=",
+                "value": [
+                  "0.75"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(HeapMemoryUsageused)",
+                "name": "last(HeapMemoryUsageused)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Heap Used",
+        "pos": {
+          "h": 9,
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "java_memory",
+                  "field": "HeapMemoryUsageused",
+                  "fieldFunc": "last",
+                  "fieldType": "integer",
+                  "fill": null,
+                  "filters": [],
+                  "groupBy": [
+                    "host",
+                    "jolokia_agent_url"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`java_memory`:(LAST(`HeapMemoryUsageused`)) BY `host`, `jolokia_agent_url`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "java_memory",
+                  "field": "HeapMemoryUsagemax",
+                  "fieldFunc": "last",
+                  "fieldType": "integer",
+                  "fill": null,
+                  "filters": [],
+                  "groupBy": [
+                    "host",
+                    "jolokia_agent_url"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`java_memory`:(LAST(`HeapMemoryUsagemax`)) BY `host`, `jolokia_agent_url`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"M::`java_memory`:(LAST(`HeapMemoryUsageused`)) BY `host`, `jolokia_agent_url`\", B=\"M::`java_memory`:(LAST(`HeapMemoryUsagemax`)) BY `host`, `jolokia_agent_url`\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "nonHeap Used",
+        "pos": {
+          "h": 9,
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "java_memory",
+              "field": "NonHeapMemoryUsageused",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_memory`:(LAST(`NonHeapMemoryUsageused`)) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Heap Used",
+        "pos": {
+          "h": 9,
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "java_memory",
+              "field": "HeapMemoryUsageused",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_memory`:(LAST(`HeapMemoryUsageused`)) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(HeapMemoryUsageused)",
+                "name": "last(HeapMemoryUsageused)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Heap max",
+        "pos": {
+          "h": 9,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "java_memory",
+              "field": "HeapMemoryUsagemax",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "jolokia_agent_url"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`java_memory`:(LAST(`HeapMemoryUsagemax`)) BY `host`, `jolokia_agent_url`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "jolokia_agent_url",
+        "datasource": "ftinfluxdb",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "java_memory",
+          "object": "",
+          "tag": "jolokia_agent_url",
+          "value": ""
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "jolokia_agent_url",
+        "seq": 0,
+        "type": "TAG",
+        "valueSort": "asc"
+      },
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['java_memory'],keyin=['host']){jolokia_agent_url='#{jolokia_agent_url}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "主机",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "JVM 监控视图 By Jolokia"
+}

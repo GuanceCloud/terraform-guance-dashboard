@@ -1,0 +1,984 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "plugin 重试数",
+        "pos": {
+          "h": 10,
+          "i": "chrt_9b78a0ab8aed457cb7b090198b12af66",
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "retry_count",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "984a0070-78f5-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "cabfc990-78f5-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`retry_count`)) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "发出总记录数",
+        "pos": {
+          "h": 10,
+          "i": "chrt_6f976ef2ef164c10856ae7cab722e3fb",
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "emit_records",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`emit_records`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "plugin 中 write 调用次数",
+        "pos": {
+          "h": 10,
+          "i": "chrt_bd602bac97f2498aa181adcda9536c62",
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "write_count",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7b632380-78f8-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7e2e0350-78f8-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`write_count`)) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "慢速刷新数",
+        "pos": {
+          "h": 10,
+          "i": "chrt_d4e6c3b7d5b94c70a5100e990bd77061",
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "slow_flush_count",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dc40f5b0-78f8-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "e18f9a30-78f8-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`slow_flush_count`)) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "回滚数",
+        "pos": {
+          "h": 10,
+          "i": "chrt_267a6ea0714a463fa8fc3fbbbe7ca796",
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "rollback_count",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "184cf810-78f9-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "1b19aca0-78f9-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`rollback_count`)) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "isRefresh": false,
+          "links": [],
+          "settings": {
+            "backgroundStyle": {
+              "background-size": "contain"
+            },
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "type": "contain",
+            "units": [],
+            "url": "https://tse4-mm.cn.bing.net/th/id/OIP-C.wslr5HuLKrt1iDNigIiAigHaDm?pid=ImgDet&rs=1"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "fluentd",
+        "pos": {
+          "h": 10,
+          "i": "chrt_02b0bb91f34b4f2ea93684041b77aae8",
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [],
+        "type": "picture"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "plugin 缓冲队列长度",
+        "pos": {
+          "h": 12,
+          "i": "chrt_e97e019024014f959532c07f903534fb",
+          "w": 4,
+          "x": 0,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "buffer_queue_length",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "28544050-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2a63bf60-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`buffer_queue_length`)) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "分段缓冲区长度",
+        "pos": {
+          "h": 12,
+          "i": "chrt_f155654e95fe4885a4b6db9b2c89b1a4",
+          "w": 5,
+          "x": 9,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "分段缓冲区长度",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "buffer_stage_length",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d2fbb40-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "8130aa10-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`buffer_stage_length`) AS `分段缓冲区长度`) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "当前分段缓冲区大小",
+                "name": "当前分段缓冲区大小",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "当前分段缓冲区大小",
+        "pos": {
+          "h": 12,
+          "i": "chrt_7b0c2cbf372d4a349fcf709c67b51464",
+          "w": 5,
+          "x": 14,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "当前分段缓冲区大小",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "buffer_stage_byte_size",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a8066030-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "ab1d8b40-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`buffer_stage_byte_size`) AS `当前分段缓冲区大小`) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "剩余缓冲区的可用空间",
+                "name": "剩余缓冲区的可用空间",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "剩余缓冲区的可用空间",
+        "pos": {
+          "h": 12,
+          "i": "chrt_20b75cc0be1a4b5dbcadddbfb10572b9",
+          "w": 5,
+          "x": 19,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "剩余缓冲区的可用空间",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "buffer_available_buffer_space_ratios",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "11184390-78fb-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "14186430-78fb-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`buffer_available_buffer_space_ratios`) AS `剩余缓冲区的可用空间`) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(buffer_queue_byte_size)",
+                "name": "last(buffer_queue_byte_size)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "plugin 缓冲队列大小",
+        "pos": {
+          "h": 12,
+          "i": "chrt_f80c7e87da4744538fc3cad653792ae9",
+          "w": 5,
+          "x": 4,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "plugin 缓冲队列大小",
+              "code": "A",
+              "dataSource": "Fluentd",
+              "field": "buffer_queue_byte_size",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "28544050-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2a63bf60-78fa-11ec-bff3-c3cdf53439bd",
+                  "logic": "and",
+                  "name": "agent_port",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{port}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`Fluentd`:(AVG(`buffer_queue_byte_size`) AS `plugin 缓冲队列大小`) { `host` = '#{host}' and `agent_port` = '#{port}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['Fluentd'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "port",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['Fluentd'], keyin=['agent_port']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Plugin端口",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Fluentd Overview"
+}

@@ -1,0 +1,991 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/kubernetes_api_server/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/kubernetes_api_server/kubernetes_api_server.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "API  Request (2xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_1d88be3a73e244cc92275d0c04308e39",
+          "w": 8,
+          "x": 0,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "apiserver_request_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "20.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_api_server`:(AVG(`apiserver_request_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` =  re('20.*') }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Work Queue Depth",
+        "pos": {
+          "h": 12,
+          "i": "chrt_32b5a0af888f474da072ae6063a45542",
+          "w": 8,
+          "x": 8,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "workqueue_depth",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance",
+                "name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_api_server`:(AVG(`workqueue_depth`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `name`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Work Queue Add Rate",
+        "pos": {
+          "h": 12,
+          "i": "chrt_c0bdc48c18bd4cc7acd9f01b79647ec6",
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "workqueue_adds_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "79822760-cdcf-11ec-9860-cf28efc5e904",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "79822761-cdcf-11ec-9860-cf28efc5e904",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance",
+                "name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_api_server`:(AVG(`workqueue_adds_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `name`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_resident_memory_bytes)",
+                "name": "last(process_resident_memory_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Memory",
+        "pos": {
+          "h": 14,
+          "i": "chrt_660d6acd2068425b970a5f6839da6d97",
+          "w": 8,
+          "x": 0,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "process_resident_memory_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "46dcc700-b97c-11ec-a39b-1b82d6b8bb02",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "4ec10a80-b97c-11ec-a39b-1b82d6b8bb02",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_api_server`:(AVG(`process_resident_memory_bytes`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU usage",
+        "pos": {
+          "h": 14,
+          "i": "chrt_1ba3a238283a4665b4fc31d31be42978",
+          "w": 8,
+          "x": 8,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "process_cpu_seconds_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7bfe9d50-b97c-11ec-a39b-1b82d6b8bb02",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "8136fab0-b97c-11ec-a39b-1b82d6b8bb02",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_api_server`:(AVG(`process_cpu_seconds_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Goroutines",
+        "pos": {
+          "h": 14,
+          "i": "chrt_ef26b77979bb4044a6c1ec9385262aba",
+          "w": 8,
+          "x": 16,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "go_goroutines",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "e5382cf0-b97c-11ec-a39b-1b82d6b8bb02",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "e95ea520-b97c-11ec-a39b-1b82d6b8bb02",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_api_server`:(AVG(`go_goroutines`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "last(workqueue_adds_total){\"instance\": \"172.16.0.229:6443\", \"name\": \"APIServiceRegistrationController\"}",
+                "name": "last(workqueue_adds_total){\"instance\": \"172.16.0.229:6443\", \"name\": \"APIServiceRegistrationController\"}"
+              }
+            ],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Work Queue Add Rate",
+        "pos": {
+          "h": 24,
+          "i": "chrt_d8872c1af27447799863ef22d5b105ff",
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "workqueue_adds_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "instance",
+                "name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_api_server`:(AVG(`workqueue_adds_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `name`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "last(workqueue_adds_total){\"instance\": \"172.16.0.229:6443\", \"name\": \"APIServiceRegistrationController\"}",
+                "name": "last(workqueue_adds_total){\"instance\": \"172.16.0.229:6443\", \"name\": \"APIServiceRegistrationController\"}"
+              }
+            ],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Work Queue Depth",
+        "pos": {
+          "h": 24,
+          "i": "chrt_c21a94b569ba4a44ac030b06e9033e60",
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "workqueue_depth",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ea651460-cdcf-11ec-9860-cf28efc5e904",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "ea651461-cdcf-11ec-9860-cf28efc5e904",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "instance",
+                "name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_api_server`:(AVG(`workqueue_depth`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `name`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "API  Request (4xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_19abc8fef01a4161b0bed96944c1c1b8",
+          "w": 8,
+          "x": 8,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "apiserver_request_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "40.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_api_server`:(AVG(`apiserver_request_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` =  re('40.*') }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "API  Request (5xx responses)",
+        "pos": {
+          "h": 14,
+          "i": "chrt_d9577c6883e1446590610df0a5c40521",
+          "w": 8,
+          "x": 16,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_api_server",
+              "field": "apiserver_request_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "value": "50.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_api_server`:(AVG(`apiserver_request_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` =  re('50.*') }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name_k8s",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_api_server'], keyin=['cluster_name_k8s'])[2m]"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "instance",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_api_server'], keyin=['instance']){cluster_name_k8s='#{cluster_name_k8s}'}[2m]"
+        },
+        "hide": 0,
+        "name": "instance",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Kubernetes API Server 监控视图"
+}

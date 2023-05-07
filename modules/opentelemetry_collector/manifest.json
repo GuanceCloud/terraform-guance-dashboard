@@ -1,0 +1,2405 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "send metrics 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_a341f11fbed84b43aca44bea4e0b15c6",
+          "w": 4,
+          "x": 0,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_sent_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`exporter_sent_metric_points`)) BY `host`, `exporter`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "send spans 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_e83cc134b1894874a6470ea1d4511f71",
+          "w": 4,
+          "x": 8,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_sent_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`exporter_sent_spans`)) { `host` = '#{host}' } BY `host`, `exporter`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "send log 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_d249eceb72d84d0bbf7970e3a296a714",
+          "w": 4,
+          "x": 16,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_sent_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "a9eee330-d819-11ec-b9c5-2933613e6e95",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`exporter_sent_log_records`)) { `host` = '#{host}' } BY `host`, `exporter`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_uptime)",
+                "name": "last(process_uptime)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "在线时长",
+        "pos": {
+          "h": 11,
+          "i": "chrt_0b610d192946482d82e9c5a108ab16e7",
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "process_uptime",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`process_uptime`)) BY `host`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "enqueue failed metrics数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_6b0ea1736bd7497fa99667f534f6c239",
+          "w": 4,
+          "x": 4,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_enqueue_failed_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`exporter_enqueue_failed_metric_points`)) { `host` = '#{host}' } BY `host`, `exporter`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "Spans",
+        "pos": {
+          "h": 15,
+          "i": "chrt_094b4a65de9a4d85a241f1e7600e4995",
+          "w": 8,
+          "x": 8,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_sent_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`exporter_sent_spans`)) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 3,
+          "i": "chrt_d889a11280964792b8636b063c4043d6",
+          "w": 8,
+          "x": 0,
+          "y": 25.5
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span style=\"color: blue;\">Metrics</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 3,
+          "i": "chrt_b609f30a18784817a3ed155652adfca9",
+          "w": 8,
+          "x": 8,
+          "y": 25.5
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span style=\"color: blue;\">Spans</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "enqueue failed spans 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_e831c2291a5345f8ae9e209321fd8b71",
+          "w": 4,
+          "x": 12,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_enqueue_failed_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`exporter_enqueue_failed_spans`)) { `host` = '#{host}' } BY `host`, `exporter`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 3,
+          "i": "chrt_149b0899d1474977aaefd3b40cbdbf08",
+          "w": 8,
+          "x": 16,
+          "y": 25.5
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span style=\"color: blue;\">Logs</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "enqueue failed logs 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_b3c1daab9cbb49d18ed20df40fe37d09",
+          "w": 4,
+          "x": 20,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_enqueue_failed_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`exporter_enqueue_failed_log_records`)) { `host` = '#{host}' } BY `host`, `exporter`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "Logs",
+        "pos": {
+          "h": 15,
+          "i": "chrt_428cff3fbbd5407489d2ffcdd0e2fc8c",
+          "w": 8,
+          "x": 16,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_sent_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`exporter_sent_log_records`)) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "exporter"
+        },
+        "name": "Metrics",
+        "pos": {
+          "h": 15,
+          "i": "chrt_f1af3deab4914bab8ebafa3f7ef7ce58",
+          "w": 8,
+          "x": 0,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "exporter_sent_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`exporter_sent_metric_points`)) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "processor"
+        },
+        "name": "batch_send_size_bucket",
+        "pos": {
+          "h": 12,
+          "i": "chrt_3c8e10e3585243208596df08049102a8",
+          "w": 6,
+          "x": 6,
+          "y": 57
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "processor_batch_batch_send_size_bucket",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "fed78810-d81a-11ec-b9c5-2933613e6e95",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`processor_batch_batch_send_size_bucket`)) { `host` = '#{host}' } BY `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "processor"
+        },
+        "name": "batch_send_size_count",
+        "pos": {
+          "h": 12,
+          "i": "chrt_5c9c8d6b07ee48ba9872417883a67623",
+          "w": 6,
+          "x": 12,
+          "y": 57
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "processor_batch_batch_send_size_count",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "43a7a6a0-d81b-11ec-b9c5-2933613e6e95",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`processor_batch_batch_send_size_count`)) { `host` = '#{host}' } BY `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "processor"
+        },
+        "name": "batch_send_size_sum",
+        "pos": {
+          "h": 12,
+          "i": "chrt_43e7f3b5b4004f79a81e0a1f74261778",
+          "w": 6,
+          "x": 18,
+          "y": 57
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "processor_batch_batch_send_size_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "5a6221e0-d81b-11ec-b9c5-2933613e6e95",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`processor_batch_batch_send_size_sum`)) { `host` = '#{host}' } BY `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "processor"
+        },
+        "name": "batch_timeout_trigger_send",
+        "pos": {
+          "h": 12,
+          "i": "chrt_6f3c8b96915c4e9c8ec1ab3dcd15fc1c",
+          "w": 6,
+          "x": 0,
+          "y": 57
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "processor_batch_timeout_trigger_send",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "c90298f0-d81b-11ec-b9c5-2933613e6e95",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`processor_batch_timeout_trigger_send`)) { `host` = '#{host}' } BY `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 3,
+          "i": "chrt_cad16dc367b74c3ca4ca01f2d4f81829",
+          "w": 8,
+          "x": 0,
+          "y": 71.5
+        },
+        "queries": [
+          {
+            "dashboardUUID": "dsbd_7fc73d0f5b83488cb474d052b0b38194",
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span style=\"color: blue;\">Metrics</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "accepted metrics 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_91f82cc56e114d4c9deaead9e829fa32",
+          "w": 4,
+          "x": 0,
+          "y": 74.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_accepted_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "receiver"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`receiver_accepted_metric_points`)) { `host` = '#{host}' } BY `host`, `receiver`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "refused metrics 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_7f000bd1ea1c42988d07b1b969029249",
+          "w": 4,
+          "x": 4,
+          "y": 74.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_refused_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "receiver"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`receiver_refused_metric_points`)) { `host` = '#{host}' } BY `host`, `receiver`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 3,
+          "i": "chrt_90b40143ba6e4b47a7e24359af0f1e48",
+          "w": 8,
+          "x": 8,
+          "y": 71.5
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span style=\"color: blue;\">Spans</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "accepted spans 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_443db09c72214291b9d6079990075f4f",
+          "w": 4,
+          "x": 8,
+          "y": 74.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_accepted_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "receiver"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`receiver_accepted_spans`)) { `host` = '#{host}' } BY `host`, `receiver`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "refused spans 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_32bee6edc89a4849a2b4975f5b677744",
+          "w": 4,
+          "x": 12,
+          "y": 74.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_refused_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "receiver"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`receiver_refused_spans`)) { `host` = '#{host}' } BY `host`, `receiver`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 3,
+          "i": "chrt_90dd23e91a6d4fa4b21af95f39bee31f",
+          "w": 8,
+          "x": 16,
+          "y": 71.5
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "<div class=\"dashboard-header text-center\">\n<span style=\"color: blue;\">Logs</span>\n</div>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "accepted logs 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_674c4a15f6be473393cc26cd6741bce0",
+          "w": 4,
+          "x": 16,
+          "y": 74.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_accepted_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "receiver"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`receiver_accepted_log_records`)) { `host` = '#{host}' } BY `host`, `receiver`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "refused logs 数量",
+        "pos": {
+          "h": 11,
+          "i": "chrt_48d9a32908d84c178d84fc01cd3c9d33",
+          "w": 4,
+          "x": 20,
+          "y": 74.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_refused_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "493b4460-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "receiver"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`otelcol`:(AVG(`receiver_refused_log_records`)) { `host` = '#{host}' } BY `host`, `receiver`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "isRefresh": false,
+          "links": [],
+          "settings": {
+            "backgroundStyle": {
+              "background-size": "contain"
+            },
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "type": "contain",
+            "units": [],
+            "url": "https://img-blog.csdnimg.cn/5416841d1cfe4a85aa54dd55363603ee.jpeg"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "otel-collector 架构",
+        "pos": {
+          "h": 23,
+          "i": "chrt_b3b401a9412042d5b50c2e9758a0daff",
+          "w": 10,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [],
+        "type": "picture"
+      },
+      {
+        "extend": {
+          "isRefresh": false,
+          "links": [],
+          "settings": {
+            "backgroundStyle": {
+              "background-size": "contain"
+            },
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "type": "contain",
+            "units": [],
+            "url": "https://img-blog.csdnimg.cn/46f3e2bc6b8a4bb59b35f33c1b9c948a.png"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "To Datakit",
+        "pos": {
+          "h": 23,
+          "i": "chrt_3c85557970444bf9a728009dd7566381",
+          "w": 10,
+          "x": 14,
+          "y": 0
+        },
+        "queries": [],
+        "type": "picture"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "Metrics",
+        "pos": {
+          "h": 15,
+          "i": "chrt_a95d6c45b72947a1be305a20b9d380c1",
+          "w": 8,
+          "x": 0,
+          "y": 85.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已接收",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_accepted_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`receiver_accepted_metric_points`) AS `已接收`) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已拒绝",
+              "code": "B",
+              "dataSource": "otelcol",
+              "field": "receiver_refused_metric_points",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`receiver_refused_metric_points`) AS `已拒绝`) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "Spans",
+        "pos": {
+          "h": 15,
+          "i": "chrt_41c9f0a746d640ba9516424d7e08a15d",
+          "w": 8,
+          "x": 8,
+          "y": 85.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已接收",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_accepted_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`receiver_accepted_spans`) AS `已接收`) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已拒绝",
+              "code": "B",
+              "dataSource": "otelcol",
+              "field": "receiver_refused_spans",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`receiver_refused_spans`) AS `已拒绝`) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "receiver"
+        },
+        "name": "Logs",
+        "pos": {
+          "h": 15,
+          "i": "chrt_c823d5e17de54148911d6e03791d0301",
+          "w": 8,
+          "x": 16,
+          "y": 85.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已接收",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "receiver_accepted_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`receiver_accepted_log_records`) AS `已接收`) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已拒绝",
+              "code": "B",
+              "dataSource": "otelcol",
+              "field": "receiver_refused_log_records",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d90f110-d810-11ec-ac7d-d356b1ec35ea",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`receiver_refused_log_records`) AS `已拒绝`) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_memory_rss)",
+                "name": "last(process_memory_rss)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "内存使用",
+        "pos": {
+          "h": 12,
+          "i": "chrt_29c4eced4aa94b49ba6ef4abe5048bf9",
+          "w": 4,
+          "x": 0,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "otelcol",
+              "field": "process_memory_rss",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "378fde20-da35-11ec-9e79-8308c7145e2b",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "exporter"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`otelcol`:(AVG(`process_memory_rss`)) { `host` = '#{host}' } BY `host`, `exporter`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [
+      "exporter",
+      "processor",
+      "receiver"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['otelcol'], keyin=['host'])"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "otel-collector"
+}

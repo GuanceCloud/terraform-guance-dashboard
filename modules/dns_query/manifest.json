@@ -1,0 +1,103 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "query time",
+                "name": "query time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "query time",
+        "pos": {
+          "h": 11,
+          "i": "chrt_131bc040e9794f138282a090c6a6e63a",
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "query time",
+              "code": "A",
+              "dataSource": "dns_query",
+              "field": "query_time_ms",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "server",
+                "result",
+                "record_type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`dns_query`:(AVG(`query_time_ms`) AS `query time`) BY `server`, `result`, `record_type`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": []
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7b4859484cf94231a0d1c3bf8a4efceb",
+      "name": "Telegraf"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "DNS Query"
+}

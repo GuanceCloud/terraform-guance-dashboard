@@ -1,0 +1,288 @@
+{
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardType": "CUSTOM",
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "links": [],
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "pageSize": 50,
+            "queryMode": "toGroupColumn",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "HTTP状态码汇总",
+        "pos": {
+          "h": 13,
+          "i": 0,
+          "w": 24,
+          "x": 0,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "返回结果",
+              "code": "C",
+              "dataSource": "http_response",
+              "field": "result_type",
+              "fieldFunc": "avg",
+              "fieldType": "string",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5aba75a0-8571-11eb-9c09-6bb272a0d104",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "server",
+                "tags"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`http_response`:(AVG(`result_type`) AS `返回结果`) { `host` = '#{host}' } by `server`, `tags`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "响应耗时（last）",
+              "code": "B",
+              "dataSource": "http_response",
+              "field": "response_time",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "e07b2410-8570-11eb-9c09-6bb272a0d104",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "server",
+                "tags"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`http_response`:(AVG(`response_time`) AS `响应耗时（last）`) { `host` = '#{host}' } by `server`, `tags`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "stackType": "time",
+            "tableSortMetricName": "服务状态码",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "HTTP服务状态码(0代表正常)",
+        "pos": {
+          "h": 9,
+          "i": 1,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "服务状态码",
+              "code": "A",
+              "dataSource": "http_response",
+              "field": "result_code",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "36c6af80-9203-11eb-a427-09931eb0a858",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "tags"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`http_response`:(AVG(`result_code`) AS `服务状态码`) { `host` = '#{host}' } by `tags`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "stackType": "time",
+            "tableSortMetricName": "响应耗时",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "响应耗时/s",
+        "pos": {
+          "h": 9,
+          "i": 2,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "响应耗时",
+              "code": "A",
+              "dataSource": "http_response",
+              "field": "response_time",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3c307d20-9203-11eb-a427-09931eb0a858",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "tags"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`http_response`:(AVG(`response_time`) AS `响应耗时`) { `host` = '#{host}' } by `tags`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "ftinfluxdb",
+        "definition": {
+          "field": "",
+          "metric": "http_response",
+          "object": "",
+          "tag": "host",
+          "value": ""
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "TAG",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "http_response"
+}

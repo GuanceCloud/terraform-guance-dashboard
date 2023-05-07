@@ -1,0 +1,902 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "consumer",
+                "name": "consumer"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Queue"
+        },
+        "name": "consumer",
+        "pos": {
+          "h": 8,
+          "i": "chrt_bcdc7b5c4e504714a2b7bdb872b4fd5a",
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "consumer",
+              "code": "A",
+              "dataSource": "activemq_queues",
+              "field": "consumer_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "fec2bec0-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{queue}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_queues`:(AVG(`consumer_count`) AS `consumer`) { `host` = 'df-solution-ecs-019' and `name` = '#{queue}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "dequeue",
+                "name": "dequeue"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Queue"
+        },
+        "name": "dequeue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_7d1219fddb2f45ec8fe3ab4487d7f766",
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "dequeue",
+              "code": "A",
+              "dataSource": "activemq_queues",
+              "field": "dequeue_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "fec2bec0-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{queue}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_queues`:(AVG(`dequeue_count`) AS `dequeue`) { `host` = 'df-solution-ecs-019' and `name` = '#{queue}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "enqueue",
+                "name": "enqueue"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Queue"
+        },
+        "name": "enqueue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_587a2dbbeea44c5a9a3db2f72f4c607f",
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "enqueue",
+              "code": "A",
+              "dataSource": "activemq_queues",
+              "field": "enqueue_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "fec2bec0-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{queue}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_queues`:(AVG(`enqueue_count`) AS `enqueue`) { `host` = 'df-solution-ecs-019' and `name` = '#{queue}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FFBD5F",
+                "key": "consumer",
+                "name": "consumer"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "consumer",
+        "pos": {
+          "h": 8,
+          "i": "chrt_0b587ec3284b4220b1e4d1a882d74d02",
+          "w": 8,
+          "x": 0,
+          "y": 13
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "consumer",
+              "code": "A",
+              "dataSource": "activemq_topics",
+              "field": "consumer_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "5f8c6cb0-9929-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_topics`:(AVG(`consumer_count`) AS `consumer`) { `host` = 'df-solution-ecs-019' and `name` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FFBD5F",
+                "key": "dequeue",
+                "name": "dequeue"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "dequeue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_539379d2d99d4d949c8da6dc32295328",
+          "w": 8,
+          "x": 8,
+          "y": 13
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "dequeue",
+              "code": "A",
+              "dataSource": "activemq_topics",
+              "field": "dequeue_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "5f8c6cb0-9929-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_topics`:(AVG(`dequeue_count`) AS `dequeue`) { `host` = 'df-solution-ecs-019' and `name` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FFBD5F",
+                "key": "enqueue",
+                "name": "enqueue"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "enqueue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_af2b10da471b451d973763945fde4a68",
+          "w": 8,
+          "x": 16,
+          "y": 13
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "enqueue",
+              "code": "A",
+              "dataSource": "activemq_topics",
+              "field": "enqueue_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "5f8c6cb0-9929-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_topics`:(AVG(`enqueue_count`) AS `enqueue`) { `host` = 'df-solution-ecs-019' and `name` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Subscribers"
+        },
+        "name": "dequeue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_44ae9ae879644ecea832d4e1b7c4e771",
+          "w": 8,
+          "x": 0,
+          "y": 23.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "dequeue",
+              "code": "A",
+              "dataSource": "activemq_subscribers",
+              "field": "dequeue_counter",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "dcf64a40-9929-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "subscription_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{subscribers}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_name",
+                "selector"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_subscribers`:(AVG(`dequeue_counter`) AS `dequeue`) { `host` = 'df-solution-ecs-019' and `subscription_name` = '#{subscribers}' } BY `destination_name`, `selector`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Subscribers"
+        },
+        "name": "enqueue",
+        "pos": {
+          "h": 8,
+          "i": "chrt_1cbd638f57f344d88cd4dbb11efdcf97",
+          "w": 8,
+          "x": 8,
+          "y": 23.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "enqueue",
+              "code": "A",
+              "dataSource": "activemq_subscribers",
+              "field": "enqueue_counter",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "dcf64a40-9929-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "subscription_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{subscribers}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "destination_name",
+                "selector"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_subscribers`:(AVG(`enqueue_counter`) AS `enqueue`) { `host` = 'df-solution-ecs-019' and `subscription_name` = '#{subscribers}' } BY `destination_name`, `selector`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Subscribers"
+        },
+        "name": "dispatched",
+        "pos": {
+          "h": 8,
+          "i": "chrt_cf8156060e294606be2692de93a0d67e",
+          "w": 8,
+          "x": 16,
+          "y": 23.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "dispatched",
+              "code": "A",
+              "dataSource": "activemq_subscribers",
+              "field": "dispatched_counter",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c4b48830-9928-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "df-solution-ecs-019"
+                },
+                {
+                  "id": "dcf64a40-9929-11ec-82c2-69b4f1783fb2",
+                  "logic": "and",
+                  "name": "subscription_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{subscribers}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "selector",
+                "destination_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`activemq_subscribers`:(AVG(`dispatched_counter`) AS `dispatched`) { `host` = 'df-solution-ecs-019' and `subscription_name` = '#{subscribers}' } BY `selector`, `destination_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "Queue",
+      "Topic",
+      "Subscribers"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['activemq_queues'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "queue",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['activemq_queues'], keyin=['name']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Queue",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "topic",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['activemq_topics'], keyin=['name']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Topic",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "subscribers",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['activemq_subscribers'], keyin=['subscription_name']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Subscriber",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7b4859484cf94231a0d1c3bf8a4efceb",
+      "name": "Telegraf"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "ActiveMQ"
+}

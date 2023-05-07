@@ -1,0 +1,2859 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/kafka/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/kafka/kafka.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#00B2CE",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#c23531",
+            "mappings": [],
+            "openCompare": false,
+            "pageSize": 50,
+            "precision": "2",
+            "queryMode": "toMergeColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "PartitionCount",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 8,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "density": "medium",
+              "field": "PartitionCount_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1b0cdc70-c380-11eb-8967-fb1050d86707",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3aab44b0-d448-11ed-aabb-014e4c6deedd",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`PartitionCount_Maximum`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [
+              {
+                "alias": "NetworkRxDroppedCount",
+                "key": "last(NetworkRxDropped_Maximum)",
+                "name": "last(NetworkRxDropped_Maximum)"
+              },
+              {
+                "alias": "NetworkTxDroppedCount",
+                "key": "last(NetworkTxDropped_Average)",
+                "name": "last(NetworkTxDropped_Average)"
+              }
+            ],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "right",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(MessageConversionsTimeMs.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "总计时间",
+                "name": "总计时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "消息转换时间",
+                "name": "消息转换时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "请求队列时间",
+                "name": "请求队列时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "响应队列时间",
+                "name": "响应队列时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "Network(Tx/Rx)DroppedCount",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "NetworkRxDropped_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c8227a0-d83f-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2d9ac390-d83f-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`NetworkRxDropped_Maximum`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "B",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "NetworkTxDropped_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2c8227a0-d83f-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2d9ac390-d83f-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`NetworkTxDropped_Average`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "right",
+            "legendValues": "",
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "kafka_topics_BytesInPerSec.Count",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "入流量",
+                "name": "入流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "出流量",
+                "name": "出流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "BytesInPerSec",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 8,
+          "y": 5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "入流量",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "BytesInPerSec_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "109bf340-c383-11eb-b98e-df59d31b9dd6",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "d141ec00-d838-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                },
+                {
+                  "id": "d711ce70-d838-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`BytesInPerSec_Average`) AS `入流量`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' and `Topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "出流量",
+              "code": "B",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "BytesOutPerSec_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2206b890-c383-11eb-b98e-df59d31b9dd6",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "e2fad150-d838-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                },
+                {
+                  "id": "ea083cd0-d838-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`BytesOutPerSec_Average`) AS `出流量`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' and `Topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#C57ECD",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#c23531",
+            "mappings": [],
+            "openCompare": false,
+            "pageSize": 50,
+            "precision": "2",
+            "queryMode": "toMergeColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "UnderReplicatedPartitions",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 12,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "density": "medium",
+              "field": "UnderReplicatedPartitions_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "582c4aa0-c380-11eb-b98e-df59d31b9dd6",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "033efda0-d452-11ed-98f5-555c3cd7dc56",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`UnderReplicatedPartitions_Maximum`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#C8DD4F",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#c23531",
+            "mappings": [],
+            "openCompare": false,
+            "pageSize": 50,
+            "precision": "2",
+            "queryMode": "toMergeColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "Topic",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 4,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "density": "medium",
+              "field": "GlobalTopicCount_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "07f2b970-c380-11eb-8967-fb1050d86707",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`GlobalTopicCount_Maximum`)) { `Cluster Name` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "downsample": "last",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "right",
+            "legendValues": "",
+            "levels": [],
+            "lineColor": "#c23531",
+            "mainMeasurementQueryCode": "A",
+            "mappings": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "pageSize": 50,
+            "queryMode": "toMergeColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "事件队列",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "QueueSize",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 8,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "FetchThrottleQueueSize",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "FetchThrottleQueueSize_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`FetchThrottleQueueSize_Maximum`) AS `FetchThrottleQueueSize`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ProduceThrottleQueueSize",
+              "code": "B",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ProduceThrottleQueueSize_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ProduceThrottleQueueSize_Maximum`) AS `ProduceThrottleQueueSize`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "RemoteLogReaderTaskQueueSize",
+              "code": "C",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "RemoteLogReaderTaskQueueSize_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`RemoteLogReaderTaskQueueSize_Maximum`) AS `RemoteLogReaderTaskQueueSize`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "RequestThrottleQueueSize",
+              "code": "D",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "RequestThrottleQueueSize_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`RequestThrottleQueueSize_Maximum`) AS `RequestThrottleQueueSize`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "B",
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(BytesInPerSec.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "ProduceMessageConversionsPerSec",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ProduceMessageConversionsPerSec",
+              "code": "B",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ProduceMessageConversionsPerSec_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "65d1fbb0-7b81-11eb-b5c6-45fe7ccbc2b1",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "de14e110-d835-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                },
+                {
+                  "id": "e3e20460-d835-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ProduceMessageConversionsPerSec_Maximum`) AS `ProduceMessageConversionsPerSec`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' and `Topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "B",
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(BytesInPerSec.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "FetchMessageConversionsPerSec",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 0,
+          "y": 5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "FetchMessageConversionsPerSec",
+              "code": "B",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "FetchMessageConversionsPerSec_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b5f26340-d7bf-11ed-b4c1-051bdd909d63",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "819bd650-d83a-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                },
+                {
+                  "id": "88a9de10-d83a-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`FetchMessageConversionsPerSec_Average`) AS `FetchMessageConversionsPerSec`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' and `Topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#498BFE",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#c23531",
+            "mappings": [],
+            "openCompare": false,
+            "pageSize": 50,
+            "precision": "2",
+            "queryMode": "toMergeColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "ActiveControllerCount",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 0,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "density": "medium",
+              "field": "ActiveControllerCount_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "07f2b970-c380-11eb-8967-fb1050d86707",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ActiveControllerCount_Maximum`)) { `Cluster Name` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#A0DD86",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#c23531",
+            "mappings": [],
+            "openCompare": false,
+            "pageSize": 50,
+            "precision": "2",
+            "queryMode": "toMergeColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "OfflinePartitionsCount",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "OfflinePartitionsCount_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "29915f80-d43d-11ed-aabb-014e4c6deedd",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`OfflinePartitionsCount_Average`)) { `Cluster Name` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [
+              {
+                "alias": "KafkaDataLogsDiskUsed",
+                "key": "last(KafkaDataLogsDiskUsed_Average)",
+                "name": "last(KafkaDataLogsDiskUsed_Average)"
+              }
+            ],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": [],
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(KafkaDataLogsDiskUsed_Average)",
+                "name": "last(KafkaDataLogsDiskUsed_Average)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "KafkaDataLogsDiskUsed",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "KafkaDataLogsDiskUsed_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "filters": [
+                {
+                  "id": "530aebb0-d83e-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "58002590-d83e-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`KafkaDataLogsDiskUsed_Average`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(MessageConversionsTimeMs.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(MemoryFree_Average)",
+                "name": "last(MemoryFree_Average)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "MemoryFree",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 8,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "MemoryFree_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "87ed6480-d83d-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "89293fe0-d83d-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`MemoryFree_Average`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(MessageConversionsTimeMs.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(CpuIdle_Average)",
+                "name": "last(CpuIdle_Average)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "CpuIdle",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 0,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "CpuIdle_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d467f1e0-d83d-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "d5f03f90-d83d-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`CpuIdle_Average`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "right",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "D",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(MessageConversionsTimeMs.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "总计时间",
+                "name": "总计时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "消息转换时间",
+                "name": "消息转换时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "请求队列时间",
+                "name": "请求队列时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "响应队列时间",
+                "name": "响应队列时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "Queue/ConversionsTime",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 0,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "总计时间",
+              "code": "D",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ProduceTotalTimeMsMean_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ProduceTotalTimeMsMean_Maximum`) AS `总计时间`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "消息转换时间",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ProduceMessageConversionsTimeMsMean_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ProduceMessageConversionsTimeMsMean_Maximum`) AS `消息转换时间`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "请求队列时间",
+              "code": "B",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ProduceRequestQueueTimeMsMean_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ProduceRequestQueueTimeMsMean_Maximum`) AS `请求队列时间`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "响应队列时间",
+              "code": "C",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ProduceResponseQueueTimeMsMean_Maximum",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "labelOp": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ProduceResponseQueueTimeMsMean_Maximum`) AS `响应队列时间`) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "low",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "tableSortMetricName": "last(MessageConversionsTimeMs.Count)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(ZooKeeperRequestLatencyMsMean_Average)",
+                "name": "last(ZooKeeperRequestLatencyMsMean_Average)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "ZooKeeperRequestLatencyMsMean",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 8,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ZooKeeperRequestLatencyMsMean_Average",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "98867000-d83f-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "99769c60-d83f-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`ZooKeeperRequestLatencyMsMean_Average`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "#1B84F2",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0.0"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0.1"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0.5"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0.8"
+                ]
+              },
+              {
+                "bgColor": "#3790ED",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "1.0"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "5.0"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "10.0"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "NOT_CONNECTED",
+                "operation": "=",
+                "originalVal": [
+                  "0.0"
+                ]
+              },
+              {
+                "mappingVal": "ASSOCIATING",
+                "operation": "=",
+                "originalVal": [
+                  "0.1"
+                ]
+              },
+              {
+                "mappingVal": "CONNECTING",
+                "operation": "=",
+                "originalVal": [
+                  "0.5"
+                ]
+              },
+              {
+                "mappingVal": "CONNECTEDREADONLY",
+                "operation": "=",
+                "originalVal": [
+                  "0.8"
+                ]
+              },
+              {
+                "mappingVal": "CONNECTED",
+                "operation": "=",
+                "originalVal": [
+                  "1.0"
+                ]
+              },
+              {
+                "mappingVal": "CLOSED",
+                "operation": "=",
+                "originalVal": [
+                  "5.0"
+                ]
+              },
+              {
+                "mappingVal": "AUTH_FAILED",
+                "operation": "=",
+                "originalVal": [
+                  "10.0"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "1",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "ZooKeeperSessionState",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "ActiveControllerCount_Maximum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "65216f70-d840-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "6ad5daa0-d840-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(AVG(`ActiveControllerCount_Maximum`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(KafkaAppLogsDiskUsed_Maximum)",
+                "name": "last(KafkaAppLogsDiskUsed_Maximum)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "KafkaAppLogsDiskUsed",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 0,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "KafkaAppLogsDiskUsed_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "57714450-d844-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "5bb09bb0-d844-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`KafkaAppLogsDiskUsed_Maximum`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Overview"
+        },
+        "name": "RootDiskUsed",
+        "pos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "RootDiskUsed_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bca52a30-d844-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4527f30-d844-11ed-85a4-81714166997a",
+                  "logic": "and",
+                  "name": "Broker ID",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{BrokerID}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`RootDiskUsed_Maximum`)) { `Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "EstimatedTimeLag",
+        "pos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 14
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "EstimatedTimeLag_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d7eced0-d84c-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2d9cc190-d84e-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Consumer Group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{ConsumerGroup}"
+                },
+                {
+                  "id": "32bd5130-d84e-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`EstimatedTimeLag_Maximum`)) { `Cluster Name` = '#{host}' and `Consumer Group` = '#{ConsumerGroup}' and `Topic` = '#{topic}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "mainMeasurementQueryCode": "A",
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "slimit": 20,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Topic"
+        },
+        "name": "OffsetLag",
+        "pos": {
+          "h": 10,
+          "w": 12,
+          "x": 12,
+          "y": 14
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "aws_AWS/Kafka",
+              "field": "MaxOffsetLag_Maximum",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "53bd3170-d84e-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Cluster Name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "58193890-d84e-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Consumer Group",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{ConsumerGroup}"
+                },
+                {
+                  "id": "5c7b5a30-d84e-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Topic",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{topic}"
+                },
+                {
+                  "id": "619c10e0-d84e-11ed-bbb0-b533f85c59ff",
+                  "logic": "and",
+                  "name": "Partition",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{Partition}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/Kafka`:(LAST(`MaxOffsetLag_Maximum`)) { `Cluster Name` = '#{host}' and `Consumer Group` = '#{ConsumerGroup}' and `Topic` = '#{topic}' and `Partition` = '#{Partition}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "Overview",
+      "Topic"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/Kafka'], keyin=['Cluster Name'])"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "Cluster",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "BrokerID",
+        "datasource": "ftinfluxdb",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "aws_AWS/Kafka",
+          "object": "",
+          "tag": "Broker ID",
+          "value": ""
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "BrokerID",
+        "seq": 1,
+        "type": "TAG",
+        "valueSort": "asc"
+      },
+      {
+        "code": "topic",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/Kafka'], keyin=['Topic']){`Cluster Name` = '#{host}' and `Broker ID` = '#{BrokerID}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "Topic",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "ConsumerGroup",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/Kafka'], keyin=['Consumer Group']){`Cluster Name` = '#{host}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "ConsumerGroup",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "Partition",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/Kafka'], keyin=['Partition']){`Cluster Name` = '#{host}' and `Consumer Group` = '#{ConsumerGroup}'  }"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "Partition",
+        "seq": 4,
+        "type": "QUERY",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_3762df06e93c4327888ff9c8d0bdf267",
+      "name": "CloudWatch"
+    },
+    {
+      "id": "tag_665570d74dca400eb0ea232df0574fb2",
+      "name": "Function"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "AWS MSK"
+}

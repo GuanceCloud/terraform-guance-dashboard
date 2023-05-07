@@ -1,0 +1,1514 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "rx_queue_0",
+                "name": "rx_queue_0",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "rx_queue_1",
+                "name": "rx_queue_1",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "rx_queue_2",
+                "name": "rx_queue_2",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "rx_queue_3",
+                "name": "rx_queue_3",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "rx_queue_bytes/s",
+        "pos": {
+          "h": 8,
+          "i": "chrt_ee7052abf5914db4b61c23698d012a7f",
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_0",
+              "code": "A",
+              "dataSource": "ethtool",
+              "field": "rx_queue_0_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_0_bytes`) AS `rx_queue_0`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_1",
+              "code": "B",
+              "dataSource": "ethtool",
+              "field": "rx_queue_1_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_1_bytes`) AS `rx_queue_1`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_2",
+              "code": "C",
+              "dataSource": "ethtool",
+              "field": "rx_queue_2_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_2_bytes`) AS `rx_queue_2`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_3",
+              "code": "D",
+              "dataSource": "ethtool",
+              "field": "rx_queue_3_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_3_bytes`) AS `rx_queue_3`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "tx_queue_0",
+                "name": "tx_queue_0",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "tx_queue_1",
+                "name": "tx_queue_1",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "tx_queue_2",
+                "name": "tx_queue_2",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "tx_queue_3",
+                "name": "tx_queue_3",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "tx_queue_bytes/s",
+        "pos": {
+          "h": 8,
+          "i": "chrt_32bd8714b800429e8365547afa06de99",
+          "w": 8,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_0",
+              "code": "A",
+              "dataSource": "ethtool",
+              "field": "tx_queue_0_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_0_bytes`) AS `tx_queue_0`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_1",
+              "code": "B",
+              "dataSource": "ethtool",
+              "field": "tx_queue_1_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_1_bytes`) AS `tx_queue_1`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_2",
+              "code": "C",
+              "dataSource": "ethtool",
+              "field": "tx_queue_2_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_2_bytes`) AS `tx_queue_2`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_3",
+              "code": "D",
+              "dataSource": "ethtool",
+              "field": "tx_queue_3_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_3_bytes`) AS `tx_queue_3`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "tx_queue_packets/s",
+        "pos": {
+          "h": 8,
+          "i": "chrt_c845bbdc81c84d9383947f5c1d416368",
+          "w": 8,
+          "x": 8,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_0_packets",
+              "code": "A",
+              "dataSource": "ethtool",
+              "field": "tx_queue_0_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_0_packets`) AS `tx_queue_0_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_1_packets",
+              "code": "B",
+              "dataSource": "ethtool",
+              "field": "tx_queue_1_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_1_packets`) AS `tx_queue_1_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_2_packets",
+              "code": "C",
+              "dataSource": "ethtool",
+              "field": "tx_queue_2_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_2_packets`) AS `tx_queue_2_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_3_packets",
+              "code": "D",
+              "dataSource": "ethtool",
+              "field": "tx_queue_3_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_3_packets`) AS `tx_queue_3_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "rx_queue_packets/s",
+        "pos": {
+          "h": 8,
+          "i": "chrt_e5a3438ade2c4fe5aa29b43e75b9d171",
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_0_packets",
+              "code": "A",
+              "dataSource": "ethtool",
+              "field": "rx_queue_0_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_0_packets`) AS `rx_queue_0_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_1_packets",
+              "code": "B",
+              "dataSource": "ethtool",
+              "field": "rx_queue_1_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_1_packets`) AS `rx_queue_1_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_2_packets",
+              "code": "C",
+              "dataSource": "ethtool",
+              "field": "rx_queue_2_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_2_packets`) AS `rx_queue_2_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_3_packets",
+              "code": "D",
+              "dataSource": "ethtool",
+              "field": "rx_queue_3_packets",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_3_packets`) AS `rx_queue_3_packets`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "rx_queue_kicks/s",
+        "pos": {
+          "h": 8,
+          "i": "chrt_310c0bb8d3c248eaa29576270532ac06",
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_0_kicks",
+              "code": "A",
+              "dataSource": "ethtool",
+              "field": "rx_queue_0_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_0_kicks`) AS `rx_queue_0_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_1_kicks",
+              "code": "B",
+              "dataSource": "ethtool",
+              "field": "rx_queue_1_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_1_kicks`) AS `rx_queue_1_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_2_kicks",
+              "code": "C",
+              "dataSource": "ethtool",
+              "field": "rx_queue_2_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_2_kicks`) AS `rx_queue_2_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rx_queue_3_kicks",
+              "code": "D",
+              "dataSource": "ethtool",
+              "field": "rx_queue_3_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`rx_queue_3_kicks`) AS `rx_queue_3_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "tx_queue_kicks/s",
+        "pos": {
+          "h": 8,
+          "i": "chrt_c281b5bc20b7416c8ec8b745e1fafc44",
+          "w": 8,
+          "x": 16,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_0_kicks",
+              "code": "A",
+              "dataSource": "ethtool",
+              "field": "tx_queue_0_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_0_kicks`) AS `tx_queue_0_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_1_kicks",
+              "code": "B",
+              "dataSource": "ethtool",
+              "field": "tx_queue_1_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_1_kicks`) AS `tx_queue_1_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_2_kicks",
+              "code": "C",
+              "dataSource": "ethtool",
+              "field": "tx_queue_2_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_2_kicks`) AS `tx_queue_2_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "tx_queue_3_kicks",
+              "code": "D",
+              "dataSource": "ethtool",
+              "field": "tx_queue_3_kicks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c0d877b0-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c4cc9540-99f2-11ec-a412-dbc00ed6a772",
+                  "logic": "and",
+                  "name": "interface",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{interface}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`ethtool`:(AVG(`tx_queue_3_kicks`) AS `tx_queue_3_kicks`) { `host` = '#{host}' and `interface` = '#{interface}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['ethtool'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机名",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "interface",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['ethtool'], keyin=['interface']){host='#{host}',driver!='veth'}[5m]"
+        },
+        "hide": 0,
+        "name": "网络接口",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7b4859484cf94231a0d1c3bf8a4efceb",
+      "name": "Telegraf"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "EthTool"
+}

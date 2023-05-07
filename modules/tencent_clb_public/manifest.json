@@ -1,0 +1,2564 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出流量",
+                "name": "客户端到 LB 的出流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入流量",
+                "name": "客户端到 LB 的入流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络流量"
+        },
+        "name": "客户端到 LB 的流量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "客户端到 LB 的出流量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientAccOuttraffic_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientAccOuttraffic_sum`) AS `客户端到 LB 的出流量`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "客户端到 LB 的入流量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientAccIntraffic_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientAccIntraffic_sum`) AS `客户端到 LB 的入流量`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出流量",
+                "name": "客户端到 LB 的出流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入流量",
+                "name": "客户端到 LB 的入流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接信息"
+        },
+        "name": "CLB 返回的状态码 (分钟)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "3xx",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClbHttp3xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClbHttp3xx_sum`) AS `3xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "4xx",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClbHttp4xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClbHttp4xx_sum`) AS `4xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5xx",
+              "code": "C",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClbHttp5xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClbHttp5xx_sum`) AS `5xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出流量",
+                "name": "客户端到 LB 的出流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入流量",
+                "name": "客户端到 LB 的入流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接信息"
+        },
+        "name": "HTTP 返回的状态码 (分钟)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "2xx",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "Http2xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`Http2xx_sum`) AS `2xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "3xx",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "Http3xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`Http3xx_sum`) AS `3xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "4xx",
+              "code": "C",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "Http4xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`Http4xx_sum`) AS `4xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5xx",
+              "code": "D",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "Http5xx_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`Http5xx_sum`) AS `5xx`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出带宽",
+                "name": "客户端到 LB 的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入带宽",
+                "name": "客户端到 LB 的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络流量"
+        },
+        "name": "客户端到 LB 的带宽",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "客户端到 LB 的入带宽",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientIntraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientIntraffic_max`) AS `客户端到 LB 的入带宽`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "客户端到 LB 的出带宽",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientOuttraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientOuttraffic_max`) AS `客户端到 LB 的出带宽`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "LB 到后端的入带宽",
+                "name": "LB 到后端的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "LB 到后端的出带宽",
+                "name": "LB 到后端的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络流量"
+        },
+        "name": "LB 到后端的带宽",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LB 到后端的入带宽",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "InTraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`InTraffic_max`) AS `LB 到后端的入带宽`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LB 到后端的出带宽",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "OutTraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`OutTraffic_max`) AS `LB 到后端的出带宽`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "LB 到后端的入包量",
+                "name": "LB 到后端的入包量",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              },
+              {
+                "key": "LB 到后端的出包量",
+                "name": "LB 到后端的出包量",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络流量"
+        },
+        "name": "LB 到后端的数据包量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LB 到后端的入包量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "InPkg_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`InPkg_max`) AS `LB 到后端的入包量`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LB 到后端的出包量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "OutPkg_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`OutPkg_max`) AS `LB 到后端的出包量`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的入包量",
+                "name": "客户端到 LB 的入包量",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的出包量",
+                "name": "客户端到 LB 的出包量",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络流量"
+        },
+        "name": "客户端到 LB 的数据包量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "客户端到 LB 的入包量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientInpkg_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientInpkg_max`) AS `客户端到 LB 的入包量`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "客户端到 LB 的出包量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientOutpkg_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientOutpkg_max`) AS `客户端到 LB 的出包量`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出带宽",
+                "name": "客户端到 LB 的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入带宽",
+                "name": "客户端到 LB 的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接信息"
+        },
+        "name": "LB 到后端的连接数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LB 到后端的连接数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ConNum_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ConNum_sum`) AS `LB 到后端的连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出带宽",
+                "name": "客户端到 LB 的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入带宽",
+                "name": "客户端到 LB 的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "请求响应"
+        },
+        "name": "丢弃连接数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "丢弃连接数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "DropTotalConns_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`DropTotalConns_max`) AS `丢弃连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出带宽",
+                "name": "客户端到 LB 的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入带宽",
+                "name": "客户端到 LB 的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接信息"
+        },
+        "name": "LB 到后端的新建连接数 (分钟)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LB 到后端的新建连接数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "NewConn_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`NewConn_sum`) AS `LB 到后端的新建连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出带宽",
+                "name": "客户端到 LB 的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入带宽",
+                "name": "客户端到 LB 的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接信息"
+        },
+        "name": "健康检查异常数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "健康检查异常数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "UnhealthRsCount_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`UnhealthRsCount_sum`) AS `健康检查异常数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "入带宽利用率",
+                "name": "入带宽利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              },
+              {
+                "key": "出带宽利用率",
+                "name": "出带宽利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络流量"
+        },
+        "name": "带宽利用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "入带宽利用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "IntrafficVipRatio_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`IntrafficVipRatio_max`) AS `入带宽利用率`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "出带宽利用率",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "OuttrafficVipRatio_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`OuttrafficVipRatio_max`) AS `出带宽利用率`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均请求时间",
+                "name": "平均请求时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "最大请求时间",
+                "name": "最大请求时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "请求响应"
+        },
+        "name": "请求时间",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均请求时间",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ReqAvg_avg",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ReqAvg_avg`) AS `平均请求时间`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大请求时间",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ReqMax_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ReqMax_max`) AS `最大请求时间`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均响应时间",
+                "name": "平均响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "最大响应时间",
+                "name": "最大响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "请求响应"
+        },
+        "name": "响应时间",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均响应时间",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "RspAvg_avg",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`RspAvg_avg`) AS `平均响应时间`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大响应时间",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "RspMax_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`RspMax_max`) AS `最大响应时间`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均响应时间",
+                "name": "平均响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "最大响应时间",
+                "name": "最大响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "请求响应"
+        },
+        "name": "成功请求数 (分钟)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "成功请求数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "SuccReq_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`SuccReq_sum`) AS `成功请求数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均响应时间",
+                "name": "平均响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "最大响应时间",
+                "name": "最大响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "请求响应"
+        },
+        "name": "响应超时个数 (分钟)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "响应超时个数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "RspTimeout_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`RspTimeout_sum`) AS `响应超时个数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均响应时间",
+                "name": "平均响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "最大响应时间",
+                "name": "最大响应时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "请求响应"
+        },
+        "name": "每秒请求数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "每秒请求数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "TotalReq_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`TotalReq_sum`) AS `每秒请求数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "客户端到 LB 的出带宽",
+                "name": "客户端到 LB 的出带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              },
+              {
+                "key": "客户端到 LB 的入带宽",
+                "name": "客户端到 LB 的入带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "Mbps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接信息"
+        },
+        "name": "客户端到 LB 的连接数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "活跃连接数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientConnum_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientConnum_max`) AS `活跃连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "非活跃连接数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientInactiveConn_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientInactiveConn_max`) AS `非活跃连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "并发连接数",
+              "code": "C",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientConcurConn_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientConcurConn_max`) AS `并发连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "新建连接数",
+              "code": "D",
+              "dataSource": "tencentcloud_QCE/LB_PUBLIC",
+              "field": "ClientNewConn_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "48c09300-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4cf9f6f0-033a-11ed-9fb6-6773c92c65a1",
+                  "logic": "and",
+                  "name": "LoadBalancerName",
+                  "op": "=",
+                  "type": "",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/LB_PUBLIC`:(AVG(`ClientNewConn_max`) AS `新建连接数`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "连接信息",
+      "网络流量",
+      "请求响应"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tencentcloud_QCE/LB_PUBLIC'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "LoadBalancerName",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tencentcloud_QCE/LB_PUBLIC'], keyin=['LoadBalancerName']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    },
+    {
+      "id": "tag_f1f9e3fbbc494afc815587592d7dd192",
+      "name": "腾讯云监控"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "腾讯云 CLB Public"
+}

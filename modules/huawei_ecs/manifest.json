@@ -1,0 +1,2180 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 使用率",
+                "name": "CPU 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU/内存"
+        },
+        "name": "CPU 使用率",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "cpu_usage_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`cpu_usage_average`) AS `CPU 使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存使用率",
+                "name": "内存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU/内存"
+        },
+        "name": "内存使用率",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "mem_usedPercent_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`mem_usedPercent_average`) AS `内存使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘使用率",
+                "name": "磁盘使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "磁盘"
+        },
+        "name": "磁盘使用率",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "disk_usedPercent_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`disk_usedPercent_average`) AS `磁盘使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 使用率",
+                "name": "CPU 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU/内存"
+        },
+        "name": "CPU 负载",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1分钟负载",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "load_average1_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`load_average1_average`) AS `1分钟负载`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5分钟负载",
+              "code": "B",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "load_average5_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`load_average5_average`) AS `5分钟负载`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "15分钟负载",
+              "code": "C",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "load_average15_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`load_average15_average`) AS `15分钟负载`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘 Inodes 使用率",
+                "name": "磁盘 Inodes 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "磁盘"
+        },
+        "name": "磁盘 Inodes 使用率",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘 Inodes 使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "disk_inodesUsedPercent_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`disk_inodesUsedPercent_average`) AS `磁盘 Inodes 使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘 IO 使用率",
+                "name": "磁盘 IO 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "磁盘"
+        },
+        "name": "磁盘 IO 使用率",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 19
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘 IO 使用率",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "disk_ioUtils_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`disk_ioUtils_average`) AS `磁盘 IO 使用率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘可用空间",
+                "name": "磁盘可用空间",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "GB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "磁盘"
+        },
+        "name": "磁盘可用空间",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘可用空间",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "disk_free_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`disk_free_average`) AS `磁盘可用空间`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "入网带宽",
+                "name": "入网带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "bps"
+                ]
+              },
+              {
+                "key": "出网带宽",
+                "name": "出网带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "bps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络"
+        },
+        "name": "网络带宽",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 0,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "出网带宽",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "net_bitRecv_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`net_bitRecv_average`) AS `出网带宽`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "入网带宽",
+              "code": "B",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "net_bitSent_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`net_bitSent_average`) AS `入网带宽`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "发送数据包",
+                "name": "发送数据包",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              },
+              {
+                "key": "接收数据包",
+                "name": "接收数据包",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络"
+        },
+        "name": "网络数据包",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 6,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "发送数据包",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "net_packetSent_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`net_packetSent_average`) AS `发送数据包`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "接收数据包",
+              "code": "B",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "net_packetRecv_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`net_packetRecv_average`) AS `接收数据包`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络"
+        },
+        "name": "TCP 连接数",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 18,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "established",
+              "code": "A",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "net_tcp_established_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`net_tcp_established_average`) AS `established`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total",
+              "code": "B",
+              "dataSource": "huaweicloud_AGT.ECS",
+              "field": "net_tcp_total_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_AGT.ECS`:(AVG(`net_tcp_total_average`) AS `total`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "流入速率",
+                "name": "流入速率",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "流出速率",
+                "name": "流出速率",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "网络"
+        },
+        "name": "带外网络速率",
+        "pos": {
+          "h": 7,
+          "w": 6,
+          "x": 12,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流入速率",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_incoming_bytes_aggregate_rate_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_incoming_bytes_aggregate_rate_average`) AS `流入速率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流出速率",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_outgoing_bytes_aggregate_rate_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_outgoing_bytes_aggregate_rate_average`) AS `流出速率`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘读带宽",
+                "name": "磁盘读带宽",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "磁盘写带宽",
+                "name": "磁盘写带宽",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "磁盘"
+        },
+        "name": "磁盘读写带宽",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 19
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘读带宽",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "disk_read_bytes_rate_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`disk_read_bytes_rate_average`) AS `磁盘读带宽`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘写带宽",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "disk_write_bytes_rate_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`disk_write_bytes_rate_average`) AS `磁盘写带宽`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘读带宽",
+                "name": "磁盘读带宽",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "磁盘写带宽",
+                "name": "磁盘写带宽",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "磁盘"
+        },
+        "name": "磁盘读写 IOPS",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 19
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘读 IOPS",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "disk_read_requests_rate_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`disk_read_requests_rate_average`) AS `磁盘读 IOPS`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘写 IOPS",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "disk_write_requests_rate_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`disk_write_requests_rate_average`) AS `磁盘写 IOPS`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "入方向带宽",
+                "name": "入方向带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "bps"
+                ]
+              },
+              {
+                "key": "出方向带宽",
+                "name": "出方向带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "bps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "虚拟机"
+        },
+        "name": "虚拟机带宽",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 8,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "入方向带宽",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_vm_bandwidth_in_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_vm_bandwidth_in_average`) AS `入方向带宽`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "出方向带宽",
+              "code": "C",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_vm_bandwidth_out_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_vm_bandwidth_out_average`) AS `出方向带宽`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "入方向带宽",
+                "name": "入方向带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "bps"
+                ]
+              },
+              {
+                "key": "出方向带宽",
+                "name": "出方向带宽",
+                "unit": "",
+                "units": [
+                  "bandWidth",
+                  "bps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "虚拟机"
+        },
+        "name": "虚拟机连接数",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 0,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "连接数",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_vm_connections_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_vm_connections_average`) AS `连接数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "新建连接数",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_vm_newconnections_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_vm_newconnections_average`) AS `新建连接数`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "入方向数据包",
+                "name": "入方向数据包",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              },
+              {
+                "key": "出方向数据包",
+                "name": "出方向数据包",
+                "unit": "pps",
+                "units": [
+                  "custom",
+                  "pps"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "虚拟机"
+        },
+        "name": "虚拟机数据包",
+        "pos": {
+          "h": 7,
+          "w": 8,
+          "x": 16,
+          "y": 38
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "入方向数据包",
+              "code": "A",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_vm_pps_in_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_vm_pps_in_average`) AS `入方向数据包`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "出方向数据包",
+              "code": "B",
+              "dataSource": "huaweicloud_SYS.ECS",
+              "field": "network_vm_pps_out_average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d3957960-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d6a8d3e0-5b3b-11ed-9536-f1c6993de0cc",
+                  "logic": "and",
+                  "name": "instance_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`huaweicloud_SYS.ECS`:(AVG(`network_vm_pps_out_average`) AS `出方向数据包`) { `account_name` = '#{account_name}' and `instance_name` = '#{instance_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "CPU/内存",
+      "磁盘",
+      "网络",
+      "虚拟机"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['huaweicloud_SYS.ECS'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "instance_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['huaweicloud_SYS.ECS'], keyin=['instance_name']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    },
+    {
+      "id": "tag_2bc493eaae3a4d89b94f2476318daf16",
+      "name": "华为云"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "华为云 ECS"
+}

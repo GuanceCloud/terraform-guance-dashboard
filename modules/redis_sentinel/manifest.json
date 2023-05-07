@@ -1,0 +1,1503 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/redis_sentinel/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/redis_sentinel/redis_sentinel.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "isRefresh": false,
+          "links": [],
+          "settings": {
+            "alias": [],
+            "backgroundStyle": {
+              "background-size": "contain"
+            },
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "type": "contain",
+            "units": [],
+            "url": "https://df-showcase.oss-cn-shanghai.aliyuncs.com/redis.png"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 24,
+          "i": "chrt_9d22576d5aed494890a91fff1771822c",
+          "w": 9,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [],
+        "type": "picture"
+      },
+      {
+        "extend": {
+          "settings": {
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Redis sentinel 介绍",
+        "pos": {
+          "h": 15,
+          "i": "chrt_fe16b7090bd948419c8f0480dcb9e58e",
+          "w": 15,
+          "x": 9,
+          "y": 0
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "哨兵又名`redis sentinel`，在生产环境中，不免会有意外原因导致`redis`服务器挂掉，如果此时挂掉的是一个`master`节点，主节点宕机，主从复制将不能继续进行，写数据将会阻塞，而哨兵的存在主要是为了切换掉宕机的`master`，然后从`master`下面的`slave`节点中选举一个作为新的`master`，并且把旧的`master`的`slave`全部转移到新的`master`上面，继续原有的主从复制，保证了`redis`主从复制的`HA`。\n\n哨兵本身是一个独立的进程，本身也是有单点问题的，所以哨兵也有自身的集群，用来保证哨兵本身的容错机制。\n\n`sdown`代表主观宕机，`odown`代表客观宕机\n主观宕机是哨兵的一个节点发送心跳在规定时间（该时间可配置）内没有收到回复，哨兵则认为该`master`宕机，那么该`master`就是主观宕机，这是一个哨兵节点的主观臆断，很明显主观宕机不\"准确\",此时需要客观去判断是否真正的宕机了，此时该哨兵节点会通知其他哨兵节点去探测该`master`的状况，如果超过`quorum`的都认为该`master`节点宕机，那么就客观的认为`master`真正宕机。注：`quorum`一般配置为过半。"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "slaves数量",
+        "pos": {
+          "h": 9,
+          "i": "chrt_51a2248a61ae48c3b2e61e794d7a8290",
+          "w": 3,
+          "x": 12,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_known_slaves",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_known_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "valColorMappings": [
+              {
+                "field": "节点类型",
+                "fontColor": "#2D8EF4",
+                "operation": "=",
+                "value": [
+                  "1"
+                ]
+              },
+              {
+                "field": "节点类型",
+                "fontColor": "#F5AD46",
+                "operation": "=",
+                "value": [
+                  "0"
+                ]
+              }
+            ],
+            "valMappings": [
+              {
+                "field": "节点类型",
+                "mappingVal": "master",
+                "operation": "=",
+                "originalVal": [
+                  "1"
+                ]
+              },
+              {
+                "field": "节点类型",
+                "mappingVal": "slave",
+                "operation": "=",
+                "originalVal": [
+                  "0"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "节点分布",
+        "pos": {
+          "h": 10,
+          "i": "chrt_49452cd832c64964a445512b8dd30c5a",
+          "w": 24,
+          "x": 0,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "节点类型",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_cluster_type",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "24e82370-c696-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "27303eb0-c696-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{redis_cluster_name}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "host",
+                "redis_cluster_name",
+                "port"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_cluster_type`) AS `节点类型`) { `host` = '#{host}' and `redis_cluster_name` = '#{redis_cluster_name}' } BY `host`, `redis_cluster_name`, `port`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#25FB9A",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0"
+                ]
+              },
+              {
+                "bgColor": "#FB4B4B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": ">",
+                "value": [
+                  "0"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "sdown_slaves",
+        "pos": {
+          "h": 9,
+          "i": "chrt_c8b552b80f9b4770a701ec503842d5ec",
+          "w": 3,
+          "x": 18,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "sdown_slaves 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_sdown_slaves",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_sdown_slaves`) AS `sdown_slaves 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "sentinels 数量",
+        "pos": {
+          "h": 9,
+          "i": "chrt_f7e987ad54aa48c5a700b4e2b30e3c7c",
+          "w": 3,
+          "x": 9,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "sentinels 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_known_sentinels",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_known_sentinels`) AS `sentinels 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "slave 数",
+                "name": "slave 数",
+                "unit": "个",
+                "units": [
+                  "custom",
+                  "个"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "ok slaves",
+        "pos": {
+          "h": 10,
+          "i": "chrt_b8ddf899bfe942f98ee135179ad922be",
+          "w": 8,
+          "x": 0,
+          "y": 34
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_ok_slaves",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "2b044690-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2ddf2bf0-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_ok_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' } BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "slave 数",
+                "name": "slave 数",
+                "unit": "个",
+                "units": [
+                  "custom",
+                  "个"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "sdown slaves",
+        "pos": {
+          "h": 10,
+          "i": "chrt_e0161d86d7794e7386d3a43874514017",
+          "w": 8,
+          "x": 8,
+          "y": 34
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_sdown_slaves",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "2b044690-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2ddf2bf0-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_sdown_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' } BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "slave 数",
+                "name": "slave 数",
+                "unit": "个",
+                "units": [
+                  "custom",
+                  "个"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "odown slaves",
+        "pos": {
+          "h": 10,
+          "i": "chrt_059cccbd1ef3449bb2067dfcb3076725",
+          "w": 8,
+          "x": 16,
+          "y": 34
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_odown_slaves",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "2b044690-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2ddf2bf0-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_odown_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' } BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "slave 数",
+                "name": "slave 数",
+                "unit": "个",
+                "units": [
+                  "custom",
+                  "个"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "known sentinel",
+        "pos": {
+          "h": 10,
+          "i": "chrt_e60e1d3d4165488e981aa0f80cf62e71",
+          "w": 8,
+          "x": 8,
+          "y": 44
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_known_sentinels",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "2b044690-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2ddf2bf0-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_known_sentinels`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' } BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "slave 数",
+                "name": "slave 数",
+                "unit": "个",
+                "units": [
+                  "custom",
+                  "个"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "known slaves",
+        "pos": {
+          "h": 10,
+          "i": "chrt_507050fc6fd045c5b11d7e12b2d31df0",
+          "w": 8,
+          "x": 0,
+          "y": 44
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_known_slaves",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "2b044690-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "2ddf2bf0-c695-11ec-b493-85b0ac1df295",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_known_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' } BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(redis_sentinel_ping_latency)",
+                "name": "last(redis_sentinel_ping_latency)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "ping_latency",
+        "pos": {
+          "h": 10,
+          "i": "chrt_93ab825d9ead4557a10e2578530d32ac",
+          "w": 8,
+          "x": 0,
+          "y": 54
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_ping_latency",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_ping_latency`)) BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(redis_sentinel_last_ok_ping_latency)",
+                "name": "last(redis_sentinel_last_ok_ping_latency)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "last_ok_ping_latency",
+        "pos": {
+          "h": 10,
+          "i": "chrt_5a8fe88da49e4cd69f5992c5754dc08f",
+          "w": 8,
+          "x": 8,
+          "y": 54
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_last_ok_ping_latency",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "host",
+                "redis_cluster_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_last_ok_ping_latency`)) BY `host`, `redis_cluster_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(redis_sentinel_last_ok_ping_latency)",
+                "name": "last(redis_sentinel_last_ok_ping_latency)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "link_pending_commands",
+        "pos": {
+          "h": 10,
+          "i": "chrt_a553ead125aa41f18292eefeb759962a",
+          "w": 8,
+          "x": 16,
+          "y": 44
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_link_pending_commands",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "7e607280-c6ab-11ec-97fd-0968e0cbe5b8",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "7e607281-c6ab-11ec-97fd-0968e0cbe5b8",
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "value": "#{redis_cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "port"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`redis_sentinel`:(AVG(`redis_sentinel_link_pending_commands`)) { `host` = '#{host}' and `redis_cluster_name` = '#{redis_cluster_name}' } BY `port`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "#25FB9A",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0"
+                ]
+              },
+              {
+                "bgColor": "#FB4B4B",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": ">",
+                "value": [
+                  "0"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "odown_slaves",
+        "pos": {
+          "h": 9,
+          "i": "chrt_73ba1ff312a745fea07388b6d431e627",
+          "w": 3,
+          "x": 21,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "odown_slaves 数",
+              "code": "A",
+              "dataSource": "redis_sentinel",
+              "field": "redis_sentinel_odown_slaves",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "value": "#{host}"
+                },
+                {
+                  "logic": "and",
+                  "name": "redis_cluster_name",
+                  "op": "=",
+                  "value": "mymaster"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_odown_slaves`) AS `odown_slaves 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "ok slaves数量",
+        "pos": {
+          "h": 9,
+          "i": "chrt_121b11b251ed409789a26723aabfdff2",
+          "w": 3,
+          "x": 15,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "slave 数",
+              "children": [
+                {
+                  "alias": "slave 数",
+                  "code": "A",
+                  "dataSource": "redis_sentinel",
+                  "field": "redis_sentinel_known_slaves",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "value": "#{host}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "redis_cluster_name",
+                      "op": "=",
+                      "value": "mymaster"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_known_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "alias": "sdown_slaves数",
+                  "code": "B",
+                  "dataSource": "redis_sentinel",
+                  "field": "redis_sentinel_sdown_slaves",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "host",
+                      "op": "=",
+                      "value": "#{host}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "redis_cluster_name",
+                      "op": "=",
+                      "value": "mymaster"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`redis_sentinel`:(AVG(`redis_sentinel_sdown_slaves`) AS `sdown_slaves数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }",
+                  "queryFuncs": [],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A-B",
+              "funcList": [
+                "last"
+              ],
+              "q": "F::dataflux__dql:(EXEC_FORMULA(expr='A-B', alias='slave 数', A=dql(\"M::`redis_sentinel`:(AVG(`redis_sentinel_known_slaves`) AS `slave 数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }\"), B=dql(\"M::`redis_sentinel`:(AVG(`redis_sentinel_sdown_slaves`) AS `sdown_slaves数`) { `host` = '#{host}' and `redis_cluster_name` = 'mymaster' }\")))",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['redis_sentinel'],keyin=['host'])"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "redis_cluster_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['redis_sentinel'],keyin=['redis_cluster_name']){host='#{host}'}"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_b85aaf95b68642eb8975aced576425e4",
+      "name": "redis"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Redis Sentinel 监控视图"
+}

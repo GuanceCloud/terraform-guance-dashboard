@@ -1,0 +1,1046 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "状态码",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "2xx",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "2xxResponse_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`2xxResponse_max`) AS `2xx`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "3xx",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "3xxResponse_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`3xxResponse_max`) AS `3xx`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "4xx",
+              "code": "C",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "4xxResponse_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`4xxResponse_max`) AS `4xx`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5xx",
+              "code": "D",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "5xxResponse_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`5xxResponse_max`) AS `5xx`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CDN 回源流量",
+                "name": "CDN 回源流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CDN 回源流量",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CDN 回源流量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "CdnOriginTraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`CdnOriginTraffic_max`) AS `CDN 回源流量`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CDN 回源流量",
+                "name": "CDN 回源流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "低频存储请求",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "低频存储读请求",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "IaReadRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`IaReadRequests_max`) AS `低频存储读请求`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "低频存储写请求",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "IaWriteRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`IaWriteRequests_max`) AS `低频存储写请求`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "低频存储读请求",
+                "name": "低频存储读请求",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "低频数据读取量",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "低频数据读取量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "IaRetrieval_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`IaRetrieval_max`) AS `低频数据读取量`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "外网、内网上传总流量",
+                "name": "外网、内网上传总流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "外网、内网上传总流量",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "外网、内网上传总流量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "InboundTraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`InboundTraffic_max`) AS `外网、内网上传总流量`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内网下行流量",
+                "name": "内网下行流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "内网上行流量",
+                "name": "内网上行流量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "内网流量",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内网下行流量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "InternalTraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`InternalTraffic_max`) AS `内网下行流量`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内网上行流量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "InternetTraffic_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`InternetTraffic_max`) AS `内网上行流量`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "标准存储请求 (次)",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "标准存储读请求",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "StdReadRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`StdReadRequests_max`) AS `标准存储读请求`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "标准存储写请求",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "StdWriteRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`StdWriteRequests_max`) AS `标准存储写请求`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "标准数据读取量",
+                "name": "标准数据读取量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "标准数据读取量",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 8
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "标准数据读取量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/COS",
+              "field": "StdRetrieval_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "96f073f0-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9a5bd980-fdc8-11ec-965c-9b6e773cdd58",
+                  "logic": "and",
+                  "name": "bucket",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{bucket}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/COS`:(AVG(`StdRetrieval_max`) AS `标准数据读取量`) { `account_name` = '#{account_name}' and `bucket` = '#{bucket}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tencentcloud_QCE/COS'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "bucket",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tencentcloud_QCE/COS'], keyin=['bucket']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Bucket",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    },
+    {
+      "id": "tag_f1f9e3fbbc494afc815587592d7dd192",
+      "name": "腾讯云监控"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "腾讯云 COS"
+}

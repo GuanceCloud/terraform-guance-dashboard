@@ -1,0 +1,1932 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/jenkins_ci_dashboard/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/jenkins_ci_dashboard/jenkins_ci_dashboard.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline  执行数",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pipeline 执行次数",
+              "code": "A",
+              "dataSource": "jenkins_pipeline",
+              "field": "pipeline_name",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "5b39dfe0-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(COUNT(`pipeline_name`) AS `Pipeline 执行次数`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "失败率",
+                "name": "失败率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "失败率",
+                "name": "失败率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 失败率",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "失败率",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "jenkins_pipeline",
+                  "field": "pipeline_name",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "88801590-bee0-11ec-9780-850646c1d59e",
+                      "logic": "and",
+                      "name": "ci_status",
+                      "op": "!=",
+                      "type": "keyword",
+                      "value": "success"
+                    },
+                    {
+                      "id": "a1447710-f2d4-11ec-a681-ddb073c69920",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`jenkins_pipeline`:(COUNT(`pipeline_name`)) { `ci_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "jenkins_pipeline",
+                  "field": "pipeline_name",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "a5c93be0-f2d4-11ec-a681-ddb073c69920",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`jenkins_pipeline`:(COUNT(`pipeline_name`)) { `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='失败率', A=\"L::`jenkins_pipeline`:(COUNT(`pipeline_name`)) { `ci_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }\", B=\"L::`jenkins_pipeline`:(COUNT(`pipeline_name`)) { `pipeline_id` = '#{pipeline_id}' }\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "pipeline 执行失败次数",
+                "name": "pipeline 执行失败次数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "执行失败的 Pipeline",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 15.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "pipeline 执行失败次数",
+              "code": "A",
+              "dataSource": "jenkins_pipeline",
+              "field": "pipeline_name",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "ba143bd0-bee1-11ec-9780-850646c1d59e",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "cb9b1690-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(COUNT(`pipeline_name`) AS `pipeline 执行失败次数`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(执行时间)",
+                "name": "avg(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p99(执行时间)",
+                "name": "p99(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p90(执行时间)",
+                "name": "p90(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p75(执行时间)",
+                "name": "p75(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p50(执行时间)",
+                "name": "p50(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "max(执行时间)",
+                "name": "max(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 执行时间",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 15.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "avg(执行时间)",
+              "code": "A",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c082f840-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(AVG(`duration`) AS `avg(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p99(执行时间)",
+              "code": "C",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p99",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c082f840-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 99) AS `p99(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p90(执行时间)",
+              "code": "D",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c082f840-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 90) AS `p90(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p75(执行时间)",
+              "code": "E",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p75",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c082f840-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 75) AS `p75(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p50(执行时间)",
+              "code": "F",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p50",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c082f840-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 50) AS `p50(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max(执行时间)",
+              "code": "G",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "max",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c082f840-f2d4-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(MAX(`duration`) AS `max(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "Job 执行数",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 48
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Job 执行次数",
+              "code": "A",
+              "dataSource": "jenkins_job",
+              "field": "build_name",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "28437c70-f2d5-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(COUNT(`build_name`) AS `Job 执行次数`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "失败率",
+                "name": "失败率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "失败率",
+                "name": "失败率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "Job 失败率",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 48
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "失败率",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "jenkins_job",
+                  "field": "build_id",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "88801590-bee0-11ec-9780-850646c1d59e",
+                      "logic": "and",
+                      "name": "build_status",
+                      "op": "!=",
+                      "type": "keyword",
+                      "value": "success"
+                    },
+                    {
+                      "id": "b4528f50-f2d8-11ec-a681-ddb073c69920",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`jenkins_job`:(COUNT(`build_id`)) { `build_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "jenkins_job",
+                  "field": "build_id",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "b88bf340-f2d8-11ec-a681-ddb073c69920",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`jenkins_job`:(COUNT(`build_id`)) { `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='失败率', A=\"L::`jenkins_job`:(COUNT(`build_id`)) { `build_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }\", B=\"L::`jenkins_job`:(COUNT(`build_id`)) { `pipeline_id` = '#{pipeline_id}' }\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "Job 执行失败次数",
+                "name": "Job 执行失败次数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "执行失败的 Job",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 61
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Job 执行失败次数",
+              "code": "A",
+              "dataSource": "jenkins_job",
+              "field": "build_id",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "ba143bd0-bee1-11ec-9780-850646c1d59e",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "d1005380-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(COUNT(`build_id`) AS `Job 执行失败次数`) { `build_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(Job执行时间)",
+                "name": "avg(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p99(Job执行时间)",
+                "name": "p99(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p90(Job执行时间)",
+                "name": "p90(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p75(Job执行时间)",
+                "name": "p75(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p50(Job执行时间)",
+                "name": "p50(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "max(Job执行时间)",
+                "name": "max(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "Job 执行时间",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 61
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "avg(Job执行时间)",
+              "code": "A",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c79aee40-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(AVG(`build_duration`) AS `avg(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p99(Job执行时间)",
+              "code": "B",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p99",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c79aee40-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 99) AS `p99(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p90(Job执行时间)",
+              "code": "C",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p90",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c79aee40-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 90) AS `p90(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p75(Job执行时间)",
+              "code": "D",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p75",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c79aee40-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 75) AS `p75(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p50(Job执行时间)",
+              "code": "E",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p50",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c79aee40-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 50) AS `p50(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max(Job执行时间)",
+              "code": "F",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "max",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "c79aee40-f2d8-11ec-a681-ddb073c69920",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(MAX(`build_duration`) AS `max(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均执行时间",
+                "name": "平均执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "最大执行时间",
+                "name": "最大执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P50 执行时间",
+                "name": "P50 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P75 执行时间",
+                "name": "P75 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P90 执行时间",
+                "name": "P90 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P99 执行时间",
+                "name": "P99 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "执行失败的 Pipleine 耗时排行（TOP 10）",
+        "pos": {
+          "h": 18,
+          "w": 24,
+          "x": 0,
+          "y": 27.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均执行时间",
+              "code": "A",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e84c0e00-f3a3-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "2c8df650-f3a4-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(AVG(`duration`) AS `平均执行时间`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大执行时间",
+              "code": "B",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "max",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e84c0e00-f3a3-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "33e42aa0-f3a4-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(MAX(`duration`) AS `最大执行时间`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50 执行时间",
+              "code": "C",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p50",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e84c0e00-f3a3-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "3714f830-f3a4-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 50) AS `P50 执行时间`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75 执行时间",
+              "code": "D",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p75",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e84c0e00-f3a3-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "3d3c7080-f3a4-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 75) AS `P75 执行时间`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90 执行时间",
+              "code": "E",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e84c0e00-f3a3-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "3d3c7080-f3a4-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 90) AS `P90 执行时间`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99 执行时间",
+              "code": "F",
+              "dataSource": "jenkins_pipeline",
+              "field": "duration",
+              "fieldFunc": "p99",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "e84c0e00-f3a3-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "3d3c7080-f3a4-11ec-9f00-55f394e5e407",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_pipeline`:(PERCENTILE(`duration`, 99) AS `P99 执行时间`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均执行时间",
+                "name": "平均执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P99 执行时间",
+                "name": "P99 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P90 执行时间",
+                "name": "P90 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P75 执行时间",
+                "name": "P75 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P50 执行时间",
+                "name": "P50 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "最大执行时间",
+                "name": "最大执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "执行失败的 Job 耗时排行（TOP 10）",
+        "pos": {
+          "h": 19,
+          "w": 24,
+          "x": 0,
+          "y": 73
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均执行时间",
+              "code": "A",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "26ffa530-f3ae-11ec-87f2-d75f005ca639",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(AVG(`build_duration`) AS `平均执行时间`) { `pipeline_id` = '#{pipeline_id}' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99 执行时间",
+              "code": "B",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p99",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "26ffa530-f3ae-11ec-87f2-d75f005ca639",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 99) AS `P99 执行时间`) { `pipeline_id` = '#{pipeline_id}' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90 执行时间",
+              "code": "C",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p90",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "26ffa530-f3ae-11ec-87f2-d75f005ca639",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 90) AS `P90 执行时间`) { `pipeline_id` = '#{pipeline_id}' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75 执行时间",
+              "code": "D",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p75",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "26ffa530-f3ae-11ec-87f2-d75f005ca639",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 75) AS `P75 执行时间`) { `pipeline_id` = '#{pipeline_id}' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50 执行时间",
+              "code": "E",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "p50",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "26ffa530-f3ae-11ec-87f2-d75f005ca639",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(PERCENTILE(`build_duration`, 50) AS `P50 执行时间`) { `pipeline_id` = '#{pipeline_id}' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大执行时间",
+              "code": "F",
+              "dataSource": "jenkins_job",
+              "field": "build_duration",
+              "fieldFunc": "max",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "26ffa530-f3ae-11ec-87f2-d75f005ca639",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`jenkins_job`:(MAX(`build_duration`) AS `最大执行时间`) { `pipeline_id` = '#{pipeline_id}' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "groups": [
+      "Pipeline",
+      "Job"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "pipeline_id",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::jenkins_pipeline:(distinct(pipeline_id))"
+        },
+        "hide": 0,
+        "name": "Pipeline ID",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "JENKINS CI 概览视图"
+}

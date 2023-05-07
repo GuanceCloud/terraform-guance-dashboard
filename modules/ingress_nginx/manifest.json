@@ -1,0 +1,1199 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/ingress_nginx/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/ingress_nginx/ingress_nginx.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Controller Request Volume",
+        "pos": {
+          "h": 10,
+          "i": "chrt_f7aa9a088a90464da6a79eee6e6032f9",
+          "w": 8,
+          "x": 0,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "requests",
+              "fieldFunc": "avg",
+              "fill": "previous",
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                },
+                {
+                  "logic": "and",
+                  "name": "ingress",
+                  "op": "=",
+                  "value": "#{ingress}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`prom_ingress`:(fill(AVG(`requests`), previous)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `ingress` = '#{ingress}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(requests)",
+                "name": "last(requests)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Controller Success Rate (non-4|5xx responses)",
+        "pos": {
+          "h": 10,
+          "i": "chrt_6342c43f719746d794d208e7e5b81ce2",
+          "w": 8,
+          "x": 16,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "prom_ingress",
+                  "field": "requests",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_namespace",
+                      "op": "=",
+                      "value": "#{controller_namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_class",
+                      "op": "=",
+                      "value": "#{controller_class}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "status",
+                      "op": "=~",
+                      "value": "[4-5].*"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "IRATE(\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `status` != re('[4-5].*') }\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "irate"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "prom_ingress",
+                  "field": "requests",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_namespace",
+                      "op": "=",
+                      "value": "#{controller_namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_class",
+                      "op": "=",
+                      "value": "#{controller_class}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "IRATE(\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "irate"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"IRATE(\\\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `status` != re('[4-5].*') }\\\")\", B=\"IRATE(\\\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }\\\")\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Config Reloads",
+        "pos": {
+          "h": 10,
+          "i": "chrt_9ddbe019ae4746b5932499ea3bf53473",
+          "w": 8,
+          "x": 0,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "success",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_ingress`:(AVG(`success`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#F0462D",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#6CF02D",
+                "lineColor": "",
+                "operation": "!=",
+                "value": [
+                  "0"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "Failed",
+                "operation": "=",
+                "originalVal": [
+                  "0"
+                ]
+              },
+              {
+                "mappingVal": "Success",
+                "operation": "!=",
+                "originalVal": [
+                  "0"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Last Config",
+        "pos": {
+          "h": 10,
+          "i": "chrt_ab0159f10e094cfb83bf96cc5bc33afb",
+          "w": 8,
+          "x": 8,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "config_last_reload_successful",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_ingress`:(AVG(`config_last_reload_successful`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Ingress Request Volume",
+        "pos": {
+          "h": 10,
+          "i": "chrt_3c84fcc54a1c4db7a25f656409419751",
+          "w": 8,
+          "x": 8,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "requests",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                },
+                {
+                  "logic": "and",
+                  "name": "ingress",
+                  "op": "=",
+                  "value": "#{ingress}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "ingress"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `ingress` = '#{ingress}' } BY `ingress`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(requests)",
+                "name": "last(requests)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Ingress Success Rate (non-4|5xx responses)",
+        "pos": {
+          "h": 10,
+          "i": "chrt_a13158b6bd0648d1a6a89f6f513cae0b",
+          "w": 8,
+          "x": 16,
+          "y": 20
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "code": "A",
+                  "dataSource": "prom_ingress",
+                  "field": "requests",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_namespace",
+                      "op": "=",
+                      "value": "#{controller_namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_class",
+                      "op": "=",
+                      "value": "#{controller_class}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "ingress",
+                      "op": "=",
+                      "value": "#{ingress}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "status",
+                      "op": "=~",
+                      "value": "[4-5].*"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "IRATE(\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `ingress` = '#{ingress}' and `status` != re('[4-5].*') }\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "irate"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                },
+                {
+                  "code": "B",
+                  "dataSource": "prom_ingress",
+                  "field": "requests",
+                  "fieldFunc": "avg",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "logic": "and",
+                      "name": "cluster_name_k8s",
+                      "op": "=",
+                      "value": "#{cluster_name}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_namespace",
+                      "op": "=",
+                      "value": "#{controller_namespace}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "controller_class",
+                      "op": "=",
+                      "value": "#{controller_class}"
+                    },
+                    {
+                      "logic": "and",
+                      "name": "ingress",
+                      "op": "=",
+                      "value": "#{ingress}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "IRATE(\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `ingress` = '#{ingress}' }\")",
+                  "queryFuncs": [
+                    {
+                      "args": [],
+                      "name": "irate"
+                    }
+                  ],
+                  "type": "dql",
+                  "withLabels": []
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, A=\"IRATE(\\\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `ingress` = '#{ingress}' and `status` != re('[4-5].*') }\\\")\", B=\"IRATE(\\\"M::`prom_ingress`:(AVG(`requests`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' and `ingress` = '#{ingress}' }\\\")\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(nginx_process_resident_memory_bytes)",
+                "name": "avg(nginx_process_resident_memory_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Average Memory Usage",
+        "pos": {
+          "h": 10,
+          "i": "chrt_f9e1e6c718ca43659bf36b40e1b9958a",
+          "w": 8,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "nginx_process_resident_memory_bytes",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_ingress`:(AVG(`nginx_process_resident_memory_bytes`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Average CPU Usage",
+        "pos": {
+          "h": 10,
+          "i": "chrt_6dccb3a07dd949558aa99d2fcfe78fc3",
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "nginx_process_cpu_seconds_total",
+              "fieldFunc": "sum",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`prom_ingress`:(SUM(`nginx_process_cpu_seconds_total`)) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Received",
+                "name": "Received",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "Send",
+                "name": "Send",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Network I/O pressure",
+        "pos": {
+          "h": 10,
+          "i": "chrt_0d4250d521984ae388ecae20d2f8b2eb",
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Received",
+              "code": "A",
+              "dataSource": "prom_ingress",
+              "field": "request_size_sum",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`prom_ingress`:(AVG(`request_size_sum`) AS `Received`) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Send",
+              "code": "B",
+              "dataSource": "prom_ingress",
+              "field": "response_size_sum",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_namespace",
+                  "op": "=",
+                  "value": "#{controller_namespace}"
+                },
+                {
+                  "logic": "and",
+                  "name": "controller_class",
+                  "op": "=",
+                  "value": "#{controller_class}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`prom_ingress`:(AVG(`response_size_sum`) AS `Send`) { `cluster_name_k8s` = '#{cluster_name}' and `controller_namespace` = '#{controller_namespace}' and `controller_class` = '#{controller_class}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_ingress'], keyin=['cluster_name_k8s'])[5m]"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "controller_namespace",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_ingress'], keyin=['controller_namespace']){cluster_name_k8s='#{cluster_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Namespace",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "controller_class",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_ingress'], keyin=['controller_class']){cluster_name_k8s='#{cluster_name}',controller_namespace='#{controller_namespace}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Controller Class",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "ingress",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_ingress'], keyin=['ingress']){cluster_name_k8s='#{cluster_name}',controller_namespace='#{controller_namespace}',controller_class='#{controller_class}'}[5m]"
+        },
+        "hide": 0,
+        "name": "Ingress",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Ingress Nginx 监控视图"
+}

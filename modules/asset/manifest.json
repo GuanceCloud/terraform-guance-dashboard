@@ -1,0 +1,1592 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": false,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "新建图表",
+        "pos": {
+          "h": 7,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "name": "",
+            "query": {
+              "content": "#  <font color='red'>实例账单数据时间为 T - 1，请至少选择最近 3 天，查看 1 天前的数据</font>"
+            }
+          }
+        ],
+        "type": "text"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareChartType": "singlestat",
+            "compareType": "dayCompare",
+            "compares": [
+              {
+                "alia": "日同比",
+                "label": "日（与一天前对比）",
+                "value": "dayCompare"
+              }
+            ],
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": true,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(billing_amount)",
+                "name": "sum(billing_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "费用",
+        "pos": {
+          "h": 12,
+          "w": 11,
+          "x": 0,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "f56766a0-79fb-11ed-801f-bf26e5edea59",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "4561fd90-79fd-11ed-801f-bf26e5edea59",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "664c9330-7a20-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`)) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) }",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "bar",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "lower",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "金额",
+                "name": "金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "费用趋势",
+        "pos": {
+          "h": 12,
+          "w": 13,
+          "x": 11,
+          "y": 9.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "金额",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "367f00c0-b1c5-11ed-bb39-615e2f6a6985",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "367f00c1-b1c5-11ed-bb39-615e2f6a6985",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "367f00c2-b1c5-11ed-bb39-615e2f6a6985",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "billing_account_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`) AS `金额`) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) } BY `billing_account_name`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareChartType": "",
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "compares": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [],
+            "levels": [],
+            "onlyShowGroupName": true,
+            "openCompare": false,
+            "openStack": true,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "金额",
+                "name": "金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "产品费用分析"
+        },
+        "name": "产品费用",
+        "pos": {
+          "h": 13,
+          "w": 8,
+          "x": 0,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "金额",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "dc4157e0-7a22-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "e2e86070-7a22-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "e91cd110-7a22-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "billing_product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`) AS `金额`) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) } BY `billing_product_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "doughnut",
+            "colors": [],
+            "currentChartType": "pie",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "legendPostion": "right",
+            "levels": [],
+            "onlyShowGroupName": true,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "金额",
+                "name": "金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "产品费用分析"
+        },
+        "name": "产品费用分布",
+        "pos": {
+          "h": 13,
+          "w": 8,
+          "x": 8,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "金额",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "610e13f0-7a23-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "659793b0-7a23-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "6f816b30-7a23-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "billing_product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`) AS `金额`) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) } BY `billing_product_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#FFBD5F",
+            "colors": [],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "sum(billing_amount)",
+                "name": "sum(billing_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "产品费用分析"
+        },
+        "name": "产品费用Top",
+        "pos": {
+          "h": 13,
+          "w": 8,
+          "x": 16,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3cb9bc10-7a24-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "3f6b2070-7a24-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "440716c0-7a24-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [
+                null,
+                "top:10"
+              ],
+              "groupBy": [
+                "billing_product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`)) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) } BY `billing_product_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colorLevel": 3,
+            "colors": [],
+            "currentChartType": "treemap",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levelArr": [],
+            "levels": [],
+            "mainMeasurementLimit": 20,
+            "mainMeasurementQueryCode": "A",
+            "mainMeasurementSort": "top",
+            "rangeColor": "",
+            "rangeColorKey": "light-blue",
+            "showFieldMapping": false,
+            "showLegend": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "金额",
+                "name": "金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "地域费用分析"
+        },
+        "name": "地域费用分布",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 0,
+          "y": 55
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "金额",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "f7ee3bf0-7a24-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "fb83e5d0-7a24-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "AliyunRegion"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`) AS `金额`) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' ) } BY `AliyunRegion`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "treemap",
+            "unit": ""
+          }
+        ],
+        "type": "treemap"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "bar",
+            "direction": "horizontal",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "showTopSize": false,
+            "showTopWithMetric": "",
+            "stackContent": "group",
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "实例",
+                "name": "实例",
+                "unit": "台",
+                "units": [
+                  "custom",
+                  "台"
+                ]
+              }
+            ],
+            "xAxisShowType": "groupBy"
+          }
+        },
+        "group": {
+          "name": "地域费用分析"
+        },
+        "name": "地域实例分布",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 8,
+          "y": 55
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "实例",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "name",
+              "fieldFunc": "count_distinct",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "AliyunRegion"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(COUNT_DISTINCT(`name`) AS `实例`) { `index` = 'default' } BY `AliyunRegion`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "bar",
+            "unit": ""
+          }
+        ],
+        "type": "bar"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": true,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "金额",
+                "name": "金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "项目费用分析"
+        },
+        "name": "项目费用",
+        "pos": {
+          "h": 13,
+          "w": 8,
+          "x": 0,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "金额",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3f4cb110-7a26-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "AliyunCostUnit"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`) AS `金额`) { `index` = 'default' and  `billing_account_name` = '#{billing_account_name}'  } BY `AliyunCostUnit`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "doughnut",
+            "colors": [],
+            "currentChartType": "pie",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "legendPostion": "right",
+            "levels": [],
+            "onlyShowGroupName": true,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "金额",
+                "name": "金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "项目费用分析"
+        },
+        "name": "项目费用分布",
+        "pos": {
+          "h": 13,
+          "w": 8,
+          "x": 8,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "金额",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "79944720-7a26-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "AliyunCostUnit"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`) AS `金额`) { `index` = 'default' and  `billing_account_name` = '#{billing_account_name}'  } BY `AliyunCostUnit`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#00B2CE",
+            "colors": [],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "sum(billing_amount)",
+                "name": "sum(billing_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "项目费用分析"
+        },
+        "name": "项目费用Top",
+        "pos": {
+          "h": 13,
+          "w": 8,
+          "x": 16,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "a73e0940-7a26-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_product_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                }
+              ],
+              "funcList": [
+                null,
+                "top:10"
+              ],
+              "groupBy": [
+                "AliyunCostUnit"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`)) { `index` = 'default' and  `billing_product_name` = '#{billing_account_name}'  } BY `AliyunCostUnit`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "bar",
+            "direction": "horizontal",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "showTopSize": false,
+            "showTopWithMetric": "",
+            "stackContent": "group",
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "实例",
+                "name": "实例",
+                "unit": "台",
+                "units": [
+                  "custom",
+                  "台"
+                ]
+              }
+            ],
+            "xAxisShowType": "groupBy"
+          }
+        },
+        "group": {
+          "name": "地域费用分析"
+        },
+        "name": "可用区实例分布",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 16,
+          "y": 55
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "实例",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "name",
+              "fieldFunc": "count_distinct",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "eec88ce0-7a26-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "f52f3110-7a26-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "00474f60-7a27-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "AliyunZone"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(COUNT_DISTINCT(`name`) AS `实例`) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) } BY `AliyunZone`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "bar",
+            "unit": ""
+          }
+        ],
+        "type": "bar"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#C57ECD",
+            "colors": [],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "sum(billing_amount)",
+                "name": "sum(billing_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "实例费用分析"
+        },
+        "name": "实例费用Top",
+        "pos": {
+          "h": 32,
+          "w": 8,
+          "x": 0,
+          "y": 73.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "field": "billing_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "6b90d340-7a27-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "billing_account_name",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{billing_account_name}"
+                },
+                {
+                  "id": "77736d80-7a27-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunCostUnit",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunCostUnit}"
+                },
+                {
+                  "id": "7f411bc0-7a27-11ed-ba74-312cc1af15ce",
+                  "logic": "and",
+                  "name": "AliyunRegion",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{AliyunRegion}"
+                }
+              ],
+              "funcList": [
+                null,
+                "top:10"
+              ],
+              "groupBy": [
+                "name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(SUM(`billing_amount`)) { `index` = 'default' and ( `billing_account_name` = '#{billing_account_name}' and `AliyunCostUnit` = '#{AliyunCostUnit}' and `AliyunRegion` = '#{AliyunRegion}' ) } BY `name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "addColumns": [
+              {
+                "field": "status",
+                "hide": true
+              },
+              {
+                "field": "__docid",
+                "hide": true
+              },
+              {
+                "field": "billing_product_name"
+              },
+              {
+                "field": "AliyunCostUnit",
+                "headerName": " 财务单元"
+              },
+              {
+                "field": "billing_account_name",
+                "headerName": " 账号名称"
+              },
+              {
+                "field": "AliyunRegion",
+                "headerName": " 地域"
+              },
+              {
+                "field": "name",
+                "headerName": " 实例 ID"
+              },
+              {
+                "field": "AliyunBillingType",
+                "headerName": "计费模式"
+              },
+              {
+                "field": "AliyunSubscriptionType",
+                "headerName": " 订阅类型"
+              },
+              {
+                "field": "billing_amount",
+                "headerName": " 支付金额"
+              }
+            ],
+            "alias": [],
+            "colors": [],
+            "currentChartType": "log",
+            "fixedTime": "",
+            "inColumns": [
+              {
+                "cellRenderer": "StatusCellRender",
+                "field": "time",
+                "filterParams": {},
+                "headerName": "时间",
+                "showTooltip": false
+              }
+            ],
+            "index": "default",
+            "isTimeInterval": false,
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "billing_amount",
+                "name": "billing_amount",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "实例费用分析"
+        },
+        "name": "费用详情",
+        "pos": {
+          "h": 32,
+          "w": 16,
+          "x": 8,
+          "y": 73.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "noTimeRange": false,
+            "qtype": "dql",
+            "query": {
+              "alias": "内容",
+              "code": "A",
+              "dataSource": "cloud_billing_by_instance",
+              "disableMultipleField": false,
+              "field": null,
+              "fieldFunc": "count",
+              "fieldType": "",
+              "fields": [
+                {
+                  "field": "status",
+                  "hide": true
+                },
+                {
+                  "field": "__docid",
+                  "hide": true
+                },
+                {
+                  "field": "billing_product_name"
+                },
+                {
+                  "alias": " 财务单元",
+                  "field": "AliyunCostUnit",
+                  "isEditAlias": false
+                },
+                {
+                  "alias": " 账号名称",
+                  "field": "billing_account_name",
+                  "isEditAlias": false
+                },
+                {
+                  "alias": " 地域",
+                  "field": "AliyunRegion",
+                  "isEditAlias": false
+                },
+                {
+                  "alias": " 实例 ID",
+                  "field": "name",
+                  "isEditAlias": false
+                },
+                {
+                  "alias": "计费模式",
+                  "field": "AliyunBillingType",
+                  "isEditAlias": false
+                },
+                {
+                  "alias": " 订阅类型",
+                  "field": "AliyunSubscriptionType",
+                  "isEditAlias": false
+                },
+                {
+                  "alias": " 支付金额",
+                  "field": "billing_amount",
+                  "isEditAlias": false
+                }
+              ],
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "default",
+              "namespace": "logging",
+              "q": "L::`cloud_billing_by_instance`:(`status`, `__docid`, `billing_product_name`, `AliyunCostUnit`, `billing_account_name`, `AliyunRegion`, `name`, `AliyunBillingType`, `AliyunSubscriptionType`, `billing_amount`) { `index` = 'default' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "log",
+            "unit": ""
+          }
+        ],
+        "type": "log"
+      }
+    ],
+    "groups": [
+      "费用趋势",
+      "项目费用分析",
+      "产品费用分析",
+      "地域费用分析",
+      "实例费用分析"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cloud_provider",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::cloud_billing_by_instance:(distinct('cloud_provider'))"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "云厂商",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "billing_account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::cloud_billing_by_instance:(distinct('billing_account_name')){cloud_provider='#{cloud_provider}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "账号名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "AliyunCostUnit",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::cloud_billing_by_instance:(distinct('AliyunCostUnit')){cloud_prvider='#{cloud_prvider}' and billing_account_name='#{billing_account_name}'}"
+        },
+        "hide": 1,
+        "isHiddenAsterisk": 0,
+        "name": "财务单元",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "asc"
+      },
+      {
+        "code": "AliyunRegion",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "",
+            "value": ""
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::cloud_billing_by_instance:(distinct('AliyunRegion')){cloud_prvider='#{cloud_prvider}' and billing_account_name='#{billing_account_name}' and AliyunCostUnit='#{AliyunCostUnit}'}"
+        },
+        "hide": 1,
+        "isHiddenAsterisk": 0,
+        "name": "地域",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "云账单分析"
+}

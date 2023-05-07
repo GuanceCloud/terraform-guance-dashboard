@@ -1,0 +1,1661 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Running Kubelets",
+        "pos": {
+          "h": 11,
+          "w": 5,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_node_name",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "76a4cb10-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "cluster_name_k8s"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`prom_kubelet`:(AVG(`kubelet_node_name`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Running Pods",
+        "pos": {
+          "h": 11,
+          "w": 5,
+          "x": 5,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_running_pods",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "1c41ef90-dbcb-11ec-bcd5-ef91d2f54912",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "1c41ef91-dbcb-11ec-bcd5-ef91d2f54912",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`prom_kubelet`:(AVG(`kubelet_running_pods`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Running Containers",
+        "pos": {
+          "h": 11,
+          "w": 5,
+          "x": 10,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_running_containers",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "67b50710-da62-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "6b4559c0-da62-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`prom_kubelet`:(AVG(`kubelet_running_containers`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Actual Volume Count",
+        "pos": {
+          "h": 11,
+          "w": 5,
+          "x": 15,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "volume_manager_total_volumes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "90ab15f0-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "90ab15f1-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "90ab15f2-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "state",
+                  "op": "=",
+                  "value": "actual_state_of_world"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`prom_kubelet`:(AVG(`volume_manager_total_volumes`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `state` = 'actual_state_of_world' } BY `instance`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Desired Volume Count",
+        "pos": {
+          "h": 11,
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "volume_manager_total_volumes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "a26a3cd0-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "a26a3cd1-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "a26a3cd2-dbf3-11ec-95dd-855bc8ad0d5a",
+                  "logic": "and",
+                  "name": "state",
+                  "op": "=",
+                  "value": "desired_state_of_world"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`prom_kubelet`:(AVG(`volume_manager_total_volumes`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `state` = 'desired_state_of_world' } BY `instance`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "last(kubelet_runtime_operations_total)",
+                "name": "last(kubelet_runtime_operations_total)"
+              }
+            ],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Operation Rate",
+        "pos": {
+          "h": 28,
+          "w": 6,
+          "x": 0,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_runtime_operations_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "34a02ba0-db0e-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "34a02ba1-db0e-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "instance",
+                "operation_type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_kubelet`:(AVG(`kubelet_runtime_operations_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `operation_type`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#498BFE",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "last(kubelet_runtime_operations_total)",
+                "name": "last(kubelet_runtime_operations_total)"
+              }
+            ],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Operation Error Rate",
+        "pos": {
+          "h": 28,
+          "w": 6,
+          "x": 18,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_runtime_operations_errors_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "51225680-db0f-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "51225681-db0f-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "instance",
+                "operation_type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_kubelet`:(AVG(`kubelet_runtime_operations_errors_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `operation_type`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Operation Rate",
+        "pos": {
+          "h": 14,
+          "w": 12,
+          "x": 6,
+          "y": 11
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_runtime_operations_total",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance",
+                "operation_type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_kubelet`:(AVG(`kubelet_runtime_operations_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `operation_type`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Operation Error Rate",
+        "pos": {
+          "h": 14,
+          "w": 12,
+          "x": 6,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "kubelet_runtime_operations_errors_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "5c9ae450-db0f-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "5c9ae451-db0f-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance",
+                "operation_type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_kubelet`:(AVG(`kubelet_runtime_operations_errors_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `operation_type`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Storage Operation Error Rate",
+        "pos": {
+          "h": 16,
+          "w": 12,
+          "x": 12,
+          "y": 39
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "storage_operation_errors_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "666665c0-db0c-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "666665c1-db0c-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "instance",
+                "operation_name",
+                "volume_plugin"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_kubelet`:(AVG(`storage_operation_errors_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' } BY `instance`, `operation_name`, `volume_plugin`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "RPC Rate (2xx responses)",
+        "pos": {
+          "h": 16,
+          "w": 12,
+          "x": 0,
+          "y": 39
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "7851deb0-db0a-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "type": "",
+                  "value": "20.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_kubelet`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` = re('20.*') }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "memory",
+                "name": "memory",
+                "unit": "",
+                "units": []
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Memory",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 0,
+          "y": 71
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "memory",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "process_resident_memory_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_kubelet`:(AVG(`process_resident_memory_bytes`) AS `memory`) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_resident_memory_bytes)",
+                "name": "last(process_resident_memory_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU usage",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 8,
+          "y": 71
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "process_cpu_seconds_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_kubelet`:(AVG(`process_cpu_seconds_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Goroutines",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 16,
+          "y": 71
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "go_goroutines",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_kubelet`:(AVG(`go_goroutines`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "RPC Rate (3xx responses)",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 0,
+          "y": 55
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "7851deb0-db0a-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "type": "",
+                  "value": "30.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_kubelet`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` = re('30.*') }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "RPC Rate (4xx responses)",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 8,
+          "y": 55
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "7851deb0-db0a-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "type": "",
+                  "value": "40.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_kubelet`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` = re('40.*') }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "RPC Rate (5xx responses)",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 16,
+          "y": 55
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_kubelet",
+              "field": "rest_client_requests_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40e93a00-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "439e20d0-da78-11ec-b2fb-65c6abf6c1af",
+                  "logic": "and",
+                  "name": "instance",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{instance}"
+                },
+                {
+                  "id": "7851deb0-db0a-11ec-8722-f714f8901829",
+                  "logic": "and",
+                  "name": "code",
+                  "op": "=~",
+                  "type": "",
+                  "value": "50.*"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_kubelet`:(AVG(`rest_client_requests_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `instance` = '#{instance}' and `code` = re('50.*') }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name_k8s",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_kubelet'], keyin=['cluster_name_k8s'])[5m]"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "instance",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_kubelet'], keyin=['instance']){cluster_name_k8s='#{cluster_name_k8s}'}[2m]"
+        },
+        "hide": 0,
+        "name": "instance",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Kubernetes Kubelet 监控视图"
+}

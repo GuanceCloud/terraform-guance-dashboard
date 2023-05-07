@@ -1,0 +1,4194 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/elasticsearch/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/elasticsearch/elasticsearch.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "links": [
+            {
+              "alias": "默认",
+              "open": "newWin",
+              "url": "https://console.dataflux.cn/insight/scen_9a8422aec5344eb8ae40aa635ad1368a?dashboard_id=dsbd_c5434975ffb749a4befb0884466c4f8d&node_id=node_bbabd6f231ab4cfd9b6fb4b9e94133b6&viewType=chart&time=#{TR}&variable={\"cluster_name\":\"#{V.cluster_name}\",\"host\":\"#{host}\"}"
+            }
+          ],
+          "settings": {
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "line",
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "pageSize": 50,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "key",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "cpu usage",
+                "name": "cpu usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              },
+              {
+                "key": "mem usage",
+                "name": "mem usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              },
+              {
+                "key": "fs total",
+                "name": "fs total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "GB"
+                ]
+              },
+              {
+                "key": "fs available",
+                "name": "fs available",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "GB"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "data node info",
+        "pos": {
+          "h": 12,
+          "w": 14,
+          "x": 10,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu usage",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_cpu_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "29c86940-a360-11eb-a97f-c70cf7ab3c66",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "531e63a0-30e4-11ec-ab6b-33b648f47c4d",
+                  "logic": "and",
+                  "name": "node_roles",
+                  "op": "=~",
+                  "type": "",
+                  "value": "data"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "node_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_cpu_percent`) AS `cpu usage`) { `cluster_name` = '#{cluster_name}' and `node_roles` = re('data') } BY `node_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "mem usage",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_mem_used_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "43776c60-a360-11eb-a97f-c70cf7ab3c66",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "5ce7e1e0-30e4-11ec-ab6b-33b648f47c4d",
+                  "logic": "and",
+                  "name": "node_roles",
+                  "op": "=~",
+                  "type": "",
+                  "value": "data"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "node_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_mem_used_percent`) AS `mem usage`) { `cluster_name` = '#{cluster_name}' and `node_roles` = re('data') } BY `node_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "fs total",
+              "code": "C",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "fs_total_total_in_gigabytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "ef06d1b0-4293-11ec-847e-dd87b4a6c928",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "f4908360-4293-11ec-847e-dd87b4a6c928",
+                  "logic": "and",
+                  "name": "node_roles",
+                  "op": "=~",
+                  "type": "",
+                  "value": "data"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "node_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`fs_total_total_in_gigabytes`) AS `fs total`) { `cluster_name` = '#{cluster_name}' and `node_roles` = re('data') } BY `node_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "fs available",
+              "code": "D",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "fs_total_available_in_gigabytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "f11abd90-4293-11ec-847e-dd87b4a6c928",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "f971c010-4293-11ec-847e-dd87b4a6c928",
+                  "logic": "and",
+                  "name": "node_roles",
+                  "op": "=~",
+                  "type": "",
+                  "value": "data"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "node_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`fs_total_available_in_gigabytes`) AS `fs available`) { `cluster_name` = '#{cluster_name}' and `node_roles` = re('data') } BY `node_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#F4EF32",
+                "lineColor": "#c23531",
+                "operation": "=",
+                "value": [
+                  "2"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#DA0C0C",
+                "lineColor": "#c23531",
+                "operation": "=",
+                "value": [
+                  "3"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "#2AE110",
+                "lineColor": "#c23531",
+                "operation": "=",
+                "value": [
+                  "1"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "yellow",
+                "operation": "=",
+                "originalVal": [
+                  "2"
+                ]
+              },
+              {
+                "mappingVal": "red",
+                "operation": "=",
+                "originalVal": [
+                  "3"
+                ]
+              },
+              {
+                "mappingVal": "green",
+                "operation": "=",
+                "originalVal": [
+                  "1"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": false,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "集群状态",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "status_code",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "9fe5dc40-00dc-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`status_code`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "open file descriptors",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "open file descriptors",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "process_open_file_descriptors",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`process_open_file_descriptors`) AS `open file descriptors`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "links": [],
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "high",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": true,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "发送",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sent",
+                "name": "sent",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "receive",
+                "name": "receive",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "network traffic",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "sent",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "transport_tx_size_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d9cf0590-f9a7-11eb-ab1e-23733b875aab",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "5228fc20-00e2-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`elasticsearch_node_stats`:(AVG(`transport_tx_size_in_bytes`) AS `sent`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "receive",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "transport_rx_size_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d9cf0590-f9a7-11eb-ab1e-23733b875aab",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "5228fc20-00e2-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`elasticsearch_node_stats`:(AVG(`transport_rx_size_in_bytes`) AS `receive`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "search current",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 80.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search query",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_query_current",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "1299ccd0-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_query_current`) AS `search query`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search fetch",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_fetch_current",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "15e1cbe0-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_fetch_current`) AS `search fetch`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "indices search",
+        "pos": {
+          "h": 13,
+          "w": 24,
+          "x": 0,
+          "y": 67.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search query",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_query_current",
+              "fieldFunc": "max",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "47b64bf0-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "cluster_name",
+                "index_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(MAX(`total_search_query_current`) AS `search query`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' } BY `cluster_name`, `index_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search fetch",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_fetch_current",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "49f53f70-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "cluster_name",
+                "index_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_fetch_current`) AS `search fetch`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' } BY `cluster_name`, `index_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "cpu usage",
+                "name": "cpu usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "cpu usage",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu usage",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_cpu_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_cpu_percent`) AS `cpu usage`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "total",
+                "name": "total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "GB"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "cluster fs total",
+        "pos": {
+          "h": 8,
+          "w": 7,
+          "x": 10,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "fs_total_total_in_gigabytes",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "node_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`elasticsearch_node_stats`:(AVG(`fs_total_total_in_gigabytes`) AS `total`) { `cluster_name` = '#{cluster_name}' } BY `node_name`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "active primary shards",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 5,
+          "y": 7.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "active_primary_shards",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`active_primary_shards`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "active_shards",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 5,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "active_shards",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`active_shards`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "data nodes",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 0,
+          "y": 12.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "number_of_data_nodes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`number_of_data_nodes`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "relocating shards",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 0,
+          "y": 7.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "relocating_shards",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`relocating_shards`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "unassigned shards",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 5,
+          "y": 17.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "unassigned_shards",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`unassigned_shards`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "initializing shards",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 5,
+          "y": 12.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "initializing_shards",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`initializing_shards`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": true,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "elasticsearch_cluster_health_active_primary_shards",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "pending tasks",
+        "pos": {
+          "h": 5,
+          "w": 5,
+          "x": 0,
+          "y": 17.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1",
+              "code": "A",
+              "dataSource": "elasticsearch_cluster_health",
+              "field": "number_of_pending_tasks",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "44c7ca70-00dd-11ed-ab1a-0101310fccd6",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_cluster_health`:(AVG(`number_of_pending_tasks`) AS `1`) { `name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "free",
+                "name": "free",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "GB"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "cluster fs available",
+        "pos": {
+          "h": 8,
+          "w": 7,
+          "x": 17,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "free",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "fs_total_available_in_gigabytes",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "node_name"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "SERIES_SUM(\"M::`elasticsearch_node_stats`:(AVG(`fs_total_available_in_gigabytes`) AS `free`) { `cluster_name` = '#{cluster_name}' } BY `node_name`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "mem usage",
+                "name": "mem usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "mem usage",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "mem usage",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_mem_used_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_mem_used_percent`) AS `mem usage`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "mem total",
+                "name": "mem total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "mem used",
+                "name": "mem used",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "mem size",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "mem total",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_mem_total_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_mem_total_in_bytes`) AS `mem total`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "mem used",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_mem_used_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_mem_used_in_bytes`) AS `mem used`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "mem total",
+                "name": "mem total",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "mem used",
+                "name": "mem used",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "cpu load",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu load 1m",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_cpu_load_average_1m",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_cpu_load_average_1m`) AS `cpu load 1m`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu load 5m",
+              "code": "C",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_cpu_load_average_5m",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_cpu_load_average_5m`) AS `cpu load 5m`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "cpu load 15m",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "os_cpu_load_average_15m",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ca02b4d0-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "ca02b4d1-00e1-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`os_cpu_load_average_15m`) AS `cpu load 15m`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "http current open",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "http current open",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "http_current_open",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`http_current_open`) AS `http current open`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "jvm mem usage",
+                "name": "jvm mem usage",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "jvm mem usage",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 41
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "jvm mem usage",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "jvm_mem_heap_used_percent",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`jvm_mem_heap_used_percent`) AS `jvm mem usage`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "jvm heap committed",
+                "name": "jvm heap committed",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "jvm mem committed",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 41
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "jvm heap committed",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "jvm_mem_heap_committed_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`jvm_mem_heap_committed_in_bytes`) AS `jvm heap committed`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "jvm heap committed",
+                "name": "jvm heap committed",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "jvm gc collectors",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 41
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "old collection",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "jvm_gc_collectors_old_collection_count",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`jvm_gc_collectors_old_collection_count`) AS `old collection`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "young collection",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "jvm_gc_collectors_young_collection_count",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`jvm_gc_collectors_young_collection_count`) AS `young collection`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "old collection time",
+                "name": "old collection time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "young collection time",
+                "name": "young collection time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "jvm gc collectors time",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 41
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "old collection time",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "jvm_gc_collectors_old_collection_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`jvm_gc_collectors_old_collection_time_in_millis`) AS `old collection time`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "young collection time",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "jvm_gc_collectors_young_collection_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`jvm_gc_collectors_young_collection_time_in_millis`) AS `young collection time`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Node"
+        },
+        "name": "thread pool",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "force merge queue",
+              "code": "A",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "thread_pool_force_merge_queue",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`thread_pool_force_merge_queue`) AS `force merge queue`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "force merge rejected",
+              "code": "B",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "thread_pool_force_merge_rejected",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`thread_pool_force_merge_rejected`) AS `force merge rejected`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rollup indexing queue",
+              "code": "C",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "thread_pool_rollup_indexing_queue",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`thread_pool_rollup_indexing_queue`) AS `rollup indexing queue`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "rollup indexing rejected",
+              "code": "D",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "thread_pool_rollup_indexing_rejected",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`thread_pool_rollup_indexing_rejected`) AS `rollup indexing rejected`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search queue",
+              "code": "E",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "thread_pool_search_queue",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`thread_pool_search_queue`) AS `search queue`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search rejected",
+              "code": "F",
+              "dataSource": "elasticsearch_node_stats",
+              "field": "thread_pool_search_rejected",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "13666fd0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "182641d0-00e3-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "node_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{node_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_node_stats`:(AVG(`thread_pool_search_rejected`) AS `search rejected`) { `cluster_name` = '#{cluster_name}' and `node_name` = '#{node_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "search query time",
+                "name": "search query time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "search fetch time",
+                "name": "search fetch time",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "search time",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 80.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search query time",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_query_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "0af79b60-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_query_time_in_millis`) AS `search query time`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search fetch time",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_fetch_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "0d640780-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "",
+                  "op": "=",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_fetch_time_in_millis`) AS `search fetch time`) { `cluster_name` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "search total",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 80.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search query",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_query_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "fd39b170-00e9-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_query_total`) AS `search query`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search fetch",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_fetch_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "000135e0-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_fetch_total`) AS `search fetch`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "flush",
+                "name": "flush",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "indexing",
+                "name": "indexing",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "merges",
+                "name": "merges",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "refresh",
+                "name": "refresh",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "search fetch",
+                "name": "search fetch",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "search query",
+                "name": "search query",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "indices time",
+        "pos": {
+          "h": 16,
+          "w": 12,
+          "x": 0,
+          "y": 51.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "flush",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_flush_total_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "2ce5fa50-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_flush_total_time_in_millis`) AS `flush`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "indexing",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_indexing_index_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "2f7b7240-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_indexing_index_time_in_millis`) AS `indexing`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "merges",
+              "code": "C",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_merges_total_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "31a46cc0-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_merges_total_time_in_millis`) AS `merges`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "refresh",
+              "code": "D",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_refresh_total_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "3411c340-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_refresh_total_time_in_millis`) AS `refresh`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search fetch",
+              "code": "E",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_fetch_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "36b25ec0-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_fetch_time_in_millis`) AS `search fetch`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "search query",
+              "code": "F",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_search_query_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1ee65cc0-27ff-11ec-8db0-bd998c8ae69d",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "39186240-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_search_query_time_in_millis`) AS `search query`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "merges doc",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 59.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "current docs",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_merges_current_docs",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_merges_current_docs`) AS `current docs`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total docs",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_merges_total_docs",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_merges_total_docs`) AS `total docs`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "indexing doc",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 59.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "current docs",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_indexing_index_current",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_indexing_index_current`) AS `current docs`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total docs",
+              "code": "C",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_indexing_index_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_indexing_index_total`) AS `total docs`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "indices flush",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 12,
+          "y": 51.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total refresh ",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_refresh_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_refresh_total`) AS `total refresh `) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "total flush",
+              "code": "B",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_flush_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_flush_total`) AS `total flush`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isCombineChart": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "mark": {
+              "axis": "x",
+              "data": [],
+              "type": "area"
+            },
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "store size",
+                "name": "store size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Indices"
+        },
+        "name": "store size",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 18,
+          "y": 51.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "store size",
+              "code": "A",
+              "dataSource": "elasticsearch_indices_stats",
+              "field": "total_store_size_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5a9362c0-00e6-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                },
+                {
+                  "id": "6743b070-00ea-11ed-bf5c-ab5d35464186",
+                  "logic": "and",
+                  "name": "index_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{index_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`elasticsearch_indices_stats`:(AVG(`total_store_size_in_bytes`) AS `store size`) { `cluster_name` = '#{cluster_name}' and `index_name` = '#{index_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "Cluster",
+      "Node",
+      "Indices"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['elasticsearch_cluster_stats'], keyin=['cluster_name'])"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "node_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['elasticsearch_node_stats'], keyin=['node_name']){cluster_name='#{cluster_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "节点名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "index_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['elasticsearch_indices_stats'], keyin=['index_name']){cluster_name='#{cluster_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "索引名称",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Elasticsearch 监控视图666"
+}

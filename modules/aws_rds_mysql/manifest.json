@@ -1,0 +1,1648 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/aws_rds_mysql/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/aws_rds_mysql/aws_rds_mysql.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPUUtilization",
+                "name": "CPUUtilization",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU/Mem"
+        },
+        "name": "CPUUtilization",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPUUtilization",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "CPUUtilization_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "37ea4f30-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "3bca6f90-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`CPUUtilization_Average`) AS `CPUUtilization`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FEAC4E",
+                "key": "FreeStorageSpace:Average",
+                "name": "FreeStorageSpace:Average"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "FreeStorageSpace:Average",
+                "name": "FreeStorageSpace:Average",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk"
+        },
+        "name": "FreeStorageSpace",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "FreeStorageSpace:Average",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "FreeStorageSpace_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "7d4c9ba0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "7ff91e00-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`FreeStorageSpace_Average`) AS `FreeStorageSpace:Average`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C8DD4F",
+                "key": "FreeableMemory:Average",
+                "name": "FreeableMemory:Average"
+              }
+            ],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "FreeableMemory:Average",
+                "name": "FreeableMemory:Average",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "CPU/Mem"
+        },
+        "name": "FreeableMemory",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "FreeableMemory:Average",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "FreeableMemory_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "6714bde0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "67b3e410-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`FreeableMemory_Average`) AS `FreeableMemory:Average`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#00B2CE",
+                "key": "ReadLatency:Average",
+                "name": "ReadLatency:Average"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "ReadLatency:Average",
+                "name": "ReadLatency:Average",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "ReadLatency",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ReadLatency:Average",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "ReadLatency_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c20b5510-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "c5c8f950-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`ReadLatency_Average`) AS `ReadLatency:Average`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FFDA43",
+                "key": "ReadIOPS:Average",
+                "name": "ReadIOPS:Average"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPUUtilization:Average",
+                "name": "CPUUtilization:Average",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "ReadIOPS",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ReadIOPS:Average",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "ReadIOPS_Average",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a6152110-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a8d7ea90-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`ReadIOPS_Average`) AS `ReadIOPS:Average`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "WriteLatency:Average",
+                "name": "WriteLatency:Average"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "WriteLatency:Average",
+                "name": "WriteLatency:Average",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "WriteLatency",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "WriteLatency:Average",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "WriteLatency_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "cc755910-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "cedda680-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`WriteLatency_Average`) AS `WriteLatency:Average`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Transmit",
+                "name": "Transmit",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "Receive",
+                "name": "Receive",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "Network Traffic",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 39.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Transmit",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "NetworkTransmitThroughput_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d4ba5a30-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "d78476b0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`NetworkTransmitThroughput_Average`) AS `Transmit`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Receive",
+              "code": "B",
+              "dataSource": "aws_AWS/RDS",
+              "field": "NetworkReceiveThroughput_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "daa0d1e0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "dccdeb10-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`NetworkReceiveThroughput_Average`) AS `Receive`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FE9155",
+                "key": "DiskQueueDepth",
+                "name": "DiskQueueDepth"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk"
+        },
+        "name": "DiskQueueDepth",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "DiskQueueDepth",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "DiskQueueDepth_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "85a39e20-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "88220ba0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`DiskQueueDepth_Average`) AS `DiskQueueDepth`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FF77AA",
+                "key": "LVMWriteIOPS",
+                "name": "LVMWriteIOPS"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "LVMWriteIOPS",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LVMWriteIOPS",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "LVMWriteIOPS_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "eb6b86a0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "ef9e5ae0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`LVMWriteIOPS_Average`) AS `LVMWriteIOPS`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "WriteIOPS:Average",
+                "name": "WriteIOPS:Average"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPUUtilization:Average",
+                "name": "CPUUtilization:Average",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "WriteIOPS",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "WriteIOPS:Average",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "WriteIOPS_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "aee4fd10-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "b16a2150-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`WriteIOPS_Average`) AS `WriteIOPS:Average`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#63DBAD",
+                "key": "LVMReadIOPS",
+                "name": "LVMReadIOPS"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "LVMReadIOPS",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "LVMReadIOPS",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "LVMReadIOPS_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "e3392320-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "e5646790-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`LVMReadIOPS_Average`) AS `LVMReadIOPS`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#737AE2",
+                "key": "BinLogDiskUsage",
+                "name": "BinLogDiskUsage"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "BinLogDiskUsage",
+                "name": "BinLogDiskUsage",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Disk"
+        },
+        "name": "BinLogDiskUsage",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "BinLogDiskUsage",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "BinLogDiskUsage_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "909dad20-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "93f3dd00-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`BinLogDiskUsage_Average`) AS `BinLogDiskUsage`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#498BFE",
+                "key": "DatabaseConnections",
+                "name": "DatabaseConnections"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "BinLogDiskUsage",
+                "name": "BinLogDiskUsage",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "DatabaseConnections:Sum",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 31.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "DatabaseConnections",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "DatabaseConnections_Sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "b83c7fa0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "bae97730-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`DatabaseConnections_Sum`) AS `DatabaseConnections`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#63DBAD",
+                "key": "SwapUsage",
+                "name": "SwapUsage"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "SwapUsage",
+                "name": "SwapUsage",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "CPU/Mem"
+        },
+        "name": "SwapUsage",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "SwapUsage",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "SwapUsage_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "71b7ac30-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "740349e0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`SwapUsage_Average`) AS `SwapUsage`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "ReadThroughput",
+                "name": "ReadThroughput",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "WriteThroughput",
+                "name": "WriteThroughput",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "IO"
+        },
+        "name": "Throughput",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 47.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "ReadThroughput",
+              "code": "A",
+              "dataSource": "aws_AWS/RDS",
+              "field": "ReadThroughput_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "f650d520-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "f92244a0-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`ReadThroughput_Average`) AS `ReadThroughput`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "WriteThroughput",
+              "code": "B",
+              "dataSource": "aws_AWS/RDS",
+              "field": "WriteThroughput_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe4d5b90-12d5-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "00e592a0-12d6-11ed-9916-9bb406ac7abd",
+                  "logic": "and",
+                  "name": "DBInstanceIdentifier",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceIdentifier}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aws_AWS/RDS`:(AVG(`WriteThroughput_Average`) AS `WriteThroughput`) { `account_name` = '#{account_name}' and `DBInstanceIdentifier` = '#{DBInstanceIdentifier}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "CPU/Mem",
+      "Disk",
+      "IO"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/RDS'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "DBInstanceIdentifier",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aws_AWS/RDS'], keyin=['DBInstanceIdentifier']){account_name='#{account_name}',Engine='mysql'}[5m]"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_3762df06e93c4327888ff9c8d0bdf267",
+      "name": "CloudWatch"
+    },
+    {
+      "id": "tag_665570d74dca400eb0ea232df0574fb2",
+      "name": "Function"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "AWS RDS MySQL 监控视图"
+}

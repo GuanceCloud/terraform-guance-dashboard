@@ -1,0 +1,1990 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/gitlab_ci_dashboard/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/gitlab_ci_dashboard/gitlab_ci_dashboard.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 执行数",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pipeline 执行次数",
+              "code": "A",
+              "dataSource": "gitlab_pipeline",
+              "field": "pipeline_id",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "156db8a0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "resource"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(COUNT(`pipeline_id`) AS `Pipeline 执行次数`) { `pipeline_id` = '#{pipeline_id}' } BY `resource`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "失败率",
+                "name": "失败率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "失败率",
+                "name": "失败率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 失败率",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "失败率",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "gitlab_pipeline",
+                  "field": "pipeline_name",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "88801590-bee0-11ec-9780-850646c1d59e",
+                      "logic": "and",
+                      "name": "ci_status",
+                      "op": "!=",
+                      "type": "keyword",
+                      "value": "success"
+                    },
+                    {
+                      "id": "24cc5a40-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`gitlab_pipeline`:(COUNT(`pipeline_name`)) { `ci_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "gitlab_pipeline",
+                  "field": "pipeline_name",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "2a049090-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`gitlab_pipeline`:(COUNT(`pipeline_name`)) { `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='失败率', A=\"L::`gitlab_pipeline`:(COUNT(`pipeline_name`)) { `ci_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }\", B=\"L::`gitlab_pipeline`:(COUNT(`pipeline_name`)) { `pipeline_id` = '#{pipeline_id}' }\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "Pipeline 执行失败次数",
+                "name": "Pipeline 执行失败次数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "执行失败的 Pipeline",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 15.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pipeline 执行失败次数",
+              "code": "A",
+              "dataSource": "gitlab_pipeline",
+              "field": "pipeline_name",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "ba143bd0-bee1-11ec-9780-850646c1d59e",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "44b32960-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(COUNT(`pipeline_name`) AS `Pipeline 执行失败次数`) { `ci_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(执行时间)",
+                "name": "avg(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "max(执行时间)",
+                "name": "max(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p75(执行时间)",
+                "name": "p75(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p90(执行时间)",
+                "name": "p90(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p99(执行时间)",
+                "name": "p99(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "p50(执行时间)",
+                "name": "p50(执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 执行时间",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 15.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "avg(执行时间)",
+              "code": "A",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3aaaa650-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(AVG(`duration`) AS `avg(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max(执行时间)",
+              "code": "B",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "max",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3aaaa650-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(MAX(`duration`) AS `max(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p75(执行时间)",
+              "code": "C",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p75",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3aaaa650-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 75) AS `p75(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p90(执行时间)",
+              "code": "D",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3aaaa650-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 90) AS `p90(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p99(执行时间)",
+              "code": "E",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p99",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3aaaa650-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 99) AS `p99(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p50(执行时间)",
+              "code": "F",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p50",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "3aaaa650-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 50) AS `p50(执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "Job 执行数",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 0,
+          "y": 47
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Job 执行次数",
+              "code": "A",
+              "dataSource": "gitlab_job",
+              "field": "build_id",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "4ffd2d20-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(COUNT(`build_id`) AS `Job 执行次数`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "job 失败率",
+                "name": "job 失败率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "job 失败率",
+                "name": "job 失败率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "Job 失败率",
+        "pos": {
+          "h": 13,
+          "w": 12,
+          "x": 12,
+          "y": 47
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "job 失败率",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "gitlab_job",
+                  "field": "build_id",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "88801590-bee0-11ec-9780-850646c1d59e",
+                      "logic": "and",
+                      "name": "build_status",
+                      "op": "!=",
+                      "type": "keyword",
+                      "value": "success"
+                    },
+                    {
+                      "id": "5a7f4d00-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`gitlab_job`:(COUNT(`build_id`)) { `build_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "gitlab_job",
+                  "field": "build_id",
+                  "fieldFunc": "count",
+                  "fieldType": "keyword",
+                  "fill": "",
+                  "filters": [
+                    {
+                      "id": "5fc7aff0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                      "logic": "and",
+                      "name": "pipeline_id",
+                      "op": "=",
+                      "type": "keyword",
+                      "value": "#{pipeline_id}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "logging",
+                  "q": "L::`gitlab_job`:(COUNT(`build_id`)) { `pipeline_id` = '#{pipeline_id}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/B",
+              "funcList": [],
+              "q": "eval(A/B, alias='job 失败率', A=\"L::`gitlab_job`:(COUNT(`build_id`)) { `build_status` != 'success' and `pipeline_id` = '#{pipeline_id}' }\", B=\"L::`gitlab_job`:(COUNT(`build_id`)) { `pipeline_id` = '#{pipeline_id}' }\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "bar",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "Job 执行失败次数",
+                "name": "Job 执行失败次数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "执行失败的 Job",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 12,
+          "y": 60
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Job 执行失败次数",
+              "code": "A",
+              "dataSource": "gitlab_job",
+              "field": "build_id",
+              "fieldFunc": "count",
+              "fieldType": "keyword",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "ba143bd0-bee1-11ec-9780-850646c1d59e",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "failed"
+                },
+                {
+                  "id": "75425830-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(COUNT(`build_id`) AS `Job 执行失败次数`) { `build_status` = 'failed' and `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(Job执行时间)",
+                "name": "avg(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "max(Job执行时间)",
+                "name": "max(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P90(Job执行时间)",
+                "name": "P90(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P75(Job执行时间)",
+                "name": "P75(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P50(Job执行时间)",
+                "name": "P50(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P99(Job执行时间)",
+                "name": "P99(Job执行时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "Job 执行时间",
+        "pos": {
+          "h": 12,
+          "w": 12,
+          "x": 0,
+          "y": 60
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "avg(Job执行时间)",
+              "code": "A",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "679202d0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(AVG(`build_duration`) AS `avg(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "max(Job执行时间)",
+              "code": "B",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "max",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "679202d0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(MAX(`build_duration`) AS `max(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75(Job执行时间)",
+              "code": "C",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p75",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "679202d0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 75) AS `P75(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90(Job执行时间)",
+              "code": "D",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p90",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "679202d0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 90) AS `P90(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50(Job执行时间)",
+              "code": "E",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p50",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "679202d0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 50) AS `P50(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99(Job执行时间)",
+              "code": "F",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p99",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "679202d0-f2d9-11ec-9a3c-e55c0eb9d0e4",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 99) AS `P99(Job执行时间)`) { `pipeline_id` = '#{pipeline_id}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均执行时间",
+                "name": "平均执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "最大执行时间",
+                "name": "最大执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P75 执行时间",
+                "name": "P75 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P90 执行时间",
+                "name": "P90 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              },
+              {
+                "key": "P99 执行时间",
+                "name": "P99 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P50 执行时间",
+                "name": "P50 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "执行失败的 Pipleine 耗时排行（TOP 10）",
+        "pos": {
+          "h": 17,
+          "w": 24,
+          "x": 0,
+          "y": 27.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均执行时间",
+              "code": "A",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "3cb9a490-f3a7-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(AVG(`duration`) AS `平均执行时间`) { `pipeline_id` = '#{pipeline_id}' and `ci_status` != 'success' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大执行时间",
+              "code": "B",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "max",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "88be9eb0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "90414f50-f3a7-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(MAX(`duration`) AS `最大执行时间`) { `pipeline_id` = '#{pipeline_id}' and `ci_status` != 'success' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50 执行时间",
+              "code": "C",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p50",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8ce64f60-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "9496edd0-f3a7-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 50) AS `P50 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `ci_status` != 'success' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75 执行时间",
+              "code": "F",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p75",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8ce64f60-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "9496edd0-f3a7-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 75) AS `P75 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `ci_status` != 'success' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90 执行时间",
+              "code": "E",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8ce64f60-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "9496edd0-f3a7-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 90) AS `P90 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `ci_status` != 'success' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99 执行时间",
+              "code": "D",
+              "dataSource": "gitlab_pipeline",
+              "field": "duration",
+              "fieldFunc": "p99",
+              "fieldType": "long",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8ce64f60-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "9496edd0-f3a7-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "ci_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "pipeline_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_pipeline`:(PERCENTILE(`duration`, 99) AS `P99 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `ci_status` != 'success' } BY `pipeline_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "平均执行时间",
+                "name": "平均执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "最大执行时间",
+                "name": "最大执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P50 执行时间",
+                "name": "P50 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P75 执行时间",
+                "name": "P75 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              },
+              {
+                "key": "P90 执行时间",
+                "name": "P90 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              },
+              {
+                "key": "P99 执行时间",
+                "name": "P99 执行时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "μs"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Job"
+        },
+        "name": "执行失败的 Job 耗时排行（TOP 10）",
+        "pos": {
+          "h": 17,
+          "w": 24,
+          "x": 0,
+          "y": 72
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "平均执行时间",
+              "code": "A",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "db70db90-f3a6-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(AVG(`build_duration`) AS `平均执行时间`) { `pipeline_id` = '#{pipeline_id}' and `build_status` != 'success' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大执行时间",
+              "code": "B",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "max",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "db70db90-f3a6-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(MAX(`build_duration`) AS `最大执行时间`) { `pipeline_id` = '#{pipeline_id}' and `build_status` != 'success' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P50 执行时间",
+              "code": "C",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p50",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "db70db90-f3a6-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 50) AS `P50 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `build_status` != 'success' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P75 执行时间",
+              "code": "D",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p75",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "db70db90-f3a6-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 75) AS `P75 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `build_status` != 'success' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90 执行时间",
+              "code": "E",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p90",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "db70db90-f3a6-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 90) AS `P90 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `build_status` != 'success' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P99 执行时间",
+              "code": "F",
+              "dataSource": "gitlab_job",
+              "field": "build_duration",
+              "fieldFunc": "p99",
+              "fieldType": "float",
+              "fill": "",
+              "filters": [
+                {
+                  "id": "8580d8d0-f3a5-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "pipeline_id",
+                  "op": "=",
+                  "type": "keyword",
+                  "value": "#{pipeline_id}"
+                },
+                {
+                  "id": "db70db90-f3a6-11ec-9faf-3b70767d0e65",
+                  "logic": "and",
+                  "name": "build_status",
+                  "op": "!=",
+                  "type": "keyword",
+                  "value": "success"
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:10"
+              ],
+              "groupBy": [
+                "build_name"
+              ],
+              "groupByTime": "",
+              "namespace": "logging",
+              "q": "L::`gitlab_job`:(PERCENTILE(`build_duration`, 99) AS `P99 执行时间`) { `pipeline_id` = '#{pipeline_id}' and `build_status` != 'success' } BY `build_name`",
+              "queryFuncs": [],
+              "search": "",
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "groups": [
+      "Pipeline",
+      "Job"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "pipeline_id",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "L::gitlab_pipeline:(distinct(pipeline_id))"
+        },
+        "hide": 0,
+        "name": "Pipeline ID",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "Gitlab 概览"
+}

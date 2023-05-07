@@ -1,0 +1,1776 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/aliyun_asm_control_plane/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/aliyun_asm_control_plane/aliyun_asm_control_plane.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Deployed Versions"
+        },
+        "name": "Pilot Versions",
+        "pos": {
+          "h": 11,
+          "i": "chrt_ee50e26533514af494d40f1a41554742",
+          "w": 24,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "istio_build",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "tag"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`istio_build`)) BY `tag`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "virtual memory",
+                "name": "virtual memory",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "resident memory",
+                "name": "resident memory",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Resource Usage"
+        },
+        "name": "Memory",
+        "pos": {
+          "h": 10,
+          "i": "chrt_e69189f854414c679e34b7cde829aefb",
+          "w": 6,
+          "x": 0,
+          "y": 16
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "virtual memory",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "process_virtual_memory_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "809c9ac1-bef3-11ec-8504-5ffc0604c096",
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                },
+                {
+                  "id": "f642cb10-c136-11ec-9395-e9930f5f7603",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`process_virtual_memory_bytes`) AS `virtual memory`) { `app_id` = 'istiod' and `cluster_name_k8s` = '#{cluster_name_k8s}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "resident memory",
+              "code": "C",
+              "dataSource": "prom_asm_istio",
+              "field": "process_resident_memory_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "8233b581-bef3-11ec-8504-5ffc0604c096",
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                },
+                {
+                  "id": "ffccf660-c136-11ec-9395-e9930f5f7603",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`process_resident_memory_bytes`) AS `resident memory`) { `app_id` = 'istiod' and `cluster_name_k8s` = '#{cluster_name_k8s}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Resource Usage"
+        },
+        "name": "CPU",
+        "pos": {
+          "h": 10,
+          "i": "chrt_8872e24255254180afb33c6d32d3c194",
+          "w": 6,
+          "x": 6,
+          "y": 16
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "process_cpu_seconds_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "a35bc1c0-bef4-11ec-8504-5ffc0604c096",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "id": "a35bc1c1-bef4-11ec-8504-5ffc0604c096",
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`process_cpu_seconds_total`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "irate"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Resource Usage"
+        },
+        "name": "Disk",
+        "pos": {
+          "h": 10,
+          "i": "chrt_1f2e3e1dfccd47e5971f7dbfe76fddda",
+          "w": 6,
+          "x": 12,
+          "y": 16
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_cluster_assignment_stale",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`envoy_cluster_assignment_stale`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Resource Usage"
+        },
+        "name": "Goroutines",
+        "pos": {
+          "h": 10,
+          "i": "chrt_dd262cfe0a34455fb255b7a7e94b38b6",
+          "w": 6,
+          "x": 18,
+          "y": 16
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "go_goroutines",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`go_goroutines`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pilot Push Information"
+        },
+        "name": "Pilot Pushes",
+        "pos": {
+          "h": 10,
+          "i": "chrt_c93315e2de554ee9b6e18ef6667e680b",
+          "w": 8,
+          "x": 0,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`pilot_xds_pushes`)) { `type` = 'cds' and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`pilot_xds_pushes`)) { `type` = 'eds' and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "C",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`pilot_xds_pushes`)) { `type` = 'lds' and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "D",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`pilot_xds_pushes`)) { `type` = 'rds' and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "E",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`pilot_xds_pushes`)) { `type` = 'sds' and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "F",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`pilot_xds_pushes`)) { `type` = 'nds' and `cluster_name_k8s` = '#{cluster_name_k8s}' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pilot Push Information"
+        },
+        "name": "Pilot Errors",
+        "pos": {
+          "h": 10,
+          "i": "chrt_2719bf7a886349e4bcdbef3997db5554",
+          "w": 8,
+          "x": 8,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "",
+              "field": "",
+              "fieldFunc": "",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "namespace": "",
+              "q": "",
+              "queryFuncs": [],
+              "type": "simple"
+            }
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "p50",
+                "name": "p50",
+                "unit": "ms",
+                "units": [
+                  "custom",
+                  "ms"
+                ]
+              },
+              {
+                "key": "p90",
+                "name": "p90",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "p99",
+                "name": "p99",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pilot Push Information"
+        },
+        "name": "Proxy Push Time",
+        "pos": {
+          "h": 10,
+          "i": "chrt_766dcf7c46434556bfb0b4507cff1506",
+          "w": 8,
+          "x": 16,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p50",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_proxy_convergence_time_bucket",
+              "fieldFunc": "p50",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(PERCENTILE(`pilot_proxy_convergence_time_bucket`, 50) AS `p50`) BY `le`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p90",
+              "code": "B",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_proxy_convergence_time_bucket",
+              "fieldFunc": "p90",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(PERCENTILE(`pilot_proxy_convergence_time_bucket`, 90) AS `p90`) BY `le`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "p99",
+              "code": "C",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_proxy_convergence_time_bucket",
+              "fieldFunc": "p99",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "le"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(PERCENTILE(`pilot_proxy_convergence_time_bucket`, 99) AS `p99`) BY `le`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pilot Push Information"
+        },
+        "name": "Conflicts",
+        "pos": {
+          "h": 11,
+          "i": "chrt_d803a3649713439faef7a826f2afa1ea",
+          "w": 12,
+          "x": 0,
+          "y": 38.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_conflict_inbound_listener",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`pilot_conflict_inbound_listener`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_conflict_outbound_listener_http_over_current_tcp",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`pilot_conflict_outbound_listener_http_over_current_tcp`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod' }",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "C",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_conflict_outbound_listener_tcp_over_current_tcp",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`pilot_conflict_outbound_listener_tcp_over_current_tcp`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod'}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "D",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_conflict_outbound_listener_tcp_over_current_http",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`pilot_conflict_outbound_listener_tcp_over_current_http`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod'}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pilot Push Information"
+        },
+        "name": "ADS Monitoring",
+        "pos": {
+          "h": 11,
+          "i": "chrt_840ceffe03f54cd0ab1fcce3d5c3ad83",
+          "w": 12,
+          "x": 12,
+          "y": 38.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_virt_services",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`pilot_virt_services`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod'}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_services",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`pilot_services`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod'}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "C",
+              "dataSource": "prom_asm_istio",
+              "field": "pilot_xds",
+              "fieldFunc": "sum",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "value": "#{cluster_name_k8s}"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "istiod"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(SUM(`pilot_xds`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' and `app_id` = 'istiod'}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Envoy Information"
+        },
+        "name": "Envoy Details",
+        "pos": {
+          "h": 10,
+          "i": "chrt_236daac6ab4e46248d51015c4af8fc3d",
+          "w": 8,
+          "x": 0,
+          "y": 52
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`envoy_cluster_upstream_cx_total`)) { `cluster_name_k8s` = 'xds-grpc' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "funcList": [],
+              "q": "IRATE(\"M::`prom_asm_istio`:(AVG(`envoy_cluster_upstream_cx_connect_fail`)) { `cluster_name_k8s` = 'xds-grpc' } BY `cluster_name_k8s`\").series_sum() ",
+              "type": "dql"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "C",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_server_hot_restart_epoch",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a251a3c0-bc8e-11ec-a9d9-0fbe26e72d8f",
+                  "logic": "and",
+                  "name": "cluster_name_k8s",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name_k8s}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`envoy_server_hot_restart_epoch`)) { `cluster_name_k8s` = '#{cluster_name_k8s}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Envoy Information"
+        },
+        "name": "XDS Active Connections",
+        "pos": {
+          "h": 10,
+          "i": "chrt_d80cc2962fd54633bfa4efd7a99a579f",
+          "w": 8,
+          "x": 8,
+          "y": 52
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_cluster_upstream_cx_active",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(SUM(`envoy_cluster_upstream_cx_active`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Envoy Information"
+        },
+        "name": "XDS Requests Size",
+        "pos": {
+          "h": 10,
+          "i": "chrt_97066a89ebf142b083874ab5b51a1d61",
+          "w": 8,
+          "x": 16,
+          "y": 52
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_cluster_upstream_cx_rx_bytes_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe309f20-bc8e-11ec-a9d9-0fbe26e72d8f",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "xds-grpc"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_asm_istio`:(AVG(`envoy_cluster_upstream_cx_rx_bytes_total`)) { `cluster_name` = 'xds-grpc' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "B",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_cluster_upstream_cx_rx_bytes_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe309f20-bc8e-11ec-a9d9-0fbe26e72d8f",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "xds-grpc"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`envoy_cluster_upstream_cx_rx_bytes_total`)) { `cluster_name` = 'xds-grpc' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": false,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "C",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_cluster_upstream_cx_tx_bytes_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "a5591b90-bef8-11ec-8504-5ffc0604c096",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "xds-grpc"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_asm_istio`:(AVG(`envoy_cluster_upstream_cx_tx_bytes_total`)) { `cluster_name` = 'xds-grpc' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "D",
+              "dataSource": "prom_asm_istio",
+              "field": "envoy_cluster_upstream_cx_tx_bytes_total",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "a5591b90-bef8-11ec-8504-5ffc0604c096",
+                  "logic": "and",
+                  "name": "cluster_name",
+                  "op": "=",
+                  "value": "xds-grpc"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`envoy_cluster_upstream_cx_tx_bytes_total`)) { `cluster_name` = 'xds-grpc' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Webhooks"
+        },
+        "name": "Configuration Validation",
+        "pos": {
+          "h": 11,
+          "i": "chrt_8c707373d61042ca9e17896d26dca531",
+          "w": 12,
+          "x": 0,
+          "y": 64.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "citadel_server_root_cert_expiry_timestamp",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`citadel_server_root_cert_expiry_timestamp`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "galley validation failed",
+              "code": "B",
+              "dataSource": "prom_asm_istio",
+              "field": "galley_validation_failed",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [
+                "cluster_name_k8s"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`prom_asm_istio`:(AVG(`galley_validation_failed`) AS `galley validation failed`) BY `cluster_name_k8s`\").series_sum() ",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Webhooks"
+        },
+        "name": "Sidecar Injection",
+        "pos": {
+          "h": 11,
+          "i": "chrt_5ec23b68caf7409dbe71920f722e3718",
+          "w": 12,
+          "x": 12,
+          "y": 64.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "prom_asm_istio",
+              "field": "citadel_server_root_cert_expiry_timestamp",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`citadel_server_root_cert_expiry_timestamp`))",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "disabled": true,
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "B",
+              "dataSource": "prom_asm_istio",
+              "field": "citadel_server_root_cert_expiry_timestamp",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`prom_asm_istio`:(AVG(`citadel_server_root_cert_expiry_timestamp`))",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "Deployed Versions",
+      "Resource Usage",
+      "Pilot Push Information",
+      "Envoy Information",
+      "Webhooks"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name_k8s",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_asm_istio'], keyin=['cluster_name_k8s'])[1m]"
+        },
+        "hide": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "namespace",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['prom_asm_istio'], keyin=['namespace']){cluster_name_k8s='#{cluster_name_k8s}'}[1m]"
+        },
+        "hide": 0,
+        "name": "命名空间",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_46c65f3ad28f47719d66f8752cfb00e2",
+      "name": "istio"
+    },
+    {
+      "id": "tag_f31f1009581743a483c597f841eeaf04",
+      "name": "Istio"
+    },
+    {
+      "id": "tag_f5a92a40c017441fa3ccdc0efc2c8cf3",
+      "name": "asm"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "阿里云 ASM Control Plane 监控视图1"
+}

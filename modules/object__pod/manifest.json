@@ -1,0 +1,251 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/object__pod/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/object__pod/object__pod.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "last(cpu_usage_percent)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 使用率",
+                "name": "CPU 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU 使用率",
+        "pos": {
+          "h": 9,
+          "i": "chrt_5b20390a2b174179a53ee448c9c58d49",
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 使用率",
+              "code": "A",
+              "dataSource": "kube_pod",
+              "field": "cpu_usage",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1c8f99c0-ed37-11ec-89ce-efa94b428251",
+                  "logic": "and",
+                  "name": "namespace",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "23290dc0-ed37-11ec-89ce-efa94b428251",
+                  "logic": "and",
+                  "name": "pod",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pod_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`kube_pod`:(AVG(`cpu_usage`) AS `CPU 使用率`) { `namespace` = '#{namespace}' and `pod` = '#{pod_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "last(mem_usage_percent)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存使用量",
+                "name": "内存使用量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "内存使用量",
+        "pos": {
+          "h": 9,
+          "i": "chrt_4d31339f0d46450a9f45bb6f5d168ea3",
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存使用量",
+              "code": "A",
+              "dataSource": "kube_pod",
+              "field": "memory_usage_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "30a64530-ed37-11ec-89ce-efa94b428251",
+                  "logic": "and",
+                  "name": "namespace",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{namespace}"
+                },
+                {
+                  "id": "33104050-ed37-11ec-89ce-efa94b428251",
+                  "logic": "and",
+                  "name": "pod",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{pod_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`kube_pod`:(AVG(`memory_usage_bytes`) AS `内存使用量`) { `namespace` = '#{namespace}' and `pod` = '#{pod_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "namespace",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "O::kubelet_pod:(distinct('namespace'))[10m]"
+        },
+        "hide": 0,
+        "name": "Namespace",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "pod_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "O::kubelet_pod:(distinct('pod_name')){`namespace`=`#{namespace}`}[10m]"
+        },
+        "hide": 0,
+        "name": "Pod",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "基础设施Pod监控视图"
+}

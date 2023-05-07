@@ -1,0 +1,1209 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "inner",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/nacos/icon.svg",
+    "url": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/nacos/nacos.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "http请求次数",
+        "pos": {
+          "h": 9,
+          "i": "chrt_9de5b77fad7748e8b4bc1f0b35f8057e",
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_http",
+              "field": "server_requests_seconds_count",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "40045f80-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_http`:(AVG(`server_requests_seconds_count`)) { `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Nacos config长连接数",
+        "pos": {
+          "h": 9,
+          "i": "chrt_e4a78bce502d4a95bf9541d3f884a9cb",
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_nacos",
+              "field": "monitor",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "longPolling"
+                },
+                {
+                  "id": "2ca03b30-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_nacos`:(AVG(`monitor`)) { `name` = 'longPolling' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Nacos config配置个数",
+        "pos": {
+          "h": 9,
+          "i": "chrt_b07e0929498d403d84d932f7c75c7d39",
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_nacos",
+              "field": "monitor",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "configCount"
+                },
+                {
+                  "id": "36cd3630-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_nacos`:(AVG(`monitor`)) { `name` = 'configCount' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Service Count",
+        "pos": {
+          "h": 9,
+          "i": "chrt_42db002702ef477dbf16e176e82a6690",
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_nacos",
+              "field": "monitor",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "serviceCount"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_nacos`:(AVG(`monitor`)) { `name` = 'serviceCount' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "客户端请求错误数",
+        "pos": {
+          "h": 9,
+          "i": "chrt_9b2ea38e03c5408baa28d369e3d67e0e",
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_http",
+              "field": "server_requests_seconds_count",
+              "fieldFunc": "count",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "outcome",
+                  "op": "=",
+                  "type": "",
+                  "value": "CLIENT_ERROR"
+                },
+                {
+                  "id": "473c8480-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_http`:(COUNT(`server_requests_seconds_count`)) { `outcome` = 'CLIENT_ERROR' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "readConfig",
+        "pos": {
+          "h": 10,
+          "i": "chrt_c0c14c4fe3a94a88be80e0adfbc88f64",
+          "w": 4,
+          "x": 20,
+          "y": 19
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_nacos",
+              "field": "monitor",
+              "fieldFunc": "count",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "getConfig"
+                },
+                {
+                  "id": "57301320-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_nacos`:(COUNT(`monitor`)) { `name` = 'getConfig' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": true,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "publishConfig",
+        "pos": {
+          "h": 10,
+          "i": "chrt_33fb3f5f33684c09828046a232c617c2",
+          "w": 4,
+          "x": 20,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_nacos",
+              "field": "monitor",
+              "fieldFunc": "count",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "publish"
+                },
+                {
+                  "id": "512327b0-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_nacos`:(COUNT(`monitor`)) { `name` = 'publish' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "gauge",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "lineColor": "#498BFE",
+                "operation": "<=",
+                "value": [
+                  0.2
+                ]
+              },
+              {
+                "lineColor": "#41CEC7",
+                "operation": "<=",
+                "value": [
+                  0.8
+                ]
+              },
+              {
+                "lineColor": "#FFBD5F",
+                "operation": "<=",
+                "value": [
+                  1
+                ]
+              }
+            ],
+            "max": 1,
+            "min": 0,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(cpu_usage)",
+                "name": "last(cpu_usage)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "CPU使用率",
+        "pos": {
+          "h": 15,
+          "i": "chrt_c0fb5dfb13d4412a9ce02e9fff1eefc0",
+          "w": 10,
+          "x": 0,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_system",
+              "field": "cpu_usage",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_system`:(AVG(`cpu_usage`)) BY `host`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "gauge",
+            "unit": ""
+          }
+        ],
+        "type": "gauge"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "gauge",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "lineColor": "#498BFE",
+                "operation": "<=",
+                "value": [
+                  0.2
+                ]
+              },
+              {
+                "lineColor": "#41CEC7",
+                "operation": "<=",
+                "value": [
+                  0.8
+                ]
+              },
+              {
+                "lineColor": "#FFBD5F",
+                "operation": "<=",
+                "value": [
+                  1
+                ]
+              }
+            ],
+            "max": 1,
+            "min": 0,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "result",
+                "name": "result",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Memory",
+        "pos": {
+          "h": 15,
+          "i": "chrt_44a4e30817a54832accd788387eef79e",
+          "w": 10,
+          "x": 0,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "nacos_jvm",
+                  "field": "memory_max_bytes",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [],
+                  "groupBy": [
+                    "host"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`nacos_jvm`:(AVG(`memory_max_bytes`)) BY `host`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "nacos_jvm",
+                  "field": "memory_used_bytes",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [],
+                  "groupBy": [
+                    "host"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`nacos_jvm`:(AVG(`memory_used_bytes`)) BY `host`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "B/A",
+              "funcList": [
+                "last"
+              ],
+              "q": "eval(B/A, A=\"M::`nacos_jvm`:(AVG(`memory_max_bytes`)) BY `host`\", B=\"M::`nacos_jvm`:(AVG(`memory_used_bytes`)) BY `host`\")",
+              "type": "expression"
+            },
+            "type": "gauge",
+            "unit": ""
+          }
+        ],
+        "type": "gauge"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "gauge",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "lineColor": "#498BFE",
+                "operation": "<=",
+                "value": [
+                  100
+                ]
+              },
+              {
+                "lineColor": "#41CEC7",
+                "operation": "<=",
+                "value": [
+                  300
+                ]
+              },
+              {
+                "lineColor": "#FFBD5F",
+                "operation": "<=",
+                "value": [
+                  500
+                ]
+              }
+            ],
+            "max": 500,
+            "min": 0,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Threads",
+        "pos": {
+          "h": 15,
+          "i": "chrt_ad7fc9d0016b4f9da8b0ad2703225646",
+          "w": 10,
+          "x": 10,
+          "y": 9
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "theads",
+              "code": "A",
+              "dataSource": "nacos_jvm",
+              "field": "threads_daemon_threads",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_jvm`:(AVG(`threads_daemon_threads`) AS `theads`) BY `host`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "gauge",
+            "unit": ""
+          }
+        ],
+        "type": "gauge"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "colors": [],
+            "currentChartType": "gauge",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "lineColor": "#498BFE",
+                "operation": "<=",
+                "value": [
+                  0.1
+                ]
+              },
+              {
+                "lineColor": "#41CEC7",
+                "operation": "<=",
+                "value": [
+                  0.5
+                ]
+              },
+              {
+                "lineColor": "#FFBD5F",
+                "operation": "<=",
+                "value": [
+                  1
+                ]
+              }
+            ],
+            "max": 1,
+            "min": 0,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "load_1m",
+                "name": "load_1m",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent_decimal"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Loads",
+        "pos": {
+          "h": 15,
+          "i": "chrt_99dd42f088a14cb6b50fa31d37eba1af",
+          "w": 10,
+          "x": 10,
+          "y": 24
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "load_1m",
+              "children": [
+                {
+                  "alias": "load_1m",
+                  "code": "A",
+                  "dataSource": "nacos_system",
+                  "field": "load_average_1m",
+                  "fieldFunc": "avg",
+                  "fieldType": "",
+                  "fill": null,
+                  "filters": [],
+                  "groupBy": [
+                    "host"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`nacos_system`:(AVG(`load_average_1m`) AS `load_1m`) BY `host`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A/100",
+              "funcList": [
+                "last"
+              ],
+              "q": "eval(A/100, alias='load_1m', A=\"M::`nacos_system`:(AVG(`load_average_1m`) AS `load_1m`) BY `host`\")",
+              "type": "expression"
+            },
+            "type": "gauge",
+            "unit": ""
+          }
+        ],
+        "type": "gauge"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "ipCount",
+        "pos": {
+          "h": 10,
+          "i": "chrt_c7b91d54542e48248566ff4430704ec3",
+          "w": 4,
+          "x": 20,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_nacos",
+              "field": "monitor",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "name",
+                  "op": "=",
+                  "type": "",
+                  "value": "ipCount"
+                },
+                {
+                  "id": "5d8f3d40-b00b-11ec-846c-37a7c3df1d20",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_nacos`:(AVG(`monitor`)) { `name` = 'ipCount' and `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(uptime_seconds)",
+                "name": "last(uptime_seconds)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Nacos在线时长",
+        "pos": {
+          "h": 9,
+          "i": "chrt_1ad0d7e94991405bbbdb06d4bbcd768c",
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "nacos_process",
+              "field": "uptime_seconds",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "fe8d7480-affe-11ec-9491-4d0dfaa1e341",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`nacos_process`:(AVG(`uptime_seconds`)) { `host` = '#{host}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      }
+    ],
+    "groups": [],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['nacos_http'], keyin=['host'])"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tags": [],
+  "thumbnail": "",
+  "title": "Nacos 监控视图"
+}

@@ -1,0 +1,3447 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "http://testing-static-res.cloudcare.cn/dataflux-template/dashboard/rum_mobile_resource/icon.svg",
+    "url": null
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "links": [
+            {
+              "alias": "跳转到 [Resource 查看器]",
+              "open": "newWin",
+              "show": true,
+              "type": "custom",
+              "url": "/rum/viewer?leftActiveKey=Rum&activeName=RumViewer&name=查看器&time=#{TR}&tags={\"source\":[\"resource\"],\"app_id\":\"#{V.appid}\",\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"resource_type\":\"#{T.resource_type}\",\"resource_url_path_group\":\"#{V.resource_url_path_group}\",\"resource_url_path\":\"#{V.resource_url_path}\",\"country\":\"#{V.country}\"}"
+            },
+            {
+              "show": false,
+              "type": "logging",
+              "url": "/logIndi/log/all?w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "container",
+              "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "processes",
+              "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "tracing",
+              "url": "/tracing/link/all?w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            }
+          ],
+          "settings": {
+            "alias": [],
+            "chartType": "bar",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "lower",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": true,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "资源数",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "资源分类统计",
+        "pos": {
+          "h": 20,
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "资源数",
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_type",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "resource_type"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(count(resource_type) as `资源数`) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by resource_type",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "avg(duration)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(duration)",
+                "name": "avg(duration)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "percentile(duration, 90)",
+                "name": "percentile(duration, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "资源加载耗时",
+        "pos": {
+          "h": 6,
+          "w": 14,
+          "x": 10,
+          "y": 22.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(duration)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`duration`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "avg(duration)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(duration)",
+                "name": "avg(duration)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "AVG(加载耗时)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 0,
+          "y": 22.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(duration)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "percentile(duration, 90)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "percentile(duration, 90)",
+                "name": "percentile(duration, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "P90(加载耗时)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 5,
+          "y": 22.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`duration`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "avg(duration)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_dns)",
+                "name": "avg(resource_dns)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "AVG(DNS解析)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 0,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_dns",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_dns)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "percentile(resource_dns, 90)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "percentile(resource_dns, 90)",
+                "name": "percentile(resource_dns, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "P90(DNS解析)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 5,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_dns",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_dns`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "avg(resource_dns)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_dns)",
+                "name": "avg(resource_dns)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "percentile(resource_dns, 90)",
+                "name": "percentile(resource_dns, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "DNS解析",
+        "pos": {
+          "h": 6,
+          "w": 14,
+          "x": 10,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_dns",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_dns)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "resource",
+              "field": "resource_dns",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_dns`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "avg(resource_tcp)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_tcp)",
+                "name": "avg(resource_tcp)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "AVG(TCP连接)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 0,
+          "y": 34.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_tcp",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_tcp)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "percentile(resource_tcp, 90)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "percentile(resource_tcp, 90)",
+                "name": "percentile(resource_tcp, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "P90(TCP连接)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 5,
+          "y": 34.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_tcp",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_tcp`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "avg(resource_tcp)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_tcp)",
+                "name": "avg(resource_tcp)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "percentile(resource_tcp, 90)",
+                "name": "percentile(resource_tcp, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "TCP连接",
+        "pos": {
+          "h": 6,
+          "w": 14,
+          "x": 10,
+          "y": 34.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_tcp",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_tcp)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "resource",
+              "field": "resource_tcp",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_tcp`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "avg(resource_ttfb)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_ttfb)",
+                "name": "avg(resource_ttfb)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "AVG(请求响应)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 0,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_ttfb",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_ttfb)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "percentile(resource_ttfb, 90)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "percentile(resource_ttfb, 90)",
+                "name": "percentile(resource_ttfb, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "P90(请求响应)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 5,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_ttfb",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_ttfb`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "avg(resource_ttfb)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_ttfb)",
+                "name": "avg(resource_ttfb)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "percentile(resource_ttfb, 90)",
+                "name": "percentile(resource_ttfb, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "请求响应",
+        "pos": {
+          "h": 6,
+          "w": 14,
+          "x": 10,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_ttfb",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_ttfb)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "resource",
+              "field": "resource_ttfb",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_ttfb`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "avg(resource_trans)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_trans)",
+                "name": "avg(resource_trans)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "AVG(内容传输)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 0,
+          "y": 46.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_trans",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_trans)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "tableSortMetricName": "percentile(resource_trans, 90)",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "percentile(resource_trans, 90)",
+                "name": "percentile(resource_trans, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "P90(内容传输)",
+        "pos": {
+          "h": 6,
+          "w": 5,
+          "x": 5,
+          "y": 46.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_trans",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_trans`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "tableSortMetricName": "avg(resource_trans)",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(resource_trans)",
+                "name": "avg(resource_trans)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "percentile(resource_trans, 90)",
+                "name": "percentile(resource_trans, 90)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "内容传输",
+        "pos": {
+          "h": 6,
+          "w": 14,
+          "x": 10,
+          "y": 46.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_trans",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(resource_trans)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "code": "B",
+              "dataSource": "resource",
+              "field": "resource_trans",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`resource_trans`,90)) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']}",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "links": [
+            {
+              "alias": "跳转到 [Resource 查看器]",
+              "open": "newWin",
+              "show": true,
+              "type": "custom",
+              "url": "/rum/viewer?leftActiveKey=Rum&activeName=RumViewer&name=查看器&time=#{TR}&tags={\"source\":[\"resource\"],\"app_id\":\"#{V.appid}\",\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"resource_type\":\"#{T.resource_type}\",\"resource_url_path_group\":\"#{T.resource_url_path_group}\",\"resource_url_path\":\"#{V.resource_url_path}\",\"country\":\"#{V.country}\"}"
+            },
+            {
+              "show": false,
+              "type": "logging",
+              "url": "/logIndi/log/all?w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "container",
+              "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "processes",
+              "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "tracing",
+              "url": "/tracing/link/all?w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            }
+          ],
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "mainMeasurementLimit": 10,
+            "mainMeasurementQueryCode": "A",
+            "mainMeasurementSort": "top",
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "tableSortMetricName": "域名",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "AVG(加载时间)",
+                "name": "AVG(加载时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "P90(加载时间)",
+                "name": "P90(加载时间)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "资源请求排行(TOP10)",
+        "pos": {
+          "h": 20,
+          "w": 16,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "域名",
+              "code": "A",
+              "dataSource": "resource",
+              "field": "resource_url_host",
+              "fieldFunc": "last",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last",
+                "top:5"
+              ],
+              "groupBy": [
+                "resource_url_path_group"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(last(resource_url_host) as `域名`) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by resource_url_path_group",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "资源数",
+              "code": "B",
+              "dataSource": "resource",
+              "field": "resource_url",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "resource_url_path_group"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(count(resource_url) as `资源数`) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by resource_url_path_group",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "AVG(加载时间)",
+              "code": "C",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "resource_url_path_group"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(`duration`) as `AVG(加载时间)`) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by resource_url_path_group",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "P90(加载时间)",
+              "code": "D",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [
+                "resource_url_path_group"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(percentile(`duration`,90) as `P90(加载时间)`) {`app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by resource_url_path_group",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "links": [
+            {
+              "alias": "跳转到[资源查看器]",
+              "open": "newWin",
+              "show": true,
+              "type": "custom",
+              "url": "/rum/viewer?leftActiveKey=Rum&activeName=RumViewer&name=查看器&time=#{TR}&tags={\"source\":\"resource\",\"app_id\":\"#{V.appid}\",\"env\":\"#{V.env}\",\"version\":\"#{V.version}\",\"provider_name\":\"#{T.provider_name}\",\"provider_type\":\"CDN\",\"resource_url_path_group\":\"#{V.resource_url_path_group}\",\"resource_url_path\":\"#{V.resource_url_path}\",\"country\":\"#{V.country}\"}"
+            },
+            {
+              "show": false,
+              "type": "logging",
+              "url": "/logIndi/log/all?w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "container",
+              "url": "/objectadmin/docker_containers?routerTabActive=ObjectadminDocker&w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "processes",
+              "url": "/objectadmin/host_processes?routerTabActive=ObjectadminProcesses&w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            },
+            {
+              "show": false,
+              "type": "tracing",
+              "url": "/tracing/link/all?w=wksp_ed134a6485c8484dbd0e58ce9a9c6115&time=#{TR}&tags=#{T}"
+            }
+          ],
+          "settings": {
+            "alias": [
+              {
+                "alias": "CDN 服务商",
+                "key": "provider_name",
+                "name": "provider_name"
+              }
+            ],
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "mainMeasurementLimit": 20,
+            "mainMeasurementQueryCode": "B",
+            "mainMeasurementSort": "top",
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "(AVG)加载时间",
+                "name": "(AVG)加载时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              },
+              {
+                "key": "(P90)加载时间",
+                "name": "(P90)加载时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ns"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "资源耗时分析"
+        },
+        "name": "资源加载耗时排行(CDN服务)",
+        "pos": {
+          "h": 17,
+          "w": 24,
+          "x": 0,
+          "y": 52.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "资源数",
+              "code": "B",
+              "dataSource": "resource",
+              "field": "*",
+              "fieldFunc": "count",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "provider_type",
+                  "op": "=",
+                  "value": "CDN"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "provider_name"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(count(`*`) as `资源数`) {`provider_type` = `CDN` and `app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by provider_name",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "(AVG)加载时间",
+              "code": "A",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "avg",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "provider_type",
+                  "op": "=",
+                  "value": "CDN"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "provider_name"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::resource:(avg(`duration`) as `(AVG)加载时间`) {`provider_type` = `CDN` and `app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} by provider_name",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "(P90)加载时间",
+              "code": "C",
+              "dataSource": "resource",
+              "field": "duration",
+              "fieldFunc": "p90",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "logic": "and",
+                  "name": "provider_type",
+                  "op": "=",
+                  "value": "CDN"
+                },
+                {
+                  "logic": "and",
+                  "name": "app_id",
+                  "op": "=",
+                  "value": "#{appid}"
+                },
+                {
+                  "logic": "and",
+                  "name": "env",
+                  "op": "=",
+                  "value": "#{env}"
+                },
+                {
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "value": "#{version}"
+                },
+                {
+                  "logic": "and",
+                  "name": "country",
+                  "op": "=",
+                  "value": "#{country}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path",
+                  "op": "=",
+                  "value": "#{resource_url_path}"
+                },
+                {
+                  "logic": "and",
+                  "name": "resource_url_path_group",
+                  "op": "=",
+                  "value": "#{resource_url_path_group}"
+                },
+                {
+                  "logic": "and",
+                  "name": "sdk_name",
+                  "op": "in",
+                  "value": [
+                    "df_ios_rum_sdk",
+                    "df_android_rum_sdk"
+                  ]
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "provider_name"
+              ],
+              "groupByTime": "",
+              "namespace": "rum",
+              "q": "R::`resource`:(PERCENTILE(`duration`, 90) AS `(P90)加载时间`) { `provider_type` = 'CDN' and `app_id` = '#{appid}' and `env` = '#{env}' and `version` = '#{version}' and `country` = '#{country}' and `resource_url_path` = '#{resource_url_path}' and `resource_url_path_group` = '#{resource_url_path_group}' and `sdk_name` IN ['df_ios_rum_sdk','df_android_rum_sdk']} BY `provider_name`",
+              "queryFuncs": [],
+              "type": "dql",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      }
+    ],
+    "groups": [
+      "资源耗时分析"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "appid",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "R::resource:(distinct(app_id)) {sdk_name IN ['df_ios_rum_sdk','df_android_rum_sdk']}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "应用 ID",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "env",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "R::resource:(distinct(env)) {`app_id` = '#{appid}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "环境",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "version",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "R::resource:(distinct(version)) {`app_id` = '#{appid}' and `env` = '#{env}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "版本",
+        "seq": 2,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "resource_url_path_group",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "R::resource:(distinct(resource_url_path_group)) {`app_id` = '#{appid}' and `env` = '#{env}' and version = '#{version}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "资源地址分组",
+        "seq": 3,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "resource_url_path",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "R::resource:(distinct(resource_url_path)) {`app_id` = '#{appid}' and `env` = '#{env}' and version = '#{version}' and resource_url_path_group = '#{resource_url_path_group}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "资源地址",
+        "seq": 4,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "country",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "R::resource:(distinct(country)) {`app_id` = '#{appid}' and `env` = '#{env}' and version = '#{version}'}"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "国家",
+        "seq": 5,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_9ba52e9e578d48afbb087d45a639e593",
+      "name": "ok"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "移动端应用资源性能分析"
+}

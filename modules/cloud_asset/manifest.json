@@ -1,0 +1,1367 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(amount)",
+                "name": "sum(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "总费用",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 0,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(offical_amount)",
+                "name": "sum(offical_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "总优惠金额",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 6,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "cloud_bill",
+                  "field": "offical_amount",
+                  "fieldFunc": "sum",
+                  "fieldType": "float",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`cloud_bill`:(SUM(`offical_amount`))",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "cloud_bill",
+                  "field": "amount",
+                  "fieldFunc": "sum",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`cloud_bill`:(SUM(`amount`))",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A-B",
+              "funcList": [],
+              "q": "eval(A-B, A=\"M::`cloud_bill`:(SUM(`offical_amount`))\", B=\"M::`cloud_bill`:(SUM(`amount`))\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "bar",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "lower",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": true,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(amount)",
+                "name": "sum(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "账单分析"
+        },
+        "name": "产品维度汇总",
+        "pos": {
+          "h": 16,
+          "w": 7,
+          "x": 0,
+          "y": 24.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "ff3d0b90-59ca-11ed-be8a-1d0199860d07",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "02d59ba0-59cb-11ed-be8a-1d0199860d07",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "bar": {
+              "direction": "horizontal",
+              "xAxisShowType": "groupBy"
+            },
+            "chartType": "bar",
+            "color": "#3AB8FF",
+            "colors": [],
+            "currentChartType": "toplist",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "openCompare": false,
+            "showFieldMapping": false,
+            "showTableHead": true,
+            "showTitle": true,
+            "showTopSize": true,
+            "table": {
+              "queryMode": "toGroupColumn"
+            },
+            "tableSortMetricName": "",
+            "tableSortType": "top",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "topSize": 10,
+            "units": [
+              {
+                "key": "avg(amount)",
+                "name": "avg(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "账单分析"
+        },
+        "name": "产品费用排名",
+        "pos": {
+          "h": 31,
+          "w": 7,
+          "x": 0,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "925438b0-5a50-11ed-b5ba-e953dbf9591b",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "95e575c0-5a50-11ed-b5ba-e953dbf9591b",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [
+                null,
+                "top:10"
+              ],
+              "groupBy": [
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(AVG(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "toplist",
+            "unit": ""
+          }
+        ],
+        "type": "toplist"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(amount)",
+                "name": "sum(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "消费趋势",
+        "pos": {
+          "h": 10,
+          "w": 8,
+          "x": 0,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "ebb26020-5a51-11ed-b5ba-e953dbf9591b",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "ef000480-5a51-11ed-b5ba-e953dbf9591b",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(amount)",
+                "name": "sum(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "账号费用",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 12,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "1f7e6a70-5a52-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "23d652e0-5a52-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(offical_amount)",
+                "name": "sum(offical_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "账号优惠金额",
+        "pos": {
+          "h": 10,
+          "w": 6,
+          "x": 18,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "cloud_bill",
+                  "field": "offical_amount",
+                  "fieldFunc": "sum",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "6a7a6e20-5a52-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "cloud_provider",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cloud_provider}"
+                    },
+                    {
+                      "id": "6e110260-5a52-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "account_name",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{account_name}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`cloud_bill`:(SUM(`offical_amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "cloud_bill",
+                  "field": "amount",
+                  "fieldFunc": "sum",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "7da002d0-5a52-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "cloud_provider",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cloud_provider}"
+                    },
+                    {
+                      "id": "8108d050-5a52-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "account_name",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{account_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' }",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "A-B",
+              "funcList": [],
+              "q": "eval(A-B, A=\"M::`cloud_bill`:(SUM(`offical_amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' }\", B=\"M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' }\")",
+              "type": "expression"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": true,
+          "settings": {
+            "alias": [],
+            "chartType": "doughnut",
+            "colors": [],
+            "currentChartType": "pie",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "legendPostion": "right",
+            "levels": [],
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "消费金额",
+                "name": "消费金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "账单分析"
+        },
+        "name": "产品费用分析",
+        "pos": {
+          "h": 16,
+          "w": 9,
+          "x": 7,
+          "y": 24.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "消费金额",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "2d8f39e0-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "317574c0-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`) AS `消费金额`) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "pie",
+            "unit": ""
+          }
+        ],
+        "type": "pie"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "colorLevel": 3,
+            "colors": [],
+            "currentChartType": "treemap",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levelArr": [],
+            "levels": [],
+            "mainMeasurementLimit": 10,
+            "mainMeasurementQueryCode": "A",
+            "mainMeasurementSort": "top",
+            "rangeColor": "",
+            "rangeColorKey": "light-blue",
+            "showFieldMapping": false,
+            "showLegend": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "sum(amount)",
+                "name": "sum(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "账单分析"
+        },
+        "name": "产品消费占比分析",
+        "pos": {
+          "h": 16,
+          "w": 8,
+          "x": 16,
+          "y": 24.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "57139540-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "5ae75990-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "treemap",
+            "unit": ""
+          }
+        ],
+        "type": "treemap"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "mainMeasurementLimit": 20,
+            "mainMeasurementQueryCode": "A",
+            "mainMeasurementSort": "top",
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(amount)",
+                "name": "avg(amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              },
+              {
+                "key": "avg(offical_amount)",
+                "name": "avg(offical_amount)",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "账单分析"
+        },
+        "name": "费用详情",
+        "pos": {
+          "h": 31,
+          "w": 17,
+          "x": 7,
+          "y": 40.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "消费金额",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9f7517f0-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "aa4753a0-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "cloud_provider",
+                "account_name",
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`) AS `消费金额`) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "优惠金额",
+              "code": "B",
+              "dataSource": "cloud_bill",
+              "field": "offical_amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "adc0ea00-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "ae8f5d90-5a53-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "cloud_provider",
+                "account_name",
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`offical_amount`) AS `优惠金额`) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "消费金额",
+                "name": "消费金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "产品消费趋势",
+        "pos": {
+          "h": 10,
+          "w": 8,
+          "x": 8,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "消费金额",
+              "code": "A",
+              "dataSource": "cloud_bill",
+              "field": "amount",
+              "fieldFunc": "sum",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "8394e780-5a54-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "cloud_provider",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cloud_provider}"
+                },
+                {
+                  "id": "86ba6a70-5a54-11ed-a046-5d91ddb5ed9c",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "cloud_provider",
+                "account_name",
+                "product_name"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`cloud_bill`:(SUM(`amount`) AS `消费金额`) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "优惠金额",
+                "name": "优惠金额",
+                "unit": "",
+                "units": [
+                  "rmb",
+                  "yuan"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "费用趋势"
+        },
+        "name": "产品优惠趋势",
+        "pos": {
+          "h": 10,
+          "w": 8,
+          "x": 16,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "优惠金额",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "cloud_bill",
+                  "field": "offical_amount",
+                  "fieldFunc": "sum",
+                  "fieldType": "float",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "id": "49597480-5a56-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "cloud_provider",
+                      "op": "=",
+                      "value": "#{cloud_provider}"
+                    },
+                    {
+                      "id": "49597481-5a56-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "account_name",
+                      "op": "=",
+                      "value": "#{account_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cloud_provider",
+                    "account_name",
+                    "product_name"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`cloud_bill`:(SUM(`offical_amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "cloud_bill",
+                  "field": "amount",
+                  "fieldFunc": "sum",
+                  "fieldType": "float",
+                  "fill": null,
+                  "filters": [
+                    {
+                      "id": "3fcc8a10-5a56-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "cloud_provider",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cloud_provider}"
+                    },
+                    {
+                      "id": "450ed280-5a56-11ed-a046-5d91ddb5ed9c",
+                      "logic": "and",
+                      "name": "account_name",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{account_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "cloud_provider",
+                    "account_name",
+                    "product_name"
+                  ],
+                  "groupByTime": "",
+                  "indexFilter": "",
+                  "namespace": "metric",
+                  "q": "M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`",
+                  "queryFuncs": [],
+                  "type": "simple"
+                }
+              ],
+              "code": "B",
+              "expression": "A-B",
+              "funcList": [],
+              "q": "eval(A-B, alias='优惠金额', A=\"M::`cloud_bill`:(SUM(`offical_amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`\", B=\"M::`cloud_bill`:(SUM(`amount`)) { `cloud_provider` = '#{cloud_provider}' and `account_name` = '#{account_name}' } BY `cloud_provider`, `account_name`, `product_name`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "费用趋势",
+      "账单分析"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cloud_provider",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['cloud_bill'], keyin=['cloud_provider'])"
+        },
+        "hide": 0,
+        "name": "云厂商",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['cloud_bill'], keyin=['account_name']){cloud_provider='#{cloud_provider}'}"
+        },
+        "hide": 0,
+        "name": "云账户",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "云账单费用监控视图"
+}

@@ -1,0 +1,2118 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#0EEE98",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "green"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "green",
+                "operation": "=",
+                "originalVal": [
+                  "green"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "运行状态",
+        "pos": {
+          "h": 9,
+          "i": "chrt_03371b9cefc04fb0854eda215e2bcf1a",
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "health_runtime_status",
+              "fieldFunc": "avg",
+              "fieldType": "string",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`health_runtime_status`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Pipeline 运行 work 的数量",
+        "pos": {
+          "h": 9,
+          "i": "chrt_c9153dbb0f4549269e336df06469357b",
+          "w": 4,
+          "x": 4,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "pipeline_workers",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`pipeline_workers`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Logstash进程使用的打开文件描述符的数量",
+        "pos": {
+          "h": 9,
+          "i": "chrt_0339a46021604a2a9fcbb15675d43f76",
+          "w": 4,
+          "x": 20,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "process_open_file_descriptors",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_open_file_descriptors`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#F40837",
+                "lineColor": "",
+                "operation": ">",
+                "value": [
+                  "0"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "配置重新加载失败次数",
+        "pos": {
+          "h": 9,
+          "i": "chrt_a76bfd0182e34de09b858e4053293eb3",
+          "w": 4,
+          "x": 8,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "reloads_failures",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`reloads_failures`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "0",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_mem_total_virtual_in_bytes)",
+                "name": "last(process_mem_total_virtual_in_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Logstash 进程虚拟内存",
+        "pos": {
+          "h": 9,
+          "i": "chrt_6a0caeb3298f477897704e05c3e0a5ef",
+          "w": 4,
+          "x": 16,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "process_mem_total_virtual_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_mem_total_virtual_in_bytes`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "#F61B09",
+                "lineColor": "",
+                "operation": ">",
+                "value": [
+                  "0"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": null
+        },
+        "name": "Pipeline配置重新加载失败次数",
+        "pos": {
+          "h": 9,
+          "i": "chrt_11ac4402065741748feb549c0cda9cb7",
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "pipeline_reloads_failures",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [],
+              "funcList": [
+                "last"
+              ],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`pipeline_reloads_failures`))",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "process"
+        },
+        "name": "Logstash进程使用的打开文件描述符的数量",
+        "pos": {
+          "h": 13,
+          "i": "chrt_19fecc0086a94d3bb70f04a6b8801a6b",
+          "w": 7,
+          "x": 0,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "process_open_file_descriptors",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "16d67c50-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "19ff5aa0-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_open_file_descriptors`)) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(process_mem_total_virtual_in_bytes)",
+                "name": "last(process_mem_total_virtual_in_bytes)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "process"
+        },
+        "name": "Logstash 进程虚拟内存",
+        "pos": {
+          "h": 13,
+          "i": "chrt_6696c11e980249beb182819171789ae6",
+          "w": 8,
+          "x": 7,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "process_mem_total_virtual_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "940bb550-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "969fcdb0-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_mem_total_virtual_in_bytes`)) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "process"
+        },
+        "name": "Logstash 进程 cpu 负载",
+        "pos": {
+          "h": 13,
+          "i": "chrt_3c6142829d4b497d82d5c01f74cf0416",
+          "w": 9,
+          "x": 15,
+          "y": 11.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "1 分钟平均负载",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "process_cpu_load_average_1m",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dc54f510-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "df0d5e50-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_cpu_load_average_1m`) AS `1 分钟平均负载`) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "5 分钟平均负载",
+              "code": "C",
+              "dataSource": "logstash",
+              "field": "process_cpu_load_average_5m",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dc54f510-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "df0d5e50-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_cpu_load_average_5m`) AS `5 分钟平均负载`) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "15 分钟平均负载",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "process_cpu_load_average_15m",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "dc54f510-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "df0d5e50-8a1e-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`process_cpu_load_average_15m`) AS `15 分钟平均负载`) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "JVM"
+        },
+        "name": "JVM 使用的线程数",
+        "pos": {
+          "h": 12,
+          "i": "chrt_52be976599a9407d873b9f447f3dd646",
+          "w": 4,
+          "x": 0,
+          "y": 27
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "jvm_threads_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "9a0e7220-8a1f-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "9d0b3760-8a1f-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`jvm_threads_count`)) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(jvm_mem_heap_used_percent)",
+                "name": "last(jvm_mem_heap_used_percent)",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "JVM"
+        },
+        "name": "Java 堆内存使用率",
+        "pos": {
+          "h": 12,
+          "i": "chrt_9f6bc3522b334eb7a55f05465bb0bb6d",
+          "w": 5,
+          "x": 4,
+          "y": 27
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "jvm_mem_heap_used_percent",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d30da9b0-8a1f-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "d55835f0-8a1f-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`jvm_mem_heap_used_percent`)) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "老年代使用内存",
+                "name": "老年代使用内存",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              },
+              {
+                "key": "青年代使用内存",
+                "name": "青年代使用内存",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "b"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "JVM"
+        },
+        "name": "jvm 内存使用情况",
+        "pos": {
+          "h": 12,
+          "i": "chrt_f910658dd0564cbeb04d4342811b39c7",
+          "w": 5,
+          "x": 9,
+          "y": 27
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "老年代使用内存",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "jvm_mem_pools_old_used_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "afdcd850-8a22-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "b3b18700-8a22-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`jvm_mem_pools_old_used_in_bytes`) AS `老年代使用内存`) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "青年代使用内存",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "jvm_mem_pools_young_used_in_bytes",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "afdcd850-8a22-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "b3b18700-8a22-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`logstash`:(AVG(`jvm_mem_pools_young_used_in_bytes`) AS `青年代使用内存`) { `host` = '#{host}' and `version` = '#{version}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "JVM"
+        },
+        "name": "GC 次数",
+        "pos": {
+          "h": 12,
+          "i": "chrt_2a3676ef6c344b79891b65fdef59b2d9",
+          "w": 5,
+          "x": 14,
+          "y": 27
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "老年代 gc 次数",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "jvm_gc_collectors_old_collection_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "ff5e1600-8a22-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "01e64780-8a23-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DIFFERENCE(\"M::`logstash`:(AVG(`jvm_gc_collectors_old_collection_count`) AS `老年代 gc 次数`) { `host` = '#{host}' and `version` = '#{version}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_difference"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "青年代 gc 次数",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "jvm_gc_collectors_young_collection_count",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "ff5e1600-8a22-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "01e64780-8a23-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DIFFERENCE(\"M::`logstash`:(AVG(`jvm_gc_collectors_young_collection_count`) AS `青年代 gc 次数`) { `host` = '#{host}' and `version` = '#{version}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_difference"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "老年代 gc 时间",
+                "name": "老年代 gc 时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              },
+              {
+                "key": "青年代 gc 时间",
+                "name": "青年代 gc 时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "JVM"
+        },
+        "name": "gc 时间",
+        "pos": {
+          "h": 12,
+          "i": "chrt_fd5fa8642c2c47d2a6acf01e89cab37d",
+          "w": 5,
+          "x": 19,
+          "y": 27
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "老年代 gc 时间",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "jvm_gc_collectors_old_collection_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "6a5fbb70-8a23-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "6ddcfb50-8a23-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DIFFERENCE(\"M::`logstash`:(AVG(`jvm_gc_collectors_old_collection_time_in_millis`) AS `老年代 gc 时间`) { `host` = '#{host}' and `version` = '#{version}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_difference"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "青年代 gc 时间",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "jvm_gc_collectors_young_collection_time_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "6a5fbb70-8a23-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "6ddcfb50-8a23-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DIFFERENCE(\"M::`logstash`:(AVG(`jvm_gc_collectors_young_collection_time_in_millis`) AS `青年代 gc 时间`) { `host` = '#{host}' and `version` = '#{version}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_difference"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 事件数变化率",
+        "pos": {
+          "h": 12,
+          "i": "chrt_888e36fa38b74f0289621a7eb225befd",
+          "w": 5,
+          "x": 0,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "进入Pipeline 事件数",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "pipeline_events_in",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3a941b00-8a34-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3d4c3620-8a34-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_inputs_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_events_in`) AS `进入Pipeline 事件数`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_inputs_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流出Pipeline 事件数",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "pipeline_events_out",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3a941b00-8a34-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3d4c3620-8a34-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_outputs_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_events_out`) AS `流出Pipeline 事件数`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_outputs_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pipeline 过滤事件数",
+              "code": "C",
+              "dataSource": "logstash",
+              "field": "pipeline_events_filtered",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "3a941b00-8a34-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "3d4c3620-8a34-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_filters_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_events_filtered`) AS `Pipeline 过滤事件数`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_filters_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline 中事件持续时间变化率",
+        "pos": {
+          "h": 12,
+          "i": "chrt_bae56b1edd254abdb3bdab3512000891",
+          "w": 5,
+          "x": 5,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Pipeline 中事件持续时间变化率",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "pipeline_events_duration_in_millis",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5f8c61c0-8a38-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "62b82640-8a38-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_events_duration_in_millis`) AS `Pipeline 中事件持续时间变化率`) { `host` = '#{host}' and `version` = '#{version}' }\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline filters 事件数变化率",
+        "pos": {
+          "h": 12,
+          "i": "chrt_eea08b6b4b3340e2985f31b4704543f6",
+          "w": 5,
+          "x": 10,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "进入 Pipeline filters 变化率",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "pipeline_plugins_filters_events_in",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bdcdbd80-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c0934620-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_filters_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_plugins_filters_events_in`) AS `进入 Pipeline filters 变化率`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_filters_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流出 Pipeline filters 变化率",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "pipeline_plugins_filters_events_out",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bdcdbd80-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c0934620-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_filters_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_plugins_filters_events_out`) AS `流出 Pipeline filters 变化率`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_filters_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline Inputs 事件数变化率",
+        "pos": {
+          "h": 12,
+          "i": "chrt_1f8096116d8f4b1bb2cd83f9399a3d8a",
+          "w": 5,
+          "x": 15,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流出 Pipeline Inputs 事件数变化率",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "pipeline_plugins_inputs_events_out",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bdcdbd80-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c0934620-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_inputs_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_plugins_inputs_events_out`) AS `流出 Pipeline Inputs 事件数变化率`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_inputs_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "line",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "auto",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Pipeline"
+        },
+        "name": "Pipeline Outputs 事件数变化率",
+        "pos": {
+          "h": 12,
+          "i": "chrt_ba1ff93cc23745fda0a6f69b3d88186f",
+          "w": 4,
+          "x": 20,
+          "y": 41.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "进入 Pipeline outputs 变化率",
+              "code": "A",
+              "dataSource": "logstash",
+              "field": "pipeline_plugins_outputs_events_in",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bdcdbd80-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c0934620-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_filters_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_plugins_outputs_events_in`) AS `进入 Pipeline outputs 变化率`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_filters_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "流出 Pipeline outputs 变化率",
+              "code": "B",
+              "dataSource": "logstash",
+              "field": "pipeline_plugins_outputs_events_out",
+              "fieldFunc": "avg",
+              "fieldType": "integer",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "bdcdbd80-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "host",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{host}"
+                },
+                {
+                  "id": "c0934620-8a40-11ec-b8c7-5bf7aa3ffbeb",
+                  "logic": "and",
+                  "name": "version",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{version}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "plugin_filters_id"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "NON_NEGATIVE_DERIVATIVE(\"M::`logstash`:(AVG(`pipeline_plugins_outputs_events_out`) AS `流出 Pipeline outputs 变化率`) { `host` = '#{host}' and `version` = '#{version}' } BY `plugin_filters_id`\")",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "non_negative_derivative"
+                }
+              ],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "process",
+      "JVM",
+      "Pipeline"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "host",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "df-solution-ecs-018",
+            "value": "df-solution-ecs-018"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['logstash'], keyin=['host'])[5m]"
+        },
+        "hide": 0,
+        "name": "主机",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "version",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "7.11.2",
+            "value": "7.11.2"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['logstash'], keyin=['version']){host='#{host}'}[5m]"
+        },
+        "hide": 0,
+        "name": "版本",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [],
+  "tags": [],
+  "thumbnail": "",
+  "title": "Logstash"
+}

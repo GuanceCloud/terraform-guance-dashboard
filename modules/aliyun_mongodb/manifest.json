@@ -1,0 +1,1601 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {
+    "icon": "https://static-res.guance.com/dataflux-template/dashboard/aliyun_mongodb/icon.svg",
+    "url": "https://static-res.guance.com/dataflux-template/dashboard/aliyun_mongodb/aliyun_mongodb.png"
+  },
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#2D8CF0",
+                "key": "CPU使用率",
+                "name": "CPU使用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 使用率",
+                "name": "CPU 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源监控"
+        },
+        "name": "CPU 使用率",
+        "pos": {
+          "h": 8,
+          "i": "chrt_628ca3d141bf4b4f83d841aa6a5f614a",
+          "w": 8,
+          "x": 0,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 使用率",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "CPUUtilization_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a2bdd700-f012-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "b812bc40-e6fe-11ec-abcd-e17d8b060ec1",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`CPUUtilization_Average`) AS `CPU 使用率`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#19BE6B",
+                "key": "内存使用率",
+                "name": "内存使用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存使用率",
+                "name": "内存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源监控"
+        },
+        "name": "内存使用率",
+        "pos": {
+          "h": 8,
+          "i": "chrt_c48b4f7049d947ce8e6ff1a798b3e184",
+          "w": 8,
+          "x": 8,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存使用率",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "MemoryUtilization_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "c42f64d0-f012-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "97102770-e6ff-11ec-abcd-e17d8b060ec1",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`MemoryUtilization_Average`) AS `内存使用率`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FF9900",
+                "key": "磁盘使用率",
+                "name": "磁盘使用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘使用率",
+                "name": "磁盘使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源监控"
+        },
+        "name": "磁盘使用率",
+        "pos": {
+          "h": 8,
+          "i": "chrt_682140f53f4f4d2c8ab686cdbf368d93",
+          "w": 8,
+          "x": 16,
+          "y": 2.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘使用率",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "DiskUtilization_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "d487cfc0-f012-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "a2c82f40-e6ff-11ec-abcd-e17d8b060ec1",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`DiskUtilization_Average`) AS `磁盘使用率`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "rgba(115,122,226,1)",
+                "key": "IOPS 使用率",
+                "name": "IOPS 使用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "IOPS 使用率",
+                "name": "IOPS 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源监控"
+        },
+        "name": "IOPS 使用率",
+        "pos": {
+          "h": 8,
+          "i": "chrt_07139235bbcb4586bda5aa1526a5c73f",
+          "w": 8,
+          "x": 16,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "IOPS 使用率",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "IOPSUtilization_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "eef3ba40-f012-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "c0eb0740-e6ff-11ec-abcd-e17d8b060ec1",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`IOPSUtilization_Average`) AS `IOPS 使用率`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#F16B62",
+                "key": "连接数使用率",
+                "name": "连接数使用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "连接数使用率",
+                "name": "连接数使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源监控"
+        },
+        "name": "连接数使用率",
+        "pos": {
+          "h": 8,
+          "i": "chrt_55a472e188b94351a2e428f14ad7be17",
+          "w": 8,
+          "x": 8,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "连接数使用率",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "ConnectionAmount_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "040d56c0-f013-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "b7b69d10-e6ff-11ec-abcd-e17d8b060ec1",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`ConnectionAmount_Average`) AS `连接数使用率`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内网入流量",
+                "name": "内网入流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "内网出流量",
+                "name": "内网出流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "内网流量",
+        "pos": {
+          "h": 8,
+          "i": "chrt_36b0fc21a6e24c6da664e587268ed969",
+          "w": 8,
+          "x": 8,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内网入流量",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "IntranetIn_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "37e63250-f013-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "442ac540-e701-11ec-b280-5fb6da4f2055",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`IntranetIn_Average`) AS `内网入流量`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内网出流量",
+              "code": "B",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "IntranetOut_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "37e63250-f013-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "4a855b80-e701-11ec-b280-5fb6da4f2055",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`IntranetOut_Average`) AS `内网出流量`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#D15B80",
+                "key": "实例占用磁盘空间",
+                "name": "实例占用磁盘空间"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "实例占用磁盘空间",
+                "name": "实例占用磁盘空间",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "实例占用磁盘空间",
+        "pos": {
+          "h": 8,
+          "i": "chrt_1ed520c4416740d99fea62742530bb34",
+          "w": 6,
+          "x": 12,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "实例占用磁盘空间",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "InstanceDiskAmount_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "294e7840-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "3b026900-e701-11ec-b280-5fb6da4f2055",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`InstanceDiskAmount_Average`) AS `实例占用磁盘空间`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "每秒语句执行次数",
+        "pos": {
+          "h": 8,
+          "i": "chrt_b90e6e6932f44996a09c7a1fe4b36db5",
+          "w": 8,
+          "x": 0,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "delete",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "OpDelete_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "641131c0-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "71edbf40-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`OpDelete_Average`) AS `delete`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "insert",
+              "code": "D",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "OpInsert_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "641131c0-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "78652c50-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`OpInsert_Average`) AS `insert`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "getmore",
+              "code": "E",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "OpGetmore_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "641131c0-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "7f238d70-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`OpGetmore_Average`) AS `getmore`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "command",
+              "code": "F",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "OpCommand_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "641131c0-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "8495e690-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "",
+                  "op": "=",
+                  "value": ""
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`OpCommand_Average`) AS `command`) { `account_name` = '#{account_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "query",
+              "code": "G",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "OpQuery_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "641131c0-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "8b35c330-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`OpQuery_Average`) AS `query`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "update",
+              "code": "B",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "OpUpdate_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "641131c0-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "90536ca0-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`OpUpdate_Average`) AS `update`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#00B2CE",
+                "key": "数据占用磁盘空间",
+                "name": "数据占用磁盘空间"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "数据占用磁盘空间",
+                "name": "数据占用磁盘空间",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "数据占用磁盘空间",
+        "pos": {
+          "h": 8,
+          "i": "chrt_0094e5c06b304110b082d4afdaa2d718",
+          "w": 6,
+          "x": 0,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "数据占用磁盘空间",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "DataDiskAmount_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "294e7840-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "29318ee0-e701-11ec-b280-5fb6da4f2055",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`DataDiskAmount_Average`) AS `数据占用磁盘空间`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#737AE2",
+                "key": "日志占用磁盘空间",
+                "name": "日志占用磁盘空间"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "日志占用磁盘空间",
+                "name": "日志占用磁盘空间",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "日志占用磁盘空间",
+        "pos": {
+          "h": 8,
+          "i": "chrt_ea0047fe1cd745369e7619f4a5b997c8",
+          "w": 6,
+          "x": 6,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "日志占用磁盘空间",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "LogDiskAmount_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "294e7840-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "3268b830-e701-11ec-b280-5fb6da4f2055",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`LogDiskAmount_Average`) AS `日志占用磁盘空间`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "QPS",
+                "name": "QPS"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "BP读命中率",
+                "name": "BP读命中率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "QPS",
+        "pos": {
+          "h": 8,
+          "i": "chrt_20f5707500594331aaee816cb0bf7790",
+          "w": 8,
+          "x": 16,
+          "y": 29
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "QPS",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "QPS_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "294e7840-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "9f0ea250-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`QPS_Average`) AS `QPS`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FF92C6",
+                "key": "请求数",
+                "name": "请求数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 使用率",
+                "name": "CPU 使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源监控"
+        },
+        "name": "请求数",
+        "pos": {
+          "h": 8,
+          "i": "chrt_dc6dfc9b080040cfb81f58621cf6c406",
+          "w": 8,
+          "x": 0,
+          "y": 10.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "请求数",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "NumberRequests_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a2bdd700-f012-11eb-ac88-47ce3dd97a25",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "64ab7fe0-e700-11ec-abcd-e17d8b060ec1",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`NumberRequests_Average`) AS `请求数`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#EA5E74",
+                "key": "复制延迟",
+                "name": "复制延迟"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "复制延迟",
+                "name": "复制延迟",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "性能监控"
+        },
+        "name": "复制延迟",
+        "pos": {
+          "h": 8,
+          "i": "chrt_750fd065d7f04bdb9e6428833406a17e",
+          "w": 6,
+          "x": 18,
+          "y": 21
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "复制延迟",
+              "code": "A",
+              "dataSource": "aliyun_acs_mongodb",
+              "field": "ReplicationLag_Average",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "294e7840-f015-11eb-9e04-87f8ed543f35",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "68bb29d0-e702-11ec-8d75-e9534e125ea7",
+                  "logic": "and",
+                  "name": "DBInstanceDescription",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{DBInstanceDescription}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`aliyun_acs_mongodb`:(AVG(`ReplicationLag_Average`) AS `复制延迟`) { `account_name` = '#{account_name}' and `DBInstanceDescription` = '#{DBInstanceDescription}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "资源监控",
+      "性能监控"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aliyun_acs_mongodb'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "DBInstanceDescription",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['aliyun_acs_mongodb'], keyin=['DBInstanceDescription']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_5bd733c65dc7464ca7c21674160c8572",
+      "name": "阿里云监控"
+    },
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "阿里云 MongoDB 副本集"
+}

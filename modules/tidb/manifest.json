@@ -1,0 +1,1905 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "1"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "Leader",
+                "operation": "=",
+                "originalVal": [
+                  "1"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "PD role",
+        "pos": {
+          "h": 8,
+          "w": 3,
+          "x": 3,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "tso_role",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "60a32c10-5a85-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "dc",
+                  "op": "=",
+                  "type": "",
+                  "value": "global"
+                },
+                {
+                  "id": "6c0db020-5a85-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "dc"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`tso_role`)) { `dc` = 'global' and `tidb_cluster` = '#{cluster_name}' } BY `dc`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(cluster_status)",
+                "name": "last(cluster_status)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "storage capacity",
+        "pos": {
+          "h": 8,
+          "w": 3,
+          "x": 3,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b52be460-5a8b-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "storage_capacity"
+                },
+                {
+                  "id": "1f04c470-5a90-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'storage_capacity' and `tidb_cluster` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(cluster_status)",
+                "name": "last(cluster_status)",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "Current storage size",
+        "pos": {
+          "h": 8,
+          "w": 3,
+          "x": 9,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b52be460-5a8b-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "storage_size"
+                },
+                {
+                  "id": "287acb80-5a90-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'storage_size' and `tidb_cluster` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "gauge",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "lineColor": "#498BFE",
+                "operation": "<=",
+                "value": [
+                  0.2
+                ]
+              },
+              {
+                "lineColor": "#41CEC7",
+                "operation": "<=",
+                "value": [
+                  0.8
+                ]
+              },
+              {
+                "lineColor": "#FFBD5F",
+                "operation": "<=",
+                "value": [
+                  1
+                ]
+              }
+            ],
+            "max": 1,
+            "min": 0,
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "Current storage used",
+        "pos": {
+          "h": 8,
+          "w": 3,
+          "x": 6,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Current storage used",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "tidb_pd_pd",
+                  "field": "cluster_status",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "filters": [
+                    {
+                      "id": "66d611e0-5a8c-11ed-b4b3-435601ac9c2a",
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "type": "",
+                      "value": "storage_capacity"
+                    },
+                    {
+                      "id": "1aacb3f0-b27f-11ed-adc3-d779f0baa9c8",
+                      "logic": "and",
+                      "name": "tidb_cluster",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cluster_name}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'storage_capacity' and `tidb_cluster` = '#{cluster_name}' }",
+                  "type": "simple"
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "tidb_pd_pd",
+                  "field": "cluster_status",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "filters": [
+                    {
+                      "id": "66d611e0-5a8c-11ed-b4b3-435601ac9c2a",
+                      "logic": "and",
+                      "name": "type",
+                      "op": "=",
+                      "type": "",
+                      "value": "storage_size"
+                    },
+                    {
+                      "id": "1eb5b910-b27f-11ed-adc3-d779f0baa9c8",
+                      "logic": "and",
+                      "name": "tidb_cluster",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cluster_name}"
+                    }
+                  ],
+                  "groupBy": [],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'storage_size' and `tidb_cluster` = '#{cluster_name}' }",
+                  "type": "simple"
+                }
+              ],
+              "code": "A",
+              "expression": "B/A",
+              "funcList": [],
+              "q": "eval(B/A, alias='Current storage used', A=\"M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'storage_capacity' and `tidb_cluster` = '#{cluster_name}' }\", B=\"M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'storage_size' and `tidb_cluster` = '#{cluster_name}' }\")",
+              "type": "expression"
+            },
+            "type": "gauge",
+            "unit": ""
+          }
+        ],
+        "type": "gauge"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "Normal stores",
+        "pos": {
+          "h": 8,
+          "w": 3,
+          "x": 9,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b52be460-5a8b-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "store_up_count"
+                },
+                {
+                  "id": "13958470-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'store_up_count' and `tidb_cluster` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": true,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "Number of Regions",
+        "pos": {
+          "h": 8,
+          "w": 3,
+          "x": 6,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b52be460-5a8b-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "leader_count"
+                },
+                {
+                  "id": "023b8800-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`)) { `type` = 'leader_count' and `tidb_cluster` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "Current peer count",
+        "pos": {
+          "h": 16,
+          "w": 12,
+          "x": 12,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Current peer count",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "77ec6e40-5a8f-11ed-b4b3-435601ac9c2a",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "region_count"
+                },
+                {
+                  "id": "275424d0-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`cluster_status`) AS `Current peer count`) { `type` = 'region_count' and `tidb_cluster` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "mainMeasurementLimit": 20,
+            "mainMeasurementQueryCode": "A",
+            "mainMeasurementSort": "top",
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "Current",
+                "name": "Current",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "PD scheduler config",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 0,
+          "y": 20.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Current",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "config_status",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "95c4b240-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(AVG(`config_status`) AS `Current`) { `tidb_cluster` = '#{cluster_name}' } BY `type`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "colors": [],
+            "currentChartType": "table",
+            "fixedTime": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "mainMeasurementLimit": 20,
+            "mainMeasurementQueryCode": "A",
+            "mainMeasurementSort": "top",
+            "pageSize": 0,
+            "queryMode": "toGroupColumn",
+            "showFieldMapping": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "valColorMappings": [],
+            "valMappings": []
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "Store limit",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 8,
+          "y": 20.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "limit",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_store_limit",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "9dbcf2f0-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "type",
+                "store"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(AVG(`cluster_store_limit`) AS `limit`) { `tidb_cluster` = '#{cluster_name}' } BY `type`, `store`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "table",
+            "unit": ""
+          }
+        ],
+        "type": "table"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "avg(cluster_tso_gap_millionseconds)",
+                "name": "avg(cluster_tso_gap_millionseconds)",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Cluster"
+        },
+        "name": "Max TSO gap",
+        "pos": {
+          "h": 15,
+          "w": 8,
+          "x": 16,
+          "y": 20.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "cluster_tso_gap_millionseconds",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "a43c9d60-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "dc"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`cluster_tso_gap_millionseconds`)) { `tidb_cluster` = '#{cluster_name}' } BY `dc`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "last(start_time_seconds)",
+                "name": "last(start_time_seconds)",
+                "unit": "",
+                "units": [
+                  "timeStamp",
+                  "s"
+                ]
+              }
+            ]
+          }
+        },
+        "group": {
+          "name": "概览"
+        },
+        "name": "启动时间",
+        "pos": {
+          "h": 16,
+          "w": 3,
+          "x": 0,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_pd_process",
+              "field": "start_time_seconds",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "867fe190-b27c-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_process`:(LAST(`start_time_seconds`)) { `tidb_cluster` = '#{cluster_name}' } BY `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "line",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "TIDB"
+        },
+        "name": "QPS",
+        "pos": {
+          "h": 12,
+          "w": 7,
+          "x": 3,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_tidb",
+              "field": "executor_statement_total",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b2e95420-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "type"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "RATE(\"M::`tidb_tidb`:(LAST(`executor_statement_total`)) { `tidb_cluster` = '#{cluster_name}' } BY `type`\").SERIES_SUM()",
+              "queryFuncs": [
+                {
+                  "args": [],
+                  "name": "rate"
+                },
+                {
+                  "args": [],
+                  "name": "series_sum"
+                }
+              ],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "TIDB"
+        },
+        "name": "Statement OPS",
+        "pos": {
+          "h": 12,
+          "w": 7,
+          "x": 10,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_tidb",
+              "field": "autoid_operation_duration_seconds_bucket",
+              "fieldFunc": "last",
+              "fieldType": "integer",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "b9ebea30-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_tidb`:(LAST(`autoid_operation_duration_seconds_bucket`)) { `tidb_cluster` = '#{cluster_name}' }",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "bgColor": "",
+            "colors": [],
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [],
+            "lineColor": "#3AB8FF",
+            "mappings": [],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "TIDB"
+        },
+        "name": "链接数",
+        "pos": {
+          "h": 12,
+          "w": 3,
+          "x": 0,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "",
+              "code": "A",
+              "dataSource": "tidb_tidb",
+              "field": "server_connections",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "ab521f30-b27f-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "host"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_tidb`:(LAST(`server_connections`)) { `tidb_cluster` = '#{cluster_name}' } BY `host`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last",
+              "avg",
+              "min",
+              "max"
+            ],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "process-",
+                "name": "process-",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              },
+              {
+                "key": "HeapInuse-",
+                "name": "HeapInuse-",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "TIDB"
+        },
+        "name": "Memory Usage",
+        "pos": {
+          "h": 12,
+          "w": 7,
+          "x": 17,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "process-",
+              "code": "A",
+              "dataSource": "tidb_pd_process",
+              "field": "resident_memory_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "fillNum": null,
+              "filters": [
+                {
+                  "id": "f6ff8370-b27d-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "tidb_cluster"
+              ],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_process`:(LAST(`resident_memory_bytes`) AS `process-`) { `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`",
+              "queryFuncs": [],
+              "type": "simple",
+              "withLabels": []
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "HeapInuse-",
+              "children": [
+                {
+                  "alias": "",
+                  "code": "A",
+                  "dataSource": "tidb_go",
+                  "field": "memory_classes_heap_objects_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "id": "05c73c40-b27e-11ed-adc3-d779f0baa9c8",
+                      "logic": "and",
+                      "name": "tidb_cluster",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cluster_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "tidb_cluster"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`tidb_go`:(LAST(`memory_classes_heap_objects_bytes`)) { `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                },
+                {
+                  "alias": "",
+                  "code": "B",
+                  "dataSource": "tidb_go",
+                  "field": "memory_classes_heap_unused_bytes",
+                  "fieldFunc": "last",
+                  "fieldType": "float",
+                  "fill": null,
+                  "fillNum": null,
+                  "filters": [
+                    {
+                      "id": "06463040-b27e-11ed-adc3-d779f0baa9c8",
+                      "logic": "and",
+                      "name": "tidb_cluster",
+                      "op": "=",
+                      "type": "",
+                      "value": "#{cluster_name}"
+                    }
+                  ],
+                  "funcList": [],
+                  "groupBy": [
+                    "tidb_cluster"
+                  ],
+                  "groupByTime": "",
+                  "namespace": "metric",
+                  "q": "M::`tidb_go`:(LAST(`memory_classes_heap_unused_bytes`)) { `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`",
+                  "queryFuncs": [],
+                  "type": "simple",
+                  "withLabels": []
+                }
+              ],
+              "code": "B",
+              "expression": "A+B",
+              "funcList": [],
+              "q": "eval(A+B, alias='HeapInuse-', A=\"M::`tidb_go`:(LAST(`memory_classes_heap_objects_bytes`)) { `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`\", B=\"M::`tidb_go`:(LAST(`memory_classes_heap_unused_bytes`)) { `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`\")",
+              "type": "expression"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "none",
+            "legendValues": "",
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "MVCC DB total size",
+                "name": "MVCC DB total size",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "B"
+                ]
+              }
+            ],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Etcd"
+        },
+        "name": "MVCC DB total size",
+        "pos": {
+          "h": 10,
+          "w": 8,
+          "x": 0,
+          "y": 12
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "MVCC DB total size",
+              "code": "A",
+              "dataSource": "tidb_pd_etcd",
+              "field": "debugging_mvcc_db_total_size_in_bytes",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "72045d00-b280-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "tidb_cluster"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_etcd`:(LAST(`debugging_mvcc_db_total_size_in_bytes`) AS `MVCC DB total size`) { `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "isRefresh": false,
+          "settings": {
+            "alias": [],
+            "chartType": "areaLine",
+            "colors": [],
+            "compareColors": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareColorsDark": {
+              "dayCompare": "rgba(213,217,226,0.5)",
+              "hourCompare": "#D5D9E2",
+              "monthCompare": "rgba(213,217,226,0.12)",
+              "weekCompare": "rgba(213,217,226,0.25)"
+            },
+            "compareColorsLight": {
+              "dayCompare": "rgba(11,11,12,0.5)",
+              "hourCompare": "#0B0B0C",
+              "monthCompare": "rgba(11,11,12,0.12)",
+              "weekCompare": "rgba(11,11,12,0.3)"
+            },
+            "compareType": [],
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "legendPostion": "bottom",
+            "legendValues": [
+              "last",
+              "max"
+            ],
+            "levels": [],
+            "onlyShowGroupName": false,
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time",
+            "yAxixMaxVal": null,
+            "yAxixMinVal": null
+          }
+        },
+        "group": {
+          "name": "Region storage"
+        },
+        "name": "index",
+        "pos": {
+          "h": 15,
+          "w": 24,
+          "x": 0,
+          "y": 24.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Syncer index",
+              "code": "A",
+              "dataSource": "tidb_pd_pd",
+              "field": "region_syncer_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5b8ebd80-b281-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "sync_index"
+                },
+                {
+                  "id": "68ff71d0-b281-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "tidb_cluster"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`region_syncer_status`) AS `Syncer index`) { `type` = 'sync_index' and `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "Last index",
+              "code": "B",
+              "dataSource": "tidb_pd_pd",
+              "field": "region_syncer_status",
+              "fieldFunc": "last",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "5b8ebd80-b281-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "type",
+                  "op": "=",
+                  "type": "",
+                  "value": "last_index"
+                },
+                {
+                  "id": "68ff71d0-b281-11ed-adc3-d779f0baa9c8",
+                  "logic": "and",
+                  "name": "tidb_cluster",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{cluster_name}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [
+                "tidb_cluster"
+              ],
+              "groupByTime": "",
+              "indexFilter": "",
+              "namespace": "metric",
+              "q": "M::`tidb_pd_pd`:(LAST(`region_syncer_status`) AS `Last index`) { `type` = 'last_index' and `tidb_cluster` = '#{cluster_name}' } BY `tidb_cluster`",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "概览",
+      "Cluster",
+      "TIDB",
+      "Etcd",
+      "Region storage"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "cluster_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "*"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tidb_pd_pd'],keyin=['tidb_cluster'])"
+        },
+        "hide": 0,
+        "isHiddenAsterisk": 0,
+        "name": "集群名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "asc"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_b756632dda054a8692e4410e29424b08",
+      "name": "TiDB"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "TiDB 监控视图"
+}

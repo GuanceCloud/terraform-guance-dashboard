@@ -1,0 +1,6102 @@
+{
+  "dashboardBindSet": [],
+  "dashboardExtend": {},
+  "dashboardMapping": [],
+  "dashboardOwnerType": "node",
+  "dashboardType": "CUSTOM",
+  "iconSet": {},
+  "main": {
+    "charts": [
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内网入流量",
+                "name": "内网入流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "内网出流量",
+                "name": "内网出流量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "内网流量",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 18
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内网入流量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "BytesReceived_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`BytesReceived_max`) AS `内网入流量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内网出流量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "BytesSent_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`BytesSent_max`) AS `内网出流量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "磁盘占用空间",
+                "name": "磁盘占用空间"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘占用空间",
+                "name": "磁盘占用空间",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "磁盘占用空间",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘占用空间",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "Capacity_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`Capacity_max`) AS `磁盘占用空间`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "CPU 利用率",
+                "name": "CPU 利用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 利用率",
+                "name": "CPU 利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "CPU 利用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "CPU 利用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "CpuUseRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`CpuUseRate_max`) AS `CPU 利用率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "IOPS",
+                "name": "IOPS"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "CPU 利用率",
+                "name": "CPU 利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "IOPS",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 18
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "IOPS",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "Iops_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`Iops_max`) AS `IOPS`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "内存占用",
+                "name": "内存占用"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "内存占用",
+                "name": "内存占用",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "内存占用",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存占用",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "MemoryUse_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`MemoryUse_max`) AS `内存占用`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "内存利用率",
+                "name": "内存利用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "允许闲时超用，内存利用率可能大于100%",
+            "units": [
+              {
+                "key": "内存利用率",
+                "name": "内存利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "内存利用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存利用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "MemoryUseRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`MemoryUseRate_max`) AS `内存利用率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "数据使用空间",
+                "name": "数据使用空间"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "数据使用空间",
+                "name": "数据使用空间",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "数据使用空间",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 10
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "数据使用空间",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "RealCapacity_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`RealCapacity_max`) AS `数据使用空间`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#5F67D6",
+                "key": "磁盘利用率",
+                "name": "磁盘利用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "磁盘利用率",
+                "name": "磁盘利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "资源"
+        },
+        "name": "磁盘利用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 2
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘利用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "VolumeRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`VolumeRate_max`) AS `磁盘利用率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "innodb 缓存命中率",
+                "name": "innodb 缓存命中率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 缓存命中率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 4.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 缓存命中率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbCacheHitRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbCacheHitRate_max`) AS `innodb 缓存命中率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "innodb 缓存使用率",
+                "name": "innodb 缓存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 缓存使用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 4.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 缓存使用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbCacheUseRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbCacheUseRate_max`) AS `innodb 缓存使用率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "innodb 缓存使用率",
+                "name": "innodb 缓存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "当前 innodb 打开表的数量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 4.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "当前 innodb 打开表的数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbNumOpenFiles_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbNumOpenFiles_max`) AS `当前 innodb 打开表的数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "innodb 缓存使用率",
+                "name": "innodb 缓存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 读磁盘数量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 12.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 读磁盘数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbOsFileReads_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbOsFileReads_max`) AS `innodb 读磁盘数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "innodb 缓存使用率",
+                "name": "innodb 缓存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 写磁盘数量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 12.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 写磁盘数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbOsFileWrites_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbOsFileWrites_max`) AS `innodb 写磁盘数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "innodb 缓存使用率",
+                "name": "innodb 缓存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodbfsync 数量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 12.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodbfsync 数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbOsFsyncs_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbOsFsyncs_max`) AS `innodbfsync 数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "连接数利用率",
+                "name": "连接数利用率"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "连接数利用率",
+                "name": "连接数利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接"
+        },
+        "name": "连接数利用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "连接数利用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ConnectionUseRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ConnectionUseRate_max`) AS `连接数利用率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "连接数利用率",
+                "name": "连接数利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接"
+        },
+        "name": "连接数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "最大连接数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "MaxConnections_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`MaxConnections_max`) AS `最大连接数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "当前连接数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ThreadsConnected_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ThreadsConnected_max`) AS `当前连接数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "连接数利用率",
+                "name": "连接数利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接"
+        },
+        "name": "QPS/TPS",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 7
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "QPS",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "Qps_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`Qps_max`) AS `QPS`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "TPS",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "Tps_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`Tps_max`) AS `TPS`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 读取量",
+                "name": "InnoDB 读取量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "InnoDB 写入量",
+                "name": "InnoDB 写入量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 读写磁盘数量",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 0,
+          "y": 20.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "InnoDB 读取量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbDataRead_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbDataRead_max`) AS `InnoDB 读取量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "InnoDB 写入量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbDataWritten_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbDataWritten_max`) AS `InnoDB 写入量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 读取量",
+                "name": "InnoDB 读取量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              },
+              {
+                "key": "InnoDB 写入量",
+                "name": "InnoDB 写入量",
+                "unit": "",
+                "units": [
+                  "traffic",
+                  "B/S"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 总读写量 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 6,
+          "x": 6,
+          "y": 20.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 总读取量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbDataReads_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbDataReads_max`) AS `innodb 总读取量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "InnoDB 总写入量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbDataWrites_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbDataWrites_max`) AS `InnoDB 总写入量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 平均获取行锁时间",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 平均获取行锁时间",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbRowLockTimeAvg_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbRowLockTimeAvg_max`) AS `innodb 平均获取行锁时间`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 等待行锁次数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 等待行锁次数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbRowLockWaits_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbRowLockWaits_max`) AS `innodb 等待行锁次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 行操作",
+        "pos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 20.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 行删除量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbRowsDeleted_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbRowsDeleted_max`) AS `innodb 行删除量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 行插入量",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbRowsInserted_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbRowsInserted_max`) AS `innodb 行插入量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 行读取量",
+              "code": "C",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbRowsRead_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbRowsRead_max`) AS `innodb 行读取量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 行更新量",
+              "code": "D",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbRowsUpdated_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbRowsUpdated_max`) AS `innodb 行更新量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "连接数利用率",
+                "name": "连接数利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "操作数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 49.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "删除数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ComDelete_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ComDelete_max`) AS `删除数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "插入数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ComInsert_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ComInsert_max`) AS `插入数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "覆盖数",
+              "code": "C",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ComReplace_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ComReplace_max`) AS `覆盖数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "更新数",
+              "code": "D",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ComUpdate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ComUpdate_max`) AS `更新数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "总访问量",
+                "name": "总访问量"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "所有执行的 SQL 语句，包括 set，show 等",
+            "units": [
+              {
+                "key": "连接数利用率",
+                "name": "连接数利用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "总访问量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 49.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "总访问量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "Queries_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`Queries_max`) AS `总访问量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "访问量占比",
+                "name": "访问量占比"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "访问量占比",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 49.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "访问量占比",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "QueryRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`QueryRate_max`) AS `访问量占比`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "查询数",
+                "name": "查询数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "查询数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 57.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "查询数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "SelectCount_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`SelectCount_max`) AS `查询数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "全表扫描数",
+                "name": "全表扫描数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "全表扫描数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 57.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "全表扫描数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "SelectScan_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`SelectScan_max`) AS `全表扫描数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "慢查询数",
+                "name": "慢查询数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "查询时间超过 long_query_time 秒的查询的个数",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "慢查询数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 57.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "慢查询数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "SlowQueries_sum",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`SlowQueries_sum`) AS `慢查询数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "提交数",
+                "name": "提交数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "提交数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 65.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "提交数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ComCommit_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ComCommit_max`) AS `提交数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "回滚数",
+                "name": "回滚数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "回滚数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 65.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "回滚数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ComRollback_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ComRollback_max`) AS `回滚数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "已创建的线程数",
+                "name": "已创建的线程数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接"
+        },
+        "name": "已创建的线程数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已创建的线程数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ThreadsCreated_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ThreadsCreated_max`) AS `已创建的线程数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "运行的线程数",
+                "name": "运行的线程数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接"
+        },
+        "name": "运行的线程数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "运行的线程数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "ThreadsRunning_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`ThreadsRunning_max`) AS `运行的线程数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#C57ECD",
+                "key": "日志使用量",
+                "name": "日志使用量"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "日志使用量",
+                "name": "日志使用量",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "访问"
+        },
+        "name": "日志使用量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 65.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "日志使用量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "LogCapacity_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`LogCapacity_max`) AS `日志使用量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#41CEC7",
+                "key": "打开文件数",
+                "name": "打开文件数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "连接"
+        },
+        "name": "打开文件数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 15
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "打开文件数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "OpenFiles_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`OpenFiles_max`) AS `打开文件数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "内存临时表数量",
+                "name": "内存临时表数量"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "表"
+        },
+        "name": "内存临时表数量 (个/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 76
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内存临时表数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "CreatedTmpTables_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`CreatedTmpTables_max`) AS `内存临时表数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "等待表锁次数",
+                "name": "等待表锁次数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "表"
+        },
+        "name": "等待表锁次数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 76
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "等待表锁次数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "TableLocksWaited_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`TableLocksWaited_max`) AS `等待表锁次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "磁盘临时表数量",
+                "name": "磁盘临时表数量"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "表"
+        },
+        "name": "磁盘临时表数量 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 76
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "磁盘临时表数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "CreatedTmpDiskTables_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`CreatedTmpDiskTables_max`) AS `磁盘临时表数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "临时文件数量",
+                "name": "临时文件数量"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "表"
+        },
+        "name": "临时文件数量 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 84
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "临时文件数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "CreatedTmpFiles_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`CreatedTmpFiles_max`) AS `临时文件数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "已经打开的表数",
+                "name": "已经打开的表数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "表"
+        },
+        "name": "已经打开的表数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 84
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "已经打开的表数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "OpenedTables_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`OpenedTables_max`) AS `已经打开的表数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#A0DD86",
+                "key": "立即释放的表锁数",
+                "name": "立即释放的表锁数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "表"
+        },
+        "name": "立即释放的表锁数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 84
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "立即释放的表锁数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "TableLocksImmediate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`TableLocksImmediate_max`) AS `立即释放的表锁数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FEAC4E",
+                "key": "内部提交数",
+                "name": "内部提交数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Handler"
+        },
+        "name": "内部提交数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 14.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内部提交数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "HandlerCommit_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`HandlerCommit_max`) AS `内部提交数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FEAC4E",
+                "key": "读下一行请求数",
+                "name": "读下一行请求数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Handler"
+        },
+        "name": "读下一行请求数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 14.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "读下一行请求数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "HandlerReadRndNext_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`HandlerReadRndNext_max`) AS `读下一行请求数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [
+              {
+                "color": "#FEAC4E",
+                "key": "内部回滚数",
+                "name": "内部回滚数"
+              }
+            ],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "访问量占比",
+                "name": "访问量占比",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Handler"
+        },
+        "name": "内部回滚数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 14.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "内部回滚数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "HandlerRollback_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`HandlerRollback_max`) AS `内部回滚数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 空页数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 36.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 空页数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbBufferPoolPagesFree_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbBufferPoolPagesFree_max`) AS `innodb 空页数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 总页数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 36.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 总页数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbBufferPoolPagesTotal_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbBufferPoolPagesTotal_max`) AS `innodb 总页数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 缓冲池预读页次数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 36.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 缓冲池预读页次数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbBufferPoolReadRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbBufferPoolReadRequests_max`) AS `innodb 缓冲池预读页次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "InnoDB 平均获取行锁时间",
+                "name": "InnoDB 平均获取行锁时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "ms"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "InnoDB"
+        },
+        "name": "innodb 磁盘读页次数",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 28.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "innodb 磁盘读页次数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "InnodbBufferPoolReads_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`InnodbBufferPoolReads_max`) AS `innodb 磁盘读页次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "主从延迟距离",
+                "name": "主从延迟距离",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "主从"
+        },
+        "name": "主从延迟距离",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 43.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "主从延迟距离",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "MasterSlaveSyncDistance_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`MasterSlaveSyncDistance_max`) AS `主从延迟距离`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "主从延迟时间",
+                "name": "主从延迟时间",
+                "unit": "",
+                "units": [
+                  "time",
+                  "s"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "主从"
+        },
+        "name": "主从延迟时间",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 43.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "主从延迟时间",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "SecondsBehindMaster_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`SecondsBehindMaster_max`) AS `主从延迟时间`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "1"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "2"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "Yes",
+                "operation": "=",
+                "originalVal": [
+                  "0"
+                ]
+              },
+              {
+                "mappingVal": "No",
+                "operation": "=",
+                "originalVal": [
+                  "1"
+                ]
+              },
+              {
+                "mappingVal": "Connecting",
+                "operation": "=",
+                "originalVal": [
+                  "2"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "主从"
+        },
+        "name": "IO 线程状态",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 16,
+          "y": 43.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "IO 线程状态",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "SlaveIoRunning_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`SlaveIoRunning_max`) AS `IO 线程状态`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedGroupByTime": null,
+          "fixedTime": "",
+          "settings": {
+            "bgColor": "",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "singlestat",
+            "downsample": "last",
+            "fixedTime": "",
+            "fontColor": "",
+            "isTimeInterval": false,
+            "levels": [
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "0"
+                ]
+              },
+              {
+                "bgColor": "",
+                "fontColor": "",
+                "lineColor": "",
+                "operation": "=",
+                "value": [
+                  "1"
+                ]
+              }
+            ],
+            "lineColor": "#3AB8FF",
+            "mappings": [
+              {
+                "mappingVal": "Yes",
+                "operation": "=",
+                "originalVal": [
+                  "0"
+                ]
+              },
+              {
+                "mappingVal": "No",
+                "operation": "=",
+                "originalVal": [
+                  "1"
+                ]
+              }
+            ],
+            "openCompare": false,
+            "precision": "2",
+            "showFieldMapping": false,
+            "showLine": false,
+            "showLineAxis": false,
+            "showTitle": true,
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": []
+          }
+        },
+        "group": {
+          "name": "主从"
+        },
+        "name": "SQL 线程状态",
+        "pos": {
+          "h": 8,
+          "w": 4,
+          "x": 20,
+          "y": 43.5
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "IO 线程状态",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "SlaveSqlRunning_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`SlaveSqlRunning_max`) AS `IO 线程状态`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "singlestat",
+            "unit": ""
+          }
+        ],
+        "type": "singlestat"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "主从延迟距离",
+                "name": "主从延迟距离",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Key"
+        },
+        "name": "键缓存内未使用的块数量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "键缓存内未使用的块数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyBlocksUnused_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyBlocksUnused_max`) AS `键缓存内未使用的块数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "主从延迟距离",
+                "name": "主从延迟距离",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Key"
+        },
+        "name": "键缓存内使用的块数量",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "键缓存内使用的块数量",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyBlocksUsed_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyBlocksUsed_max`) AS `键缓存内使用的块数量`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "主从延迟距离",
+                "name": "主从延迟距离",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Key"
+        },
+        "name": "键缓存读写数据块次数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "键缓存读取数据块次数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyReadRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyReadRequests_max`) AS `键缓存读取数据块次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "数据块写入键缓冲次数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyWriteRequests_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyWriteRequests_max`) AS `数据块写入键缓冲次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "主从延迟距离",
+                "name": "主从延迟距离",
+                "unit": "",
+                "units": [
+                  "digital",
+                  "MB"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Key"
+        },
+        "name": "硬盘读写数据块次数 (次/秒)",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "硬盘读取数据块次数",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyReads_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyReads_max`) AS `硬盘读取数据块次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          },
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "数据块写入磁盘次数",
+              "code": "B",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyWrites_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyWrites_max`) AS `数据块写入磁盘次数`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "myisam 缓存命中率",
+                "name": "myisam 缓存命中率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Key"
+        },
+        "name": "myisam 缓存命中率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 25
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "myisam 缓存命中率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyCacheHitRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyCacheHitRate_max`) AS `myisam 缓存命中率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      },
+      {
+        "extend": {
+          "fixedTime": "",
+          "settings": {
+            "chartType": "areaLine",
+            "colors": [],
+            "compareTitle": "",
+            "compareType": "",
+            "currentChartType": "sequence",
+            "density": "medium",
+            "fixedTime": "",
+            "isPercent": false,
+            "isTimeInterval": true,
+            "levels": [],
+            "openCompare": false,
+            "openStack": false,
+            "showFieldMapping": false,
+            "showLine": false,
+            "showTitle": true,
+            "stackType": "time",
+            "timeInterval": "default",
+            "titleDesc": "",
+            "units": [
+              {
+                "key": "myisam 缓存使用率",
+                "name": "myisam 缓存使用率",
+                "unit": "",
+                "units": [
+                  "percent",
+                  "percent"
+                ]
+              }
+            ],
+            "xAxisShowType": "time"
+          }
+        },
+        "group": {
+          "name": "Key"
+        },
+        "name": "myisam 缓存使用率",
+        "pos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 33
+        },
+        "queries": [
+          {
+            "color": "",
+            "datasource": "dataflux",
+            "name": "",
+            "qtype": "dql",
+            "query": {
+              "alias": "myisam 缓存使用率",
+              "code": "A",
+              "dataSource": "tencentcloud_QCE/CDB",
+              "field": "KeyCacheUseRate_max",
+              "fieldFunc": "avg",
+              "fieldType": "float",
+              "fill": null,
+              "filters": [
+                {
+                  "id": "816818a0-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "account_name",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{account_name}"
+                },
+                {
+                  "id": "86e12880-fb6e-11ec-aca4-afc5dc05e4cc",
+                  "logic": "and",
+                  "name": "InstanceName",
+                  "op": "=",
+                  "type": "",
+                  "value": "#{InstanceName}"
+                }
+              ],
+              "funcList": [],
+              "groupBy": [],
+              "groupByTime": "",
+              "namespace": "metric",
+              "q": "M::`tencentcloud_QCE/CDB`:(AVG(`KeyCacheUseRate_max`) AS `myisam 缓存使用率`) { `account_name` = '#{account_name}' and `InstanceName` = '#{InstanceName}' }",
+              "queryFuncs": [],
+              "type": "simple"
+            },
+            "type": "sequence",
+            "unit": ""
+          }
+        ],
+        "type": "sequence"
+      }
+    ],
+    "groups": [
+      "资源",
+      "连接",
+      "InnoDB",
+      "访问",
+      "表",
+      "Handler",
+      "Key",
+      "主从"
+    ],
+    "type": "template",
+    "vars": [
+      {
+        "code": "account_name",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tencentcloud_QCE/CDB'], keyin=['account_name'])[5m]"
+        },
+        "hide": 0,
+        "name": "账号名称",
+        "seq": 0,
+        "type": "QUERY",
+        "valueSort": "default"
+      },
+      {
+        "code": "InstanceName",
+        "datasource": "dataflux",
+        "definition": {
+          "defaultVal": {
+            "label": "*",
+            "value": "re(`.*`)"
+          },
+          "field": "",
+          "metric": "",
+          "object": "",
+          "tag": "",
+          "value": "show_tag_value(from=['tencentcloud_QCE/CDB'], keyin=['InstanceName']){account_name='#{account_name}'}[5m]"
+        },
+        "hide": 0,
+        "name": "实例名称",
+        "seq": 1,
+        "type": "QUERY",
+        "valueSort": "default"
+      }
+    ]
+  },
+  "summary": "",
+  "tagInfo": [
+    {
+      "id": "tag_7f98a6a528e049848a0dc8d772a8a5e3",
+      "name": "Function"
+    },
+    {
+      "id": "tag_f1f9e3fbbc494afc815587592d7dd192",
+      "name": "腾讯云监控"
+    }
+  ],
+  "tags": [],
+  "thumbnail": "",
+  "title": "腾讯云 CDB"
+}
